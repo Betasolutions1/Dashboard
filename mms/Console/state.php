@@ -21,7 +21,7 @@ if(!$_SESSION['username'])
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App title -->
-        <title>DashBoard</title>
+        <title>DashBoard state</title>
 
         <!-- Table css -->
         <link href="assets/plugins/RWD-Table-Patterns/dist/css/rwd-table.min.css" rel="stylesheet" type="text/css" media="screen">
