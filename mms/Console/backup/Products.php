@@ -21,7 +21,7 @@ if(!$_SESSION['username'])
         <!-- App title -->
         <title>Adminto - Responsive Admin Dashboard Template</title>
 
-        <!-- Editatable  Css-->
+		<!-- Editatable  Css-->
         <link rel="stylesheet" href="assets/plugins/magnific-popup/dist/magnific-popup.css" />
         <link rel="stylesheet" href="assets/plugins/jquery-datatables-editable/datatables.css" />
 
@@ -101,7 +101,7 @@ if(!$_SESSION['username'])
                 <div class="content">
                     <div class="container">
 
-                        
+						
                         <!-- end row -->
 
                         <div class="row">
@@ -125,7 +125,7 @@ if(!$_SESSION['username'])
                                     <div class="row">
                                         <div class="col-md-12">
                                         <?php 
-                                        if(){
+                                        if(isset($_GET['product_id'])){
                                         ?>
                                         <form class="form-horizontal" role="form" method="post" action="manual_mysqli.php" enctype="multipart/form-data">
                                                 <div class="form-group">
@@ -287,30 +287,30 @@ if(!$_SESSION['username'])
             </div>
 
 
-            <!-- MODAL -->
-            <div id="dialog" class="modal-block mfp-hide">
-                <section class="panel panel-info panel-color">
-                    <header class="panel-heading">
-                        <h2 class="panel-title">Are you sure?</h2>
-                    </header>
-                    <div class="panel-body">
-                        <div class="modal-wrapper">
-                            <div class="modal-text">
-                                <p>Are you sure that you want to delete this row?</p>
-                            </div>
-                        </div>
+			<!-- MODAL -->
+			<div id="dialog" class="modal-block mfp-hide">
+				<section class="panel panel-info panel-color">
+					<header class="panel-heading">
+						<h2 class="panel-title">Are you sure?</h2>
+					</header>
+					<div class="panel-body">
+						<div class="modal-wrapper">
+							<div class="modal-text">
+								<p>Are you sure that you want to delete this row?</p>
+							</div>
+						</div>
 
-                        <div class="row m-t-20">
-                            <div class="col-md-12 text-right">
-                                <button id="dialogConfirm" class="btn btn-primary waves-effect waves-light">Confirm</button>
-                                <button id="dialogCancel" class="btn btn-default waves-effect">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
+						<div class="row m-t-20">
+							<div class="col-md-12 text-right">
+								<button id="dialogConfirm" class="btn btn-primary waves-effect waves-light">Confirm</button>
+								<button id="dialogCancel" class="btn btn-default waves-effect">Cancel</button>
+							</div>
+						</div>
+					</div>
 
-                </section>
-            </div>
-            <!-- end Modal -->
+				</section>
+			</div>
+			<!-- end Modal -->
 
 
             <!-- ============================================================== -->
@@ -414,21 +414,21 @@ if(!$_SESSION['username'])
 
         <!-- Editable js -->
         <script src="assets/plugins/tinymce/tinymce.min.js"></script>
-        <script src="assets/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-        <script src="assets/plugins/jquery-datatables-editable/jquery.dataTables.js"></script>
-        <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
-        <script src="assets/plugins/tiny-editable/mindmup-editabletable.js"></script>
-        <script src="assets/plugins/tiny-editable/numeric-input-example.js"></script>
-        <!-- init -->
-        <script src="assets/pages/datatables.editable.init.js"></script>
+	    <script src="assets/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+	    <script src="assets/plugins/jquery-datatables-editable/jquery.dataTables.js"></script>
+	    <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
+	    <script src="assets/plugins/tiny-editable/mindmup-editabletable.js"></script>
+	    <script src="assets/plugins/tiny-editable/numeric-input-example.js"></script>
+		<!-- init -->
+	    <script src="assets/pages/datatables.editable.init.js"></script>
 
         <!-- App js -->
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
 
         <script>
-            $('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
-        </script>
+			$('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
+		</script>
 
 
         <script type="text/javascript">

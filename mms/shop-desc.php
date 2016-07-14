@@ -1,3 +1,8 @@
+<?php
+include 'Console/config.php';
+session_start();
+error_reporting(0);
+?>
 <!doctype html> 
 <html> 
     <head> 
@@ -6,7 +11,7 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
-        <title>MMS - Clean &amp; My Multi Solutions</title>         
+        <title>MMS -  My Multi Solutions</title>         
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -83,12 +88,39 @@
                                             </li>                                             
                                         </ul>                                         
                                     </li>                                     
-                                    <li class="active"> 
+                                    <li > 
                                         <a href="blog-columns.php">Blog</a> 
                                     </li>
-                                    <li>
+                                    <li class="active">
                                         <a href="shop.php">shop</a>
-                                    </li>                                     
+                                    </li>
+                                     <li class="dropdown"> 
+                                        <a href="">Pages</a> 
+                                        <ul> 
+                                        <?php
+                                        if(!$_SESSION['MMS_User'])
+										{
+										?>
+                                            <li>
+                                                <a href="login.php">Login</a>
+                                            </li>                                             
+                                            <li>
+                                                <a href="register.php">Register</a>
+                                            </li> 
+                                            <?php
+										}else{
+											?>                                            
+                                            <li>
+                                                <a href="Myaccount.php">My Account</a>
+                                            </li>
+                                            <li>
+                                                <a href="logout.php">Logout</a>
+                                            </li> 
+                                            <?php
+										}
+											?>                                            
+                                        </ul>                                         
+                                    </li>                                           
                                     <li class=""> 
                                         <a href="contact.php">Contact</a>
                                     </li>                                     

@@ -1,3 +1,9 @@
+<?php
+include 'Console/config.php';
+session_start();
+error_reporting(0);
+?>
+
 <!doctype html> 
 <html> 
     <head> 
@@ -6,7 +12,7 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
-        <title>MMS - Clean &amp; Modern Multipurpose Template</title>         
+        <title>MMS - My Multi Solutions</title>         
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -88,7 +94,34 @@
                                     </li>
                                     <li>
                                         <a href="shop.php">shop</a>
-                                    </li>                                     
+                                    </li>
+                                     <li class="dropdown"> 
+                                        <a href="">Pages</a> 
+                                        <ul> 
+                                        <?php
+                                        if(!$_SESSION['MMS_User'])
+										{
+										?>
+                                            <li>
+                                                <a href="login.php">Login</a>
+                                            </li>                                             
+                                            <li>
+                                                <a href="register.php">Register</a>
+                                            </li> 
+                                            <?php
+										}else{
+											?>                                            
+                                            <li>
+                                                <a href="Myaccount.php">My Account</a>
+                                            </li>
+                                            <li>
+                                                <a href="logout.php">Logout</a>
+                                            </li> 
+                                            <?php
+										}
+											?>                                            
+                                        </ul>                                         
+                                    </li>                                           
                                     <li class="active"> 
                                         <a href="contact.php">Contact</a>
                                     </li>                                     
@@ -321,7 +354,7 @@
                         <div class="row"> 
                             <div class="col-sm-12"> 
                                 <div class="widget widget-text"> 
-                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">Mms</span> <span class="text-lowercase"> template.</span></p> 
+                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">Mms</span> <span class="text-lowercase"> BetaSolutions.</span></p> 
                                 </div>
                                 <!-- widget-text -->                                 
                             </div>

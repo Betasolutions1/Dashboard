@@ -1,4 +1,9 @@
-<?php include("Console/config.php");?>
+<?php 
+include("Console/config.php");
+session_start();
+error_reporting(0);
+
+?>
 <!doctype html> 
 <html> 
     <head> 
@@ -7,7 +12,7 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
-        <title>MMS -  &amp; My Multi Solutions</title>         
+        <title>MMS -  My Multi Solutions</title>         
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -89,7 +94,34 @@
                                     </li>
                                     <li>
                                         <a href="shop.php">shop</a>
-                                    </li>                                     
+                                    </li>  
+                                     <li class="dropdown"> 
+                                        <a href="">Pages</a> 
+                                        <ul> 
+                                        <?php
+                                        if(!$_SESSION['MMS_User'])
+										{
+										?>
+                                            <li>
+                                                <a href="login.php">Login</a>
+                                            </li>                                             
+                                            <li>
+                                                <a href="register.php">Register</a>
+                                            </li> 
+                                            <?php
+										}else{
+											?>                                            
+                                            <li>
+                                                <a href="Myaccount.php">My Account</a>
+                                            </li>
+                                            <li>
+                                                <a href="logout.php">Logout</a>
+                                            </li> 
+                                            <?php
+										}
+											?>                                            
+                                        </ul>                                         
+                                    </li>                                         
                                     <li class=""> 
                                         <a href="contact.php">Contact</a>
                                     </li>                                     
@@ -134,9 +166,9 @@
                     while($bsel2=mysqli_fetch_array($bsel)){
                         $str=$bsel2['blog_desc'];
                         $str1=strip_tags($str);
-                        if(strlen($str1)>10){
+                        //if(strlen($str1)>10){
                             $strcut1=substr($str1,0,10);
-                        }
+                       // }
                     ?>
                         <div class="col-md-4"> 
                             <div class="blog-article"> 
@@ -288,7 +320,7 @@
                         <div class="row"> 
                             <div class="col-md-12"> 
                                 <div class="widget widget-text"> 
-                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">MMs</span> <span class="text-lowercase"> template.</span></p> 
+                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">MMs</span> <span class="text-lowercase"> BetaSolutions.</span></p> 
                                 </div>
                                 <!-- widget-text -->                                 
                             </div>

@@ -2,14 +2,18 @@
 include 'Console/config.php';
 session_start();
 error_reporting(0);
-/*if(isset($_POST['Register']))
+if(isset($_POST['Login']))
 {
-	$ins_users=mysqli_query($conn,"INSERT INTO `register`(`Name`, `Email`, `Phone`, `Password`) VALUES ('$_POST[name]','$_POST[email]','$_POST[phone]','$_POST[Password]')");
-	if($ins_users)
+	$ins_users=mysqli_query($conn,"SELECT * FROM `register` WHERE Email='$_POST[email]' AND Password='$_POST[Password]'");
+	if(mysqli_num_rows($ins_users)>0)
 	{
-		echo "<script>alert('Registration Successfull Please Be login');</script>";
+		$ret_userd=mysqli_fetch_array($ins_users);
+		$_SESSION['User_id']=$ret_userd['Register_id'];
+		$_SESSION['MMS_User']=$ret_userd['Email'];
+		$_SESSION['MMS_uname']=$ret_userd['Name'];
+		header("location:Myaccount.php");
 	}
-}*/
+}
 ?>
 <!doctype html> 
 <html> 
@@ -101,7 +105,7 @@ error_reporting(0);
                                     </li>
                                     <li>
                                         <a href="shop.php">shop</a>
-                                    </li> 
+                                    </li>
                                      <li class="dropdown active"> 
                                         <a href="">Pages</a> 
                                         <ul> 
@@ -128,7 +132,7 @@ error_reporting(0);
 										}
 											?>                                            
                                         </ul>                                         
-                                    </li>                                            
+                                    </li>                                          
                                     <li class=""> 
                                         <a href="contact.php">Contact</a>
                                     </li>                                     
@@ -156,9 +160,9 @@ error_reporting(0);
                                     <li>
                                         <a href="index.php">Home</a>
                                     </li>
-                                   <!-- <li>
-                                        <a href="services.php">Service</a>
-                                    </li>-->
+                                    <li>
+                                        <a href="login.php">Login</a>
+                                    </li>
                                     <li class="active">Register</li>                                     
                                 </ol>                                 
                             </div>
@@ -191,16 +195,16 @@ error_reporting(0);
                 <div class="container"> 
                     <div class="row"> 
                         <div class="col-md-offset-2 col-md-8 col-sm-12"> 
-                        <!--assets/php/send.php -->
-                            <form id="contact-form" name="contact-form" action="backend.php" method="post"> 
+                        <!--assets/php/send.php id="contact-form" -->
+                            <form  name="contact-form" action="" method="post"> 
                                 <fieldset> 
                                     <div id="alert-area"></div>                                     
-                                    <input class="col-xs-12" id="name" type="text" name="name" placeholder="Enter Ur Name"> 
-                                    <input class="col-xs-12" id="email" type="text" name="email" placeholder="Email Id">
-                                    <input class="col-xs-12" id="phone" type="text" name="phone" placeholder="Phone Number"> 
-                                    <input class="col-xs-12" id="Password" type="text" name="Password" placeholder="Enter Ur Password"> 
+                                    
+                                    <input class="col-xs-12" id="email" type="text" name="email" placeholder="Email Id"><br><br/>
+                                   
+                                    <input class="col-xs-12" id="Password" type="text" name="Password" placeholder="Enter Ur Password"> <br><br/>
                                     <!--<textarea class="col-xs-12" id="message" name="message" rows="8" cols="25" placeholder="message"></textarea>-->                                     
-                                    <input class="btn btn-default" id="submit" type="submit" name="Register" value="Register"> 
+                                    <input class="btn btn-default" id="submit" type="submit" name="Login" value="Login"> 
                                 </fieldset>                                 
                             </form>                             
                         </div>

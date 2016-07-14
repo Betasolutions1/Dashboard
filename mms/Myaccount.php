@@ -1,15 +1,11 @@
-<?php
-include 'Console/config.php';
+<?php 
+include("Console/config.php");
 session_start();
 error_reporting(0);
-/*if(isset($_POST['Register']))
+if(!$_SESSION['MMS_User'])
 {
-	$ins_users=mysqli_query($conn,"INSERT INTO `register`(`Name`, `Email`, `Phone`, `Password`) VALUES ('$_POST[name]','$_POST[email]','$_POST[phone]','$_POST[Password]')");
-	if($ins_users)
-	{
-		echo "<script>alert('Registration Successfull Please Be login');</script>";
-	}
-}*/
+	header('location:login.php');
+}
 ?>
 <!doctype html> 
 <html> 
@@ -19,7 +15,7 @@ error_reporting(0);
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
-        <title>MMS - My Multi Solutions</title>         
+        <title>MMS -  My Multi Solutions</title>         
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -54,14 +50,14 @@ error_reporting(0);
             <header> 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-2"> 
+                        <div class="col-md-2"> 
                             <!-- LOGO -->                             
                             <a id="logo" href="index-slider.html"> 
                                 <img src="images/backgrounds/logo.png" alt=""> 
                             </a>                             
                         </div>
                         <!-- col -->                         
-                        <div class="col-sm-10"> 
+                        <div class="col-md-10"> 
                             <!-- SEARCH -->                             
                             <div id="search-container"> 
                                 <form id="search-form" name="search-form" method="get" action="#"> 
@@ -73,7 +69,7 @@ error_reporting(0);
                             <!-- search-container -->                             
                             <a class="search-button" href="#"></a> 
                             <!-- MENU -->                             
-                           <nav> 
+                            <nav> 
                                 <a id="mobile-menu-button" href="#"><i class="fa fa-bars"></i></a> 
                                 <ul class="menu clearfix" id="menu"> 
                                     <li> 
@@ -133,7 +129,7 @@ error_reporting(0);
                                         <a href="contact.php">Contact</a>
                                     </li>                                     
                                 </ul>                                 
-                            </nav>                              
+                            </nav>                        
                         </div>
                         <!-- col -->                         
                     </div>
@@ -147,19 +143,16 @@ error_reporting(0);
                 <div id="page-header"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-6"> 
-                                <h4>Register</h4> 
+                            <div class="col-md-6"> 
+                                <h4>Welcome <?php echo $_SESSION['MMS_uname'];?></h4> 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-6"> 
+                            <div class="col-md-6"> 
                                 <ol class="breadcrumb"> 
                                     <li>
                                         <a href="index.php">Home</a>
-                                    </li>
-                                   <!-- <li>
-                                        <a href="services.php">Service</a>
-                                    </li>-->
-                                    <li class="active">Register</li>                                     
+                                    </li>                                     
+                                    <li class="active">My Account</li>                                     
                                 </ol>                                 
                             </div>
                             <!-- col -->                             
@@ -171,82 +164,79 @@ error_reporting(0);
                 <!-- page-header -->                 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-12"> 
-                            <div class="headline style-3"> 
-                                <h5>Say hello</h5> 
-                                <h2>register your details</h2> 
-                                <p> Temporibus autem quibusdam et aut officiis debitis aut rerum.</p> 
+                    <?php 
+					$get_usr_serv_exe=mysqli_query($conn,"select * from account_services where user_reg_id='$_SESSION[User_id]'");
+					while($get_user_services=mysqli_fetch_array($get_usr_serv_exe))
+					{
+                    $ser_exe=mysqli_query($conn,"select * from services where service_id='$get_user_services[service_id]'");
+                   $service=mysqli_fetch_array($ser_exe);
+                        $str=$service['service_desc'];
+                        $str1=strip_tags($str);
+                            $strcut1=substr($str1,0,50);
+                      
+                    ?>
+                        <div class="col-md-4"> 
+                            <div class="blog-article"> 
+                                <div class="blog-article-thumbnail"> 
+                                    <img src="Console/Services/<?php echo $service['service_img'];?>" style="height:325px;width:360px;" alt=""> 
+                                    <div class="blog-article-hover"> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="Console/Services/<?php echo $service['service_img'];?>"><i class="fa fa-eye"></i></a> 
+                                    </div>
+                                    <!-- blog-article-hover -->                                     
+                                </div>
+                                <!-- blog-article-thumbnail -->                                 
+                                <div class="blog-article-details"> 
+                                     
+                                    <h4><a href="single-service.php?Service_id=<?php echo $service['service_id'];?>"><?php echo $service['service_title'];?></a></h4> 
+                                </div>
+                                <!-- blog-article-details -->                                 
+                                <p><?php echo $strcut1;?>&nbsp;<br></p> 
+                                <a class="btn btn-default" href="single-service.php?Service_id=<?php echo $service['service_id'];?>">Read more</a>
                             </div>
-                            <!-- headline -->                             
+                            <!-- blog-article -->                             
                         </div>
-                        <!-- col -->                         
+                        <?php
+					}?>
+                        <!-- col -->                       
                     </div>
                     <!-- row -->                     
                 </div>
-                <!-- container -->                 
-                <div class="container"> 
-                    <!-- row -->                     
-                </div>
-                <!-- container -->                 
-                <div class="container"> 
-                    <div class="row"> 
-                        <div class="col-md-offset-2 col-md-8 col-sm-12"> 
-                        <!--assets/php/send.php -->
-                            <form id="contact-form" name="contact-form" action="backend.php" method="post"> 
-                                <fieldset> 
-                                    <div id="alert-area"></div>                                     
-                                    <input class="col-xs-12" id="name" type="text" name="name" placeholder="Enter Ur Name"> 
-                                    <input class="col-xs-12" id="email" type="text" name="email" placeholder="Email Id">
-                                    <input class="col-xs-12" id="phone" type="text" name="phone" placeholder="Phone Number"> 
-                                    <input class="col-xs-12" id="Password" type="text" name="Password" placeholder="Enter Ur Password"> 
-                                    <!--<textarea class="col-xs-12" id="message" name="message" rows="8" cols="25" placeholder="message"></textarea>-->                                     
-                                    <input class="btn btn-default" id="submit" type="submit" name="Register" value="Register"> 
-                                </fieldset>                                 
-                            </form>                             
-                        </div>
-                        <!-- col -->                         
-                    </div>
-                    <!-- row -->                     
-                </div>
-                <!-- container -->                 
-                <!-- <div class="map" style="margin-bottom:0;"></div>  -->                
-            </div>
-            <!-- CONTENT -->             
-            <!-- FOOTER -->             
-            <footer> 
-                <div id="footer-top"> 
+                <!-- ontainer -->                 
+                <!-- ontainer -->                 
+                <section class="full-section" id="section-8"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-12"> 
-                                <div class="widget widget-social"> 
-                                    <div class="social-media"> 
-                                        <a class="facebook" href="#"><i class="fa fa-facebook"></i></a> 
-                                        <a class="twitter" href="#"><i class="fa fa-twitter"></i></a> 
-                                        <a class="google" href="#"><i class="fa fa-google-plus"></i></a> 
-                                        <a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a> 
-                                        <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a> 
-                                        <a class="tumblr" href="#"><i class="fa fa-tumblr"></i></a> 
-                                        <a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a> 
-                                        <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a> 
-                                        <a class="skype" href="#"><i class="fa fa-skype"></i></a> 
-                                        <a class="vine" href="#"><i class="fa fa-vine"></i></a> 
-                                        <a class="behance" href="#"><i class="fa fa-behance"></i></a> 
-                                    </div>
-                                    <!-- social-media -->                                     
+                            <div class="col-md-11"> 
+                                <div class="widget widget-twitter"> 
+                                    <div id="tweet"></div>                                     
                                 </div>
-                                <!-- widget-social -->                                 
+                                <!-- end .widget-twitter-->                                 
+                            </div>
+                            <!-- col -->                             
+                            <div class="col-md-1"> 
+                                <div id="twitter-slider-controls"> 
+                                    <span id="twitter-slider-prev"></span> 
+                                    <span id="twitter-slider-next"></span> 
+                                </div>                                 
                             </div>
                             <!-- col -->                             
                         </div>
                         <!-- row -->                         
                     </div>
-                    <!-- container -->                     
-                </div>
+                    <!-- ontainer -->                     
+                </section>
+                <!-- full-section -->                 
+            </div>
+            <!-- CONTENT -->             
+            <!-- FOOTER -->             
+            <footer> 
+                <div id="footer-top"> 
+</div>
                 <!-- footer-top -->                 
                 <div id="footer"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-text"> 
                                     <h3 class="widget-title">About MMS</h3> 
                                     <p>Lorem ipsum dolor sit amet unde ligula, sodales et quam non, omis finibus eros. Pharetra nulla lactus arcu non, 
@@ -265,7 +255,7 @@ error_reporting(0);
                                 <!-- widget-newsletter -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-latest-news"> 
                                     <h3 class="widget-title">Latest news</h3> 
                                     <ul> 
@@ -287,7 +277,7 @@ error_reporting(0);
                                 <!-- widget-recent-posts -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-flickr"> 
                                     <h3 class="widget-title">Flickr</h3> 
                                     <div class="flickr-photos"> 
@@ -300,21 +290,19 @@ error_reporting(0);
                                 <!-- widget-flickr -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-contact"> 
                                     <h3 class="widget-title">Contact Us</h3> 
                                     <ul> 
                                         <li> 
                                             <span>Address</span> 
                                             1713 Hide A Way Road
-
                                             <br> 
                                             San Jose, CA 95118
                                         </li>                                         
                                         <li> 
                                             <span>Phone &amp; Fax</span> 
                                             +408-267-8351
-
                                             <br> 
                                             +408-267-8344
                                         </li>                                         
@@ -336,9 +324,9 @@ error_reporting(0);
                 <div id="footer-bottom"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-12"> 
+                            <div class="col-md-12"> 
                                 <div class="widget widget-text"> 
-                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">Mms</span> <span class="text-lowercase"> template.</span></p> 
+                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">MMs</span> <span class="text-lowercase"> BetaSolutions.</span></p> 
                                 </div>
                                 <!-- widget-text -->                                 
                             </div>
