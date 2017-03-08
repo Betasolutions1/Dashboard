@@ -1,3 +1,14 @@
+<?php include 'config.php';
+session_start();
+if(isset($_POST['submit'])){
+$sel=mysql_query("select * from admin where `admin_name`='$_POST[uname]' and `admin_pwd`='$_POST[password]' ");
+$sel2=mysql_fetch_array($sel);
+if($sel2!=0){
+$_SESSION['name']=$sel2['admin_name'];
+$_SESSION['id']=$sel2['id'];
+}
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,41 +56,30 @@
                     <h4 class="text-uppercase font-bold m-b-0">Sign In</h4>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal m-t-20" action="index.html">
+                    <form class="form-horizontal m-t-20" method="post">
 
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Username">
+                                <input class="form-control" type="text" name="uname" required="" placeholder="Username">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Password">
+                                <input class="form-control" type="password" name="password" required="" placeholder="Password">
                             </div>
                         </div>
-
-                        
-
                         <div class="form-group text-center m-t-30">
                             <div class="col-xs-12">
-                                <button class="btn btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">Log In</button>
+                                <button class="btn btn-custom btn-bordred btn-block waves-effect waves-light" name="submit" type="submit">Log In</button>
                             </div>
                         </div>
-
-                       
                     </form>
-
                 </div>
             </div>
             <!-- end card-box-->
-
-            
         </div>
         <!-- end wrapper page -->
-        
-
-        
     	<script>
             var resizefunc = [];
         </script>
