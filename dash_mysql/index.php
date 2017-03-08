@@ -6,6 +6,7 @@ $sel2=mysql_fetch_array($sel);
 if($sel2!=0){
 $_SESSION['name']=$sel2['admin_name'];
 $_SESSION['id']=$sel2['id'];
+header("location:About.php");
 }
 }
 ?>
