@@ -17,7 +17,7 @@ if(!$_SESSION['username'])
 
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-        <title>Adminto - Responsive Admin Dashboard Template</title>
+        <title>Quotes</title>
 
         <!--Morris Chart CSS -->
 		<link rel="stylesheet" href="assets/plugins/morris/morris.css">
@@ -177,7 +177,7 @@ if(!$_SESSION['username'])
 
                                         <tbody>
                                         <?php
-                                        $quoties=$conn->prepare("SELECT `quote`,`auother` FROM `qoutes`")
+                                        $quoties=$conn->prepare("SELECT `quote`,`auother` FROM `qoutes`");
 										?>
                                          
                                           <tr>
