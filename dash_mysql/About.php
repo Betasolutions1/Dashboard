@@ -1,4 +1,23 @@
-
+<?php 
+session_start();
+if(!$_SESSION['id']){
+    header("location:index.php");
+}
+include 'config.php';
+if(isset($_POST['submit'])){
+     $title=$_POST['title'];
+    $desc=$_POST['description'];
+    $ins=mysql_query("insert into about_us(`title`,`data`) values('$title','$desc')");
+   }
+if(isset($_POST['update'])){
+    $t=$_POST['title1'];
+    $d=$_POST['description1'];
+    $up=mysql_query("update about_us set `title`='$t',`data`='$d' where `id`='$_POST[edit_id]' ");
+}
+if(isset($_GET['del_id'])){
+    $del=mysql_query("delete from about_us where `id`='$_GET[del_id]'");
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -84,11 +103,37 @@ function validate()
 
                         			<div class="row">
                         				<div class="col-md-12">
-                        					<form class="form-horizontal" role="form" name="form" onsubmit="return validate()">
+                                        <?php
+                                        error_reporting(0);
+                                        if($_GET['edit_id']){
+                                            $sel3=mysql_query("select * from about_us where id='$_GET[edit_id]'");
+                                            $sel4=mysql_fetch_array($sel3);
+                                            ?>
+                                        <form class="form-horizontal" method="post" role="form" name="form" onsubmit="return validate()">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Title</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text"  class="form-control" name="title1" value="<?php echo $sel4['title'];?>">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                               
+                                                    <label class="col-md-2 control-label" >Description</label>
+                                                    <div class="col-md-10">
+                                                   
+                                                        <textarea id="elm1" name="description1"><?php echo $sel4['data'];?>"</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" align="center">
+                                                <button type="submit" na class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5" name="update">Update</button>
+                                                </div>
+                                            </form>
+                                            <?php } else {?>
+                        					<form class="form-horizontal" method="post" role="form" name="form" onsubmit="return validate()">
 	                                            <div class="form-group">
-	                                                <label class="col-md-2 control-label">Text</label>
+	                                                <label class="col-md-2 control-label">Title</label>
 	                                                <div class="col-md-10">
-	                                                    <input type="text"  class="form-control" name="text">
+	                                                    <input type="text"  class="form-control" name="title">
 	                                                </div>
 	                                            </div>
                                                 <div class="form-group">
@@ -96,13 +141,14 @@ function validate()
                                                     <label class="col-md-2 control-label" >Description</label>
                                                     <div class="col-md-10">
                                                    
-                                                        <textarea id="elm1" name="area"></textarea>
+                                                        <textarea id="elm1" name="description"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group" align="center">
-	                                            <button type="submit" na class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Success</button>
+	                                            <button type="submit" na class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5" name="submit">Submit</button>
                                                 </div>
 	                                        </form>
+                                            <?php }?>
                         				</div>
                         			</div><!-- end row -->
                         		</div>
@@ -114,63 +160,35 @@ function validate()
 
                 </div> <!-- content -->
                 <div class="container">
-
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box">
-
-
                                     <div class="table-rep-plugin">
                                         <div class="table-responsive" data-pattern="priority-columns">
                                             <table id="tech-companies-1" class="table  table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>Company</th>
-                                                        <th data-priority="1">Last Trade</th>
-                                                        <th data-priority="3">Trade Time</th>
-                                                        <th data-priority="1">Change</th>
-                                                        <th data-priority="3">Prev Close</th>
-                                                        <th data-priority="3">Open</th>
-                                                        <th data-priority="6">Bid</th>
-                                                        <th data-priority="6">Ask</th>
-                                                        <th data-priority="6">1y Target Est</th>
+                                                        <th>sno</th>
+                                                        <th data-priority="1">title</th>
+                                                        <th data-priority="3">desc</th>
+                                                        <th data-priority="1">manage</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <th>GOOG <span class="co-name">Google Inc.</span></th>
-                                                        <td>597.74</td>
-                                                        <td>12:12PM</td>
-                                                        <td>14.81 (2.54%)</td>
-                                                        <td>582.93</td>
-                                                        <td>597.95</td>
-                                                        <td>597.73 x 100</td>
-                                                        <td>597.91 x 300</td>
-                                                        <td>731.10</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
-                                                        <td>15.81</td>
-                                                        <td>12:25PM</td>
-                                                        <td>0.11 (0.67%)</td>
-                                                        <td>15.70</td>
-                                                        <td>15.94</td>
-                                                        <td>15.79 x 6100</td>
-                                                        <td>15.80 x 17000</td>
-                                                        <td>18.16</td>
-                                                    </tr>
-                                                    <!-- Repeat -->
-                                                    <tr>
-                                                        <th>GOOG <span class="co-name">Google Inc.</span></th>
-                                                        <td>597.74</td>
-                                                        <td>12:12PM</td>
-                                                        <td>14.81 (2.54%)</td>
-                                                        <td>582.93</td>
-                                                        <td>597.95</td>
-                                                        <td>597.73 x 100</td>
-                                                        <td>597.91 x 300</td>
-                                                        <td>731.10</td>
-                                                    </tr>
+                                                   <?php 
+                                                   $sel=mysql_query("select * from  about_us");
+                                                   $count=0;
+                                                   while($sel2=mysql_fetch_array($sel)){
+                                                    echo "<tr>";
+                                                    echo "<td>".++$count."</td>";
+                                                    echo "<td>".$sel2['title']."</td>";
+                                                    echo "<td>".$sel2['data']."</td>";
+                                                    ?>
+                                                    <td><a href="About.php?edit_id=<?php echo $sel2['id'];?>">edit</a>/<a href="About.php?del_id=<?php echo $sel2['id'];?>">delete</a></td>
+                                                    <?php 
+                                                    echo "</tr>";
+                                                   }
+                                                   ?>
                                                   </tbody>
                                             </table>
                                         </div>
