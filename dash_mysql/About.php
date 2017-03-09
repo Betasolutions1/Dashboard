@@ -10,9 +10,10 @@ if(isset($_POST['submit'])){
     $ins=mysql_query("insert into about_us(`title`,`data`) values('$title','$desc')");
    }
 if(isset($_POST['update'])){
-    $t=$_POST['title1'];
+     $t=$_POST['title1'];
     $d=$_POST['description1'];
-    $up=mysql_query("update about_us set `title`='$t',`data`='$d' where `id`='$_POST[edit_id]' ");
+    $up=mysql_query("update about_us set `title`='$t',`data`='$d' where `id`='$_POST[update_id]'");
+
 }
 if(isset($_GET['del_id'])){
     $del=mysql_query("delete from about_us where `id`='$_GET[del_id]'");
@@ -121,12 +122,15 @@ function validate()
                                                     <label class="col-md-2 control-label" >Description</label>
                                                     <div class="col-md-10">
                                                    
-                                                        <textarea id="elm1" name="description1"><?php echo $sel4['data'];?>"</textarea>
+                                                        <textarea id="elm1" name="description1"><?php echo $sel4['data'];?></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group" align="center">
                                                 <button type="submit" na class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5" name="update">Update</button>
                                                 </div>
+                                                
+                                                <input type="hidden" name="update_id" value="<?php echo $_GET[edit_id]?>">
+
                                             </form>
                                             <?php } else {?>
                         					<form class="form-horizontal" method="post" role="form" name="form" onsubmit="return validate()">

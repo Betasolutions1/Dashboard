@@ -95,22 +95,35 @@ function validate()
                         			<div class="row">
                         				<div class="col-md-12">
                         					<form class="form-horizontal" role="form" name="form" onsubmit="return validate()">
-	                                            <div class="form-group">
-	                                                <label class="col-md-2 control-label">Text</label>
-	                                                <div class="col-md-10">
-	                                                    <input type="text"  class="form-control" name="text">
-	                                                </div>
-	                                            </div>
-                                                <div class="form-group">
-                                               
-                                                    <label class="col-md-2 control-label" >Description</label>
+	                                           <div class="form-group">
+                                                    <label class="col-md-2 control-label">Text</label>
                                                     <div class="col-md-10">
-                                                   
+                                                        <input type="text" class="form-control" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Description</label>
+                                                    <div class="col-md-10">
                                                         <textarea id="elm1" name="area"></textarea>
                                                     </div>
                                                 </div>
+                                                 <div class="form-group">
+                                                    <label class="col-md-2 control-label">Image</label>
+                                                    <div class="col-md-10">
+                                                        <input type="file" class="form-control" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label class="control-label col-md-2">Auto Close</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose">
+                                                                <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
+                                                            </div><!-- input-group -->
+                                                        </div>
+                                                    </div>
                                                 <div class="form-group" align="center">
-	                                            <button type="submit" na class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Success</button>
+                                                <button type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Success</button>
                                                 </div>
 	                                        </form>
                         				</div>
