@@ -1,3 +1,14 @@
+<?php
+include 'config.php';
+error_reporting(0);
+session_start();
+if(!$_SESSION['username'])
+{
+	header("location:index.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -70,26 +81,26 @@
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">Text</label>
                                                     <div class="col-md-10">
-                                                        <input type="text" class="form-control" >
+                                                        <input type="text" name="page_name" class="form-control" >
                                                     </div>
                                                 </div><div class="row" align="center">
                                                 <div class="col-md-4">
                                             <div class="radio">
-                                                <input type="radio" name="radio" id="radio1" value="left" checked>
+                                                <input type="radio" name="dynamic_page" id="radio1" value="left" checked>
                                                 <label for="radio1">
                                                     <img src="images/page1.png" width="100">
                                                 </label>
                                             </div></div>
                                               <div class="col-md-4">
                                             <div class="radio">
-                                                <input type="radio" name="radio" id="radio1" value="middle" checked>
+                                                <input type="radio" name="dynamic_page" id="radio1" value="middle" checked>
                                                 <label for="radio1">
                                                     <img src="images/page2.png" width="100">
                                                 </label>
                                             </div></div>
                                               <div class="col-md-4">
                                             <div class="radio">
-                                                <input type="radio" name="radio" id="radio1" value="right" checked>
+                                                <input type="radio" name="dynamic_page" id="radio1" value="right" checked>
                                                 <label for="radio1">
                                                     <img src="images/right.png" width="100">
                                                 </label>
@@ -111,52 +122,31 @@
                                             <table id="tech-companies-1" class="table  table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>Company</th>
-                                                        <th data-priority="1">Last Trade</th>
-                                                        <th data-priority="3">Trade Time</th>
-                                                        <th data-priority="1">Change</th>
-                                                        <th data-priority="3">Prev Close</th>
-                                                        <th data-priority="3">Open</th>
-                                                        <th data-priority="6">Bid</th>
-                                                        <th data-priority="6">Ask</th>
-                                                        <th data-priority="6">1y Target Est</th>
+                                                        <th>Sno</th>
+                                                        <th data-priority="6">Page name</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                <?php
+												$sno=0;
+                                                $ret_me=$conn->prepare("select `page_id`,`page_name` from pages");
+												$ret_me->execute();
+												$ret_me->bind_result($id,$pgname);
+												$ret_me->store_result();
+												while($ret_me->fetch())
+												{	++$sno;											
+												?>
                                                     <tr>
-                                                        <th>GOOG <span class="co-name">Google Inc.</span></th>
-                                                        <td>597.74</td>
-                                                        <td>12:12PM</td>
-                                                        <td>14.81 (2.54%)</td>
-                                                        <td>582.93</td>
-                                                        <td>597.95</td>
-                                                        <td>597.73 x 100</td>
-                                                        <td>597.91 x 300</td>
-                                                        <td>731.10</td>
+                                                        <th><?php echo $sno;?></th>
+                                                        <td><?php echo $pgname; ?></td>
+                                                        <td><a href="manual_mysqli.php?menu_delete_id=<?php echo $id; ?>">Delete</td>
+                                                        
                                                     </tr>
-                                                    <tr>
-                                                        <th>MSFT <span class="co-name">Microsoft Corporation</span></th>
-                                                        <td>25.50</td>
-                                                        <td>12:27PM</td>
-                                                        <td>0.66 (2.67%)</td>
-                                                        <td>24.84</td>
-                                                        <td>25.37</td>
-                                                        <td>25.50 x 71100</td>
-                                                        <td>25.51 x 17800</td>
-                                                        <td>31.50</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                                        <td>18.65</td>
-                                                        <td>12:45PM</td>
-                                                        <td>0.97 (5.49%)</td>
-                                                        <td>17.68</td>
-                                                        <td>18.23</td>
-                                                        <td>18.65 x 10300</td>
-                                                        <td>18.66 x 24000</td>
-                                                        <td>21.12</td>
-                                                    </tr>
-                                                    <tr>
+                                                  <?php
+												}
+												  ?>  
+                                                   <?php /*?> <tr>
                                                         <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
                                                         <td>15.81</td>
                                                         <td>12:25PM</td>
@@ -166,7 +156,7 @@
                                                         <td>15.79 x 6100</td>
                                                         <td>15.80 x 17000</td>
                                                         <td>18.16</td>
-                                                    </tr>
+                                                    </tr><?php */?>
                                                 </tbody>
                                             </table>
                                         </div>

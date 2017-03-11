@@ -2,7 +2,7 @@
 include 'config.php';
 error_reporting(0);
 session_start();
-if(!$_SESSION[''])
+if(!$_SESSION['username'])
 {
 	header("location:index.php");
 }
@@ -133,14 +133,14 @@ if(isset($_POST['sub_menu']))
 	$page=$_POST['page_name'];
 	$pg_type=$_POST['dynamic_page'];
 	
-	$create=mysql_query("CREATE TABLE ".$page." (
+	$create=mysqli_query($conn,"CREATE TABLE ".$page." (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(30) NOT NULL,
 data VARCHAR(5000) NOT NULL
 )");
  if($create)
   {
-	  $inspage_name=mysql_query("INSERT INTO `pages`(`page_name`) VALUES ('$page')");
+	  $inspage_name=mysqli_query($conn,"INSERT INTO `pages`(`page_name`) VALUES ('$page')");
 	if($pg_type=='left')
 	{
 		 if($file = fopen("../$page.php", "w")) 
@@ -166,7 +166,7 @@ data VARCHAR(5000) NOT NULL
           fclose($file); 
 	     }
 	}
-	header("location:add_pages.php");
+	header("location:Add-menu.php");
 }
 	
 }
@@ -177,17 +177,17 @@ data VARCHAR(5000) NOT NULL
 <?php 
 if($_GET['menu_delete_id'])
 {
-	$pg_name=mysql_query("select * from pages where page_id='".$_GET['menu_delete_id']."'");
-	$pgs=mysql_fetch_array($pg_name);
-	$drop_tb=mysql_query("drop table ".$pgs['page_name']);
+	$pg_name=mysqli_query($conn,"select * from pages where page_id='".$_GET['menu_delete_id']."'");
+	$pgs=mysqli_fetch_array($pg_name);
+	$drop_tb=mysqli_query($conn,"drop table ".$pgs['page_name']);
 	$ghy=$pgs['page_name'].".php";
 	unlink($ghy);
 	$path2="../".$pgs['page_name'].".php";
 	unlink($path2);
 	//echo delete($pgs['page_name'].'php');
-     $sql_query="DELETE FROM `pages` WHERE page_id='".$_GET['delete_id']."'";
-     mysql_query($sql_query);
-    header("location:add_pages.php");
+     $sql_query="DELETE FROM `pages` WHERE page_id='".$_GET['menu_delete_id']."'";
+     mysqli_query($conn,$sql_query);
+    header("location:Add-menu.php");
 }
 }
 
