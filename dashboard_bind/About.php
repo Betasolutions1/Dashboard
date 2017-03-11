@@ -1,5 +1,6 @@
 <?php
 include 'config.php';
+error_reporting(0);
 session_start();
 if(!$_SESSION['username'])
 {
@@ -73,7 +74,36 @@ if(!$_SESSION['username'])
 
                         			<div class="row">
                         				<div class="col-md-12">
+                                        <?php
+                                        if($_GET['page'])
+										{
+											$rety=mysqli_query($conn,"select * from about_us where id='$_GET[page]'");
+											$res=mysqli_fetch_array($rety);
+										?>
                         					<form class="form-horizontal" role="form" method="post" action="manual_mysqli.php">
+	                                            <div class="form-group">
+	                                                <label class="col-md-2 control-label">Text</label>
+	                                                <div class="col-md-10">
+	                                                    <input type="text" name="about_title1" class="form-control" value="<?php echo $res['title'];?>" >
+	                                                </div>
+	                                            </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Description</label>
+                                                    <div class="col-md-10">
+                                                        <textarea id="elm1" name="about_desc1"><?php echo $res['data'];?></textarea>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="get_id" value="<?php echo $_GET['page'];?>">
+                                                <div class="form-group" align="center">
+	                                            <button type="submit" name="about_update" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Update</button>
+                                                </div>
+	                                        </form>
+                                            <?php
+										}else
+										{
+										
+											?>
+                                            <form class="form-horizontal" role="form" method="post" action="manual_mysqli.php">
 	                                            <div class="form-group">
 	                                                <label class="col-md-2 control-label">Text</label>
 	                                                <div class="col-md-10">
@@ -90,6 +120,9 @@ if(!$_SESSION['username'])
 	                                            <button type="submit" name="about_submit" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Success</button>
                                                 </div>
 	                                        </form>
+                                            <?php
+										}
+											?>
                         				</div>
                         			</div><!-- end row -->
                         		</div>
@@ -114,8 +147,8 @@ if(!$_SESSION['username'])
                                                     <tr>
                                                         <th>Title</th>
                                                         <th data-priority="1">Description</th>
-                                                        <!--<th data-priority="3">Trade Time</th>
-                                                        <th data-priority="1">Change</th>
+                                                       <th colspan="2">Action</th>
+                                                         <!--<th data-priority="1">Change</th>
                                                         <th data-priority="3">Prev Close</th>
                                                         <th data-priority="3">Open</th>
                                                         <th data-priority="6">Bid</th>
@@ -125,10 +158,10 @@ if(!$_SESSION['username'])
                                                 </thead>
                                                 <tbody>
                                                 <?php
-                                                $rete_about=$conn->prepare("SELECT title,data FROM `about_us`");
+                                                $rete_about=$conn->prepare("SELECT id,title,data FROM `about_us`");
 												$rete_about->execute();
 												
-												 $rete_about->bind_result($title,$data);
+												 $rete_about->bind_result($id,$title,$data);
                                                 $rete_about->store_result();
                                                //if($rete_about->num_rows !=0)  
 												 while($rete_about->fetch()) {
@@ -138,6 +171,8 @@ if(!$_SESSION['username'])
                                                         
                                                         <td><?php echo $title;?></td>
                                                         <td><?php echo $data;?></td>
+                                                        <td><a href="About.php?page=<?php echo $id;?>">Edit</a></td>
+                                                        <td><a href="manual_mysqli.php?abde=<?php echo $id;?>">Delete</a></td>
                                                       
                                                     </tr>
                                                     <?php

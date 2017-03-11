@@ -1,6 +1,7 @@
 
 <?php
 include 'config.php';
+error_reporting(0);
 session_start();
 if(!$_SESSION['username'])
 {
@@ -119,8 +120,41 @@ if(!$_SESSION['username'])
                                     </div>
 
                         			<h4 class="header-title m-t-0 m-b-30">Today's Message</h4>
-
+									<?php
+                                    if($_GET['page'])
+									{
+										$try=mysqli_query($conn,"SELECT * FROM `qoutes` WHERE `quote_id`='$_GET[page]' ");
+										$res=mysqli_fetch_array($try);
+										
+									?>
                                     <form action="manual_mysqli.php" method="post" data-parsley-validate novalidate>
+                                        <div class="form-group">
+                                            <label for="userName">Quote Of The Day</label>
+                                            <textarea class="form-control" name="qote_day1" rows="5"><?php echo $res['quote'];?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="emailAddress">Author</label>
+                                            <input type="text" name="qauthor1" parsley-trigger="change" required placeholder="Author Name" class="form-control" id="emailAddress" value="<?php echo $res['auother'];?>">
+                                        </div>
+                                       
+                                     <input type="hidden" name="quote_id" value="<?php echo $_GET['page'];?>">
+                                       
+
+                                        <div class="form-group text-right m-b-0">
+                                            <button class="btn btn-primary waves-effect waves-light" name="Update_Quote" type="submit">
+                                                Submit
+                                            </button>
+                                            <button type="reset" class="btn btn-default waves-effect waves-light m-l-5">
+                                                Cancel
+                                            </button>
+                                        </div>
+
+                                    </form>
+                                    <?php
+									}else
+									{
+									?>
+                                     <form action="manual_mysqli.php" method="post" data-parsley-validate novalidate>
                                         <div class="form-group">
                                             <label for="userName">Quote Of The Day</label>
                                             <textarea class="form-control" name="qote_day" rows="5"></textarea>
@@ -144,6 +178,9 @@ if(!$_SESSION['username'])
                                         </div>
 
                                     </form>
+                                    <?php
+									}
+									?>
                                 </div>
                         
                             </div><!-- end col -->
@@ -171,72 +208,37 @@ if(!$_SESSION['username'])
                                                 <th>Sno</th>
                                                 <th>Quote</th>
                                                 <th>Author</th>
+                                                <th colspan="2">Action</th>
                                                 
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                         <?php
-                                        $quoties=$conn->prepare("SELECT `quote`,`auother` FROM `qoutes`");
+										$sno=0;
+                                        $quoties=$conn->prepare("SELECT `quote_id`,`quote`,`auother` FROM `qoutes`");
+										$quoties->execute();
+										$quoties->bind_result($id,$quo,$aut);
+										$quoties->store_result();
+										while($quoties->fetch())
+										{
+											++$sno;
 										?>
                                          
                                           <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
+                                          <td><?php echo $sno;?></td>
+                                                <td><?php echo $quo;?></td>
+                                                <td><?php echo $aut;?></td>
+                                                <td><a href="Quote.php?page=<?php echo $id?>">Edit</a></td>
+                                                <td><a href="manual_mysqli.php?Quote=<?php echo $id;?>">Delete</a></td>
+                                               
                                             </tr>
-                                            <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>63</td>
-                                                <td>2011/07/25</td>
-                                                <td>$170,750</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical Author</td>
-                                                <td>San Francisco</td>
-                                                <td>66</td>
-                                                <td>2009/01/12</td>
-                                                <td>$86,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cedric Kelly</td>
-                                                <td>Senior Javascript Developer</td>
-                                                <td>Edinburgh</td>
-                                                <td>22</td>
-                                                <td>2012/03/29</td>
-                                                <td>$433,060</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Airi Satou</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>33</td>
-                                                <td>2008/11/28</td>
-                                                <td>$162,700</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Brielle Williamson</td>
-                                                <td>Integration Specialist</td>
-                                                <td>New York</td>
-                                                <td>61</td>
-                                                <td>2012/12/02</td>
-                                                <td>$372,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Herrod Chandler</td>
-                                                <td>Sales Assistant</td>
-                                                <td>San Francisco</td>
-                                                <td>59</td>
-                                                <td>2012/08/06</td>
-                                                <td>$137,500</td>
-                                            </tr>
-                                            <tr>
+                                            <?php
+										}
+											?>
+                                            
+                                           
+                                           <!-- <tr>
                                                 <td>Rhona Davidson</td>
                                                 <td>Integration Specialist</td>
                                                 <td>Tokyo</td>
@@ -244,7 +246,7 @@ if(!$_SESSION['username'])
                                                 <td>2010/10/14</td>
                                                 <td>$327,900</td>
                                             </tr>
-                                            
+                                            -->
                                            
                                            
                                            

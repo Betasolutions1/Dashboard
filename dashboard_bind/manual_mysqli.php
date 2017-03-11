@@ -6,7 +6,7 @@ session_start();
 if(isset($_POST['login'])){
    
    $username = $_POST['user_name'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
 
    $stmt = $conn->prepare("SELECT  admin_name,admin_pwd FROM admin WHERE admin_name=? AND admin_pwd=?");
     $stmt->bind_param("ss",$username,$password);
@@ -50,6 +50,29 @@ if(isset($_POST['about_submit']))
 	}
 	
 }
+//about about
+
+if(isset($_POST['about_update']))
+{
+	$ins_about=$conn->prepare("UPDATE `about_us` SET `title`=?,`data`=? WHERE `id`=?");
+	$ins_about->bind_param('ssi',$_POST['about_title1'],$_POST['about_desc1'],$_POST['get_id']);
+	$exe=$ins_about->execute();
+	if($exe)
+	{
+		header("location:About.php");
+	}else
+	{
+		echo "<script>alert('Updation  Fail')</script>";
+		header("location:About.php");
+	}
+}
+//about delete
+if($_GET['abde'])
+{
+	$del=mysqli_query($conn,"delete from about_us where id='$_GET[abde]'");
+	header("location:About.php");
+}
+
 //Tesimonials
 
 if(isset($_POST['sub_testies']))
@@ -66,6 +89,28 @@ if(isset($_POST['sub_testies']))
 		header("location:Testmonial.php");
 	}
 }
+//testi update
+if(isset($_POST['upda_testies']))
+{
+	$uptes=$conn->prepare("UPDATE `testimonials` SET `testimonial`=?,`author`=? WHERE `id`=?");
+	$uptes->bind_param('ssi',$_POST['testimoni1'],$_POST['testi_auth1'],$_POST['getid']);
+	$exe=$uptes->execute();
+	if($exe)
+	{
+		header("location:Testmonial.php");
+	}else
+	{
+		echo "<script>alert('Updation  Fail')</script>";
+		header("location:Testmonial.php");
+	}
+}
+
+//test_delete
+if($_GET['tedel'])
+{
+	$del=mysqli_query($conn,"delete From `testimonials` where id='$_GET[tedel]' ");
+	header("location:Testmonial.php");
+}
 //quote of the day
 if(isset($_POST['sub_Quote']))
 {
@@ -81,115 +126,30 @@ if(isset($_POST['sub_Quote']))
 		header("location:Quote.php");
 	}
 }
-
-
-
-
-
-/*if(isset($_POST['login']))
+//quote update
+if(isset($_POST['Update_Quote']))
 {
-	$log_cred=$conn->prepare("select * from admin where admin_name=? AND admin_pwd=?");
-	$log_cred->bind_param("ss",$admin_name,$ad_pwd);
-	$admin_name=$_POST['user_name'];
-	$ad_pwd=$_POST['password'];
-	$result=$log_cred->execute(MYSQLI_ASSOC);
-	$result->bind_result($name, $bio);
-	if(count($result) != 0)
+	$ins_quote=$conn->prepare("UPDATE `qoutes` SET `quote`=?,`auother`=? WHERE `quote_id`=?");
+	$ins_quote->bind_param('ssi',$_POST['qote_day1'],$_POST['qauthor1'],$_POST['quote_id']);
+	$exe=$ins_quote->execute();
+	if($exe)
 	{
-	$logged = $result->fetch_array();
-	
-		
-		$_SESSION['admin_name']=$logged['admin_name'];
-		header("location:About.php");
-		
+		header("location:Quote.php");
+	}else
+	{
+		echo "<script>alert('Updation Fail')</script>";
+		header("location:Quote.php");
 	}
-	else{
-		echo "invalid";
-	}
-	
-	
 }
-*/
 
-/*if(isset($_POST['sub_about']))
+//quote delete
+if($_GET['Quote'])
 {
-	$ins_about=$conn->prepare("INSERT INTO `about_us`( `title`, `data`) VALUES (?,?)");
-	// prepare and bind
-    //$stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email) VALUES (?, ?, ?)");
-    $ins_about->bind_param("ss", $title, $data);
-
-   // set parameters and execute
-   $title = $_POST[''];
-   $data = $_POST[''];
-   $ins_about->execute();
-	
+	$del_quo=mysqli_query($conn,"delete from `qoutes` where `quote_id`='".$_GET['Quote']."'");
+	header("location:Quote.php");
 }
-if(isset($_POST['sub_blogs']))
-{
-	$ins_blog=$conn->prepare("INSERT INTO `blogs`( `blog_title`, `blog_desc`, `blog_image`) VALUES (?,?,?)");
-   $ins_blog->bind_param("sss", $blog_title, $blog_desc,$blog_image);
-   $blog_title = $_POST[''];
-   $blog_desc = $_POST[''];
-   $blog_image=$_POST[''];
-   $ins_blog->execute();
-}
-if(isset($_POST['sub_quotes']))
-{
-	$ins_quote=$conn->prepare("INSERT INTO `qoutes`( `quote`, `auother`) VALUES (?,?)");
-   $ins_quote->bind_param("ss", $quote, $auother);
-   $quote = $_POST[''];
-   $auother = $_POST[''];
-   $ins_quote->execute();
-}
-if(isset($_POST['sub_testimonials']))
-{
-	$ins_tesies=$conn->prepare("INSERT INTO `testimonials`( `testimonial`, `author`) VALUES (?,?)");
-   $ins_tesies->bind_param("ss", $tesimi, $testi_auother);
-   $tesimi = $_POST[''];
-   $testi_auother = $_POST[''];
-   $ins_tesies->execute();
-}
-if(isset($_POST['sub_webinfo']))
-{
-	$ins_wdinf=$conn->prepare("INSERT INTO `website_info`( `title`, `webs_info`) VALUES (?,?)");
-   $ins_wdinf->bind_param("ss", $w_title, $w_info);
-   $w_title = $_POST[''];
-   $w_info = $_POST[''];
-   $ins_wdinf->execute();
-}
-?>
 
-<!---Select Queries--->
 
-<?php
- $cust_rev = $conn->prepare("SELECT * FROM coustomer_reviews"); 
-    $cust_rev->execute();
 
-    // set the resulting array to associative
-    $cust_result = $cust_rev->fetch_array(MYSQLI_ASSOC); 
-	foreach($cust_result as $row)
-	{ 
-        echo $row['customer_name'];
-		echo $row['customer_phone'];
-		echo $row['review'];
-		echo $row['customer_email'];
-		echo $row['review_product_code'];
-    }
-	
-	
-	$blog_review = $conn->prepare("SELECT * FROM blog_reviews"); 
-    $blog_review->execute();
-
-    // set the resulting array to associative
-    $blog_result = $blog_review->fetch_array(MYSQLI_ASSOC); 
-	foreach($blog_result as $row)
-	{ 
-        echo $row['customer_name'];
-		echo $row['customer_phone'];
-		echo $row['customer_email'];
-		echo $row['blog_review'];
-		
-    }
-	*/
 
 ?>

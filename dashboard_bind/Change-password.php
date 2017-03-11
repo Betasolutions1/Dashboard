@@ -1,3 +1,36 @@
+<?php
+include 'config.php';
+error_reporting(0);
+session_start();
+if(!$_SESSION['username'])
+{
+	header("location:index.php");
+}
+if(isset($_POST['change_pwd']))
+{
+	if($_POST['new_pwd']==$_POST['con_pwd'])
+	{
+		
+		$exe=$conn->prepare("UPDATE `admin` SET `admin_pwd`=? WHERE `admin_pwd`=?");
+		$exe->bind_param('ss',$new,$old);
+		$new=md5($_POST['new_pwd']);
+		$old=md5($_POST['old_pwd']);
+		$exe->execute();
+		if($exe)
+		{
+			echo "<script>alert('Password Changed, Please Be Login');</script>";
+			session_destroy();
+			header("location:index.php");
+		}
+		
+	}
+	else
+	{
+		echo "<script>alert('Doesnt Match the Confirm Password');</script>";
+	}
+	
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,7 +43,7 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App title -->
-        <title>Adminto - Responsive Admin Dashboard Template</title>
+        <title>Change Password</title>
 
         <!-- App CSS -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -37,30 +70,30 @@
         <div class="clearfix"></div>
         <div class="wrapper-page">
             <div class="text-center">
-                <a href="index.html" class="logo"><span>Admin<span>to</span></span></a>
-                <h5 class="text-muted m-t-0 font-600">Responsive Admin Dashboard</h5>
+                <a href="#" class="logo"><span>Website<span>Name</span></span></a>
+                <h5 class="text-muted m-t-0 font-600">Website Tagline</h5>
             </div>
         	<div class="m-t-40 card-box">
                 <div class="text-center">
                     <h4 class="text-uppercase font-bold m-b-0">Update Password</h4>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal m-t-20" action="index.html">
+                    <form class="form-horizontal m-t-20" action="" method="post">
 
                         <div class="form-group ">
                             <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Old Password">
+                                <input class="form-control" type="password" name="old_pwd" required="" placeholder="Old Password">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="New Password">
+                                <input class="form-control" type="password" name="new_pwd" required="" placeholder="New Password">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Re Enter Password">
+                                <input class="form-control" type="password" name="con_pwd" required="" placeholder="Re Enter Password">
                             </div>
                         </div>
 
@@ -68,7 +101,7 @@
 
                         <div class="form-group text-center m-t-30">
                             <div class="col-xs-12">
-                                <button class="btn btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">Update</button>
+                                <button name="change_pwd" class="btn btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">Update</button>
                             </div>
                         </div>
 

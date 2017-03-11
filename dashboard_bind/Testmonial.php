@@ -1,5 +1,6 @@
 <?php
 include 'config.php';
+error_reporting(0);
 session_start();
 if(!$_SESSION['username'])
 {
@@ -118,8 +119,41 @@ if(!$_SESSION['username'])
                                     </div>
 -->
                         			<h4 class="header-title m-t-0 m-b-30">Tesimonials</h4>
+                                    <?php
+                                    if($_GET['test'])
+									{
+										$rety=mysqli_query($conn,"select * from testimonials where id='$_GET[test]'");
+										$res=mysqli_fetch_array($rety);
+									?>
 
                                     <form action="manual_mysqli.php" method="post" data-parsley-validate novalidate>
+                                        <div class="form-group">
+                                            <label for="userName">Testimonial</label>
+                                            <textarea class="form-control" rows="5" name="testimoni1"><?php echo $res['testimonial'];?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="emailAddress">Author</label>
+                                            <input type="text" name="testi_auth1" parsley-trigger="change" required placeholder="Author Name" class="form-control" id="emailAddress" value="<?php echo $res['author'];?>">
+                                        </div>
+                                       
+                                     <input type="hidden" name="getid" value="<?php echo $_GET['test'];?>">
+                                       
+
+                                        <div class="form-group text-right m-b-0">
+                                            <button class="btn btn-primary waves-effect waves-light" name="upda_testies" type="submit">
+                                                Update
+                                            </button>
+                                            <button type="reset" class="btn btn-default waves-effect waves-light m-l-5">
+                                                Cancel
+                                            </button>
+                                        </div>
+
+                                    </form>
+                                    <?php
+									}else
+									{
+									?>
+                                     <form action="manual_mysqli.php" method="post" data-parsley-validate novalidate>
                                         <div class="form-group">
                                             <label for="userName">Testimonial</label>
                                             <textarea class="form-control" rows="5" name="testimoni"></textarea>
@@ -143,6 +177,9 @@ if(!$_SESSION['username'])
                                         </div>
 
                                     </form>
+                                    <?php
+									}
+									?>
                                 </div>
                         
                             </div><!-- end col -->
@@ -170,16 +207,16 @@ if(!$_SESSION['username'])
                                                 <th>Sno.</th>
                                                 <th>Testimonial</th>
                                                 <th>Author</th>
-                                               
+                                               	<th colspan="2">Action</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                         <?php
 										$sno=0;
-                                        $ret_ter=$conn->prepare("SELECT `testimonial`,`author` FROM `testimonials`");
+                                        $ret_ter=$conn->prepare("SELECT `id`,`testimonial`,`author` FROM `testimonials`");
 										$ret_ter->execute();
-										$ret_ter->bind_result($tmon,$aut);
+										$ret_ter->bind_result($id,$tmon,$aut);
 										$ret_ter->store_result();
 										while($ret_ter->fetch())
 										{
@@ -189,6 +226,8 @@ if(!$_SESSION['username'])
                                                 <td><?php echo $sno;?></td>
                                                 <td><?php echo $tmon;?></td>
                                                 <td><?php echo $aut;?></td>
+                                                <td><a href="Testmonial.php?test=<?php echo $id;?>">Edit</a></td>
+                                                <td><a href="manual_mysqli.php?tedel=<?php echo $id;?>">Delete</a></td>
                                                 
                                             </tr>
                                             <?php
