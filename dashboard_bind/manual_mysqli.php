@@ -129,7 +129,7 @@ if($_GET['Quote'])
 
 if(isset($_POST['sub_menu']))
 {
-	{
+	
 	$page=$_POST['page_name'];
 	$pg_type=$_POST['dynamic_page'];
 	
@@ -189,7 +189,7 @@ if($_GET['menu_delete_id'])
      mysqli_query($conn,$sql_query);
     header("location:Add-menu.php");
 }
-}
+
 
 
 ?>
