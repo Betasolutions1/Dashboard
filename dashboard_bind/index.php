@@ -1,5 +1,35 @@
 <?php
 include 'config.php';
+if(isset($_POST['login'])){
+   
+   $username = $_POST['user_name'];
+    $password = md5($_POST['password']);
+
+   $stmt = $conn->prepare("SELECT  admin_name,admin_pwd FROM admin WHERE admin_name=? AND admin_pwd=?");
+    $stmt->bind_param("ss",$username,$password);
+	
+    $stmt->execute();
+    $stmt->bind_result($admin_name,$admin_pwd);
+    $stmt->store_result();
+    if($stmt->num_rows == 1)  //To check if the row exists
+        {
+            if($stmt->fetch()) //fetching the contents of the row
+            {
+                   session_start();
+                  // $_SESSION['Logged'] = 1;
+                   $_SESSION['user_id'] = $id;
+                   $_SESSION['username'] = $admin_name;
+                   header("location:About.php");
+                   //exit();
+               
+           }
+
+    }
+    else {
+        echo "<script>alert('INVALID USERNAME/PASSWORD Combination!')</script>";
+    }
+    $stmt->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +79,7 @@ include 'config.php';
                     <h4 class="text-uppercase font-bold m-b-0">Sign In</h4>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal m-t-20" method="post" action="manual_mysqli.php">
+                    <form class="form-horizontal m-t-20" method="post" action="">
 
                         <div class="form-group ">
                             <div class="col-xs-12">

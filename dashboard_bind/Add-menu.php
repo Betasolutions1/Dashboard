@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App title -->
-        <title>Adminto - Responsive Admin Dashboard Template</title>
+        <title>Dynamic Pages Creations</title>
 
         <!-- Table css -->
         <link href="assets/plugins/RWD-Table-Patterns/dist/css/rwd-table.min.css" rel="stylesheet" type="text/css" media="screen">
@@ -66,7 +66,7 @@
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <form class="form-horizontal" role="form">
+                                            <form class="form-horizontal" role="form" method="post" action="manual_mysqli.php">
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">Text</label>
                                                     <div class="col-md-10">
@@ -75,27 +75,27 @@
                                                 </div><div class="row" align="center">
                                                 <div class="col-md-4">
                                             <div class="radio">
-                                                <input type="radio" name="radio" id="radio1" value="option1" checked>
+                                                <input type="radio" name="radio" id="radio1" value="left" checked>
                                                 <label for="radio1">
-                                                    Left
+                                                    <img src="images/page1.png" width="100">
                                                 </label>
                                             </div></div>
                                               <div class="col-md-4">
                                             <div class="radio">
-                                                <input type="radio" name="radio" id="radio1" value="option1" checked>
+                                                <input type="radio" name="radio" id="radio1" value="middle" checked>
                                                 <label for="radio1">
-                                                    Middle
+                                                    <img src="images/page2.png" width="100">
                                                 </label>
                                             </div></div>
                                               <div class="col-md-4">
                                             <div class="radio">
-                                                <input type="radio" name="radio" id="radio1" value="option1" checked>
+                                                <input type="radio" name="radio" id="radio1" value="right" checked>
                                                 <label for="radio1">
-                                                    Right
+                                                    <img src="images/right.png" width="100">
                                                 </label>
                                             </div></div></div><br>
                                                 <div class="form-group" align="center">
-                                                <button type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Success</button>
+                                                <button type="submit" name="sub_menu" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Success</button>
                                                 </div>
                                             </form>
                                         </div>

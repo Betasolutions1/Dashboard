@@ -1,38 +1,14 @@
 <?php
 include 'config.php';
+error_reporting(0);
 session_start();
-
-
-if(isset($_POST['login'])){
-   
-   $username = $_POST['user_name'];
-    $password = md5($_POST['password']);
-
-   $stmt = $conn->prepare("SELECT  admin_name,admin_pwd FROM admin WHERE admin_name=? AND admin_pwd=?");
-    $stmt->bind_param("ss",$username,$password);
-	
-    $stmt->execute();
-    $stmt->bind_result($admin_name,$admin_pwd);
-    $stmt->store_result();
-    if($stmt->num_rows == 1)  //To check if the row exists
-        {
-            if($stmt->fetch()) //fetching the contents of the row
-            {
-              
-                  // $_SESSION['Logged'] = 1;
-                   $_SESSION['user_id'] = $id;
-                   $_SESSION['username'] = $admin_name;
-                   header("location:About.php");
-                   //exit();
-               
-           }
-
-    }
-    else {
-        echo "INVALID USERNAME/PASSWORD Combination!";
-    }
-    $stmt->close();
+if(!$_SESSION[''])
+{
+	header("location:index.php");
 }
+
+
+
 
 // about insert
 if(isset($_POST['about_submit']))
@@ -50,7 +26,7 @@ if(isset($_POST['about_submit']))
 	}
 	
 }
-//about about
+//about update
 
 if(isset($_POST['about_update']))
 {
@@ -149,7 +125,71 @@ if($_GET['Quote'])
 	header("location:Quote.php");
 }
 
+//add menus or pages
 
+if(isset($_POST['sub_menu']))
+{
+	{
+	$page=$_POST['page_name'];
+	$pg_type=$_POST['dynamic_page'];
+	
+	$create=mysql_query("CREATE TABLE ".$page." (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+title VARCHAR(30) NOT NULL,
+data VARCHAR(5000) NOT NULL
+)");
+ if($create)
+  {
+	  $inspage_name=mysql_query("INSERT INTO `pages`(`page_name`) VALUES ('$page')");
+	if($pg_type=='left')
+	{
+		 if($file = fopen("../$page.php", "w")) 
+		 {
+	      echo copy("../left_side.php","../$page.php");
+          fclose($file); 
+	     }
+		 if($file = fopen("$page.php", "w")) 
+		 {
+	      echo copy("copy_page.php","$page.php");
+          fclose($file); 
+	     }
+	}else if($pg_type=='middle')
+	{
+		if($file = fopen("../$page.php", "w")) 
+		 {
+	      echo copy("../middle.php","../$page.php");
+          fclose($file); 
+	     }
+		 if($file = fopen("$page.php", "w")) 
+		 {
+	      echo copy("copy_page.php","$page.php");
+          fclose($file); 
+	     }
+	}
+	header("location:add_pages.php");
+}
+	
+}
+
+
+
+?>
+<?php 
+if($_GET['menu_delete_id'])
+{
+	$pg_name=mysql_query("select * from pages where page_id='".$_GET['menu_delete_id']."'");
+	$pgs=mysql_fetch_array($pg_name);
+	$drop_tb=mysql_query("drop table ".$pgs['page_name']);
+	$ghy=$pgs['page_name'].".php";
+	unlink($ghy);
+	$path2="../".$pgs['page_name'].".php";
+	unlink($path2);
+	//echo delete($pgs['page_name'].'php');
+     $sql_query="DELETE FROM `pages` WHERE page_id='".$_GET['delete_id']."'";
+     mysql_query($sql_query);
+    header("location:add_pages.php");
+}
+}
 
 
 ?>
