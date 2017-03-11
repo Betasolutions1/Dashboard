@@ -4,25 +4,7 @@ if(!$_SESSION['id']){
     header("location:index.php");
 }
 include 'config.php';
-if(isset($_POST['submit'])){
-    $state=$_POST['state'];
-    $c=$_POST['cname'];
-    $ret=mysql_query("select state from state where `state`='$state'");
-    $ret2=mysql_fetch_array($ret);
-    if($ret2!=0){ 
-        echo "state already existed";
-}
-else{
-$ins=mysql_query("insert into state(`state`,`country_id`) values('$state','$c')");
-}
-}
-if(isset($_POST['update'])){
-    $s=$_POST['state1'];
-    $up=mysql_query("update state set `state`='$s' where `s_id`='$_POST[update_id]'");
-}
-if($_GET['del_id']){
-    $del=mysql_query("delete from state where `s_id`='$_GET[del_id]'");
-}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -103,57 +85,30 @@ function validate()
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                        <?php error_reporting(0); if($_GET['edit_id']){
-
-                                            $r1=mysql_query("select * from state where `s_id`='$_GET[edit_id]'");
-                                            $r2=mysql_fetch_array($r1);
-                                            ?>
-                                        <form class="form-horizontal" method="post" role="form" name="form" onsubmit="return validate()">
+                                            <form class="form-horizontal" role="form" name="form" onsubmit="return validate()">
                                                 <div class="form-group">
-                                                    <label class="col-md-2 control-label">State</label>
+                                                    <label class="col-md-2 control-label">Text</label>
                                                     <div class="col-md-10">
-                                                        <input type="text" class="form-control" name="state1" value="<?php echo $r2['state'];?>">
+                                                        <input type="text" class="form-control" name="text" >
                                                     </div>
-                                                </div>    
-                                                <?php
-                                                $sel=mysql_query("select * from country");
-                                                ?>
+                                                </div>
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Input Select</label>
+                                                    <label class="col-sm-2 control-label">State</label>
                                                     <div class="col-sm-10">
                                                     <!--onChange="getState(this.value)"-->
-                                                        <select name="cname" class="form-control" >
+                                                        <select name="sname" class="form-control" >
                                                             <option>1</option>
-                                                            <?php 
-                                                            while($sel2=mysql_fetch_array($sel)){
-                                                            ?><option value="<?php echo $sel2['c_id'];?>"><?php echo $sel2['country'];?></option><?php }?>
+                                                           <option>2</option>
                                                         </select>
                                                     </div>
-                                                </div><br>
-                                                <div class="form-group" align="center">
-                                                <button type="submit" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5" name="update">Update</button>
-                                                </div><input type="hidden" name="update_id" value="<?php echo $r2['s_id']?>">
-                                            </form>
-                                            <?php } else {?>
-                                            <form class="form-horizontal" method="post" role="form" name="form" onsubmit="return validate()">
-                                                <div class="form-group">
-                                                    <label class="col-md-2 control-label">State</label>
-                                                    <div class="col-md-10">
-                                                        <input type="text" class="form-control" name="state" >
-                                                    </div>
-                                                </div>    
-                                                <?php
-                                                $sel=mysql_query("select * from country");
-                                                ?>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Input Select</label>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Country</label>
                                                     <div class="col-sm-10">
                                                     <!--onChange="getState(this.value)"-->
                                                         <select name="cname" class="form-control" >
                                                             <option>1</option>
-                                                            <?php 
-                                                            while($sel2=mysql_fetch_array($sel)){
-                                                            ?><option value="<?php echo $sel2['c_id'];?>"><?php echo $sel2['country'];?></option><?php }?>
+                                                           <option>2</option>
                                                         </select>
                                                     </div>
                                                 </div><br>
@@ -161,7 +116,6 @@ function validate()
                                                 <button type="submit" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5" name="submit">Submit</button>
                                                 </div>
                                             </form>
-                                            <?php } ?>
                                         </div>
                                     </div><!-- end row -->
                                 </div>
@@ -176,25 +130,14 @@ function validate()
                                                 <thead>
                                                     <tr>
                                                         <th>S.No</th>
-                                                        <th data-priority="1">State</th>
-                                                        <th data-priority="1">Cid</th>
+                                                        <th data-priority="1">City</th>
+                                                        <th data-priority="3">State_id</th>
+                                                        <th data-priority="1">Country_id</th>
                                                         <th data-priority="3">Manage</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php 
-                                                    $count=0;
-                                                    $sel3=mysql_query("select * from state");
-                                                    while ($sel4=mysql_fetch_array($sel3)){
-                                                        echo "<tr>";
-                                                        echo "<td>".++$count."</td>";
-                                                        echo "<td>".$sel4['state']."</td>";
-                                                        echo "<td>".$sel4['country_id']."</td>";
-                                                        ?>
-                                                        <td><a href="State.php?edit_id=<?php echo $sel4['s_id'];?>">edit</a>/<a href="State.php?del_id=<?php echo $sel4['s_id'];?>">delete</a></td>
-                                                        <?php
-                                                    }
-                                                    ?>
+                                                   
                                                 </tbody>
                                             </table>
                                         </div>

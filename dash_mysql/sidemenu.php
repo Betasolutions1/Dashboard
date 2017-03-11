@@ -60,11 +60,14 @@
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-item"></i><span>Inventors</span> <span class="menu-arrow"></span></a>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-item"></i><span>Inventory</span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="Order.php">Orders</a></li>
                                     <li><a href="Products.php">Products</a></li>
                                     <li><a href="Cart.php">Cart</a></li>
+                                    <li><a href="Country.php">Country</a></li>
+                                    <li><a href="State.php">State</a></li>
+                                    <li><a href="City.php">City</a></li>
                                     <li><a href="#">Shipping</a></li>
                                 </ul>
                             </li>
