@@ -1,3 +1,14 @@
+<?php
+include 'config.php';
+error_reporting(0);
+session_start();
+if(!$_SESSION['username'])
+{
+	header("location:index.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,7 +21,7 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App title -->
-        <title>Adminto - Responsive Admin Dashboard Template</title>
+        <title>DashBoard</title>
 
         <!-- Table css -->
         <link href="assets/plugins/RWD-Table-Patterns/dist/css/rwd-table.min.css" rel="stylesheet" type="text/css" media="screen">
@@ -77,27 +88,80 @@ function validate()
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <form class="form-horizontal" role="form" name="form" onsubmit="return validate()">
-                                                <div class="form-group">
-                                                    <label class="col-md-2 control-label">Text</label>
-                                                    <div class="col-md-10">
-                                                        <input type="text" class="form-control" name="text" >
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Input Select</label>
+                                        <?php 
+										if($_GET['state_id'])
+										{
+										?>
+                                            <form class="form-horizontal" role="form" name="form" method="post" action="manual_mysqli.php" onsubmit="return validate()">
+                                            <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Select Country</label>
                                                     <div class="col-sm-10">
                                                     <!--onChange="getState(this.value)"-->
-                                                        <select name="cname" class="form-control" >
-                                                            <option>1</option>
-                                                           <option>2</option>
+                                                        <select name="country_id" class="form-control" required >
+                                                       
+                                                            <option>Select Country</option>
+                                                            <?php 
+															$res_exe=mysqli_query($conn,"select * from country");
+															while($res=mysqli_fetch_array($res_exe))
+															{
+															?>
+                                                           <option value="<?php echo $res['country_id']?>"><?php echo $res['country_name']; ?></option>
+                                                           <?php
+															}
+														   ?>
                                                         </select>
                                                     </div>
-                                                </div><br>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">State Name</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" name="state_name" >
+                                                    </div>
+                                                </div>
+                                                <br>
                                                 <div class="form-group" align="center">
-                                                <button type="submit" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Success</button>
+                                                <button type="submit" name="sub_state" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Update</button>
                                                 </div>
                                             </form>
+                                            <?php
+										}else
+										{
+											?>
+                                              <form class="form-horizontal" role="form" name="form" method="post" action="manual_mysqli.php" onsubmit="return validate()">
+                                            <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Select Country</label>
+                                                    <div class="col-sm-10">
+                                                    <!--onChange="getState(this.value)"-->
+                                                        <select name="country_id" class="form-control" required >
+                                                       
+                                                            <option>Select Country</option>
+                                                            <?php 
+															$res_exe=mysqli_query($conn,"select * from country");
+															while($res=mysqli_fetch_array($res_exe))
+															{
+															?>
+                                                           <option value="<?php echo $res['country_id']?>"><?php echo $res['country_name']; ?></option>
+                                                           <?php
+															}
+														   ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">State Name</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" name="state_name" >
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="form-group" align="center">
+                                                <button type="submit" name="sub_state" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Update</button>
+                                                </div>
+                                            </form>
+                                            
+                                            <?php
+										}
+											?>
                                         </div>
                                     </div><!-- end row -->
                                 </div>
@@ -111,52 +175,42 @@ function validate()
                                             <table id="tech-companies-1" class="table  table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>Company</th>
-                                                        <th data-priority="1">Last Trade</th>
-                                                        <th data-priority="3">Trade Time</th>
-                                                        <th data-priority="1">Change</th>
-                                                        <th data-priority="3">Prev Close</th>
-                                                        <th data-priority="3">Open</th>
-                                                        <th data-priority="6">Bid</th>
-                                                        <th data-priority="6">Ask</th>
-                                                        <th data-priority="6">1y Target Est</th>
+                                                        <th>Sno.</th>
+                                                        <th data-priority="1">Country Name</th>
+                                                        <th data-priority="3">State Name</th>
+                                                        <th colspan="2">Action</th>
+                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                <?php 
+												$sno=0;
+												$state=$conn->prepare("SELECT `state_id`, `country_id`, `state_name` FROM `state`");
+												$state->execute();
+												$state->bind_result($sid,$cid,$sname);
+												$state->store_result();
+												while($state->fetch())
+												{  ++$sno;
+												$conty=$conn->prepare("SELECT  `country_name` FROM `country` where `country_id`='$cid'");
+												$conty->execute();
+												$conty->bind_result($cname);
+												$conty->store_result();
+												$conty->fetch()
+												?>
+                                                
                                                     <tr>
-                                                        <th>GOOG <span class="co-name">Google Inc.</span></th>
-                                                        <td>597.74</td>
-                                                        <td>12:12PM</td>
-                                                        <td>14.81 (2.54%)</td>
-                                                        <td>582.93</td>
-                                                        <td>597.95</td>
-                                                        <td>597.73 x 100</td>
-                                                        <td>597.91 x 300</td>
-                                                        <td>731.10</td>
+                                                        <th><?php echo $sno;?></th>
+                                                        <td><?php echo $cname;?></td>
+                                                        <td><?php echo $sname;?></td>
+                                                        <td><a href="state.php?state_id=<?php echo $sid;?>">Edit</a></td>
+                                                        <td><a href="manual_mysqli.php?delete state_id=<?php echo $sid;?>">Delete</td>
+                                                        
                                                     </tr>
-                                                    <tr>
-                                                        <th>MSFT <span class="co-name">Microsoft Corporation</span></th>
-                                                        <td>25.50</td>
-                                                        <td>12:27PM</td>
-                                                        <td>0.66 (2.67%)</td>
-                                                        <td>24.84</td>
-                                                        <td>25.37</td>
-                                                        <td>25.50 x 71100</td>
-                                                        <td>25.51 x 17800</td>
-                                                        <td>31.50</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>CSCO <span class="co-name">Cisco Systems, Inc.</span></th>
-                                                        <td>18.65</td>
-                                                        <td>12:45PM</td>
-                                                        <td>0.97 (5.49%)</td>
-                                                        <td>17.68</td>
-                                                        <td>18.23</td>
-                                                        <td>18.65 x 10300</td>
-                                                        <td>18.66 x 24000</td>
-                                                        <td>21.12</td>
-                                                    </tr>
-                                                    <tr>
+                                                   <?php
+												}
+												   ?>
+                                                   
+                                                   <!-- <tr>
                                                         <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
                                                         <td>15.81</td>
                                                         <td>12:25PM</td>
@@ -166,7 +220,7 @@ function validate()
                                                         <td>15.79 x 6100</td>
                                                         <td>15.80 x 17000</td>
                                                         <td>18.16</td>
-                                                    </tr>
+                                                    </tr>-->
                                                 </tbody>
                                             </table>
                                         </div>

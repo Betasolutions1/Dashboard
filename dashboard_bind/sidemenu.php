@@ -35,7 +35,10 @@
                                     <li><a href="Contact.php">Contact Us</a></li>
                                 </ul>
                             </li>
-
+							<li class="has_sub">
+                                <a href="country.php" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span>Add Country</span> <!--<span class="menu-arrow"></span> --></a>
+                               
+                            </li>
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-text"></i><span>Home Page</span><span class="menu-arrow"></span> </a>
                                 <ul class="list-unstyled">
@@ -59,6 +62,24 @@
                                     <li><a href="Add-menu.php">Add Menu</a></li>
                                 </ul>
                             </li>
+                             <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-layers"></i><span>Pages</span> <span class="menu-arrow"></span></a>
+                                
+                                <ul class="list-unstyled">
+                                <?php
+                                $ret_me=$conn->prepare("select `page_name` from pages");
+												$ret_me->execute();
+												$ret_me->bind_result($pgname);
+												$ret_me->store_result();
+												while($ret_me->fetch())
+												{
+								?>
+                                    <li><a href="<?php echo $pgname;?>.php"><?php echo $pgname;?></a></li>
+                                    <?php
+												}
+									?>
+                                </ul>
+                            </li>
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-item"></i><span>Inventors</span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
@@ -68,6 +89,8 @@
                                     <li><a href="#">Shipping</a></li>
                                 </ul>
                             </li>
+                            
+                             
 
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-layers"></i><span>Settings</span> <span class="menu-arrow"></span></a>

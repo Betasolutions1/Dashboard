@@ -190,6 +190,78 @@ if($_GET['menu_delete_id'])
     header("location:Add-menu.php");
 }
 
+//add country
+if(isset($_POST['sub_country']))
+{
+	$chk_conu=$conn->prepare("select `country_name` from `country` where `country_name`=?");
+	$chk_conu->bind_param('s',$_POST['country']);
+	$chk_conu->execute();
+	//$chk_conu->bind_result($countr_namne);
+	$chk_conu->store_result();
+	if($chk_conu->num_rows !=0)
+	{
+		echo "<script>alert('Country name Already Inserted');</script>";
+		header("location:country.php");
+	}else
+	{
+	$ins_coutry=$conn->prepare("INSERT INTO `country`( `country_name`) VALUES (?)");
+	$ins_coutry->bind_param('s',$_POST['country']);
+	$exe=$ins_coutry->execute();
+	if($exe)
+	{
+		header("location:country.php");
+	}else
+	{
+		echo "<script>alert('Insertion Fail')</script>";
+		header("location:country.php");
+	}
+	}
+}
 
+if(isset($_POST['upda_country']))
+{
+	$upcounty=$conn->prepare("UPDATE `country` SET `country_name`=? WHERE `country_id`=?");
+	$upcounty->bind_param('si',$_POST['country1'],$_POST['country_id']);
+	$exe=$upcounty->execute();
+	if($exe)
+	{
+		header("location:country.php");
+	}else
+	{
+		echo "<script>alert('Updation Fail')</script>";
+		header("location:country.php");
+	}
+}
+
+if(isset($_GET['delete_cid']))
+{
+	$del_con=$conn->prepare("delete from country where country_id=?");
+	$del_con->bind_param('i',$_GET['delete_cid']);
+	$exe=$del_con->execute();
+	if($exe)
+	{
+		header("location:country.php");
+	}else
+	{
+		echo "<script>alert('Deletion Fail')</script>";
+		header("location:country.php");
+	}
+}
+
+//add state
+if(isset($_POST['sub_state']))
+{
+	$ins_state=$conn->prepare("INSERT INTO `state`( `country_id`, `state_name`) VALUES (?,?)");
+	$ins_state->bind_param('is',$_POST['country_id'],$_POST['state_name']);
+	$exe=$ins_state->execute();
+	if($exe)
+	{
+		header("location:state.php");
+	}else
+	{
+		echo "<script>alert('insertion Fail')</script>";
+		header("location:state.php");
+	}
+}
 
 ?>
