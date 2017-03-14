@@ -17,6 +17,13 @@ if(isset($_POST['submit'])){
        $ins=mysql_query("insert into country (`country`) values('$country')");
     }
 }
+if(isset($_POST['update'])){
+$c=$_POST['country1'];
+$up=mysql_query("update country set `country`='$c' where `c_id`='$_POST[update_id]'");
+}
+if(isset($_GET['del_id'])){
+    $del=mysql_query("delete from country where `c_id`='$_GET[del_id]'");
+}
 
 ?>
 <!DOCTYPE html>
@@ -109,7 +116,7 @@ function validate()
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">Country</label>
                                                     <div class="col-md-10">
-                                                        <input type="text" class="form-control" name="country" value="<?php echo $s2['country'];?>">
+                                                        <input type="text" class="form-control" name="country1" value="<?php echo $s2['country'];?>">
                                                     </div>
                                                 </div> <br>
                                                 <div class="form-group" align="center">
