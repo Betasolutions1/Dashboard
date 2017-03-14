@@ -322,7 +322,7 @@ if (strlen($string1) > 20) {
                                 <div class="testimonial-slider"> 
                                     <ul> 
                                     <?php 
-                                    $qret=mysqli_query($conn,"select * from qoutes");
+                                    $qret=mysqli_query($conn,"select * from qoutes order by quote_id desc limit 3");
                                     while($qret2=mysqli_fetch_array($qret)){
                                     ?>
                                         <li> 
