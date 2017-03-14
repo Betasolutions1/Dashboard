@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
-        <title>MMS - Clean &amp; Modern Multipurpose Template</title>         
+        <title>MMS - My Multi Solutions</title>         
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -44,7 +44,8 @@
                         <div class="col-sm-2"> 
                             <!-- LOGO -->                             
                             <a id="logo" href="index-slider.html"> 
-                                <img src="images/backgrounds/logo.png" alt=""> 
+                                <!--<img src="images/backgrounds/logo.png" alt="">--> 
+                                <h4 >MMS</h4>
                             </a>                             
                         </div>
                         <!-- col -->                         
@@ -178,7 +179,7 @@
                 <!-- ontainer -->                 
                 <!-- ontainer -->                 
                 <section class="full-section parallax" id="section-9"> 
-                    <div class="container"> 
+                    <?php /*?><div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-3"> 
                                 <div class="counter"> 
@@ -230,7 +231,7 @@
                             <!-- col -->                             
                         </div>
                         <!-- row -->                         
-                    </div><br>
+                    </div><?php */?><br>
                     <!-- ontainer -->
                     <div class="container"> 
                         <div class="row"> 

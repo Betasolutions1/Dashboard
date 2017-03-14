@@ -1,4 +1,6 @@
- 
+ <?php
+include 'Console/config.php';
+?>
 <!doctype html> 
 <html> 
     <head> 
@@ -7,7 +9,7 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
-        <title>MMS - Clean &amp; Modern Multipurpose Template</title>         
+        <title>MMS - My Multi Solutions</title>         
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -132,22 +134,22 @@
                 <!-- page-header -->                 
                 <div class="container"> 
                     <div class="row"> 
+                    <?php
+                    $sing_ser_exe=mysqli_query($conn,"select * from services where service_id='$_GET[Service_id]'");
+					$ser_sin=mysqli_fetch_array($sing_ser_exe);
+					?>
                         <div class="col-sm-6"> 
                             <div class="headline style-1"> 
                                 <h4>service description</h4> 
-                                <h2>General service</h2> 
+                                <h2><?php echo $ser_sin['service_title'];?></h2> 
                             </div>
                             <!-- headline -->                             
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque 
-                        ipsa quae ab illo invent ore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia 
-                        voluptas  aspernatur aut odit aut fugit, consequuntur magni dolores eos qui ratione voluptatem sequi.</p> 
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui 
-                        ratione voluptatem sequi nesciunt. Neque porro quisquam est.</p> 
+                            <p><?php echo $ser_sin['service_desc'];?></p> 
                             <a class="btn btn-default" href="register.php">Register now</a> 
                         </div>
                         <!-- col -->                         
                         <div class="col-sm-6"> 
-                            <p class="text-center wow pulse"><img src="images/services/image-1.png" alt=""></p> 
+                            <p class="text-center wow pulse"><img src="Console/Services/<?php echo $ser_sin['service_img'];?>" style="height:395px;width:485px;" alt=""></p> 
                         </div>
                         <!-- col -->                         
                     </div>
