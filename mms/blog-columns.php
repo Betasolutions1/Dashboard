@@ -1,3 +1,4 @@
+<?php include("console/config.php");?>
 <!doctype html> 
 <html> 
     <head> 
@@ -6,7 +7,7 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
-        <title>MMS - Clean &amp; Modern Multipurpose Template</title>         
+        <title>MMS -  &amp; My Multi Solutions</title>         
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -41,14 +42,14 @@
             <header> 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-2"> 
+                        <div class="col-md-2"> 
                             <!-- LOGO -->                             
                             <a id="logo" href="index-slider.html"> 
                                 <img src="images/backgrounds/logo.png" alt=""> 
                             </a>                             
                         </div>
                         <!-- col -->                         
-                        <div class="col-sm-10"> 
+                        <div class="col-md-10"> 
                             <!-- SEARCH -->                             
                             <div id="search-container"> 
                                 <form id="search-form" name="search-form" method="get" action="#"> 
@@ -107,11 +108,11 @@
                 <div id="page-header"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-6"> 
+                            <div class="col-md-6"> 
                                 <h4>Blog</h4> 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-6"> 
+                            <div class="col-md-6"> 
                                 <ol class="breadcrumb"> 
                                     <li>
                                         <a href="index.php">Home</a>
@@ -128,7 +129,10 @@
                 <!-- page-header -->                 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-4"> 
+                    <?php 
+                    
+                    ?>
+                        <div class="col-md-4"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
                                     <img src="images/blog/image-5.jpg" alt=""> 
@@ -148,118 +152,7 @@
                             </div>
                             <!-- blog-article -->                             
                         </div>
-                        <!-- col -->                         
-                        <div class="col-sm-4"> 
-                            <div class="blog-article"> 
-                                <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-6.jpg" alt=""> 
-                                    <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-6.jpg"><i class="fa fa-eye"></i></a> 
-                                    </div>
-                                    <!-- blog-article-hover -->                                     
-                                </div>
-                                <!-- blog-article-thumbnail -->                                 
-                                <div class="blog-article-details"> 
-                                    <h6>4 March 2015</h6> 
-                                    <h4><a href="blog-post.php">2015 new design trends</a></h4> 
-                                </div>
-                                <!-- blog-article-details -->                                 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.Lorem ipsum dolor sit amet, consectetur<br></p> 
-                                <a class="btn btn-default" href="blog-post.php">Read more</a>
-                            </div>
-                            <!-- blog-article -->                             
-                        </div>
-                        <!-- col -->                         
-                        <div class="col-sm-4"> 
-                            <div class="blog-article"> 
-                                <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-7.jpg" alt=""> 
-                                    <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-7.jpg"><i class="fa fa-eye"></i></a> 
-                                    </div>
-                                    <!-- blog-article-hover -->                                     
-                                </div>
-                                <!-- blog-article-thumbnail -->                                 
-                                <div class="blog-article-details"> 
-                                    <h6>3 March 2015</h6> 
-                                    <h4><a href="blog-post.php">interview with a great designer</a></h4> 
-                                </div>
-                                <!-- blog-article-details -->                                 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.<br></p> 
-                                <a class="btn btn-default" href="blog-post.php">Read more</a>
-                            </div>
-                            <!-- blog-article -->                             
-                        </div>
-                        <!-- col -->                         
-                    </div>
-                    <!-- row -->                     
-                </div>
-                <!-- ontainer -->                 
-                <div class="container"> 
-                    <div class="row"> 
-                        <div class="col-sm-4"> 
-                            <div class="blog-article"> 
-                                <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-5.jpg" alt=""> 
-                                    <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-5.jpg"><i class="fa fa-eye"></i></a> 
-                                    </div>
-                                    <!-- blog-article-hover -->                                     
-                                </div>
-                                <!-- blog-article-thumbnail -->                                 
-                                <div class="blog-article-details"> 
-                                    <h6>5 March 2015</h6> 
-                                    <h4><a href="blog-post.php">Design: from thought to print</a></h4> 
-                                </div>
-                                <!-- blog-article-details -->                                 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.&nbsp;<br></p> 
-                                <a class="btn btn-default" href="blog-post.php">Read more</a>
-                            </div>
-                            <!-- blog-article -->                             
-                        </div>
-                        <!-- col -->                         
-                        <div class="col-sm-4"> 
-                            <div class="blog-article"> 
-                                <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-5.jpg" alt=""> 
-                                    <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-5.jpg"><i class="fa fa-eye"></i></a> 
-                                    </div>
-                                    <!-- blog-article-hover -->                                     
-                                </div>
-                                <!-- blog-article-thumbnail -->                                 
-                                <div class="blog-article-details"> 
-                                    <h6>5 March 2015</h6> 
-                                    <h4><a href="blog-post.php">Design: from thought to print</a></h4> 
-                                </div>
-                                <!-- blog-article-details -->                                 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.&nbsp;<br></p> 
-                                <a class="btn btn-default" href="blog-post.php">Read more</a>
-                            </div>
-                            <!-- blog-article -->                             
-                        </div>
-                        <!-- col -->                         
-                        <div class="col-sm-4"> 
-                            <div class="blog-article"> 
-                                <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-5.jpg" alt=""> 
-                                    <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-5.jpg"><i class="fa fa-eye"></i></a> 
-                                    </div>
-                                    <!-- blog-article-hover -->                                     
-                                </div>
-                                <!-- blog-article-thumbnail -->                                 
-                                <div class="blog-article-details"> 
-                                    <h6>5 March 2015</h6> 
-                                    <h4><a href="blog-post.php">Design: from thought to print</a></h4> 
-                                </div>
-                                <!-- blog-article-details -->                                 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.&nbsp;<br></p> 
-                                <a class="btn btn-default" href="blog-post.php">Read more</a>
-                            </div>
-                            <!-- blog-article -->                             
-                        </div>
-                        <!-- col -->                         
+                        <!-- col -->                       
                     </div>
                     <!-- row -->                     
                 </div>
@@ -268,14 +161,14 @@
                 <section class="full-section" id="section-8"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-11"> 
+                            <div class="col-md-11"> 
                                 <div class="widget widget-twitter"> 
                                     <div id="tweet"></div>                                     
                                 </div>
                                 <!-- end .widget-twitter-->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-1"> 
+                            <div class="col-md-1"> 
                                 <div id="twitter-slider-controls"> 
                                     <span id="twitter-slider-prev"></span> 
                                     <span id="twitter-slider-next"></span> 
@@ -298,7 +191,7 @@
                 <div id="footer"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-text"> 
                                     <h3 class="widget-title">About MMS</h3> 
                                     <p>Lorem ipsum dolor sit amet unde ligula, sodales et quam non, omis finibus eros. Pharetra nulla lactus arcu non, 
@@ -317,7 +210,7 @@
                                 <!-- widget-newsletter -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-latest-news"> 
                                     <h3 class="widget-title">Latest news</h3> 
                                     <ul> 
@@ -339,7 +232,7 @@
                                 <!-- widget-recent-posts -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-flickr"> 
                                     <h3 class="widget-title">Flickr</h3> 
                                     <div class="flickr-photos"> 
@@ -352,7 +245,7 @@
                                 <!-- widget-flickr -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-contact"> 
                                     <h3 class="widget-title">Contact Us</h3> 
                                     <ul> 
@@ -386,7 +279,7 @@
                 <div id="footer-bottom"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-12"> 
+                            <div class="col-md-12"> 
                                 <div class="widget widget-text"> 
                                     <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">MMs</span> <span class="text-lowercase"> template.</span></p> 
                                 </div>
