@@ -103,23 +103,122 @@
             </header>
             <!-- HEADER -->             
             <!-- CONTENT -->             
-            <div class="content"> 
-                <section class="full-section full-screen parallax" style="background-image:url(images/backgrounds/bg-6.jpg);"> 
+            <div class="content">
+
+                <div class="bannercontainer">
+                <div class="banner">
+                    <ul>
+                        <li data-transition="slotfade-horizontal">
+                            
+                            <img src="images/index/revolution-slider/bg-slide-1.jpg" alt="">
+                            
+                            <div class="tp-caption fade" data-x="-150" data-y="70" data-speed="700" data-start="1000" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-1-image-1.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption fade" data-x="270" data-y="120" data-speed="700" data-start="1400" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-1-image-2.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption fade" data-x="300" data-y="50" data-speed="700" data-start="1800" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-1-image-3.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption sfb" data-x="530" data-y="220" data-speed="700" data-start="2400" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-1-image-4.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption fade" data-x="650" data-y="340" data-speed="700" data-start="2800" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-1-image-5.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption title sft" data-x="830" data-y="150" data-speed="700" data-start="3200" data-easing="easeOutBack">
+                                Clean cut, <br>
+                                Inovative Design
+                            </div>
+                            
+                            <div class="tp-caption text sfr" data-x="830" data-y="240" data-speed="700" data-start="3700" data-easing="easeOutBack">
+                                <em>Lorem ipsum dolor sit amet, consectetur adipiscing <br>
+                                eiusmod tempor incididunt ut labore et dolore magna. </em>
+                            </div>
+                            
+                            <div class="tp-caption social-icon sfl" data-x="830" data-y="310" data-speed="700" data-start="4400" data-easing="easeOutBack">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </div>
+                            
+                            <div class="tp-caption social-icon sfl" data-x="865" data-y="310" data-speed="700" data-start="4700" data-easing="easeOutBack">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </div>
+                            
+                            <div class="tp-caption social-icon sfl" data-x="910" data-y="310" data-speed="700" data-start="5000" data-easing="easeOutBack">
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                            </div>
+                            
+                            <div class="tp-caption sfb"  data-x="830" data-y="360" data-speed="700" data-start="5400" data-easing="easeOutBack">
+                                <a class="btn btn-default" href="#">Follow the project <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </li>
+                        <li data-transition="slotfade-horizontal">
+                            
+                            <img src="images/index/revolution-slider/bg-slide-2.jpg" alt="">
+                            
+                            <div class="tp-caption sft"  data-x="540" data-y="125" data-speed="700" data-start="1200" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-2-image-1.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption title-white text-center sft"  data-x="245" data-y="285" data-speed="700" data-start="1700" data-easing="easeOutBack">
+                                A new way to build your <br>
+                                business online
+                            </div>
+                            
+                            <div class="tp-caption sfb"  data-x="450" data-y="450" data-speed="700" data-start="2200" data-easing="easeOutBack">
+                                <a class="btn btn-default" href="#">Buy it on themeforest <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </li>
+                        <li data-transition="slotfade-horizontal">
+                            
+                            <img src="images/index/revolution-slider/bg-slide-3.jpg" alt="">
+                            
+                            <div class="tp-caption sfl"  data-x="0" data-y="75" data-speed="700" data-start="1700" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-3-image-1.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption title sft" data-x="830" data-y="180" data-speed="700" data-start="2200" data-easing="easeOutBack">
+                                Multiple <br>
+                                Portfolio pages
+                            </div>
+                            
+                            <div class="tp-caption text-white sfr" data-x="830" data-y="270" data-speed="700" data-start="2700" data-easing="easeOutBack">
+                                Cras vestibulum ante in fermentum pretium. <br>
+                                Odio ipsum, ac feugiat tellus facilisis id nullam. <br>
+                                Etiam at dictum quam. Nunc ac ultrices orci duis <br>
+                                hendrerit, efficitur metus quis, finibus elit. 
+                            </div>
+                            
+                            <div class="tp-caption sfb" data-x="830" data-y="390" data-speed="700" data-start="3200" data-easing="easeOutBack">
+                                <a class="btn btn-default" href="#">View portfolio pages <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div><!-- banner -->
+            </div>
+
+                <!--<section class="full-section full-screen parallax" style="background-image:url(images/backgrounds/bg-6.jpg);"> 
                     <div class="full-section-content"> 
                         <div class="container"> 
                             <div class="row"> 
                                 <div class="col-sm-12"> 
                                     <h1 class="text-center">A new way to build your <br> business online</h1> 
                                     <br> 
-                                    <!-- <p class="text-center"><a class="btn btn-default" href="#">Buy it on themeforest <i class="fa fa-arrow-right"></i></a></p>  -->
+                                    <p class="text-center"><a class="btn btn-default" href="#">Buy it on themeforest <i class="fa fa-arrow-right"></i></a></p> 
                                 </div>
-                                <!-- col -->                                 
+                                <!-- col ->                                 
                             </div>
-                            <!-- row -->                             
+                            <!-- row ->                             
                         </div>
-                        <!-- container -->                         
+                        <!-- container ->                         
                     </div>
-                    <!-- full-section-content -->                     
+                    <!-- full-section-content ->                     
                 </section>
                 <!-- full-section -->                 
                 <div class="container"> 
