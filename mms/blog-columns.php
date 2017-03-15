@@ -1,4 +1,4 @@
-<?php include("console/config.php");?>
+<?php include("Console/config.php");?>
 <!doctype html> 
 <html> 
     <head> 
@@ -130,28 +130,35 @@
                 <div class="container"> 
                     <div class="row"> 
                     <?php 
-                    
+                    $bsel=mysqli_query($conn,"select * from blogs order by blog_id desc");
+                    while($bsel2=mysqli_fetch_array($bsel)){
+                        $str=$bsel2['blog_desc'];
+                        $str1=strip_tags($str);
+                        if(strlen($str1)>10){
+                            $strcut1=substr($str1,0,10);
+                        }
                     ?>
                         <div class="col-md-4"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-5.jpg" alt=""> 
+                                    <img src="Console/Blog/<?php echo $bsel2['blog_image'];?>" alt=""> 
                                     <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-5.jpg"><i class="fa fa-eye"></i></a> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="Console/Blog/<?php echo $bsel2['blog_image'];?>"><i class="fa fa-eye"></i></a> 
                                     </div>
                                     <!-- blog-article-hover -->                                     
                                 </div>
                                 <!-- blog-article-thumbnail -->                                 
                                 <div class="blog-article-details"> 
-                                    <h6>5 March 2015</h6> 
-                                    <h4><a href="blog-post.php">Design: from thought to print</a></h4> 
+                                    <h6><?php echo $bsel2['datetime'];?></h6> 
+                                    <h4><a href="blog-post.php?Blog_id=<?php echo $bsel2['blog_id'];?>"><?php echo $bsel2['blog_title'];?></a></h4> 
                                 </div>
                                 <!-- blog-article-details -->                                 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.&nbsp;<br></p> 
-                                <a class="btn btn-default" href="blog-post.php">Read more</a>
+                                <p><?php echo $strcut1;?>&nbsp;<br></p> 
+                                <a class="btn btn-default" href="blog-post.php?Blog_id=<?php echo $bsel2['blog_id'];?>">Read more</a>
                             </div>
                             <!-- blog-article -->                             
                         </div>
+                        <?php } ?>
                         <!-- col -->                       
                     </div>
                     <!-- row -->                     
