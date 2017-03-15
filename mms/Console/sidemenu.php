@@ -63,6 +63,10 @@
                                     <li><a href="Add-menu.php">Add Menu</a></li>
                                 </ul>
                             </li>
+                            <li class="has_sub">
+                                <a href="category.php" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span>Add Category</span> <!--<span class="menu-arrow"></span> --></a>
+                               
+                            </li>
                              <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-layers"></i><span>Pages</span> <span class="menu-arrow"></span></a>
                                 
