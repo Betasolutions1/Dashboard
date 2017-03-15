@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
-        <title>MMS - &amp;  My Multi Solutions</title>         
+        <title>MMS - My Multi Solutions</title>         
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -236,68 +236,49 @@
                     </div>
                     <!-- row -->                     
                 </div>
-                <!-- ontainer --> <?php 
-                $sel1=mysqli_query($conn,"select * from services where service_type='Education' order by service_id desc limit 1");
-                $sel2=mysqli_fetch_array($sel1);
-                $string =$sel2['service_title'];
-$string1 = strip_tags($string);
-if (strlen($string1) > 20) {
-
-    // truncate string
-    $strCut3 = substr($string1, 0, 20);
-    }    
-
-                $sel3=mysqli_query($conn,"select * from services where service_type='Mobile' order by service_id desc limit 1");
-                $sel4=mysqli_fetch_array($sel3);
-                $string =$sel4['service_title'];
-$string1 = strip_tags($string);
-if (strlen($string1) > 20) {
-
-    // truncate string
-    $strCut1 = substr($string1, 0, 20);
-    }    
-
-
-                $sel5=mysqli_query($conn,"select * from services where service_type='IT' order by service_id desc limit 1");
-                $sel6=mysqli_fetch_array($sel5);
-                $string =$sel6['service_title'];
-$string1 = strip_tags($string);
-if (strlen($string1) > 20) {
-
-    // truncate string
-    $strCut2 = substr($string1, 0, 20);
-    }    
-
-                ?>                
+                <!-- ontainer -->
                 <div class="container"> 
                     <div class="row"> 
+                    <?php
+                    $ser_edu_exe=mysqli_query($conn,"select *,SUBSTRING(service_desc ,1,150) from services where service_type='Education' order by service_id desc limit 1");
+					$ser_edu_res=mysqli_fetch_array($ser_edu_exe);
+					?>
                         <div class="col-md-4"> 
                             <div class="services-boxes style-2 wow fadeInDown"> 
                                 <div class="services-boxes-content"> 
-                                    <h3> <a href="single-service.php"><?php echo $sel2['service_title'];?></a> <small>Nice &amp; Clean</small> </h3> 
-                                    <p><?php echo $sel2['service_desc'];?>&nbsp;<br></p>
+                                    <h3> <a href="single-service.php?Service_id=<?php echo $ser_edu_res['service_id'];?>"><?php echo $ser_edu_res['service_title'];?></a> <!--<small>Nice &amp; Clean</small>--> </h3> 
+                                    <p><?php echo $ser_edu_res['SUBSTRING(service_desc ,1,150)']?>&nbsp;<br></p>
                                 </div>
                                 <!-- services-boxes-content -->                                 
                             </div>
                             <!-- services-boxes -->                             
                         </div>
-                        <!-- col -->                         
+                        <!-- col --> 
+                        <?php 
+						$ser_mobile_exe=mysqli_query($conn,"select *,SUBSTRING(service_desc ,1,150) from services where service_type='Mobile' order by service_id desc limit 1");
+						$ser_mob_res=mysqli_fetch_array($ser_mobile_exe);
+						?>
+                                                
                         <div class="col-md-4"> 
                             <div class="services-boxes style-2 wow fadeInDown" data-wow-delay="0.3s"> 
                                 <div class="services-boxes-content"> 
-                                    <h3> <a href="single-service.php"><?php echo $sel4['service_title'];?></a> <small>New project</small> </h3> 
-                                    <p><?php echo $strCut1;?>&nbsp;<br></p>
+                                    <h3> <a href="single-service.php?Service_id=<?php echo $ser_mob_res['service_id'];?>"><?php echo $ser_mob_res['service_title'];?></a> <!--<small>New project</small>--> </h3> 
+                                    <p><?php echo $ser_mob_res['SUBSTRING(service_desc ,1,150)'];?>&nbsp;<br></p>
                                 </div>
                                 <!-- services-boxes-content -->                                 
                             </div>
                             <!-- services-boxes -->                             
                         </div>
-                        <!-- col -->                         
+                        <!-- col -->     
+                        <?php
+                        $ser_it_exe=mysqli_query($conn,"select *,SUBSTRING(service_desc ,1,150) from services where service_type='It' order by service_id desc limit 1");
+						$ser_it_res=mysqli_fetch_array($ser_it_exe);
+						?>                    
                         <div class="col-md-4"> 
                             <div class="services-boxes style-2 wow wow fadeInDown" data-wow-delay="0.6s"> 
                                 <div class="services-boxes-content"> 
-                                    <h3> <a href="single-service.php"><?php echo $sel6['service_desc'];?></a> <small>We are the best</small> </h3> 
-                                    <p><?php echo $sel6['service_desc'];?>&nbsp;<br></p>
+                                    <h3> <a href="single-service.php?Service_id=<?php echo $ser_it_res['service_id'];?>"><?php echo $ser_it_res['service_title'];?></a> <!--<small>We are the best</small>--> </h3> 
+                                    <p><?php echo $ser_it_res['SUBSTRING(service_desc ,1,150)'];?>&nbsp;<br></p>
                                 </div>
                                 <!-- services-boxes-content -->                                 
                             </div>
@@ -516,27 +497,27 @@ if (strlen($string1) > 20) {
                             while($bret2=mysqli_fetch_array($bret)){
                                 $str=$bret2['blog_desc'];
                                 $str1=strip_tags($str);
-                                if(strlen($str1)>10){
-                                    $Strcut4=substr($str1,0,10);
-                                }
+                                //if(strlen($str1)>10){
+                                    $Strcut4=substr($str1,0,150);
+                              //  }
                             ?>
                                 <div class="isotope-item"> 
                                     <div class="blog-article wow fadeIn"> 
                                         <div class="blog-article-thumbnail"> 
-                                            <img src="images/blog/image-8.jpg" alt=""> 
+                                            <img src="Console/Blog/<?php echo $bret2['blog_image'];?>" style="height:325px;width:360px;" alt=""> 
                                             <div class="blog-article-hover"> 
-                                                <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-8.jpg"><i class="fa fa-eye"></i></a> 
+                                                <a class="fancybox-blog-gallery zoom-action" href="Console/Blog/<?php echo $bret2['blog_image'];?>"><i class="fa fa-eye"></i></a> 
                                             </div>
                                             <!-- blog-article-hover -->                                             
                                         </div>
                                         <!-- blog-article-thumbnail -->                                         
                                         <div class="blog-article-details"> 
                                             <h6><?php echo $bret2['datetime'];?></h6> 
-                                            <h4><a href="blog-post.php"><?php echo $bret2['blog_title'];?></a></h4> 
+                                            <h4><a href="blog-post.php?Blog_id=<?php echo $bret2['blog_id'];?>"><?php echo $bret2['blog_title'];?></a></h4> 
                                         </div>
                                         <!-- blog-article-details -->                                         
                                         <p><?php echo $Strcut4;?>&nbsp;<br></p> 
-                                        <a class="btn btn-default" href="blog-post.php">Read more</a>
+                                        <a class="btn btn-default" href="blog-post.php?Blog_id=<?php echo $bret2['blog_id'];?>">Read more</a>
                                     </div>
                                     <!-- blog-article -->                                     
                                 </div>
@@ -688,7 +669,7 @@ if (strlen($string1) > 20) {
                         <div class="row"> 
                             <div class="col-md-12"> 
                                 <div class="widget widget-text"> 
-                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">MMS</span> <span class="text-lowercase"> template.</span></p> 
+                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">MMS</span> <span class="text-lowercase"> BetaSolutions.</span></p> 
                                 </div>
                                 <!-- widget-text -->                                 
                             </div>

@@ -1,5 +1,13 @@
 <?php
 include 'Console/config.php';
+/*if(isset($_POST['Register']))
+{
+	$ins_users=mysqli_query($conn,"INSERT INTO `register`(`Name`, `Email`, `Phone`, `Password`) VALUES ('$_POST[name]','$_POST[email]','$_POST[phone]','$_POST[Password]')");
+	if($ins_users)
+	{
+		echo "<script>alert('Registration Successfull Please Be login');</script>";
+	}
+}*/
 ?>
 <!doctype html> 
 <html> 
@@ -154,15 +162,16 @@ include 'Console/config.php';
                 <div class="container"> 
                     <div class="row"> 
                         <div class="col-md-offset-2 col-md-8 col-sm-12"> 
-                            <form id="contact-form" name="contact-form" action="assets/php/send.php" method="post"> 
+                        <!--assets/php/send.php -->
+                            <form id="contact-form" name="contact-form" action="backend.php" method="post"> 
                                 <fieldset> 
                                     <div id="alert-area"></div>                                     
                                     <input class="col-xs-12" id="name" type="text" name="name" placeholder="Enter Ur Name"> 
                                     <input class="col-xs-12" id="email" type="text" name="email" placeholder="Email Id">
                                     <input class="col-xs-12" id="phone" type="text" name="phone" placeholder="Phone Number"> 
-                                    <input class="col-xs-12" id="subject" type="text" name="subject" placeholder="subject"> 
-                                    <textarea class="col-xs-12" id="message" name="message" rows="8" cols="25" placeholder="message"></textarea>                                     
-                                    <input class="btn btn-default" id="submit" type="submit" name="submit" value="Register"> 
+                                    <input class="col-xs-12" id="Password" type="text" name="Password" placeholder="Enter Ur Password"> 
+                                    <!--<textarea class="col-xs-12" id="message" name="message" rows="8" cols="25" placeholder="message"></textarea>-->                                     
+                                    <input class="btn btn-default" id="submit" type="submit" name="Register" value="Register"> 
                                 </fieldset>                                 
                             </form>                             
                         </div>

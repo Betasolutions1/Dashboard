@@ -779,12 +779,12 @@
 					required: true,
 					email: true
 				},
-				subject: {
+				phone: {
 					required: true
 				},
-				message: {
+				Password: {
 					required: true,
-					minlength: 10
+					minlength: 6
 				}
 			},
 			messages: {
@@ -795,11 +795,11 @@
 					required: "Please enter your email!",
 					email: "Please enter a valid email address"
 				},
-				subject: {
-					required: "Please enter the subject!"
+				Phone: {
+					required: "Please enter the Phone No!"
 				},
-				message: {
-					required: "Please enter your message!"
+				Password: {
+					required: "Please enter your Password!"
 				}
 			},
 				
@@ -809,14 +809,16 @@
 				$(form).ajaxSubmit({
 					type: "POST",
 					data: $(form).serialize(),
-					url: "assets/php/send.php",
+					url: "backend.php",
 					success: function(msg) {
 						
 						if (msg == 'OK') {
-							result = '<div class="alert alert-success">Your message was successfully sent!</div>';
+							result = '<div class="alert alert-success">Registration Success Please Be Login!</div>';
+							
 							$("#contact-form").clearForm();
 						} else {
-							result = msg;
+							//result = msg;
+							$("#contact-form").clearForm();
 						}
 						
 						$("#alert-area").html(result);
@@ -824,7 +826,7 @@
 					},
 					error: function() {
 	
-						result = '<div class="alert alert-danger">There was an error sending the message!</div>';
+						result = '<div class="alert alert-danger">There was an error In registration!</div>';
 						$("#alert-area").html(result);
 	
 					}

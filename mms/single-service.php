@@ -264,19 +264,26 @@ include 'Console/config.php';
                 <!-- container -->                 
                 <div class="container"> 
                     <div class="row"> 
+                     <?php
+                    $simi_ser_exe=mysqli_query($conn,"select *,SUBSTRING(service_desc ,1,150) from services where service_id='$_GET[Service_id]' AND service_type='$ser_sin[service_type]' order by RAND() limit 3");
+					while($simi_ser=mysqli_fetch_array($simi_ser_exe))
+					{
+					?>
                         <div class="col-sm-4"> 
                             <div class="services-boxes style-2 wow fadeInDown"> 
                                 <div class="services-boxes-content"> 
-                                    <h3> <a href="single-service.html">Retina Ready</a> <small>Nice &amp; Clean</small> </h3> 
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem 
-                                aperiam, eaque ipsa.</p> 
+                                    <h3> <a href="single-service.php?Service_id=<?php echo $simi_ser['service_id'];?>"><?php echo $simi_ser['service_title'];?></a> <!--<small>Nice &amp; Clean</small>--> </h3> 
+                                    <p><?php echo $simi_ser['SUBSTRING(service_desc ,1,150)'];?></p> 
                                 </div>
                                 <!-- services-boxes-content -->                                 
                             </div>
                             <!-- services-boxes -->                             
                         </div>
+                        <?php
+					}
+						?>
                         <!-- col -->                         
-                        <div class="col-sm-4"> 
+                       <?php /*?> <div class="col-sm-4"> 
                             <div class="services-boxes style-2 wow fadeInDown" data-wow-delay="0.3s"> 
                                 <div class="services-boxes-content"> 
                                     <h3> <a href="single-service.html">E-commerce</a> <small>New project</small> </h3> 
@@ -286,9 +293,9 @@ include 'Console/config.php';
                                 <!-- services-boxes-content -->                                 
                             </div>
                             <!-- services-boxes -->                             
-                        </div>
+                        </div><?php */?>
                         <!-- col -->                         
-                        <div class="col-sm-4"> 
+                       <?php /*?> <div class="col-sm-4"> 
                             <div class="services-boxes style-2 wow fadeInDown" data-wow-delay="0.6s"> 
                                 <div class="services-boxes-content"> 
                                     <h3> <a href="single-service.html">Web developing</a> <small>We are the best</small> </h3> 
@@ -298,7 +305,7 @@ include 'Console/config.php';
                                 <!-- services-boxes-content -->                                 
                             </div>
                             <!-- services-boxes -->                             
-                        </div>
+                        </div><?php */?>
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
@@ -419,7 +426,7 @@ include 'Console/config.php';
                         <div class="row"> 
                             <div class="col-sm-12"> 
                                 <div class="widget widget-text"> 
-                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">Mms</span> <span class="text-lowercase"> template.</span></p> 
+                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">Mms</span> <span class="text-lowercase"> BetaSolutions.</span></p> 
                                 </div>
                                 <!-- widget-text -->                                 
                             </div>
