@@ -7,7 +7,15 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
+<<<<<<< HEAD:mms/index.php
         <title>MMS - My Multi Solutions</title>         
+=======
+<<<<<<< HEAD
+        <title>MMS - My Multi Solutions</title>         
+=======
+        <title>MMS - &amp;  My Multi Solutions</title>         
+>>>>>>> c1868448eae0974f750ecaf4a56d58dd3db4f0fc
+>>>>>>> 12712b76cf6da811a846ee21b180656bb6fa9c61:mms/index1.php
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -45,7 +53,8 @@
                         <div class="col-md-2"> 
                             <!-- LOGO -->                             
                             <a id="logo" href="index-slider.html"> 
-                                <img src="images/backgrounds/logo.png" alt=""> 
+                                <!--<img src="images/backgrounds/logo.png" alt="">--> 
+                                <h4 >MMS</h4>
                             </a>                             
                         </div>
                         <!-- col -->                         
@@ -310,6 +319,62 @@ if (strlen($string1) > 20) {
                 <!-- ontainer -->                 
                 <!-- ontainer -->                 
                 <section class="full-section parallax" id="section-9"> 
+<<<<<<< HEAD
+                    <?php /*?><div class="container"> 
+                        <div class="row"> 
+                            <div class="col-sm-3"> 
+                                <div class="counter"> 
+                                    <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> 
+                                    <div class="counter-value" data-value="139"></div>                                     
+                                    <div class="counter-details"> 
+                                        <p>Satisfied clients</p> 
+                                    </div>
+                                    <!-- counter-details -->                                     
+                                </div>
+                                <!-- counter -->                                 
+                            </div>
+                            <!-- col -->                             
+                            <div class="col-sm-3"> 
+                                <div class="counter"> 
+                                    <i class="miu-icon-editor_alarm_clock_outline_stroke"></i> 
+                                    <div class="counter-value" data-value="24"></div>                                     
+                                    <div class="counter-details"> 
+                                        <p>Hours a day</p> 
+                                    </div>
+                                    <!-- counter-details -->                                     
+                                </div>
+                                <!-- counter -->                                 
+                            </div>
+                            <!-- col -->                             
+                            <div class="col-sm-3"> 
+                                <div class="counter"> 
+                                    <i class="miu-icon-editor_setting_gear_outline_stroke"></i> 
+                                    <div class="counter-value" data-value="1127"></div>                                     
+                                    <div class="counter-details"> 
+                                        <p>Project in work</p> 
+                                    </div>
+                                    <!-- counter-details -->                                     
+                                </div>
+                                <!-- counter -->                                 
+                            </div>
+                            <!-- col -->                             
+                            <div class="col-sm-3"> 
+                                <div class="counter"> 
+                                    <i class="miu-icon-editor_documents_files_outline_stroke"></i> 
+                                    <div class="counter-value" data-value="253"></div>                                     
+                                    <div class="counter-details"> 
+                                        <p>Employes</p> 
+                                    </div>
+                                    <!-- counter-details -->                                     
+                                </div>
+                                <!-- counter -->                                 
+                            </div>
+                            <!-- col -->                             
+                        </div>
+                        <!-- row -->                         
+                    </div><?php */?><br>
+=======
+>>>>>>> c1868448eae0974f750ecaf4a56d58dd3db4f0fc
                     <!-- ontainer -->
                     <div class="container"> 
                         <div class="row"> 

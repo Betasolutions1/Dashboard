@@ -1,3 +1,6 @@
+<?php
+include 'Console/config.php';
+?>
 <!doctype html> 
 <html> 
     <head> 
@@ -6,7 +9,7 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
-        <title>MMS - Clean &amp; Modern Multipurpose Template</title>         
+        <title>MMS - My Multi Solutions</title>         
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -154,8 +157,9 @@
                             <form id="contact-form" name="contact-form" action="assets/php/send.php" method="post"> 
                                 <fieldset> 
                                     <div id="alert-area"></div>                                     
-                                    <input class="col-xs-12" id="name" type="text" name="name" placeholder="name"> 
-                                    <input class="col-xs-12" id="email" type="text" name="email" placeholder="email"> 
+                                    <input class="col-xs-12" id="name" type="text" name="name" placeholder="Enter Ur Name"> 
+                                    <input class="col-xs-12" id="email" type="text" name="email" placeholder="Email Id">
+                                    <input class="col-xs-12" id="phone" type="text" name="phone" placeholder="Phone Number"> 
                                     <input class="col-xs-12" id="subject" type="text" name="subject" placeholder="subject"> 
                                     <textarea class="col-xs-12" id="message" name="message" rows="8" cols="25" placeholder="message"></textarea>                                     
                                     <input class="btn btn-default" id="submit" type="submit" name="submit" value="Register"> 

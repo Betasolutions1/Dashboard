@@ -1,3 +1,7 @@
+<?php
+include 'Console/config.php';
+?>
+
 <!doctype html> 
 <html> 
     <head> 
@@ -6,7 +10,7 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
-        <title>MMS - Clean &amp; Modern Multipurpose Template</title>         
+        <title>MMS - My Multi Solutions</title>         
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -144,7 +148,7 @@
                 <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-12"> 
-                            <img class="wow pulse" src="images/about/image-1.jpg" alt=""> 
+                            <img class="wow pulse" src="service/.6.jpg" style="height:280px;width:1140px;" alt=""> 
                         </div>
                         <!-- col -->                         
                     </div>
@@ -156,18 +160,17 @@
                 <br> 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-6"> 
-                            <h3>Sed ut perspiciatis unde om nis iste natus volupta.</h3> 
+                    <?php
+                    $ret_about=mysqli_query($conn,"select * from about_us order by id desc limit 1");
+					$res=mysqli_fetch_array($ret_about);
+					?>
+                        <div class="col-sm-12"> 
+                            <h3><?php echo $res['title']?></h3> 
                             <br> 
-                            <p>Praesent efficitur enim eros, id varius diam pretium vel. Curabitur pharetra sed ligula ut euismod. Ut id varius nulla, 
-                        quis consectetur leo. Suspendisse ut diam maximus, luctus orci vestibulum, faucibus dolor. Vestibulum odio sem, dapibus ut 
-                        nulla eget, auctor porta nisl.</p> 
-                            <p>Aenean tempor, felis et posuere varius, arcu enim suscipit nisi, et sagittis neque mauris a nisi. Vivamus posuere 
-                        scelerisque risus, in luctus dui vehicula et. Praesent posuere varius lectus, a molestie eros tempor accumsan. Cras 
-                        malesuada aliquet enim, et facilisis felis convallis eget.</p> 
+                            <p><?php echo $res['data'];?></p> 
                         </div>
                         <!-- col -->                         
-                        <div class="col-sm-6"> 
+                        <?php /*?><div class="col-sm-6"> 
                             <div class="vertical-tabs"> 
                                 <ul class="nav nav-tabs"> 
                                     <li class="active">
@@ -204,7 +207,7 @@
                                 <!-- tab-content -->                                 
                             </div>
                             <!-- vertical-tabs -->                             
-                        </div>
+                        </div><?php */?>
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
@@ -233,7 +236,7 @@
                         <div class="col-sm-4"> 
                             <div class="about-me wow fadeInLeft"> 
                                 <div class="about-me-thumbnail"> 
-                                    <img src="images/about/team/image-1.jpg" alt=""> 
+                                    <img src="service/7.jpg" style="height:425px;width:360px;" alt=""> 
                                     <div class="social-media"> 
                                         <a class="facebook" href="#"><i class="fa fa-facebook"></i></a> 
                                         <a class="twitter" href="#"><i class="fa fa-twitter"></i></a> 
@@ -244,7 +247,7 @@
                                 </div>
                                 <!-- about-me-thumbnail -->                                 
                                 <div class="about-me-details"> 
-                                    <h4>John Snow</h4> 
+                                    <h4>Member 1</h4> 
                                     <h5>Project manager</h5> 
                                 </div>
                                 <!-- about-me-details -->                                 
@@ -255,7 +258,7 @@
                         <div class="col-sm-4"> 
                             <div class="about-me wow fadeInLeft" data-wow-delay="0.3s"> 
                                 <div class="about-me-thumbnail"> 
-                                    <img src="images/about/team/image-2.jpg" alt=""> 
+                                    <img src="service/7.jpg" style="height:425px;width:360px;" alt=""> 
                                     <div class="social-media"> 
                                         <a class="facebook" href="#"><i class="fa fa-facebook"></i></a> 
                                         <a class="twitter" href="#"><i class="fa fa-twitter"></i></a> 
@@ -266,7 +269,7 @@
                                 </div>
                                 <!-- about-me-thumbnail -->                                 
                                 <div class="about-me-details"> 
-                                    <h4>Daenerys Targaryen</h4> 
+                                    <h4>Member 2</h4> 
                                     <h5>Art director</h5> 
                                 </div>
                                 <!-- about-me-details -->                                 
@@ -277,7 +280,7 @@
                         <div class="col-sm-4"> 
                             <div class="about-me wow fadeInLeft" data-wow-delay="0.6s"> 
                                 <div class="about-me-thumbnail"> 
-                                    <img src="images/about/team/image-3.jpg" alt=""> 
+                                    <img src="service/7.jpg" style="height:425px;width:360px;" alt=""> 
                                     <div class="social-media"> 
                                         <a class="facebook" href="#"><i class="fa fa-facebook"></i></a> 
                                         <a class="twitter" href="#"><i class="fa fa-twitter"></i></a> 
@@ -288,7 +291,7 @@
                                 </div>
                                 <!-- about-me-thumbnail -->                                 
                                 <div class="about-me-details"> 
-                                    <h4>Jaime Lannister</h4> 
+                                    <h4>member 3</h4> 
                                     <h5>Web designer</h5> 
                                 </div>
                                 <!-- about-me-details -->                                 
@@ -418,7 +421,7 @@
                         <div class="row"> 
                             <div class="col-sm-12"> 
                                 <div class="widget widget-text"> 
-                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">Mms</span> <span class="text-lowercase"> template.</span></p> 
+                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">Mms</span> <span class="text-lowercase"> BetaSolutions.</span></p> 
                                 </div>
                                 <!-- widget-text -->                                 
                             </div>

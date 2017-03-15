@@ -1,3 +1,6 @@
+<?php
+include 'Console/config.php';
+?>
 <!doctype html> 
 <html> 
     <head> 
@@ -6,7 +9,7 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
-        <title>MMS - Clean &amp; Modern Multipurpose Template</title>         
+        <title>MMS - My Multi Solutions</title>         
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -142,8 +145,27 @@
                 </div>
                 <!-- ontainer -->                 
                 <div class="container"> 
-                    <div class="row"> 
+                    <div class="row">
+                    
+                    <?php
+                    $edu_exe=mysqli_query($conn,"select *,SUBSTRING(service_desc ,1,150) from services where service_type='Mobile' order by service_id desc");
+					while($edu_res=mysqli_fetch_array($edu_exe))
+					{
+					?>
                         <div class="col-sm-4"> 
+                            <div class="services-boxes style-2 wow fadeInDown"> 
+                                <div class="services-boxes-content"> 
+                                    <h3> <a href="single-service.php?Service_id=<?php echo $edu_res['service_id'];?>"><?php echo $edu_res['service_title']?></a> <!--<small>Nice &amp; Clean</small>--> </h3> 
+                                    <p><?php echo $edu_res['SUBSTRING(service_desc ,1,150)']?>.</p> 
+                                </div>
+                                <!-- services-boxes-content -->                                 
+                            </div>
+                            <!-- services-boxes -->                             
+                        </div>
+                        <?php
+					}
+						?> 
+                      <?php /*?>  <div class="col-sm-4"> 
                             <div class="services-boxes style-2 wow fadeInDown"> 
                                 <div class="services-boxes-content"> 
                                     <h3> <a href="single-service.php">Retina Ready</a> <small>Nice &amp; Clean</small> </h3> 
@@ -153,9 +175,9 @@
                                 <!-- services-boxes-content -->                                 
                             </div>
                             <!-- services-boxes -->                             
-                        </div>
+                        </div><?php */?>
                         <!-- col -->                         
-                        <div class="col-sm-4"> 
+                       <?php /*?> <div class="col-sm-4"> 
                             <div class="services-boxes style-2 wow fadeInDown" data-wow-delay="0.3s"> 
                                 <div class="services-boxes-content"> 
                                     <h3> <a href="single-service.php">E-commerce</a> <small>New project</small> </h3> 
@@ -165,9 +187,9 @@
                                 <!-- services-boxes-content -->                                 
                             </div>
                             <!-- services-boxes -->                             
-                        </div>
+                        </div><?php */?>
                         <!-- col -->                         
-                        <div class="col-sm-4"> 
+                      <?php /*?>  <div class="col-sm-4"> 
                             <div class="services-boxes style-2 wow fadeInDown" data-wow-delay="0.6s"> 
                                 <div class="services-boxes-content"> 
                                     <h3> <a href="single-service.php">Web developing</a> <small>We are the best</small> </h3> 
@@ -177,13 +199,13 @@
                                 <!-- services-boxes-content -->                                 
                             </div>
                             <!-- services-boxes -->                             
-                        </div>
+                        </div><?php */?>
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
                 </div>
                 <!-- ontainer -->                 
-                <div class="container"> 
+            <?php /*?>    <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-4"> 
                             <div class="services-boxes style-2 wow fadeInDown"> 
@@ -223,7 +245,7 @@
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
-                </div>
+                </div><?php */?>
                 <!-- ontainer -->                 
                 <section class="full-section parallax" id="section-5"> 
                     <div class="container"> 
