@@ -1,3 +1,4 @@
+<?php include("console/config.php");?>
 <!doctype html> 
 <html> 
     <head> 
@@ -6,7 +7,11 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
+<<<<<<< HEAD
         <title>MMS - My Multi Solutions</title>         
+=======
+        <title>MMS - &amp;  My Multi Solutions</title>         
+>>>>>>> c1868448eae0974f750ecaf4a56d58dd3db4f0fc
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -41,7 +46,7 @@
             <header> 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-2"> 
+                        <div class="col-md-2"> 
                             <!-- LOGO -->                             
                             <a id="logo" href="index-slider.html"> 
                                 <!--<img src="images/backgrounds/logo.png" alt="">--> 
@@ -49,7 +54,7 @@
                             </a>                             
                         </div>
                         <!-- col -->                         
-                        <div class="col-sm-10"> 
+                        <div class="col-md-10"> 
                             <!-- SEARCH -->                             
                             <div id="search-container"> 
                                 <form id="search-form" name="search-form" method="get" action="#"> 
@@ -104,28 +109,127 @@
             </header>
             <!-- HEADER -->             
             <!-- CONTENT -->             
-            <div class="content"> 
-                <section class="full-section full-screen parallax" style="background-image:url(images/backgrounds/bg-6.jpg);"> 
+            <div class="content">
+
+                <div class="bannercontainer">
+                <div class="banner">
+                    <ul>
+                        <li data-transition="slotfade-horizontal">
+                            
+                            <img src="images/index/revolution-slider/bg-slide-1.jpg" alt="">
+                            
+                            <div class="tp-caption fade" data-x="-150" data-y="70" data-speed="700" data-start="1000" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-1-image-1.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption fade" data-x="270" data-y="120" data-speed="700" data-start="1400" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-1-image-2.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption fade" data-x="300" data-y="50" data-speed="700" data-start="1800" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-1-image-3.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption sfb" data-x="530" data-y="220" data-speed="700" data-start="2400" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-1-image-4.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption fade" data-x="650" data-y="340" data-speed="700" data-start="2800" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-1-image-5.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption title sft" data-x="830" data-y="150" data-speed="700" data-start="3200" data-easing="easeOutBack">
+                                Clean cut, <br>
+                                Inovative Design
+                            </div>
+                            
+                            <div class="tp-caption text sfr" data-x="830" data-y="240" data-speed="700" data-start="3700" data-easing="easeOutBack">
+                                <em>Lorem ipsum dolor sit amet, consectetur adipiscing <br>
+                                eiusmod tempor incididunt ut labore et dolore magna. </em>
+                            </div>
+                            
+                            <div class="tp-caption social-icon sfl" data-x="830" data-y="310" data-speed="700" data-start="4400" data-easing="easeOutBack">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </div>
+                            
+                            <div class="tp-caption social-icon sfl" data-x="865" data-y="310" data-speed="700" data-start="4700" data-easing="easeOutBack">
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </div>
+                            
+                            <div class="tp-caption social-icon sfl" data-x="910" data-y="310" data-speed="700" data-start="5000" data-easing="easeOutBack">
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                            </div>
+                            
+                            <div class="tp-caption sfb"  data-x="830" data-y="360" data-speed="700" data-start="5400" data-easing="easeOutBack">
+                                <a class="btn btn-default" href="#">Follow the project <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </li>
+                        <li data-transition="slotfade-horizontal">
+                            
+                            <img src="images/index/revolution-slider/bg-slide-2.jpg" alt="">
+                            
+                            <div class="tp-caption sft"  data-x="540" data-y="125" data-speed="700" data-start="1200" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-2-image-1.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption title-white text-center sft"  data-x="245" data-y="285" data-speed="700" data-start="1700" data-easing="easeOutBack">
+                                A new way to build your <br>
+                                business online
+                            </div>
+                            
+                            <div class="tp-caption sfb"  data-x="450" data-y="450" data-speed="700" data-start="2200" data-easing="easeOutBack">
+                                <a class="btn btn-default" href="#">Buy it on themeforest <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </li>
+                        <li data-transition="slotfade-horizontal">
+                            
+                            <img src="images/index/revolution-slider/bg-slide-3.jpg" alt="">
+                            
+                            <div class="tp-caption sfl"  data-x="0" data-y="75" data-speed="700" data-start="1700" data-easing="easeOutBack">
+                                <img src="images/index/revolution-slider/slide-3-image-1.png" alt="">
+                            </div>
+                            
+                            <div class="tp-caption title sft" data-x="830" data-y="180" data-speed="700" data-start="2200" data-easing="easeOutBack">
+                                Multiple <br>
+                                Portfolio pages
+                            </div>
+                            
+                            <div class="tp-caption text-white sfr" data-x="830" data-y="270" data-speed="700" data-start="2700" data-easing="easeOutBack">
+                                Cras vestibulum ante in fermentum pretium. <br>
+                                Odio ipsum, ac feugiat tellus facilisis id nullam. <br>
+                                Etiam at dictum quam. Nunc ac ultrices orci duis <br>
+                                hendrerit, efficitur metus quis, finibus elit. 
+                            </div>
+                            
+                            <div class="tp-caption sfb" data-x="830" data-y="390" data-speed="700" data-start="3200" data-easing="easeOutBack">
+                                <a class="btn btn-default" href="#">View portfolio pages <i class="fa fa-arrow-right"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div><!-- banner -->
+            </div>
+
+                <!--<section class="full-section full-screen parallax" style="background-image:url(images/backgrounds/bg-6.jpg);"> 
                     <div class="full-section-content"> 
                         <div class="container"> 
                             <div class="row"> 
-                                <div class="col-sm-12"> 
+                                <div class="col-md-12"> 
                                     <h1 class="text-center">A new way to build your <br> business online</h1> 
                                     <br> 
-                                    <!-- <p class="text-center"><a class="btn btn-default" href="#">Buy it on themeforest <i class="fa fa-arrow-right"></i></a></p>  -->
+                                    <p class="text-center"><a class="btn btn-default" href="#">Buy it on themeforest <i class="fa fa-arrow-right"></i></a></p> 
                                 </div>
-                                <!-- col -->                                 
+                                <!-- col ->                                 
                             </div>
-                            <!-- row -->                             
+                            <!-- row ->                             
                         </div>
-                        <!-- container -->                         
+                        <!-- container ->                         
                     </div>
-                    <!-- full-section-content -->                     
+                    <!-- full-section-content ->                     
                 </section>
                 <!-- full-section -->                 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-12"> 
+                        <div class="col-md-12"> 
                             <div class="headline style-3"> 
                                 <h5>All in one</h5> 
                                 <h2>Services</h2> 
@@ -137,36 +241,68 @@
                     </div>
                     <!-- row -->                     
                 </div>
-                <!-- ontainer -->                 
+                <!-- ontainer --> <?php 
+                $sel1=mysqli_query($conn,"select * from services where service_type='Education' order by service_id desc limit 1");
+                $sel2=mysqli_fetch_array($sel1);
+                $string =$sel2['service_title'];
+$string1 = strip_tags($string);
+if (strlen($string1) > 20) {
+
+    // truncate string
+    $strCut3 = substr($string1, 0, 20);
+    }    
+
+                $sel3=mysqli_query($conn,"select * from services where service_type='Mobile' order by service_id desc limit 1");
+                $sel4=mysqli_fetch_array($sel3);
+                $string =$sel4['service_title'];
+$string1 = strip_tags($string);
+if (strlen($string1) > 20) {
+
+    // truncate string
+    $strCut1 = substr($string1, 0, 20);
+    }    
+
+
+                $sel5=mysqli_query($conn,"select * from services where service_type='IT' order by service_id desc limit 1");
+                $sel6=mysqli_fetch_array($sel5);
+                $string =$sel6['service_title'];
+$string1 = strip_tags($string);
+if (strlen($string1) > 20) {
+
+    // truncate string
+    $strCut2 = substr($string1, 0, 20);
+    }    
+
+                ?>                
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-4"> 
+                        <div class="col-md-4"> 
                             <div class="services-boxes style-2 wow fadeInDown"> 
                                 <div class="services-boxes-content"> 
-                                    <h3> <a href="single-service.php">Education</a> <small>Nice &amp; Clean</small> </h3> 
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.&nbsp;<br></p>
+                                    <h3> <a href="single-service.php"><?php echo $sel2['service_title'];?></a> <small>Nice &amp; Clean</small> </h3> 
+                                    <p><?php echo $sel2['service_desc'];?>&nbsp;<br></p>
                                 </div>
                                 <!-- services-boxes-content -->                                 
                             </div>
                             <!-- services-boxes -->                             
                         </div>
                         <!-- col -->                         
-                        <div class="col-sm-4"> 
+                        <div class="col-md-4"> 
                             <div class="services-boxes style-2 wow fadeInDown" data-wow-delay="0.3s"> 
                                 <div class="services-boxes-content"> 
-                                    <h3> <a href="single-service.php">Mobile</a> <small>New project</small> </h3> 
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.&nbsp;<br></p>
+                                    <h3> <a href="single-service.php"><?php echo $sel4['service_title'];?></a> <small>New project</small> </h3> 
+                                    <p><?php echo $strCut1;?>&nbsp;<br></p>
                                 </div>
                                 <!-- services-boxes-content -->                                 
                             </div>
                             <!-- services-boxes -->                             
                         </div>
                         <!-- col -->                         
-                        <div class="col-sm-4"> 
+                        <div class="col-md-4"> 
                             <div class="services-boxes style-2 wow wow fadeInDown" data-wow-delay="0.6s"> 
                                 <div class="services-boxes-content"> 
-                                    <h3> <a href="single-service.php">IT</a> <small>We are the best</small> </h3> 
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.&nbsp;<br></p>
+                                    <h3> <a href="single-service.php"><?php echo $sel6['service_desc'];?></a> <small>We are the best</small> </h3> 
+                                    <p><?php echo $sel6['service_desc'];?>&nbsp;<br></p>
                                 </div>
                                 <!-- services-boxes-content -->                                 
                             </div>
@@ -179,6 +315,7 @@
                 <!-- ontainer -->                 
                 <!-- ontainer -->                 
                 <section class="full-section parallax" id="section-9"> 
+<<<<<<< HEAD
                     <?php /*?><div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-3"> 
@@ -232,10 +369,12 @@
                         </div>
                         <!-- row -->                         
                     </div><?php */?><br>
+=======
+>>>>>>> c1868448eae0974f750ecaf4a56d58dd3db4f0fc
                     <!-- ontainer -->
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-12"> 
+                            <div class="col-md-12"> 
                                 <div class="headline style-2"> 
                                     <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> 
                                     <h2>quote of the day</h2> 
@@ -243,39 +382,21 @@
                                 <!-- headline -->                                 
                                 <div class="testimonial-slider"> 
                                     <ul> 
+                                    <?php 
+                                    $qret=mysqli_query($conn,"select * from qoutes order by quote_id desc limit 3");
+                                    while($qret2=mysqli_fetch_array($qret)){
+                                    ?>
                                         <li> 
                                             <div class="testimonial"> 
                                                 <blockquote> 
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-                                                aliquip ex ea commodo consequat.</p> 
+                                                    <p><?php echo $qret2['quote'];?></p> 
                                                 </blockquote>                                                 
-                                                <h5>swaroopa,india</h5> 
+                                                <h5><?php echo $qret2['auother'];?></h5> 
                                             </div>
                                             <!-- testimonial -->                                             
                                         </li>                                         
-                                        <li> 
-                                            <div class="testimonial"> 
-                                                <blockquote> 
-                                                    <p>Quisque neque orci, dictum eu egestas eget, porta vel dolor. Etiam vel nunc pulvinar, suscipit urna 
-                                                sit amet, efficitur nibh. Nulla convallis ut lectus a tempor. Nullam tincidunt pulvinar sodales. Nunc 
-                                                sed erat et risus luctus sollicitudin.</p> 
-                                                </blockquote>                                                 
-                                                <h5>gowthami,india</h5> 
-                                            </div>
-                                            <!-- testimonial -->                                             
-                                        </li>                                         
-                                        <li> 
-                                            <div class="testimonial"> 
-                                                <blockquote> 
-                                                    <p>Phasellus finibus erat non ligula semper tempor. Curabitur augue lacus, mattis id enim vehicula, 
-                                                dictum sollicitudin arcu. Cras sodales dolor quis ligula hendrerit, auctor dapibus nibh sagittis. Sed 
-                                                congue, purus semper dapibus sagittis arcu.</p> 
-                                                </blockquote>                                                 
-                                                <h5>sandhya,india</h5> 
-                                            </div>
-                                            <!-- testimonial -->                                             
-                                        </li>                                         
+                                          <?php }?>                                      
+                                                                                 
                                     </ul>                                     
                                     <div id="thumb-pager"> 
                                         <a data-slide-index="0" href="">
@@ -300,7 +421,7 @@
                 <!-- fullsection -->                 
              <!--    <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-4"> 
+                        <div class="col-md-4"> 
                             <div class="headline style-1"> 
                                 <h4>Skills</h4> 
                                 <h2>Progress</h2> 
@@ -332,7 +453,7 @@
                             <!-- progress-bar-title ->                             
                         </div>
                         <!-- col ->                         
-                        <div class="col-sm-4"> 
+                        <div class="col-md-4"> 
                             <div class="headline style-1"> 
                                 <h4>Some text</h4> 
                                 <h2>Our Work</h2> 
@@ -343,7 +464,7 @@
                         vitae nunc venenatis. </p> 
                         </div>
                         <!-- col ->                         
-                        <div class="col-sm-4"> 
+                        <div class="col-md-4"> 
                             <div class="headline style-1"> 
                                 <h4>Checklist</h4> 
                                 <h2>The List</h2> 
@@ -368,7 +489,7 @@
                <!--  <section class="full-section parallax" id="section-1"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-12"> 
+                            <div class="col-md-12"> 
                                 <div class="headline style-2"> 
                                     <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> 
                                     <h2>quote of the day</h2> 
@@ -434,7 +555,7 @@
                 <!-- full-section -->                 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-12"> 
+                        <div class="col-md-12"> 
                             <div class="headline style-3"> 
                                 <h5>Mms</h5> 
                                 <h2>Blog</h2> 
@@ -449,8 +570,17 @@
                 <!-- ontainer -->                 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-12"> 
+                        <div class="col-md-12"> 
                             <div class="isotope col-3 clearfix"> 
+                            <?php 
+                            $bret=mysqli_query($conn,"select * from blogs order by blog_id desc limit 3");
+                            while($bret2=mysqli_fetch_array($bret)){
+                                $str=$bret2['blog_desc'];
+                                $str1=strip_tags($str);
+                                if(strlen($str1)>10){
+                                    $Strcut4=substr($str1,0,10);
+                                }
+                            ?>
                                 <div class="isotope-item"> 
                                     <div class="blog-article wow fadeIn"> 
                                         <div class="blog-article-thumbnail"> 
@@ -462,58 +592,17 @@
                                         </div>
                                         <!-- blog-article-thumbnail -->                                         
                                         <div class="blog-article-details"> 
-                                            <h6>5 March 2015</h6> 
-                                            <h4><a href="blog-post.php">Design: from thought to print</a></h4> 
+                                            <h6><?php echo $bret2['datetime'];?></h6> 
+                                            <h4><a href="blog-post.php"><?php echo $bret2['blog_title'];?></a></h4> 
                                         </div>
                                         <!-- blog-article-details -->                                         
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.&nbsp;<br></p> 
+                                        <p><?php echo $Strcut4;?>&nbsp;<br></p> 
                                         <a class="btn btn-default" href="blog-post.php">Read more</a>
                                     </div>
                                     <!-- blog-article -->                                     
                                 </div>
-                                <!-- isotope-item -->                                 
-                                <div class="isotope-item"> 
-                                    <div class="blog-article wow fadeIn" data-wow-delay="0.3s"> 
-                                        <div class="blog-article-thumbnail"> 
-                                            <img src="images/blog/image-9.jpg" alt=""> 
-                                            <div class="blog-article-hover"> 
-                                                <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-9.jpg"><i class="fa fa-eye"></i></a> 
-                                            </div>
-                                            <!-- blog-article-hover -->                                             
-                                        </div>
-                                        <!-- blog-article-thumbnail -->                                         
-                                        <div class="blog-article-details"> 
-                                            <h6>4 March 2015</h6> 
-                                            <h4><a href="blog-post.php">2015 new design trends</a></h4> 
-                                        </div>
-                                        <!-- blog-article-details -->                                         
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim. Aliquam erat volutpat. Nunc lobortis bibendum erat.<br></p> 
-                                        <a class="btn btn-default" href="blog-post.php">Read more</a>
-                                    </div>
-                                    <!-- blog-article -->                                     
-                                </div>
-                                <!-- istope-item -->                                 
-                                <div class="isotope-item"> 
-                                    <div class="blog-article wow fadeIn" data-wow-delay="0.6s"> 
-                                        <div class="blog-article-thumbnail"> 
-                                            <img src="images/blog/image-10.jpg" alt=""> 
-                                            <div class="blog-article-hover"> 
-                                                <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-10.jpg"><i class="fa fa-eye"></i></a> 
-                                            </div>
-                                            <!-- blog-article-hover -->                                             
-                                        </div>
-                                        <!-- blog-article-thumbnail -->                                         
-                                        <div class="blog-article-details"> 
-                                            <h6>3 March 2015</h6> 
-                                            <h4><a href="blog-post.php">interview with a great designer</a></h4> 
-                                        </div>
-                                        <!-- blog-article-details -->                                         
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.<br></p> 
-                                        <a class="btn btn-default" href="blog-post.php">Read more</a>
-                                    </div>
-                                    <!-- blog-article -->                                     
-                                </div>
-                                <!-- istope-item -->                                 
+                                <?php } ?>
+                                <!-- isotope-item -->                             
                             </div>
                             <!-- isotope -->                             
                         </div>
@@ -533,7 +622,7 @@
                 <br> 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-12"> 
+                        <div class="col-md-12"> 
                             <ul class="logos clearfix"> 
                                 <li>
                                     <img src="images/logos/image-1.png" alt="">
@@ -570,7 +659,7 @@
                 <div id="footer"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-text"> 
                                     <h3 class="widget-title">About MMS</h3> 
                                     <p>Lorem ipsum dolor sit amet unde ligula, sodales et quam non, omis finibus eros. Pharetra nulla lactus arcu non, 
@@ -589,7 +678,7 @@
                                 <!-- widget-newsletter -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-latest-news"> 
                                     <h3 class="widget-title">Latest news</h3> 
                                     <ul> 
@@ -611,7 +700,7 @@
                                 <!-- widget-recent-posts -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-flickr"> 
                                     <h3 class="widget-title">Flickr</h3> 
                                     <div class="flickr-photos"> 
@@ -624,7 +713,7 @@
                                 <!-- widget-flickr -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-contact"> 
                                     <h3 class="widget-title">Contact Us</h3> 
                                     <ul> 
@@ -658,7 +747,7 @@
                 <div id="footer-bottom"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-12"> 
+                            <div class="col-md-12"> 
                                 <div class="widget widget-text"> 
                                     <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">MMS</span> <span class="text-lowercase"> template.</span></p> 
                                 </div>
