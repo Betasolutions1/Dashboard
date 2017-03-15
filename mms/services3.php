@@ -1,5 +1,7 @@
 <?php
 include 'Console/config.php';
+session_start();
+error_reporting();
 ?>
 
 <!doctype html> 
@@ -92,7 +94,34 @@ include 'Console/config.php';
                                     </li>
                                     <li>
                                         <a href="#">shop</a>
-                                    </li>                                     
+                                    </li>  
+                                     <li class="dropdown"> 
+                                        <a href="">Pages</a> 
+                                        <ul> 
+                                        <?php
+                                        if(!$_SESSION['MMS_User'])
+										{
+										?>
+                                            <li>
+                                                <a href="login.php">Login</a>
+                                            </li>                                             
+                                            <li>
+                                                <a href="register.php">Register</a>
+                                            </li> 
+                                            <?php
+										}else{
+											?>                                            
+                                            <li>
+                                                <a href="Myaccount.php">My Account</a>
+                                            </li>
+                                            <li>
+                                                <a href="logout.php">Logout</a>
+                                            </li> 
+                                            <?php
+										}
+											?>                                            
+                                        </ul>                                         
+                                    </li>                                           
                                     <li class=""> 
                                         <a href="contact.php">Contact</a>
                                     </li>                                     

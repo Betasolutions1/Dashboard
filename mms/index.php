@@ -1,4 +1,7 @@
-<?php include("console/config.php");?>
+<?php include("console/config.php");
+session_start();
+error_reporting(0);
+?>
 <!doctype html> 
 <html> 
     <head> 
@@ -44,7 +47,7 @@
                     <div class="row"> 
                         <div class="col-md-2"> 
                             <!-- LOGO -->                             
-                            <a id="logo" href="index-slider.html"> 
+                            <a id="logo" href="#"> 
                                 <img src="images/backgrounds/logo.png" alt=""> 
                             </a>                             
                         </div>
@@ -89,7 +92,34 @@
                                     </li>
                                     <li>
                                         <a href="shop.php">shop</a>
-                                    </li>                                     
+                                    </li>  
+                                     <li class="dropdown active"> 
+                                        <a href="">Pages</a> 
+                                        <ul> 
+                                        <?php
+                                        if(!$_SESSION['MMS_User'])
+										{
+										?>
+                                            <li>
+                                                <a href="login.php">Login</a>
+                                            </li>                                             
+                                            <li>
+                                                <a href="register.php">Register</a>
+                                            </li> 
+                                            <?php
+										}else{
+											?>                                            
+                                            <li>
+                                                <a href="Myaccount.php">My Account</a>
+                                            </li>
+                                            <li>
+                                                <a href="logout.php">Logout</a>
+                                            </li> 
+                                            <?php
+										}
+											?>                                            
+                                        </ul>                                         
+                                    </li>                                           
                                     <li class=""> 
                                         <a href="contact.php">Contact</a>
                                     </li>                                     
