@@ -187,7 +187,19 @@ error_reporting(0);
                                     <h3> <a href="single-service.php?Service_id=<?php echo $edu_res['service_id'];?>"><?php echo $edu_res['service_title']?></a> <!--<small>Nice &amp; Clean</small>--> </h3> 
                                     <p><?php echo $edu_res['SUBSTRING(service_desc ,1,150)']?>.</p> 
                                 </div>
-                                <!-- services-boxes-content -->                                 
+                                <!-- services-boxes-content -->
+                                <?php
+                                if($_SESSION['MMS_User'])
+								{
+								?>
+                                <form method="post" action="backend.php">
+                                <input type="hidden" name="service_id" value="<?php echo $edu_res['service_id'];?>">
+                                <input type="hidden" name="user_reg_id" value="<?php echo $_SESSION['User_id'];?>">
+                                <input type="submit" name="add_service" value="Add Account">
+                                </form>
+                                <?php
+								}
+								?>                                 
                             </div>
                             <!-- services-boxes -->                             
                         </div>

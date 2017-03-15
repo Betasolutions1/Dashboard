@@ -92,7 +92,7 @@ if(!$_SESSION['MMS_User'])
                                             </li>                                             
                                         </ul>                                         
                                     </li>                                     
-                                    <li class="active"> 
+                                    <li class=""> 
                                         <a href="blog-columns.php">Blog</a> 
                                     </li>
                                     <li>
@@ -144,7 +144,7 @@ if(!$_SESSION['MMS_User'])
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-md-6"> 
-                                <h4>Blog</h4> 
+                                <h4>Welcome <?php echo $_SESSION['MMS_uname'];?></h4> 
                             </div>
                             <!-- col -->                             
                             <div class="col-md-6"> 
@@ -152,7 +152,7 @@ if(!$_SESSION['MMS_User'])
                                     <li>
                                         <a href="index.php">Home</a>
                                     </li>                                     
-                                    <li class="active">Blog</li>                                     
+                                    <li class="active">My Account</li>                                     
                                 </ol>                                 
                             </div>
                             <!-- col -->                             
@@ -165,35 +165,38 @@ if(!$_SESSION['MMS_User'])
                 <div class="container"> 
                     <div class="row"> 
                     <?php 
-                    $bsel=mysqli_query($conn,"select * from blogs order by blog_id desc");
-                    while($bsel2=mysqli_fetch_array($bsel)){
-                        $str=$bsel2['blog_desc'];
+					$get_usr_serv_exe=mysqli_query($conn,"select * from account_services where user_reg_id='$_SESSION[User_id]'");
+					while($get_user_services=mysqli_fetch_array($get_usr_serv_exe))
+					{
+                    $ser_exe=mysqli_query($conn,"select * from services where service_id='$get_user_services[service_id]'");
+                   $service=mysqli_fetch_array($ser_exe);
+                        $str=$service['service_desc'];
                         $str1=strip_tags($str);
-                        if(strlen($str1)>10){
-                            $strcut1=substr($str1,0,10);
-                        }
+                            $strcut1=substr($str1,0,50);
+                      
                     ?>
                         <div class="col-md-4"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
-                                    <img src="Console/Blog/<?php echo $bsel2['blog_image'];?>" alt=""> 
+                                    <img src="Console/Services/<?php echo $service['service_img'];?>" style="height:325px;width:360px;" alt=""> 
                                     <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="Console/Blog/<?php echo $bsel2['blog_image'];?>"><i class="fa fa-eye"></i></a> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="Console/Services/<?php echo $service['service_img'];?>"><i class="fa fa-eye"></i></a> 
                                     </div>
                                     <!-- blog-article-hover -->                                     
                                 </div>
                                 <!-- blog-article-thumbnail -->                                 
                                 <div class="blog-article-details"> 
-                                    <h6><?php echo $bsel2['datetime'];?></h6> 
-                                    <h4><a href="blog-post.php?Blog_id=<?php echo $bsel2['blog_id'];?>"><?php echo $bsel2['blog_title'];?></a></h4> 
+                                     
+                                    <h4><a href="single-service.php?Service_id=<?php echo $service['service_id'];?>"><?php echo $service['service_title'];?></a></h4> 
                                 </div>
                                 <!-- blog-article-details -->                                 
                                 <p><?php echo $strcut1;?>&nbsp;<br></p> 
-                                <a class="btn btn-default" href="blog-post.php?Blog_id=<?php echo $bsel2['blog_id'];?>">Read more</a>
+                                <a class="btn btn-default" href="single-service.php?Service_id=<?php echo $service['service_id'];?>">Read more</a>
                             </div>
                             <!-- blog-article -->                             
                         </div>
-                        <?php } ?>
+                        <?php
+					}?>
                         <!-- col -->                       
                     </div>
                     <!-- row -->                     

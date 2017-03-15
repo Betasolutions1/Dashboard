@@ -8,6 +8,7 @@ if(isset($_POST['Login']))
 	if(mysqli_num_rows($ins_users)>0)
 	{
 		$ret_userd=mysqli_fetch_array($ins_users);
+		$_SESSION['User_id']=$ret_userd['Register_id'];
 		$_SESSION['MMS_User']=$ret_userd['Email'];
 		$_SESSION['MMS_uname']=$ret_userd['Name'];
 		header("location:Myaccount.php");

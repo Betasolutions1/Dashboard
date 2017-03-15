@@ -320,7 +320,7 @@ error_reporting(0);
                         <div class="row"> 
                             <div class="col-md-12"> 
                                 <div class="widget widget-text"> 
-                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">MMs</span> <span class="text-lowercase"> template.</span></p> 
+                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">MMs</span> <span class="text-lowercase"> BetaSolutions.</span></p> 
                                 </div>
                                 <!-- widget-text -->                                 
                             </div>

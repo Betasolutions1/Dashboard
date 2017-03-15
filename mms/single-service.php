@@ -175,6 +175,18 @@ error_reporting(0);
                             <!-- headline -->                             
                             <p><?php echo $ser_sin['service_desc'];?></p> 
                             <a class="btn btn-default" href="register.php">Register now</a> 
+                            <?php
+                                if($_SESSION['MMS_User'])
+								{
+								?>
+                                <form method="post" action="backend.php">
+                                <input type="hidden" name="service_id" value="<?php echo $ser_sin['service_id'];?>">
+                                <input type="hidden" name="user_reg_id" value="<?php echo $_SESSION['User_id'];?>">
+                                <input type="submit" name="add_service" value="Add Account">
+                                </form>
+                                <?php
+								}
+								?>
                         </div>
                         <!-- col -->                         
                         <div class="col-sm-6"> 
@@ -304,7 +316,19 @@ error_reporting(0);
                                     <h3> <a href="single-service.php?Service_id=<?php echo $simi_ser['service_id'];?>"><?php echo $simi_ser['service_title'];?></a> <!--<small>Nice &amp; Clean</small>--> </h3> 
                                     <p><?php echo $simi_ser['SUBSTRING(service_desc ,1,150)'];?></p> 
                                 </div>
-                                <!-- services-boxes-content -->                                 
+                                <!-- services-boxes-content --> 
+                                <?php
+                                if($_SESSION['MMS_User'])
+								{
+								?>
+                                <form method="post" action="backend.php">
+                                <input type="hidden" name="service_id" value="<?php echo $simi_ser['service_id'];?>">
+                                <input type="hidden" name="user_reg_id" value="<?php echo $_SESSION['User_id'];?>">
+                                <input type="submit" name="add_service" value="Add Account">
+                                </form>
+                                <?php
+								}
+								?>                                
                             </div>
                             <!-- services-boxes -->                             
                         </div>

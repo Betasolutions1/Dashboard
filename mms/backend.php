@@ -1,5 +1,7 @@
 <?php
 include 'Console/config.php';
+session_start();
+error_reporting(0);
 if(isset($_POST['Register']))
 {
 	$ins_users=mysqli_query($conn,"INSERT INTO `register`(`Name`, `Email`, `Phone`, `Password`) VALUES ('$_POST[name]','$_POST[email]','$_POST[phone]','$_POST[Password]')");
@@ -11,6 +13,22 @@ if(isset($_POST['Register']))
 	}
 }
 
+if(isset($_POST['add_service']))
+{
+	$chk_ser=mysqli_query($conn,"select * from `account_services` where `service_id`='$_POST[service_id]' AND `user_reg_id`='$_POST[user_reg_id]'");
+	if(mysqli_num_rows($chk_ser)==0)
+	{
+	$ins_add_service=mysqli_query($conn,"INSERT INTO `account_services`( `service_id`, `user_reg_id`) VALUES ('$_POST[service_id]','$_POST[user_reg_id]')");
+	if($ins_add_service)
+	{
+		header('location:index.php');
+	}
+	}else
+	{
+		echo "<script>alert('This Service Already added into ur account')</script>";
+		header('location:index.php');
+	}
+}
 
 
 /*
