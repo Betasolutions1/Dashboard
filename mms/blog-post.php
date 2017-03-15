@@ -1,3 +1,4 @@
+<?php include("Console/config.php");?>
 <!doctype html> 
 <html> 
     <head> 
@@ -41,14 +42,14 @@
             <header> 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-2"> 
+                        <div class="col-md-2"> 
                             <!-- LOGO -->                             
                             <a id="logo" href="index-slider.html"> 
                                 <img src="images/backgrounds/logo.png" alt=""> 
                             </a>                             
                         </div>
                         <!-- col -->                         
-                        <div class="col-sm-10"> 
+                        <div class="col-md-10"> 
                             <!-- SEARCH -->                             
                             <div id="search-container"> 
                                 <form id="search-form" name="search-form" method="get" action="#"> 
@@ -107,11 +108,11 @@
                 <div id="page-header"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-6"> 
+                            <div class="col-md-6"> 
                                 <h4>Blog</h4> 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-6"> 
+                            <div class="col-md-6"> 
                                 <ol class="breadcrumb"> 
                                     <li>
                                         <a href="index.php">Home</a>
@@ -128,29 +129,30 @@
                     </div>
                     <!-- ontainer -->                     
                 </div>
-                <!-- page-header -->                 
+                <!-- page-header -->
+                <?php
+                $bsel=mysqli_query($conn,"select * from blogs where blog_id='$_GET[Blog_id]'");
+                $bsel2=mysqli_fetch_array($bsel);
+                ?>                 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-9"> 
+                        <div class="col-md-9"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-1.jpg" alt=""> 
+                                    <img src="Console/Blog/<?php echo $bsel2['blog_image'];?>" alt=""> 
                                     <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-1.jpg"><i class="fa fa-eye"></i></a> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="Console/Blog/<?php echo $bsel2['blog_image'];?>"><i class="fa fa-eye"></i></a> 
                                     </div>
                                     <!-- blog-article-hover -->                                     
                                 </div>
                                 <!-- blog-article-thumbnail -->                                 
                                 <div class="blog-article-details"> 
-                                    <h4>5 March 2015</h4> 
-                                    <h2><a href="blog-post.php">Design: from thought to print</a></h2> 
+                                    <h4><?php echo $bsel2['datetime'];?></h4> 
+                                    <h2><a href="blog-post.php"><?php echo $bsel2['blog_title'];?></a></h2> 
                                     <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">2</a> </p> 
                                 </div>
                                 <!-- blog-article-details -->                                 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In diam erat, feugiat at velit tincidunt, dapibus congue 
-                            nunc. Cras quis laoreet turpis, ut volutpat purus. Suspendisse porttitor commodo elit, eget fringilla arcu tincidunt id. 
-                            Sed non sollicitudin eros, suscipit venenatis leo. Aenean risus justo, auctor sed sollicitudin vel, suscipit id magna. 
-                            In tincidunt, leo amet pharetra euismod, nunc ante aliquet arcu, sit amet pretium nisi leo tristique purus. </p> 
+                                <p><?php echo $bsel2['blog_desc'];  ?></p> 
                                 <a class="btn btn-default" href="blog-post.php">Continue reading</a> 
                             </div>
                             <!-- blog-article -->                             
@@ -222,34 +224,32 @@
                             <!-- blog-article -->                             
                         </div>
                         <!-- col -->                         
-                        <div class="col-sm-3"> 
+                        <div class="col-md-3"> 
+                          <div class="widget widget-search"> 
+                                <form name="search" method="get" action="#"> 
+                                    <fieldset> 
+                                        <input type="text" name="search" placeholder="Search"> 
+                                        <input class="btn btn-default" type="submit" name="submit" value=""> 
+                                    </fieldset>                                     
+                                </form>                                 
+                            </div>
                             <div class="widget widget-recent-posts"> 
-                                <h3 class="widget-title">Recent Posts</h3> 
+                                <h3 class="widget-title">Recent Blogs</h3> 
                                 <ul> 
+                                <?php
+                                $bret=mysqli_query($conn,"select * from blogs order by blog_id desc limit 4");
+                                while($bret2=mysqli_fetch_array($bret)){
+                                ?>
                                     <li> 
-                                        <img src="images/blog/blog-post/post-1.jpg" alt=""> 
-                                        <a class="post-title" href="#">Best in photography</a> 
-                                        <p class="post-date">March 05, 2015</p> 
-                                    </li>                                     
-                                    <li> 
-                                        <img src="images/blog/blog-post/post-2.jpg" alt=""> 
-                                        <a class="post-title" href="#">Case study-design</a> 
-                                        <p class="post-date">March 04, 2015</p> 
-                                    </li>                                     
-                                    <li> 
-                                        <img src="images/blog/blog-post/post-3.jpg" alt=""> 
-                                        <a class="post-title" href="#">How to take a photo</a> 
-                                        <p class="post-date">March 03, 2015</p> 
-                                    </li>                                     
-                                    <li> 
-                                        <img src="images/blog/blog-post/post-4.jpg" alt=""> 
-                                        <a class="post-title" href="#">Work hard</a> 
-                                        <p class="post-date">March 02, 2015</p> 
-                                    </li>                                     
+                                        <img src="Console/Blog/<?php echo $bret2['blog_image'];?>" alt="" style="max-height: 60px;max-width: 60px;min-height: 60px;min-width: 60px"> 
+                                        <a class="post-title" href="blog-post.php?Blog_id=<?php echo $bret2['blog_id']?>"><?php echo $bret2['blog_title'];?></a> 
+                                        <p class="post-date"><?php echo $bret2['datetime'];?></p> 
+                                    </li> 
+                                    <?php } ?>                            
                                 </ul>                                 
                             </div>
                             <!-- widget-recent-posts -->                             
-                            <div class="widget widget-categories"> 
+                            <!-- <div class="widget widget-categories"> 
                                 <h3 class="widget-title">Categories</h3> 
                                 <ul> 
                                     <li>
@@ -271,7 +271,7 @@
                                         <a href="#">Uncategorised</a>
                                     </li>                                     
                                 </ul>                                 
-                            </div>
+                            </div> -->
                             <!-- widget-categories -->                             
                             <div class="widget widget-tab"> 
                                 <ul class="nav nav-tabs"> 
@@ -286,21 +286,16 @@
                                     <div class="tab-pane fade in active" id="tab-1"> 
                                         <div class="widget widget-recent-posts"> 
                                             <ul> 
+                                            <?php 
+                                            $blog1=mysqli_query($conn,"select * from blogs order by rand() limit 3");
+                                            while($blog2=mysqli_fetch_array($blog1)){
+                                            ?>
                                                 <li> 
-                                                    <img src="images/blog/blog-post/post-1.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Best in photography</a> 
-                                                    <p class="post-date">March 05, 2015</p> 
-                                                </li>                                                 
-                                                <li> 
-                                                    <img src="images/blog/blog-post/post-2.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Case study-design</a> 
-                                                    <p class="post-date">March 04, 2015</p> 
-                                                </li>                                                 
-                                                <li> 
-                                                    <img src="images/blog/blog-post/post-3.jpg" alt=""> 
-                                                    <a class="post-title" href="#">How to take a photo</a> 
-                                                    <p class="post-date">March 03, 2015</p> 
-                                                </li>                                                 
+                                                    <img src="Console/Blog/<?php echo $blog2['blog_image'];?>" alt="" style="max-height: 60px;max-width: 60px;min-height: 60px;min-width: 60px"> 
+                                                    <a class="post-title" href="blog-post.php?Blog_id<?php echo $blog2['blog_id'];?>"><?php echo $blog2['blog_title'];?></a> 
+                                                    <p class="post-date"><?php echo $blog2['datetime'];?></p> 
+                                                </li> 
+                                                <?php } ?>                                         
                                             </ul>                                             
                                         </div>
                                         <!-- widget-recent-posts -->                                         
@@ -309,21 +304,16 @@
                                     <div class="tab-pane fade" id="tab-2"> 
                                         <div class="widget widget-recent-posts"> 
                                             <ul> 
+                                                <?php 
+                                            $blog1=mysqli_query($conn,"select * from blogs order by rand() limit 3");
+                                            while($blog2=mysqli_fetch_array($blog1)){
+                                            ?>
                                                 <li> 
-                                                    <img src="images/blog/blog-post/post-4.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Best in photography</a> 
-                                                    <p class="post-date">March 01, 2015</p> 
-                                                </li>                                                 
-                                                <li> 
-                                                    <img src="images/blog/blog-post/post-5.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Interior design</a> 
-                                                    <p class="post-date">February 28, 2015</p> 
-                                                </li>                                                 
-                                                <li> 
-                                                    <img src="images/blog/blog-post/post-6.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Header hero</a> 
-                                                    <p class="post-date">February 27, 2015</p> 
-                                                </li>                                                 
+                                                    <img src="Console/Blog/<?php echo $blog2['blog_image'];?>" alt="" style="max-height: 60px;max-width: 60px;min-height: 60px;min-width: 60px"> 
+                                                    <a class="post-title" href="blog-post.php?Blog_id<?php echo $blog2['blog_id'];?>"><?php echo $blog2['blog_title'];?></a> 
+                                                    <p class="post-date"><?php echo $blog2['datetime'];?></p> 
+                                                </li> 
+                                                <?php } ?>                                                
                                             </ul>                                             
                                         </div>
                                         <!-- widget-recent-posts -->                                         
@@ -333,22 +323,15 @@
                                 <!-- tab-content -->                                 
                             </div>
                             <!-- widget-tab -->                             
-                            <div class="widget widget-search"> 
-                                <form name="search" method="get" action="#"> 
-                                    <fieldset> 
-                                        <input type="text" name="search" placeholder="Search"> 
-                                        <input class="btn btn-default" type="submit" name="submit" value=""> 
-                                    </fieldset>                                     
-                                </form>                                 
-                            </div>
+                          
                             <!-- widget-search -->                             
-                            <div class="widget widget-flickr"> 
+                            <!-- <div class="widget widget-flickr"> 
                                 <h3 class="widget-title">Flickr</h3> 
                                 <div class="flickr-photos"> 
                                     <script src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08"></script>                                     
                                 </div>
-                                <!-- flickr-photos -->                                 
-                            </div>
+                                <!-- flickr-photos ->                                 
+                            </div> -->
                             <!-- widget-flickr -->                             
                             <div class="widget widget-text"> 
                                 <h3 class="widget-title">Quote of the day</h3> 
@@ -386,14 +369,14 @@
                 <section class="full-section" id="section-8"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-11"> 
+                            <div class="col-md-11"> 
                                 <div class="widget widget-twitter"> 
                                     <div id="tweet"></div>                                     
                                 </div>
                                 <!-- end .widget-twitter-->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-1"> 
+                            <div class="col-md-1"> 
                                 <div id="twitter-slider-controls"> 
                                     <span id="twitter-slider-prev"></span> 
                                     <span id="twitter-slider-next"></span> 
@@ -416,7 +399,7 @@
                 <div id="footer"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-text"> 
                                     <h3 class="widget-title">About MMS</h3> 
                                     <p>Lorem ipsum dolor sit amet unde ligula, sodales et quam non, omis finibus eros. Pharetra nulla lactus arcu non, 
@@ -435,7 +418,7 @@
                                 <!-- widget-newsletter -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-latest-news"> 
                                     <h3 class="widget-title">Latest news</h3> 
                                     <ul> 
@@ -457,7 +440,7 @@
                                 <!-- widget-recent-posts -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-flickr"> 
                                     <h3 class="widget-title">Flickr</h3> 
                                     <div class="flickr-photos"> 
@@ -470,7 +453,7 @@
                                 <!-- widget-flickr -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-contact"> 
                                     <h3 class="widget-title">Contact Us</h3> 
                                     <ul> 
@@ -506,7 +489,7 @@
                 <div id="footer-bottom"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-12"> 
+                            <div class="col-md-12"> 
                                 <div class="widget widget-text"> 
                                     <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">Mms</span> <span class="text-lowercase"> template.</span></p> 
                                 </div>
