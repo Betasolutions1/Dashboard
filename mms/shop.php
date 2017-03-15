@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
-        <title>MILO - Clean &amp; Modern Multipurpose Template</title>         
+        <title>MILO - Clean &amp; My Multi Solution</title>         
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -127,6 +127,8 @@
                 </div>
                 <!-- page-header -->                 
                 <div class="container"> 
+                <div class="row">
+                    <div class="col-md-9">
                     <div class="row"> 
                         <div class="col-md-3"> 
                             <div class="blog-article"> 
@@ -213,11 +215,9 @@
                          
                         <!-- col -->                         
                     </div>
-                    <!-- row -->                     
-                </div>
-                <!-- ontainer -->                 
-                <div class="container"> 
-                    <div class="row"> 
+
+
+                     <div class="row"> 
                         <div class="col-md-3"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
@@ -303,6 +303,42 @@
                         </div>
                         <!--col-->
                     </div>
+
+
+                        
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="widget widget-categories"> 
+                                <h3 class="widget-title">Categories</h3> 
+                                <ul> 
+                                    <li>
+                                        <a href="#">Photgraphy</a>
+                                    </li>                                     
+                                    <li>
+                                        <a href="#">Business</a>
+                                    </li>                                     
+                                    <li>
+                                        <a href="#">Graphic design</a>
+                                    </li>                                     
+                                    <li>
+                                        <a href="#">Entertainment</a>
+                                    </li>                                     
+                                    <li>
+                                        <a href="#">Living &amp; Travel</a>
+                                    </li>                                     
+                                    <li>
+                                        <a href="#">Uncategorised</a>
+                                    </li>                                     
+                                </ul>                                 
+                            </div>
+                    </div>
+                </div>
+                    <!-- row -->                     
+                </div>
+                <!-- ontainer -->                 
+                <div class="container"> 
+                   
                     <!-- row -->                     
                 </div>
                 <!-- ontainer -->                 
