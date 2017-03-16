@@ -1,3 +1,8 @@
+<?php
+include 'Console/config.php';
+session_start();
+error_reporting(0);
+?>
 <!doctype html> 
 <html> 
     <head> 
@@ -60,40 +65,68 @@
                             <!-- search-container -->                             
                             <a class="search-button" href="#"></a> 
                             <!-- MENU -->                             
-                            <nav> 
+                           <nav> 
                                 <a id="mobile-menu-button" href="#"><i class="fa fa-bars"></i></a> 
                                 <ul class="menu clearfix" id="menu"> 
-                                    <li class="active"> 
+                                    <li > 
                                         <a href="index.php">Home</a> 
                                     </li>                                     
                                     <li>
                                         <a href="about-us.php">About</a>
                                     </li>                                     
                                     <li class="dropdown"> 
-                                        <a href="services.php">Services</a> 
+                                        <a href="services1.php">Services</a> 
                                         <ul> 
                                             <li>
-                                                <a href="services.php">Education</a>
+                                                <a href="services1.php">Education</a>
                                             </li>                                             
                                             <li>
-                                                <a href="services.php">Mobile</a>
+                                                <a href="services2.php">Mobile</a>
                                             </li>                                             
                                             <li>
-                                                <a href="services.php">IT</a>
+                                                <a href="services3.php">IT</a>
                                             </li>                                             
                                         </ul>                                         
                                     </li>                                     
                                     <li class=""> 
                                         <a href="blog-columns.php">Blog</a> 
                                     </li>
-                                    <li>
-                                        <a href="#">shop</a>
-                                    </li>                                     
+                                    <li class="active">
+                                        <a href="shop.php">shop</a>
+                                    </li> 
+                                     <li class="dropdown "> 
+                                        <a href="">Pages</a> 
+                                        <ul> 
+                                        <?php
+                                        if(!$_SESSION['MMS_User'])
+										{
+										?>
+                                            <li>
+                                                <a href="login.php">Login</a>
+                                            </li>                                             
+                                            <li>
+                                                <a href="register.php">Register</a>
+                                            </li> 
+                                            <?php
+										}else{
+											?>                                            
+                                            <li>
+                                                <a href="Myaccount.php">My Account</a>
+                                            </li>
+                                            <li>
+                                                <a href="logout.php">Logout</a>
+                                            </li> 
+                                            <?php
+										}
+											?>                                            
+                                        </ul>                                         
+                                    </li>                                          
                                     <li class=""> 
                                         <a href="contact.php">Contact</a>
-                                    </li>                                     
+                                    </li>  
+                                    <li><a href="Cart.php" style="font-size:20px;"><i class="fa fa-shopping-cart"></i></a></li>                                   
                                 </ul>                                 
-                            </nav>                            
+                            </nav>                               
                         </div>
                         <!-- col -->                         
                     </div>
@@ -108,7 +141,7 @@
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-6"> 
-                                <h4>Services</h4> 
+                                <h4>Cart</h4> 
                             </div>
                             <!-- col -->                             
                             <div class="col-sm-6"> 
@@ -116,7 +149,7 @@
                                     <li>
                                         <a href="index.php">Home</a>
                                     </li>                                     
-                                    <li class="active">Services</li>                                     
+                                    <li class="active">Cart</li>                                     
                                 </ol>                                 
                             </div>
                             <!-- col -->                             
@@ -131,7 +164,7 @@
                         <div class="col-sm-12"> 
                             <div class="headline style-3"> 
                                 <h5>All in one</h5> 
-                                <h2>Services</h2> 
+                                <h2>Cart</h2> 
                                 <p>Temporibus autem quibusdam et aut officiis debitis aut rerum</p> 
                             </div>
                             <!-- headline -->                             
@@ -141,63 +174,90 @@
                     <!-- row -->                     
                 </div>
                 <!-- ontainer -->                 
-                <div class="container"> 
-                    <div class="row"> 
-                        <div class="col-sm-4"> 
-                            <div class="services-boxes style-2 wow fadeInDown"> 
-                                <div class="services-boxes-content"> 
-                                    <h3> <a href="single-service.php">Retina Ready</a> <small>Nice &amp; Clean</small> </h3> 
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem 
-                                aperiam, eaque ipsa.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                        <div class="col-sm-4"> 
-                            <div class="services-boxes style-2 wow fadeInDown" data-wow-delay="0.3s"> 
-                                <div class="services-boxes-content"> 
-                                    <h3> <a href="single-service.php">E-commerce</a> <small>New project</small> </h3> 
-                                    <p>Praesent volutpat libero justo, ac ornare dui aliquet fermentum. Suspendisse dolor tellus, cursus at sapien ac 
-                                porttitor sed nibh.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                        <div class="col-sm-4"> 
-                            <div class="services-boxes style-2 wow fadeInDown" data-wow-delay="0.6s"> 
-                                <div class="services-boxes-content"> 
-                                    <h3> <a href="single-service.php">Web developing</a> <small>We are the best</small> </h3> 
-                                    <p>Quisque pharetra egestas libero ut congue. Curabitur justo enim, malesuada quis purus eget, porta porttitor mauris
-                                dolor amet.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                    </div>
-                    <!-- row -->                     
-                </div>
+                
                 <!-- ontainer -->                 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-4"> 
+                        <div class="col-sm-12"> 
                             <div class="services-boxes style-2 wow fadeInDown"> 
-                                <div class="services-boxes-content"> 
-                                    <h3> <a href="single-service.php">Project managing</a> <small>All you need</small> </h3> 
-                                    <p>Curabitur nulla tellus, suscipit sit amet fringilla vel, porttitor sed nibh. Proin lacinia mi eget ultricies porta. 
-                                porttitor elit dolor unde.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
+                               <table class="table">
+                               <tbody>
+                               <tr>
+                               <th>Ctegory Name</th><th>Product Name</th><th>Product Image</th><th>Quntity</th><th>Price</th><th>Total Price</th>
+                               <th>Action</th>
+                               </tr>
+                                <?php
+                            $cart_dis_exe=mysqli_query($conn,"select * from cart where customer_id='$_SESSION[User_id]' AND status='0'");
+							while($csrt_pdts=mysqli_fetch_array($cart_dis_exe))
+							{
+								
+										$products_exe=mysqli_query($conn,"select * from product where product_id='$csrt_pdts[product_id]'");
+										$prd_name=mysqli_fetch_array($products_exe);
+										
+                                        $cate_name_exe=mysqli_query($conn,"select * from category where category_id='$prd_name[category_id]'");
+										$cate_name=mysqli_fetch_array($cate_name_exe);
+										
+							?>
+                               <tr>
+                               <td><?php echo $cate_name['category_name'];?></td>
+                               <td><?php echo $prd_name['product_name'];?></td>
+                               <td><img src="Console/product/<?php echo $prd_name['product_image'];?>" style="height:100px;width:100px;"></td>
+                               <td><?php echo $csrt_pdts['product_qty'];?></td>
+                               <td><?php echo $csrt_pdts['product_price'];?></td>
+                               <td><?php echo $csrt_pdts['product_price'];?></td>
+                               <td><a href="backend.php?cart_id=<?php echo $csrt_pdts['cart_id'];?>"><i class="fa fa-close"></i></a></td>
+                               </tr>
+                               <?php
+							}
+							   ?>
+                               <tr>
+                               <?php
+                               $total_amt=mysqli_query($conn,"select SUM(product_price)as total_amt,SUM(product_qty)as total_qty from cart where customer_id='$_SESSION[User_id]' AND status='0'");
+							   $get_total=mysqli_fetch_array($total_amt);
+							   ?>
+                               <td align="right" colspan="5">Sub Total</td>
+                               <td align="left" colspan="2"><i class="fa fa-inr"><?php echo $get_total['total_amt'];?></td>
+                               </tr>
+                               <tr>
+                               <?php
+                              // $tax_total=$get_total*(2/100);
+							   ?>
+                               <td align="right" colspan="5">Tax(2%)</td>
+                               <td align="left" colspan="2"><i class="fa fa-inr"><?php echo $tax_total;?></td>
+                               </tr>
+                               <tr>
+                              
+                               <td align="right" colspan="5">Shipping Charges</td>
+                               <td align="left" colspan="2"><i class="fa fa-inr"></i>200</td>
+                               </tr>
+                               <tr>
+                               <?php
+                              // $grand_total=$get_total+$tax_total+200;
+							   ?>
+                               <td align="right" colspan="5">Grand Total</td>
+                               <td align="left" colspan="2"><i class="fa fa-inr"></i><?php echo $grand_total;?></td>
+                               </tr>
+                               <tr>
+                               <td align="right" colspan="7">
+                               <?php
+                               $order_cart_exe=mysqli_query($conn,"Select ")
+							   ?>
+                               <form method="post" action="backend.php">
+                               <input type="hidden" name="order_cust_id" value="<?php echo $_SESSION['User_id'];?>">
+                               <input type="hidden" name="order_prd_qty" value="<?php echo $get_total['total_qty'];?>">
+                               <input type="hidden" name="order_amount" value="<?php echo $get_total['total_amt'];?>">
+                               <button class="btn btn-default" name="place_order" type="submit">Place Order</button>
+                               </form>
+                               </td>
+                               </tr>
+                               </tbody>
+                               </table> 
+                                                   
                             </div>
                             <!-- services-boxes -->                             
                         </div>
                         <!-- col -->                         
-                        <div class="col-sm-4"> 
+                       <?php /*?> <div class="col-sm-4"> 
                             <div class="services-boxes style-2 wow fadeInDown" data-wow-delay="0.3s"> 
                                 <div class="services-boxes-content"> 
                                     <h3> <a href="single-service.php">Mind Blowing design</a> <small>Modern and clean</small> </h3> 
@@ -207,9 +267,9 @@
                                 <!-- services-boxes-content -->                                 
                             </div>
                             <!-- services-boxes -->                             
-                        </div>
+                        </div><?php */?>
                         <!-- col -->                         
-                        <div class="col-sm-4"> 
+                      <?php /*?>  <div class="col-sm-4"> 
                             <div class="services-boxes style-2 wow fadeInDown" data-wow-delay="0.6s"> 
                                 <div class="services-boxes-content"> 
                                     <h3> <a href="single-service.php">Responsive Design</a> <small>On all devices</small> </h3> 
@@ -219,21 +279,21 @@
                                 <!-- services-boxes-content -->                                 
                             </div>
                             <!-- services-boxes -->                             
-                        </div>
+                        </div><?php */?>
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
                 </div>
                 <!-- ontainer -->                 
-                <section class="full-section parallax" id="section-5"> 
+              <?php /*?>  <section class="full-section parallax" id="section-5"> 
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-12"> 
                                 <div class="process-steps process-6-steps clearfix"> 
                                     <div class="step"> 
-                                        <i class="miu-icon-editor_books_library_collection_outline_stroke"></i> 
+                                        <i class="fa fa-file-image-o"></i> 
                                         <div class="step-details"> 
-                                            <h5>Land project</h5> 
+                                            <h5>Category Name</h5> 
                                         </div>
                                         <!-- step-details -->                                         
                                     </div>
@@ -241,7 +301,7 @@
                                     <div class="step"> 
                                         <i class="miu-icon-editor_document_file_2_outline_stroke"></i> 
                                         <div class="step-details"> 
-                                            <h5>Make plans</h5> 
+                                            <h5>Prosuct Name</h5> 
                                         </div>
                                         <!-- step-details -->                                         
                                     </div>
@@ -249,7 +309,7 @@
                                     <div class="step"> 
                                         <i class="miu-icon-device_volume_loudspeaker_speaker_down_outline_stroke"></i> 
                                         <div class="step-details"> 
-                                            <h5>Ideas</h5> 
+                                            <h5>Product Image</h5> 
                                         </div>
                                         <!-- step-details -->                                         
                                     </div>
@@ -257,7 +317,7 @@
                                     <div class="step"> 
                                         <i class="miu-icon-device_power_outline_stroke"></i> 
                                         <div class="step-details"> 
-                                            <h5>Work hard</h5> 
+                                            <h5>Quantity</h5> 
                                         </div>
                                         <!-- step-details -->                                         
                                     </div>
@@ -265,7 +325,7 @@
                                     <div class="step"> 
                                         <i class="miu-icon-common_star_favorite_bookmark_outline_stroke"></i> 
                                         <div class="step-details"> 
-                                            <h5>See results</h5> 
+                                            <h5>Price</h5> 
                                         </div>
                                         <!-- step-details -->                                         
                                     </div>
@@ -273,7 +333,7 @@
                                     <div class="step"> 
                                         <i class="miu-icon-food-drink_cocktail_wine_glass_outing_drink_outline_stroke"></i> 
                                         <div class="step-details"> 
-                                            <h5>Enjoy</h5> 
+                                            <h5>Total Price</h5> 
                                         </div>
                                         <!-- step-details -->                                         
                                     </div>
@@ -281,14 +341,87 @@
                                 </div>
                                 <!-- porcess-steps -->                                 
                             </div>
+                            <!--cart Display-->
+                            <?php
+                            $cart_dis_exe=mysqli_query($conn,"select * from cart where customer_id='$_SESSION[User_id]' AND status='0'");
+							while($csrt_pdts=mysqli_fetch_array($cart_dis_exe))
+							{
+							?>
+                             <div class="col-sm-12"> 
+                                <div class="process-steps process-6-steps clearfix"> 
+                                    <div class="step"> 
+                                       <!-- <i class="fa fa-file-image-o"></i>--> 
+                                        <div class="step-details">
+                                         <?php 
+										$products_exe=mysqli_query($conn,"select * from product where product_id='$csrt_pdts[product_id]'");
+										$prd_name=mysqli_fetch_array($products_exe);
+										?> 
+                                        <?php
+                                        $cate_name_exe=mysqli_query($conn,"select * from category where category_id='$prd_name[category_id]'");
+										$cate_name=mysqli_fetch_array($cate_name_exe);
+										?> 
+                                            <h5><?php echo $cate_name['category_name'];?></h5> 
+                                        </div>
+                                        <!-- step-details -->                                         
+                                    </div>
+                                    <!-- step -->                                     
+                                    <div class="step"> 
+                                       <!-- <i class="miu-icon-editor_document_file_2_outline_stroke"></i> -->
+                                        <div class="step-details">
+                                       
+                                            <h5><?php echo $prd_name['product_name'];?></h5> 
+                                        </div>
+                                        <!-- step-details -->                                         
+                                    </div>
+                                    <!-- step -->                                     
+                                    <div class="step">
+                                    <!--class="miu-icon-device_volume_loudspeaker_speaker_down_outline_stroke"--> 
+                                        
+                                        <div class="step-details"> 
+                                            <h5><img src="Console/product/<?php echo $prd_name['product_image'];?>"></h5> 
+                                        </div>
+                                        <!-- step-details -->                                         
+                                    </div>
+                                    <!-- step -->                                     
+                                    <div class="step"> 
+                                        <!--<i class="miu-icon-device_power_outline_stroke"></i>--> 
+                                        <div class="step-details"> 
+                                            <h5><?php echo $csrt_pdts['product_qty'];?></h5> 
+                                        </div>
+                                        <!-- step-details -->                                         
+                                    </div>
+                                    <!-- step -->                                     
+                                    <div class="step"> 
+                                        <!--<i class="miu-icon-common_star_favorite_bookmark_outline_stroke"></i> -->
+                                        <div class="step-details"> 
+                                            <h5><?php echo $csrt_pdts['product_price'];?></h5> 
+                                        </div>
+                                        <!-- step-details -->                                         
+                                    </div>
+                                    <!-- step -->                                     
+                                    <div class="step"> 
+                                        <!--<i class="miu-icon-food-drink_cocktail_wine_glass_outing_drink_outline_stroke"></i> -->
+                                        <div class="step-details"> 
+                                        
+                                            <h5><?php echo $csrt_pdts['product_price'];?></h5> 
+                                        </div>
+                                        <!-- step-details -->                                         
+                                    </div>
+                                    <!-- step -->                                     
+                                </div>
+                                <!-- porcess-steps -->                                 
+                            </div>
+                            <?php
+							}
+							?>
                             <!-- col -->                             
                         </div>
                         <!-- row -->                         
                     </div>
                     <!-- ontainer -->                     
-                </section>
+                </section><?php */?>
                 <!-- full-section -->                 
-                <div class="container"> 
+               <?php /*?> <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-6"> 
                             <div class="services-boxes style-3 icon-right wow fadeInLeft"> 
@@ -318,103 +451,13 @@
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
-                </div>
+                </div><?php */?>
                 <!-- ontainer -->                 
-                <div class="container"> 
-                    <div class="row"> 
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-right wow fadeInLeft"> 
-                                <i class="miu-icon-business_coins_money_stack_salary_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">Revolution slider</a></h3> 
-                                    <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo 
-								inventore.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-left wow fadeInRight"> 
-                                <i class="miu-icon-device_board_presentation_content_text_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">Video background</a></h3> 
-                                    <p>Pellentesque faucibus urna nec quam placerat tincidunt. Praesent mauris lacus, tincidunt non arcu in, sodales congue 
-								enim felis nec viverra.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                    </div>
-                    <!-- row -->                     
-                </div>
+              
                 <!-- ontainer -->                 
-                <div class="container"> 
-                    <div class="row"> 
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-right wow fadeInLeft"> 
-                                <i class="miu-icon-common_star_favorite_bookmark_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">Retina ready</a></h3> 
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-								eaque ipsa.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-left wow fadeInRight"> 
-                                <i class="miu-icon-device_tablets_ipads_horizontal_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">Ultra responsive</a></h3> 
-                                    <p>Maecenas sit amet gravida velit, in ultrices felis. Pellentesque habitant morbi tristique senectus et netus et 
-								malesuada fames ac turpis egestas.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                    </div>
-                    <!-- row -->                     
-                </div>
+               
                 <!-- container -->                 
-                <div class="container"> 
-                    <div class="row"> 
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-right wow fadeInLeft"> 
-                                <i class="miu-icon-editor_document_file_2_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">All elements included</a></h3> 
-                                    <p>Nulla mollis eu neque eu ornare. Proin eget placerat massa, ac maximus massa. Nullam bibendum et velit sed volutpat 
-									rutrum nibh.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-left wow fadeInRight"> 
-                                <i class="miu-icon-other_review_comment_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">24H Support</a></h3> 
-                                    <p>Aenean malesuada condimentum nisl, eu posuere leo porta sodales. Quisque semper faucibus nisl in maximus. Morbi blandit
-									eget risus ut aliquam.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                    </div>
-                    <!-- row -->                     
-                </div>
+              
                 <!-- container -->                 
                 <section class="full-section" id="section-6"> 
                     <div class="container"> 

@@ -11,7 +11,7 @@ error_reporting(0);
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0"> 
         <meta name="keywords" content=""> 
         <meta name="description" content=""> 
-        <title>MMS -  My Multi Solutions</title>         
+        <title>MMS -  My Multi Solution</title>         
         <!-- FAVICON AND APPLE TOUCH -->         
         <link rel="shortcut icon" href="images/icons/favicon.png"> 
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="images/icons/apple-touch-57x57.png"> 
@@ -39,7 +39,7 @@ error_reporting(0);
         <!-- CUSTOM & PAGES STYLE -->         
         <link rel="stylesheet" href="assets/css/custom.css"> 
         <link rel="stylesheet" href="assets/css/pages-style.css"> 
-         <script type="text/javascript">
+        <script type="text/javascript">
 		function get_credential_func()
 		{
 			document.getElementById('cart_log').style.display='block';
@@ -52,14 +52,14 @@ error_reporting(0);
             <header> 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-2"> 
+                        <div class="col-md-2"> 
                             <!-- LOGO -->                             
                             <a id="logo" href="index-slider.html"> 
                                 <img src="images/backgrounds/logo.png" alt=""> 
                             </a>                             
                         </div>
                         <!-- col -->                         
-                        <div class="col-sm-10"> 
+                        <div class="col-md-10"> 
                             <!-- SEARCH -->                             
                             <div id="search-container"> 
                                 <form id="search-form" name="search-form" method="get" action="#"> 
@@ -71,10 +71,10 @@ error_reporting(0);
                             <!-- search-container -->                             
                             <a class="search-button" href="#"></a> 
                             <!-- MENU -->                             
-                           <nav> 
+                            <nav> 
                                 <a id="mobile-menu-button" href="#"><i class="fa fa-bars"></i></a> 
                                 <ul class="menu clearfix" id="menu"> 
-                                    <li> 
+                                    <li > 
                                         <a href="index.php">Home</a> 
                                     </li>                                     
                                     <li>
@@ -94,13 +94,13 @@ error_reporting(0);
                                             </li>                                             
                                         </ul>                                         
                                     </li>                                     
-                                    <li > 
+                                    <li class=""> 
                                         <a href="blog-columns.php">Blog</a> 
                                     </li>
                                     <li class="active">
                                         <a href="shop.php">shop</a>
-                                    </li>
-                                     <li class="dropdown"> 
+                                    </li> 
+                                     <li class="dropdown "> 
                                         <a href="">Pages</a> 
                                         <ul> 
                                         <?php
@@ -120,18 +120,21 @@ error_reporting(0);
                                                 <a href="Myaccount.php">My Account</a>
                                             </li>
                                             <li>
+                                                <a href="Cart.php">My Cart</a>
+                                            </li>
+                                            <li>
                                                 <a href="logout.php">Logout</a>
                                             </li> 
                                             <?php
 										}
 											?>                                            
                                         </ul>                                         
-                                    </li>                                           
+                                    </li>                                          
                                     <li class=""> 
                                         <a href="contact.php">Contact</a>
                                     </li>                                     
                                 </ul>                                 
-                            </nav>                          
+                            </nav>                            
                         </div>
                         <!-- col -->                         
                     </div>
@@ -145,19 +148,16 @@ error_reporting(0);
                 <div id="page-header"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-6"> 
+                            <div class="col-md-6"> 
                                 <h4>Shop</h4> 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-6"> 
+                            <div class="col-md-6"> 
                                 <ol class="breadcrumb"> 
                                     <li>
                                         <a href="index.php">Home</a>
                                     </li>                                     
-                                    <li>
-                                        <a href="shop.php">Shop</a>
-                                    </li>                                     
-                                    <li class="active">Shop Description</li>                                     
+                                    <li class="active">Shop</li>                                     
                                 </ol>                                 
                             </div>
                             <!-- col -->                             
@@ -168,29 +168,33 @@ error_reporting(0);
                 </div>
                 <!-- page-header -->                 
                 <div class="container"> 
+                <div class="row">
+                    <div class="col-md-9">
                     <div class="row"> 
                     <?php
-                    $disng_produ=mysqli_query($conn,"select * from product where product_id='$_GET[Products]'");
-					$sing_dis=mysqli_fetch_array($disng_produ);
+                    $product_dis_exe=mysqli_query($conn,"select * from product where category_id='$_GET[Category]'");
+					while($products=mysqli_fetch_array($product_dis_exe))
+					{
+						$product_desc=strip_tags($products['product_desc']);
+						$description=substr($product_desc,0,75);
 					?>
-                        <div class="col-sm-9"> 
+                        <div class="col-md-3"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
-                                    <img src="Console/product/<?php echo $sing_dis['product_image'];?>" alt=""> 
+                                <!--style="width:360px;height:325px;"-->
+                                    <img src="Console/product/<?php echo $products['product_image'];?>"  alt=""> 
                                     <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="Console/product/<?php echo $sing_dis['product_image'];?>"><i class="fa fa-eye"></i></a> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="Console/product/<?php echo $products['product_image'];?>"><i class="fa fa-eye"></i></a> 
                                     </div>
                                     <!-- blog-article-hover -->                                     
                                 </div>
                                 <!-- blog-article-thumbnail -->                                 
                                 <div class="blog-article-details"> 
-                                    <h4><?php echo $sing_dis['product_name'];?></h4> 
-                                    <h2><a href="#">Price:<i class="fa fa-inr"></i> <?php echo $sing_dis['product_price'];?></a></h2> 
-                                    <!--<p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">2</a> </p> -->
+                                    <h6><a href="shop-desc.php?Products=<?php echo $products['product_id'];?>"><?php echo $products['product_name'];?></a></h6> 
+                                    <h4><a href="shop-desc.php?Products=<?php echo $products['product_id'];?>">Price: <i class="fa fa-inr"></i><?php echo $products['product_price'];?></a></h4> 
                                 </div>
                                 <!-- blog-article-details -->                                 
-                                <p><?php echo $sing_dis['product_desc'];?></p> 
-                                <!--<a class="btn btn-default" href="blog-post.php">Continue reading</a>--> 
+                                <p><?php echo $description;?>.&nbsp;<a href="shop-desc.php?Products=<?php echo $products['product_id'];?>">Read more</a><br></p> 
                                 <?php 
 								if($_SESSION['User_id'])
 								{
@@ -213,105 +217,173 @@ error_reporting(0);
 								?>
                             </div>
                             <!-- blog-article -->                             
-                            <!-- <div class="blog-article"> 
-                                <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-2.jpg" alt=""> 
-                                    <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-2.jpg"><i class="fa fa-eye"></i></a> 
-                                    </div>
-                                    <!-- blog-article-hover ->                                     
-                                </div>
-                                <!-- blog-article-thumbnail ->                                 
-                                <div class="blog-article-details"> 
-                                    <h4>4 March 2015</h4> 
-                                    <h2><a href="blog-post.html">This years marketing</a></h2> 
-                                    <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">4</a> </p> 
-                                </div>
-                                <!-- blog-article-details ->                                 
-                                <p>Aliquam mollis iaculis blandit. Mauris pretium nisl et eleifend viverra. Morbi massa dui, porta vitae ipsum eget, 
-                            ullamcorper placerat erat. Integer maximus sapien eu risus eleifend vehicula. Maecenas commodo dignissim ipsum quis 
-                            consequat. Sed viverra, tellus molestie sagittis porttitor, felis est auctor nisl, ut pellentesque odio nulla sit amet 
-                            eros. Aliquam ullamcorper semper tincidunt. Proin id urna nisl. </p> 
-                                <a class="btn btn-default" href="blog-post.html">Continue reading</a> 
-                            </div> -->
-                            <!-- blog-article --                             
+                        </div>
+                        <?php
+					}
+						?>
+                        <!-- col -->                         
+                       <?php /*?> <div class="col-md-3"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-3.jpg" alt=""> 
+                                    <img src="images/blog/image-6.jpg" alt=""> 
                                     <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-3.jpg"><i class="fa fa-eye"></i></a> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-6.jpg"><i class="fa fa-eye"></i></a> 
                                     </div>
-                                    <!-- blog-article-hover ->                                     
+                                    <!-- blog-article-hover -->                                     
                                 </div>
-                                <!-- blog-article-thumbnail ->                                 
+                                <!-- blog-article-thumbnail -->                                 
                                 <div class="blog-article-details"> 
-                                    <h4>3 March 2015</h4> 
-                                    <h2><a href="blog-post.html">Interior design trends</a></h2> 
-                                    <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">7</a> </p> 
+                                    <h6>4 March 2015</h6> 
+                                    <h4><a href="shop-desc.php">2015 new design trends</a></h4> 
                                 </div>
-                                <!-- blog-article-details --                                 
-                                <p>Etiam sagittis dictum metus at tempor. Sed laoreet aliquam purus, vel laoreet purus viverra sit amet. Nullam venenatis 
-                            vulputate nisi id maximus. Cras ullamcorper mattis ante dapibus rhoncus. Sed a urna in arcu sagittis pretium eget sit amet 
-                            est. Vestibulum lectus quam, aliquet a libero sed, sollicitudin hendrerit leo. Donec nec aliquam mi. Nulla sagittis finibus 
-                            sodales. Nullam egestas iaculis felis id sagittis. </p> 
-                                <a class="btn btn-default" href="blog-post.html">Continue reading</a> 
+                                <!-- blog-article-details -->                                 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.Lorem ipsum dolor sit amet, consectetur<br></p> 
+                                <a class="btn btn-default" href="shop-desc.php">Read more</a>
                             </div>
-                            <!-- blog-article ->                             
+                            <!-- blog-article -->                             
+                        </div><?php */?>
+                        <!-- col -->                         
+                      <?php /*?>  <div class="col-md-3"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-4.jpg" alt=""> 
+                                    <img src="images/blog/image-7.jpg" alt=""> 
                                     <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-4.jpg"><i class="fa fa-eye"></i></a> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-7.jpg"><i class="fa fa-eye"></i></a> 
                                     </div>
-                                    <!-- blog-article-hover ->                                     
+                                    <!-- blog-article-hover -->                                     
                                 </div>
-                                <!-- blog-article-thumbnail ->                                 
+                                <!-- blog-article-thumbnail -->                                 
                                 <div class="blog-article-details"> 
-                                    <h4>3 March 2015</h4> 
-                                    <h2><a href="blog-post.html">New trend in 2015. header hero</a></h2> 
-                                    <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">5</a> </p> 
+                                    <h6>3 March 2015</h6> 
+                                    <h4><a href="shop-desc.php">interview with a great designer</a></h4> 
                                 </div>
-                                <!-- blog-article-details ->                                 
-                                <p>Integer ut neque sapien. Nulla facilisi. Vestibulum maximus laoreet justo, ut elementum orci cursus in. Sed aliquet, 
-                            ex eget pulvinar vulputate, ex ligula dignissim eros, a vestibulum lacus purus quis lacus. Duis ut varius lectus. Suspendisse 
-                            eget est sed odio egestas pharetra eu ut nisi. Aenean non varius erat. Nunc dictum eros ac blandit cursus. Curabitur et eros 
-                            urna. Fusce non eros elementum, pharetra massa ac, finibus mi. </p> 
-                                <a class="btn btn-default" href="blog-post.html">Continue reading</a> 
+                                <!-- blog-article-details -->                                 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.<br></p> 
+                                <a class="btn btn-default" href="shop-desc.php">Read more</a>
+                            </div>
+                            <!-- blog-article -->                             
+                        </div><?php */?>
+                        <?php /*?> <div class="col-md-3"> 
+                            <div class="blog-article"> 
+                                <div class="blog-article-thumbnail"> 
+                                    <img src="images/blog/image-7.jpg" alt=""> 
+                                    <div class="blog-article-hover"> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-7.jpg"><i class="fa fa-eye"></i></a> 
+                                    </div>
+                                    <!-- blog-article-hover -->                                     
+                                </div>
+                                <!-- blog-article-thumbnail -->                                 
+                                <div class="blog-article-details"> 
+                                    <h6>3 March 2015</h6> 
+                                    <h4><a href="shop-desc.php">interview with a great designer</a></h4> 
+                                </div>
+                                <!-- blog-article-details -->                                 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.<br></p> 
+                                <a class="btn btn-default" href="shop-desc.php">Read more</a>
+                            </div>
+                            <!-- blog-article -->                             
+                        </div><?php */?>
+                         
+                        <!-- col -->                         
+                    </div>
+
+
+                 <?php /*?>    <div class="row"> 
+                        <div class="col-md-3"> 
+                            <div class="blog-article"> 
+                                <div class="blog-article-thumbnail"> 
+                                    <img src="images/blog/image-5.jpg" alt=""> 
+                                    <div class="blog-article-hover"> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-5.jpg"><i class="fa fa-eye"></i></a> 
+                                    </div>
+                                    <!-- blog-article-hover -->                                     
+                                </div>
+                                <!-- blog-article-thumbnail -->                                 
+                                <div class="blog-article-details"> 
+                                    <h6>5 March 2015</h6> 
+                                    <h4><a href="shop-desc.php">Design: from thought to print</a></h4> 
+                                </div>
+                                <!-- blog-article-details -->                                 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.&nbsp;<br></p> 
+                                <a class="btn btn-default" href="shop-desc.php">Read more</a>
                             </div>
                             <!-- blog-article -->                             
                         </div>
                         <!-- col -->                         
-                        <div class="col-sm-3"> 
-                            <div class="widget widget-recent-posts"> 
-                                <h3 class="widget-title">Recent Posts</h3> 
-                                <ul> 
-                                    <li> 
-                                        <img src="images/blog/blog-post/post-1.jpg" alt=""> 
-                                        <a class="post-title" href="#">Best in photography</a> 
-                                        <p class="post-date">March 05, 2015</p> 
-                                    </li>                                     
-                                    <li> 
-                                        <img src="images/blog/blog-post/post-2.jpg" alt=""> 
-                                        <a class="post-title" href="#">Case study-design</a> 
-                                        <p class="post-date">March 04, 2015</p> 
-                                    </li>                                     
-                                    <li> 
-                                        <img src="images/blog/blog-post/post-3.jpg" alt=""> 
-                                        <a class="post-title" href="#">How to take a photo</a> 
-                                        <p class="post-date">March 03, 2015</p> 
-                                    </li>                                     
-                                    <li> 
-                                        <img src="images/blog/blog-post/post-4.jpg" alt=""> 
-                                        <a class="post-title" href="#">Work hard</a> 
-                                        <p class="post-date">March 02, 2015</p> 
-                                    </li>                                     
-                                </ul>                                 
+                        <div class="col-md-3"> 
+                            <div class="blog-article"> 
+                                <div class="blog-article-thumbnail"> 
+                                    <img src="images/blog/image-5.jpg" alt=""> 
+                                    <div class="blog-article-hover"> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-5.jpg"><i class="fa fa-eye"></i></a> 
+                                    </div>
+                                    <!-- blog-article-hover -->                                     
+                                </div>
+                                <!-- blog-article-thumbnail -->                                 
+                                <div class="blog-article-details"> 
+                                    <h6>5 March 2015</h6> 
+                                    <h4><a href="shop-desc.php">Design: from thought to print</a></h4> 
+                                </div>
+                                <!-- blog-article-details -->                                 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.&nbsp;<br></p> 
+                                <a class="btn btn-default" href="shop-desc.php">Read more</a>
                             </div>
-                            <!-- widget-recent-posts -->                             
-                            <div class="widget widget-categories"> 
+                            <!-- blog-article -->                             
+                        </div>
+                        <!-- col -->                         
+                        <div class="col-md-3"> 
+                            <div class="blog-article"> 
+                                <div class="blog-article-thumbnail"> 
+                                    <img src="images/blog/image-5.jpg" alt=""> 
+                                    <div class="blog-article-hover"> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-5.jpg"><i class="fa fa-eye"></i></a> 
+                                    </div>
+                                    <!-- blog-article-hover -->                                     
+                                </div>
+                                <!-- blog-article-thumbnail -->                                 
+                                <div class="blog-article-details"> 
+                                    <h6>5 March 2015</h6> 
+                                    <h4><a href="shop-desc.php">Design: from thought to print</a></h4> 
+                                </div>
+                                <!-- blog-article-details -->                                 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.&nbsp;<br></p> 
+                                <a class="btn btn-default" href="shop-desc.php">Read more</a>
+                            </div>
+                            <!-- blog-article -->                             
+                        </div>
+                        <!-- col --> 
+                         <div class="col-md-3"> 
+                            <div class="blog-article"> 
+                                <div class="blog-article-thumbnail"> 
+                                    <img src="images/blog/image-7.jpg" alt=""> 
+                                    <div class="blog-article-hover"> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-7.jpg"><i class="fa fa-eye"></i></a> 
+                                    </div>
+                                    <!-- blog-article-hover -->                                     
+                                </div>
+                                <!-- blog-article-thumbnail -->                                 
+                                <div class="blog-article-details"> 
+                                    <h6>3 March 2015</h6> 
+                                    <h4><a href="shop-desc.php">interview with a great designer</a></h4> 
+                                </div>
+                                <!-- blog-article-details -->                                 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.<br></p> 
+                                <a class="btn btn-default" href="shop-desc.php">Read more</a>
+                            </div>
+                            <!-- blog-article -->                             
+                        </div>
+                        <!--col-->
+                    </div><?php */?>
+
+
+                        
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="widget widget-categories"> 
                                 <h3 class="widget-title">Categories</h3> 
                                 <ul> 
-                                     <?php 
+                                <?php 
 								$dis_cate_exe=mysqli_query($conn,"select * from category");
 								while($ceteis=mysqli_fetch_array($dis_cate_exe))
 								{
@@ -321,8 +393,8 @@ error_reporting(0);
                                     </li>
                                     <?php
 								}
-									?>                                        
-                                   <!-- <li>
+									?>                                     
+                                    <!--<li>
                                         <a href="#">Business</a>
                                     </li>                                     
                                     <li>
@@ -336,116 +408,16 @@ error_reporting(0);
                                     </li>                                     
                                     <li>
                                         <a href="#">Uncategorised</a>
-                                    </li>           -->                          
+                                    </li>-->                                     
                                 </ul>                                 
                             </div>
-                            <!-- widget-categories -->                             
-                            <div class="widget widget-tab"> 
-                                <ul class="nav nav-tabs"> 
-                                    <li class="active">
-                                        <a href="#tab-1" data-toggle="tab">Popular</a>
-                                    </li>                                     
-                                    <li>
-                                        <a href="#tab-2" data-toggle="tab">Comments</a>
-                                    </li>                                     
-                                </ul>                                 
-                                <div class="tab-content"> 
-                                    <div class="tab-pane fade in active" id="tab-1"> 
-                                        <div class="widget widget-recent-posts"> 
-                                            <ul> 
-                                                <li> 
-                                                    <img src="images/blog/blog-post/post-1.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Best in photography</a> 
-                                                    <p class="post-date">March 05, 2015</p> 
-                                                </li>                                                 
-                                                <li> 
-                                                    <img src="images/blog/blog-post/post-2.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Case study-design</a> 
-                                                    <p class="post-date">March 04, 2015</p> 
-                                                </li>                                                 
-                                                <li> 
-                                                    <img src="images/blog/blog-post/post-3.jpg" alt=""> 
-                                                    <a class="post-title" href="#">How to take a photo</a> 
-                                                    <p class="post-date">March 03, 2015</p> 
-                                                </li>                                                 
-                                            </ul>                                             
-                                        </div>
-                                        <!-- widget-recent-posts -->                                         
-                                    </div>
-                                    <!-- tab-pane -->                                     
-                                    <div class="tab-pane fade" id="tab-2"> 
-                                        <div class="widget widget-recent-posts"> 
-                                            <ul> 
-                                                <li> 
-                                                    <img src="images/blog/blog-post/post-4.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Best in photography</a> 
-                                                    <p class="post-date">March 01, 2015</p> 
-                                                </li>                                                 
-                                                <li> 
-                                                    <img src="images/blog/blog-post/post-5.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Interior design</a> 
-                                                    <p class="post-date">February 28, 2015</p> 
-                                                </li>                                                 
-                                                <li> 
-                                                    <img src="images/blog/blog-post/post-6.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Header hero</a> 
-                                                    <p class="post-date">February 27, 2015</p> 
-                                                </li>                                                 
-                                            </ul>                                             
-                                        </div>
-                                        <!-- widget-recent-posts -->                                         
-                                    </div>
-                                    <!-- tab-pane -->                                     
-                                </div>
-                                <!-- tab-content -->                                 
-                            </div>
-                            <!-- widget-tab -->                             
-                            <div class="widget widget-search"> 
-                                <form name="search" method="get" action="#"> 
-                                    <fieldset> 
-                                        <input type="text" name="search" placeholder="Search"> 
-                                        <input class="btn btn-default" type="submit" name="submit" value=""> 
-                                    </fieldset>                                     
-                                </form>                                 
-                            </div>
-                            <!-- widget-search -->                             
-                            <div class="widget widget-flickr"> 
-                                <h3 class="widget-title">Flickr</h3> 
-                                <div class="flickr-photos"> 
-                                    <script src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08"></script>                                     
-                                </div>
-                                <!-- flickr-photos -->                                 
-                            </div>
-                            <!-- widget-flickr -->                             
-                            <div class="widget widget-text"> 
-                                <h3 class="widget-title">Quote of the day</h3> 
-                                <div> 
-                                    <p>Lorem ipsum dolor sit amet unde ligula, sodales et quam non, omis finibus eros. Pharetra nulla lactus arcu non, 
-                                venenatis orci pharetra. Nunc sed odio a velit placerat sit eget hendrerit elit.</p> 
-                                </div>                                 
-                            </div>
-                            <!-- widget-text -->                             
-                            <div class="widget widget-slider"> 
-                                <h3 class="widget-title">Slider</h3> 
-                                <div class="images-slider"> 
-                                    <ul> 
-                                        <li>
-                                            <img src="images/blog/blog-post/image-1.jpg" alt="">
-                                        </li>                                         
-                                        <li>
-                                            <img src="images/blog/blog-post/image-2.jpg" alt="">
-                                        </li>                                         
-                                        <li>
-                                            <img src="images/blog/blog-post/image-3.jpg" alt="">
-                                        </li>                                         
-                                    </ul>                                     
-                                </div>
-                                <!-- images-slider -->                                 
-                            </div>
-                            <!-- widget-slider -->                             
-                        </div>
-                        <!-- col -->                         
                     </div>
+                </div>
+                    <!-- row -->                     
+                </div>
+                <!-- ontainer -->                 
+                <div class="container"> 
+                   
                     <!-- row -->                     
                 </div>
                 <!-- ontainer -->                 
@@ -453,14 +425,14 @@ error_reporting(0);
                 <section class="full-section" id="section-8"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-11"> 
+                            <div class="col-md-11"> 
                                 <div class="widget widget-twitter"> 
                                     <div id="tweet"></div>                                     
                                 </div>
                                 <!-- end .widget-twitter-->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-1"> 
+                            <div class="col-md-1"> 
                                 <div id="twitter-slider-controls"> 
                                     <span id="twitter-slider-prev"></span> 
                                     <span id="twitter-slider-next"></span> 
@@ -483,7 +455,7 @@ error_reporting(0);
                 <div id="footer"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-text"> 
                                     <h3 class="widget-title">About MMS</h3> 
                                     <p>Lorem ipsum dolor sit amet unde ligula, sodales et quam non, omis finibus eros. Pharetra nulla lactus arcu non, 
@@ -502,7 +474,7 @@ error_reporting(0);
                                 <!-- widget-newsletter -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-latest-news"> 
                                     <h3 class="widget-title">Latest news</h3> 
                                     <ul> 
@@ -524,7 +496,7 @@ error_reporting(0);
                                 <!-- widget-recent-posts -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-flickr"> 
                                     <h3 class="widget-title">Flickr</h3> 
                                     <div class="flickr-photos"> 
@@ -537,21 +509,19 @@ error_reporting(0);
                                 <!-- widget-flickr -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-sm-3"> 
+                            <div class="col-md-3"> 
                                 <div class="widget widget-contact"> 
                                     <h3 class="widget-title">Contact Us</h3> 
                                     <ul> 
                                         <li> 
                                             <span>Address</span> 
                                             1713 Hide A Way Road
-
                                             <br> 
                                             San Jose, CA 95118
                                         </li>                                         
                                         <li> 
                                             <span>Phone &amp; Fax</span> 
                                             +408-267-8351
-
                                             <br> 
                                             +408-267-8344
                                         </li>                                         
@@ -573,9 +543,9 @@ error_reporting(0);
                 <div id="footer-bottom"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-sm-12"> 
+                            <div class="col-md-12"> 
                                 <div class="widget widget-text"> 
-                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">Mms</span> <span class="text-lowercase"> template.</span></p> 
+                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">MMS</span> <span class="text-lowercase"> BetaSolutions.</span></p> 
                                 </div>
                                 <!-- widget-text -->                                 
                             </div>

@@ -1,5 +1,7 @@
 <?php include("console/config.php");
 session_start();
+//$rand_value=mt_rand();
+//$_SESSION['Rand_session_id']=$rand_valuel;
 error_reporting(0);
 ?>
 <!doctype html> 
