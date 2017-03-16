@@ -30,7 +30,32 @@ if(isset($_POST['add_service']))
 	}
 }
 
+if(isset($_POST['cart_sub']))
+{
+	$ins_cart=mysqli_query($conn,"INSERT INTO `cart`( `customer_id`, `product_id`, `product_qty`, `product_price`) VALUES ('$_POST[cart_cust_id]','$_POST[cart_product_id]','$_POST[cart_pd_qty]','$_POST[cart_pd_price]')");
+	if($ins_cart)
+	{
+		echo "<script>alert('Item Inserted Into cart')</script>";
+		header("location:shop.php");
+	}
+}
+if($_GET['cart_id'])
+{
+	$del_cart_item=mysqli_query($conn,"delete from cart where cart_id='$_GET[cart_id]'");
+	if($del_cart_item)
+	{
+		echo "<script>alert('Item Deleted from Cart')</script>";
+		header("location:Cart.php");
+	}else
+	{
+		header("location:Cart.php");
+	}
+}
 
+if(isset($_POST['place_order']))
+{
+	$ins_order=mysqli_query($conn,"INSERT INTO `orders`( `customer_id`, `no_items`, `bill_amount`,  `order_date`, `dispatch_date`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])");
+}
 /*
 error_reporting (E_ALL ^ E_NOTICE);
 

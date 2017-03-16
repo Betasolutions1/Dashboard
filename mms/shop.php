@@ -39,6 +39,12 @@ error_reporting(0);
         <!-- CUSTOM & PAGES STYLE -->         
         <link rel="stylesheet" href="assets/css/custom.css"> 
         <link rel="stylesheet" href="assets/css/pages-style.css"> 
+        <script type="text/javascript">
+		function get_credential_func()
+		{
+			document.getElementById('cart_log').style.display='block';
+		}
+		</script>
     </head>     
     <body> 
         <div id="page-wrapper"> 
@@ -123,7 +129,8 @@ error_reporting(0);
                                     </li>                                          
                                     <li class=""> 
                                         <a href="contact.php">Contact</a>
-                                    </li>                                     
+                                    </li>  
+                                    <li><a href="Cart.php" style="font-size:20px;"><i class="fa fa-shopping-cart"></i></a></li>                                   
                                 </ul>                                 
                             </nav>                            
                         </div>
@@ -182,11 +189,30 @@ error_reporting(0);
                                 <!-- blog-article-thumbnail -->                                 
                                 <div class="blog-article-details"> 
                                     <h6><a href="shop-desc.php?Products=<?php echo $products['product_id'];?>"><?php echo $products['product_name'];?></a></h6> 
-                                    <h4><a href="shop-desc.php?Products=<?php echo $products['product_id'];?>">Price: <?php echo $products['product_price'];?></a></h4> 
+                                    <h4><a href="shop-desc.php?Products=<?php echo $products['product_id'];?>">Price: <i class="fa fa-inr"></i><?php echo $products['product_price'];?></a></h4> 
                                 </div>
                                 <!-- blog-article-details -->                                 
                                 <p><?php echo $description;?>.&nbsp;<a href="shop-desc.php?Products=<?php echo $products['product_id'];?>">Read more</a><br></p> 
-                                <a class="btn btn-default" href="shop-desc.php">Add Cart</a>
+                                <?php 
+								if($_SESSION['User_id'])
+								{
+								?>
+                                <form method="post" action="backend.php">
+                                <input type="hidden" name="cart_cust_id" value="<?php echo $_SESSION['User_id'];?>">
+                                <input type="hidden" name="cart_product_id" value="<?php echo $products['product_id'];?>">
+                                <input type="hidden" name="cart_pd_qty" value="1">
+                                <input type="hidden" name="cart_pd_price" value="<?php echo $products['product_price']?>">
+                                <button type="submit" class="btn btn-default" name="cart_sub">Add Cart</button>
+                                </form>
+                                <?php
+								}else
+								{
+								?>
+                                <button type="submit" class="btn btn-default" onClick="return get_credential_func();" name="cart_sub">Add Cart</button>
+                                <p id="cart_log" style="display:none;color:#D91A1D;">Please Be Login</p>
+                                <?php
+								}
+								?>
                             </div>
                             <!-- blog-article -->                             
                         </div>
@@ -194,7 +220,7 @@ error_reporting(0);
 					}
 						?>
                         <!-- col -->                         
-                        <div class="col-md-3"> 
+                       <?php /*?> <div class="col-md-3"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
                                     <img src="images/blog/image-6.jpg" alt=""> 
@@ -213,9 +239,9 @@ error_reporting(0);
                                 <a class="btn btn-default" href="shop-desc.php">Read more</a>
                             </div>
                             <!-- blog-article -->                             
-                        </div>
+                        </div><?php */?>
                         <!-- col -->                         
-                        <div class="col-md-3"> 
+                      <?php /*?>  <div class="col-md-3"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
                                     <img src="images/blog/image-7.jpg" alt=""> 
@@ -234,8 +260,8 @@ error_reporting(0);
                                 <a class="btn btn-default" href="shop-desc.php">Read more</a>
                             </div>
                             <!-- blog-article -->                             
-                        </div>
-                         <div class="col-md-3"> 
+                        </div><?php */?>
+                        <?php /*?> <div class="col-md-3"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
                                     <img src="images/blog/image-7.jpg" alt=""> 
@@ -254,13 +280,13 @@ error_reporting(0);
                                 <a class="btn btn-default" href="shop-desc.php">Read more</a>
                             </div>
                             <!-- blog-article -->                             
-                        </div>
+                        </div><?php */?>
                          
                         <!-- col -->                         
                     </div>
 
 
-                     <div class="row"> 
+                 <?php /*?>    <div class="row"> 
                         <div class="col-md-3"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
@@ -345,7 +371,7 @@ error_reporting(0);
                             <!-- blog-article -->                             
                         </div>
                         <!--col-->
-                    </div>
+                    </div><?php */?>
 
 
                         
