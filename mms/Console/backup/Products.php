@@ -200,12 +200,12 @@ if(!$_SESSION['username'])
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Select category</label>
+                                                    <label class="col-sm-2 control-label">Select Country</label>
                                                     <div class="col-sm-10">
                                                     <!--onChange="getState(this.value)"-->
                                                         <select name="category_id" class="form-control" required >
                                                        
-                                                            <option>Select Category</option>
+                                                            <option>Select Country</option>
                                                             <?php 
                                                             $res_exe=mysqli_query($conn,"select * from category");
                                                             while($res=mysqli_fetch_array($res_exe))

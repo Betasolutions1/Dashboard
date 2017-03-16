@@ -162,26 +162,37 @@ error_reporting(0);
                 <div class="row">
                     <div class="col-md-9">
                     <div class="row"> 
+                    <?php
+                    $product_dis_exe=mysqli_query($conn,"select * from product");
+					while($products=mysqli_fetch_array($product_dis_exe))
+					{
+						$product_desc=strip_tags($products['product_desc']);
+						$description=substr($product_desc,0,75);
+					?>
                         <div class="col-md-3"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-5.jpg" alt=""> 
+                                <!--style="width:360px;height:325px;"-->
+                                    <img src="Console/product/<?php echo $products['product_image'];?>"  alt=""> 
                                     <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-5.jpg"><i class="fa fa-eye"></i></a> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="Console/product/<?php echo $products['product_image'];?>"><i class="fa fa-eye"></i></a> 
                                     </div>
                                     <!-- blog-article-hover -->                                     
                                 </div>
                                 <!-- blog-article-thumbnail -->                                 
                                 <div class="blog-article-details"> 
-                                    <h6>5 March 2015</h6> 
-                                    <h4><a href="shop-desc.php">Design: from thought to print</a></h4> 
+                                    <h6><a href="shop-desc.php?Products=<?php echo $products['product_id'];?>"><?php echo $products['product_name'];?></a></h6> 
+                                    <h4><a href="shop-desc.php?Products=<?php echo $products['product_id'];?>">Price: <?php echo $products['product_price'];?></a></h4> 
                                 </div>
                                 <!-- blog-article-details -->                                 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan quis mauris vitae faucibus. Nunc quis est vehicula, ultrices leo at, pellentesque enim.&nbsp;<br></p> 
-                                <a class="btn btn-default" href="shop-desc.php">Read more</a>
+                                <p><?php echo $description;?>.&nbsp;<a href="shop-desc.php?Products=<?php echo $products['product_id'];?>">Read more</a><br></p> 
+                                <a class="btn btn-default" href="shop-desc.php">Add Cart</a>
                             </div>
                             <!-- blog-article -->                             
                         </div>
+                        <?php
+					}
+						?>
                         <!-- col -->                         
                         <div class="col-md-3"> 
                             <div class="blog-article"> 
@@ -344,10 +355,18 @@ error_reporting(0);
                         <div class="widget widget-categories"> 
                                 <h3 class="widget-title">Categories</h3> 
                                 <ul> 
+                                <?php 
+								$dis_cate_exe=mysqli_query($conn,"select * from category");
+								while($ceteis=mysqli_fetch_array($dis_cate_exe))
+								{
+								?>
                                     <li>
-                                        <a href="#">Photgraphy</a>
-                                    </li>                                     
-                                    <li>
+                                        <a href="Category-product.php?Category=<?php echo $ceteis['category_id'];?>"><?php echo $ceteis['category_name'];?></a>
+                                    </li>
+                                    <?php
+								}
+									?>                                     
+                                    <!--<li>
                                         <a href="#">Business</a>
                                     </li>                                     
                                     <li>
@@ -361,7 +380,7 @@ error_reporting(0);
                                     </li>                                     
                                     <li>
                                         <a href="#">Uncategorised</a>
-                                    </li>                                     
+                                    </li>-->                                     
                                 </ul>                                 
                             </div>
                     </div>

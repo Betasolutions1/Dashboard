@@ -93,7 +93,7 @@ error_reporting(0);
                                     <li>
                                         <a href="shop.php">shop</a>
                                     </li>  
-                                     <li class="dropdown active"> 
+                                     <li class="dropdown"> 
                                         <a href="">Pages</a> 
                                         <ul> 
                                         <?php

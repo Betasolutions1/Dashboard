@@ -166,9 +166,9 @@ error_reporting(0);
                     while($bsel2=mysqli_fetch_array($bsel)){
                         $str=$bsel2['blog_desc'];
                         $str1=strip_tags($str);
-                        if(strlen($str1)>10){
+                        //if(strlen($str1)>10){
                             $strcut1=substr($str1,0,10);
-                        }
+                       // }
                     ?>
                         <div class="col-md-4"> 
                             <div class="blog-article"> 
