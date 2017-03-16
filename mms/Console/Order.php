@@ -1,3 +1,12 @@
+<?php
+include 'config.php';
+error_reporting(0);
+session_start();
+if(!$_SESSION['username'])
+{
+    header("location:index.php");
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>

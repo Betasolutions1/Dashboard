@@ -57,17 +57,17 @@ if(isset($_POST['update']))
 	}
 	if($blupim!='')
 	{
-		$up_blg=mysqli_query($conn,"UPDATE `blogs` SET `blog_title`='$_POST[blog_title1]',`blog_desc`='$_POST[blog_desc1]',`blog_image`='$setbim',`datetime`='$_POST[blog_date1]' WHERE `blog_id`='$_POST[blog_id]'");
+		$up_blg=mysqli_query($conn,"UPDATE `product` SET `product_name`='$_POST[pname1]',`product_desc`='$_POST[pdesc1]',`product_image`='$setbim',`product_price`='$_POST[pprice1]' WHERE `product_id`='$_POST[edit_id1]'");
 	}
 	else
 	{
-		$up_blg=mysqli_query($conn,"UPDATE `blogs` SET `blog_title`='$_POST[blog_title1]',`blog_desc`='$_POST[blog_desc1]',`datetime`='$_POST[blog_date1]' WHERE `blog_id`='$_POST[blog_id]'");
+		$up_blg=mysqli_query($conn,"UPDATE `product` SET `product_name`='$_POST[pname1]',`product_desc`='$_POST[pdesc1]',`product_price`='$_POST[pprice1]' WHERE `product_id`='$_POST[edit_id1]'");
 	}
 	if($up_blg)
 	{
 		echo "<script>
-		alert('Blog Updated');
-		window.location.href='Blog.php';
+		alert('product Updated');
+		window.location.href='Products.php';
 		</script>";
 
 		
@@ -76,20 +76,20 @@ if(isset($_POST['update']))
 	else
 	{
 		echo "<script>
-		alert('Blog Updation Fail As May be Image size is more than 2 MB');
-		window.location.href='Blog.php';
+		alert('product Updation Fail As May be Image size is more than 2 MB');
+		window.location.href='Products.php';
 		</script>";
 	}
 }
 //product Blog
-if(isset($_GET['Blog_delete_id']))
+if(isset($_GET['del_id']))
 {
-	$del_blg=mysqli_query($conn,"delete from blogs where blog_id='$_GET[Blog_delete_id]'");
-	if($del_blg)
+	$del_pdt=mysqli_query($conn,"delete from product where product_id='$_GET[del_id]'");
+	if($del_pdt)
 	{
 		echo "<script>
-		alert('Blog Deleted');
-		window.location.href='Blog.php';
+		alert('product Deleted');
+		window.location.href='Products.php';
 		</script>";
 
 		
@@ -98,8 +98,8 @@ if(isset($_GET['Blog_delete_id']))
 	else
 	{
 		echo "<script>
-		alert('Blog Updation Fail');
-		window.location.href='Blog.php';
+		alert('Products Updation Fail');
+		window.location.href='Products.php';
 		</script>";
 	}
 }
