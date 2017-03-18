@@ -97,11 +97,14 @@ if(!$_SESSION['username'])
                                              <div class="form-group">
 	                                                <label class="col-md-2 control-label">Service Type</label>
 	                                                <div class="col-md-10">
+                                                    <?php 
+													$ssel=mysqli_query($conn,"select * from service_type");
+													?>
 	                                                    <select name="service_type1" class="form-control">
-                                                        <option><?php echo $ser_ret['service_type'];?></option>
-                                                        <option value="Education">Education</option>
-                                                        <option value="Mobile">Mobile</option>
-                                                        <option value="IT">IT</option>
+                                                        <option>--select service type--</option>
+                                                        <?php while($ssel2=mysqli_fetch_array($ssel)){?>
+                                                        <option value="<?php echo $ssel2['stype_id'];?>"><?php echo $ssel2['stype_name'];?></option>
+                                                        <?php } ?>
                                                         </select>
 	                                                </div>
 	                                            </div>
@@ -135,12 +138,15 @@ if(!$_SESSION['username'])
                                             	<form class="form-horizontal" role="form" method="post" action="manual_mysqli.php" enctype="multipart/form-data">
                                              <div class="form-group">
 	                                                <label class="col-md-2 control-label">Service Type</label>
-	                                                <div class="col-md-10">
+	                                                 <div class="col-md-10">
+                                                    <?php 
+													$ssel=mysqli_query($conn,"select * from service_type");
+													?>
 	                                                    <select name="service_type" class="form-control">
-                                                        <option>Select Service Type</option>
-                                                        <option value="Education">Education</option>
-                                                        <option value="Mobile">Mobile</option>
-                                                        <option value="IT">IT</option>
+                                                        <option>--select service type--</option>
+                                                        <?php while($ssel2=mysqli_fetch_array($ssel)){?>
+                                                        <option value="<?php echo $ssel2['stype_id'];?>"><?php echo $ssel2['stype_name'];?></option>
+                                                        <?php } ?>
                                                         </select>
 	                                                </div>
 	                                            </div>
@@ -209,14 +215,14 @@ if(!$_SESSION['username'])
 												
 												// $service_res->bind_result($id,$type,$title,$data,$img);
                                               //  $service_res->store_result();
-												$qqry_exe=mysqli_query($conn,"SELECT * FROM `services`");
+												$qqry_exe=mysqli_query($conn,"SELECT service_id,service_title,service_desc,service_img,servicetype_id,stype_name FROM services inner join service_type on services.servicetype_id=service_type.stype_id");
 												 while($res=mysqli_fetch_array($qqry_exe))
 												  {
 													 ++$sno;
 												?>
                                                     <tr>
                                                         <th><?php echo $sno;?></span></th>
-                                                        <td><?php echo $res['service_type'];?></td>
+                                                        <td><?php echo $res['stype_name'];?></td>
                                                         <td><?php echo $res['service_title'];?></td>
                                                          <td><?php echo $res['service_desc'];?></td>
                                                         <td><img src="Services/<?php echo $res['service_img'];?>" width="50"></td>

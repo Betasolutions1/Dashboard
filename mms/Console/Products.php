@@ -6,6 +6,10 @@ if(!$_SESSION['username'])
 {
     header("location:index.php");
 }
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +25,7 @@ if(!$_SESSION['username'])
         <!-- App title -->
         <title>Adminto - Responsive Admin Dashboard Template</title>
 
-		<!-- Editatable  Css-->
+        <!-- Editatable  Css-->
         <link rel="stylesheet" href="assets/plugins/magnific-popup/dist/magnific-popup.css" />
         <link rel="stylesheet" href="assets/plugins/jquery-datatables-editable/datatables.css" />
 
@@ -101,7 +105,7 @@ if(!$_SESSION['username'])
                 <div class="content">
                     <div class="container">
 
-						
+                        
                         <!-- end row -->
 
                         <div class="row">
@@ -115,6 +119,9 @@ if(!$_SESSION['username'])
                                                 </div>
                                             </div>
                                         </div>
+
+
+
 <div class="remodal" data-remodal-id="modal">
   <a data-remodal-action="close" class="remodal-close"></a>
 <div class="row">
@@ -124,57 +131,9 @@ if(!$_SESSION['username'])
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                        <?php 
-                                        if(isset($_GET['product_id'])){
-                                        ?>
-                                        <form class="form-horizontal" role="form" method="post" action="manual_mysqli.php" enctype="multipart/form-data">
-                                                <div class="form-group">
-                                                    <label class="col-md-2 control-label">Product Name</label>
-                                                    <div class="col-md-10">
-                                                        <input type="text" name="pname1" class="form-control" >
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-2 control-label">Description</label>
-                                                    <div class="col-md-10">
-                                                        <textarea id="elm1" name="pdesc1"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-2 control-label">Product Price</label>
-                                                    <div class="col-md-10">
-                                                        <input type="text" name="pprice1" class="form-control" >
-                                                    </div>
-                                                </div>
-                                                 <div class="form-group">
-                                                    <label class="col-md-2 control-label">Image</label>
-                                                    <div class="col-md-10">
-                                                        <input type="file" class="form-control" name="pimage1">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Select Country</label>
-                                                    <div class="col-sm-10">
-                                                    <!--onChange="getState(this.value)"-->
-                                                        <select name="category_id" class="form-control" required >
-                                                       
-                                                            <option>Select Country</option>
-                                                            <?php 
-                                                            $res_exe=mysqli_query($conn,"select * from category");
-                                                            while($res=mysqli_fetch_array($res_exe))
-                                                            {
-                                                            ?>
-                                                           <option value="<?php echo $res['category_id']?>"><?php echo $res['category_name']; ?></option>
-                                                           <?php
-                                                            }
-                                                           ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <button class="remodal-confirm" type="submit" name="update">Update</button>
-                                            </form>
-                                            <?php } else {?>
-                                            <form class="form-horizontal" role="form" method="post" action="manual_mysqli.php" enctype="multipart/form-data">
+                                      
+                                          
+                                            <form class="form-horizontal" role="form" method="post" action="manual_mysqli.php"  enctype="multipart/form-data">
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">Product Name</label>
                                                     <div class="col-md-10">
@@ -200,12 +159,12 @@ if(!$_SESSION['username'])
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-sm-2 control-label">Select category</label>
+                                                    <label class="col-sm-2 control-label">Select Country</label>
                                                     <div class="col-sm-10">
                                                     <!--onChange="getState(this.value)"-->
                                                         <select name="category_id" class="form-control" required >
                                                        
-                                                            <option>Select Category</option>
+                                                            <option>Select Country</option>
                                                             <?php 
                                                             $res_exe=mysqli_query($conn,"select * from category");
                                                             while($res=mysqli_fetch_array($res_exe))
@@ -219,21 +178,17 @@ if(!$_SESSION['username'])
                                                     </div>
                                                 </div>
                                                 <button class="remodal-confirm" type="submit" name="submit">Submit</button>
-                                            </form><?php } ?>
+                                            </form>
                                         </div>
                                     </div><!-- end row -->
                                 </div>
                             </div><!-- end col -->
                         </div>
   
-  
-</div>
+</div> 
 
-
-                                        <div class="editable-responsive">
-                                      
-                                            <table class="table table-striped table-bordered" id="datatable-buttons">
-                                            
+<div class="editable-responsive">
+                                        <table class="table table-striped table-bordered" id="datatable-buttons">
                                                 <thead>
                                                     <tr>
                                                         <th>S.No</th>
@@ -247,19 +202,89 @@ if(!$_SESSION['username'])
                                                 </thead>
                                                 <tbody>
                                                 <?php 
+
                                                 $psel=mysqli_query($conn,"select category_name,product_id,product_name,product_desc,product_price,product_image from product inner join category on product.category_id=category.category_id");
                                                 $count=0;
                                                 while($psel2=mysqli_fetch_array($psel)){
+
                                                     echo "<tr>";
                                                     echo "<td>".++$count."</td>";
                                                     echo "<td>".$psel2['product_name']."</td>";
                                                     echo "<td>".$psel2['product_desc']."</td>";
                                                     echo "<td>".$psel2['product_price']."</td>";
-                                                    // echo "<td>"?><<!-- img src="product/<?php //echo $psel2['product_image'];?>" height=20 width=30> --><?php //"</td>";
+                                                    // echo "<td>"?><!-- img src="product/<?php //echo $psel2['product_image'];?>" height=20 width=30> --><?php //"</td>";
                                                     echo "<td>".$psel2['category_name']."</td>";?>
-                                                    <td><a href="Products.php?edit_id=<?php $psel2['product_id'];?>">edit</a> 
-                                                        <a href="Products.php?del_id=<?php $psel2['product_id'];?>">delete</a>
+                                                    <td><a href="#" id="addProduct" data-remodal-target="modal1_<?php echo $psel2['product_id'];?>" >edit</a> /
+                                                        <a  href="manual_mysqli.php?del_id=<?php echo $psel2['product_id'];?>">delete</a>
                                                     </td>
+
+                                                    <!-- edit -->
+                                        
+<div class="remodal" data-remodal-id="modal1_<?php echo $psel2['product_id'];?>" >
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <div>
+
+                                     <div class="col-md-12">
+                                <div class="card-box">
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                      
+                                        <?php 
+                                            $pdsp=mysqli_query($conn,"select * from product where product_id='$psel2[product_id]'");
+                                            $pdsp2=mysqli_fetch_array($pdsp);
+                                        ?>
+                                        <form class="form-horizontal" role="form" method="post" action="manual_mysqli.php"  enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Product Name</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" name="pname1" class="form-control" value="<?php echo $pdsp2['product_name'];?>">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label" style="margin-left: -91px;margin-top: 30px">Description</label>
+                                                    <div class="col-md-10"  style="margin-left: 95px;margin-top: -30px;margin-bottom: 30px">
+                                                        <textarea id="elm1" name="pdesc1"><?php echo $pdsp2['product_desc'];?></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Product Price</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" name="pprice1" class="form-control" value="<?php echo $pdsp2['product_price'];?>">
+                                                    </div>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <label class="col-md-2 control-label" style="margin-left: -94px;margin-top: 30px">Image</label>
+                                                    <div class="col-md-10" style="margin-left: 95px;margin-top: -30px;margin-bottom: 30px">
+                                                        <input type="file" class="form-control" name="pimage1" value="<?php echo $pdsp2['product_image'];?>">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-sm-2 control-label">Select Country</label>
+                                                    <div class="col-sm-10">
+                                                    <!--onChange="getState(this.value)"-->
+                                                        <select name="category_id" class="form-control" required >
+                                                       
+                                                            <option>Select Country</option>
+                                                            <?php 
+                                                            $res_exe=mysqli_query($conn,"select * from category");
+                                                            while($res=mysqli_fetch_array($res_exe))
+                                                            {
+                                                            ?>
+                                                           <option value="<?php echo $res['category_id']?>"><?php echo $res['category_name']; ?></option>
+                                                           <?php
+                                                            }
+                                                           ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <input type="hidden" name="edit_id1" value="<?php echo $pdsp2['product_id']?>">
+                                                <button class="remodal-confirm" type="submit" name="update" style="margin-top: 730px;margin-left: -15px">Update</button>
+                                            </form></div></div></div></div>
+  </div>
+  
+</div>
+<!-- edit end -->
                                                     
                                                     <?php 
                                                     echo "</tr>";
@@ -287,30 +312,30 @@ if(!$_SESSION['username'])
             </div>
 
 
-			<!-- MODAL -->
-			<div id="dialog" class="modal-block mfp-hide">
-				<section class="panel panel-info panel-color">
-					<header class="panel-heading">
-						<h2 class="panel-title">Are you sure?</h2>
-					</header>
-					<div class="panel-body">
-						<div class="modal-wrapper">
-							<div class="modal-text">
-								<p>Are you sure that you want to delete this row?</p>
-							</div>
-						</div>
+            <!-- MODAL -->
+            <div id="dialog" class="modal-block mfp-hide">
+                <section class="panel panel-info panel-color">
+                    <header class="panel-heading">
+                        <h2 class="panel-title">Are you sure?</h2>
+                    </header>
+                    <div class="panel-body">
+                        <div class="modal-wrapper">
+                            <div class="modal-text">
+                                <p>Are you sure that you want to delete this row?</p>
+                            </div>
+                        </div>
 
-						<div class="row m-t-20">
-							<div class="col-md-12 text-right">
-								<button id="dialogConfirm" class="btn btn-primary waves-effect waves-light">Confirm</button>
-								<button id="dialogCancel" class="btn btn-default waves-effect">Cancel</button>
-							</div>
-						</div>
-					</div>
+                        <div class="row m-t-20">
+                            <div class="col-md-12 text-right">
+                                <button id="dialogConfirm" class="btn btn-primary waves-effect waves-light">Confirm</button>
+                                <button id="dialogCancel" class="btn btn-default waves-effect">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
 
-				</section>
-			</div>
-			<!-- end Modal -->
+                </section>
+            </div>
+            <!-- end Modal -->
 
 
             <!-- ============================================================== -->
@@ -319,77 +344,7 @@ if(!$_SESSION['username'])
 
 
             <!-- Right Sidebar -->
-            <div class="side-bar right-bar">
-                <a href="javascript:void(0);" class="right-bar-toggle">
-                    <i class="zmdi zmdi-close-circle-o"></i>
-                </a>
-                <h4 class="">Notifications</h4>
-                <div class="notification-list nicescroll">
-                    <ul class="list-group list-no-border user-list">
-                        <li class="list-group-item">
-                            <a href="#" class="user-list-item">
-                                <div class="avatar">
-                                    <img src="assets/images/users/avatar-2.jpg" alt="">
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">Michael Zenaty</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">2 hours ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#" class="user-list-item">
-                                <div class="icon bg-info">
-                                    <i class="zmdi zmdi-account"></i>
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">New Signup</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">5 hours ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#" class="user-list-item">
-                                <div class="icon bg-pink">
-                                    <i class="zmdi zmdi-comment"></i>
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">New Message received</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">1 day ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item active">
-                            <a href="#" class="user-list-item">
-                                <div class="avatar">
-                                    <img src="assets/images/users/avatar-3.jpg" alt="">
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">James Anderson</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">2 days ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item active">
-                            <a href="#" class="user-list-item">
-                                <div class="icon bg-warning">
-                                    <i class="zmdi zmdi-settings"></i>
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">Settings</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">1 day ago</span>
-                                </div>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
+           
             <!-- /Right-bar -->
 
         </div>
@@ -414,21 +369,21 @@ if(!$_SESSION['username'])
 
         <!-- Editable js -->
         <script src="assets/plugins/tinymce/tinymce.min.js"></script>
-	    <script src="assets/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-	    <script src="assets/plugins/jquery-datatables-editable/jquery.dataTables.js"></script>
-	    <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
-	    <script src="assets/plugins/tiny-editable/mindmup-editabletable.js"></script>
-	    <script src="assets/plugins/tiny-editable/numeric-input-example.js"></script>
-		<!-- init -->
-	    <script src="assets/pages/datatables.editable.init.js"></script>
+        <script src="assets/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+        <script src="assets/plugins/jquery-datatables-editable/jquery.dataTables.js"></script>
+        <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
+        <script src="assets/plugins/tiny-editable/mindmup-editabletable.js"></script>
+        <script src="assets/plugins/tiny-editable/numeric-input-example.js"></script>
+        <!-- init -->
+        <script src="assets/pages/datatables.editable.init.js"></script>
 
         <!-- App js -->
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
 
         <script>
-			$('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
-		</script>
+            $('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
+        </script>
 
 
         <script type="text/javascript">

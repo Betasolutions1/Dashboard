@@ -10,6 +10,70 @@ if(!$_SESSION['username'])
 
 
 
+
+//service_type
+
+if(isset($_POST['sub_services']))
+{
+	$chk_conu=$conn->prepare("select `stype_name` from `service_type` where `stype_name`=?");
+	$chk_conu->bind_param('s',$_POST['service']);
+	$chk_conu->execute();
+	//$chk_conu->bind_result($countr_namne);
+	$chk_conu->store_result();
+	if($chk_conu->num_rows !=0)
+	{
+		echo "<script>alert('service name Already Inserted');</script>";
+		header("location:service_type.php");
+	}else
+	{
+	$ins_coutry=$conn->prepare("INSERT INTO `service_type`( `stype_name`) VALUES (?)");
+	$ins_coutry->bind_param('s',$_POST['service']);
+	$exe=$ins_coutry->execute();
+	if($exe)
+	{
+		header("location:service_type.php");
+	}else
+	{
+		echo "<script>alert('Insertion Fail')</script>";
+		header("location:service_type.php");
+	}
+	}
+}
+//update service
+if(isset($_POST['update_service']))
+{
+	$upcounty=$conn->prepare("UPDATE `service_type` SET `stype_name`=? WHERE `stype_id`=?");
+	$upcounty->bind_param('si',$_POST['service1'],$_POST['service_id']);
+	$exe=$upcounty->execute();
+	if($exe)
+	{
+		header("location:service_type.php");
+	}else
+	{
+		echo "<script>alert('Updation Fail')</script>";
+		header("location:service_type.php");
+	}
+}
+
+if(isset($_GET['delete_id']))
+{
+	$del_con=$conn->prepare("delete from service_type where stype_id=?");
+	$del_con->bind_param('i',$_GET['delete_id']);
+	$exe=$del_con->execute();
+	if($exe)
+	{
+		header("location:service_type.php");
+	}else
+	{
+		echo "<script>alert('Deletion Fail')</script>";
+		header("location:service_type.php");
+	}
+}
+//end service_type
+
+
+
+
 //add product data
 
 if(isset($_POST['submit']))
@@ -57,17 +121,17 @@ if(isset($_POST['update']))
 	}
 	if($blupim!='')
 	{
-		$up_blg=mysqli_query($conn,"UPDATE `blogs` SET `blog_title`='$_POST[blog_title1]',`blog_desc`='$_POST[blog_desc1]',`blog_image`='$setbim',`datetime`='$_POST[blog_date1]' WHERE `blog_id`='$_POST[blog_id]'");
+		$up_blg=mysqli_query($conn,"UPDATE `product` SET `product_name`='$_POST[pname1]',`product_desc`='$_POST[pdesc1]',`product_image`='$setbim',`product_price`='$_POST[pprice1]' WHERE `product_id`='$_POST[edit_id1]'");
 	}
 	else
 	{
-		$up_blg=mysqli_query($conn,"UPDATE `blogs` SET `blog_title`='$_POST[blog_title1]',`blog_desc`='$_POST[blog_desc1]',`datetime`='$_POST[blog_date1]' WHERE `blog_id`='$_POST[blog_id]'");
+		$up_blg=mysqli_query($conn,"UPDATE `product` SET `product_name`='$_POST[pname1]',`product_desc`='$_POST[pdesc1]',`product_price`='$_POST[pprice1]' WHERE `product_id`='$_POST[edit_id1]'");
 	}
 	if($up_blg)
 	{
 		echo "<script>
-		alert('Blog Updated');
-		window.location.href='Blog.php';
+		alert('product Updated');
+		window.location.href='Products.php';
 		</script>";
 
 		
@@ -76,20 +140,20 @@ if(isset($_POST['update']))
 	else
 	{
 		echo "<script>
-		alert('Blog Updation Fail As May be Image size is more than 2 MB');
-		window.location.href='Blog.php';
+		alert('product Updation Fail As May be Image size is more than 2 MB');
+		window.location.href='Products.php';
 		</script>";
 	}
 }
 //product Blog
-if(isset($_GET['Blog_delete_id']))
+if(isset($_GET['del_id']))
 {
-	$del_blg=mysqli_query($conn,"delete from blogs where blog_id='$_GET[Blog_delete_id]'");
-	if($del_blg)
+	$del_pdt=mysqli_query($conn,"delete from product where product_id='$_GET[del_id]'");
+	if($del_pdt)
 	{
 		echo "<script>
-		alert('Blog Deleted');
-		window.location.href='Blog.php';
+		alert('product Deleted');
+		window.location.href='Products.php';
 		</script>";
 
 		
@@ -98,8 +162,8 @@ if(isset($_GET['Blog_delete_id']))
 	else
 	{
 		echo "<script>
-		alert('Blog Updation Fail');
-		window.location.href='Blog.php';
+		alert('Products Updation Fail');
+		window.location.href='Products.php';
 		</script>";
 	}
 }
@@ -528,7 +592,7 @@ if(isset($_POST['Service_sub']))
 			
 			$serv_img=$servy.'_'.$_FILES['service_img']['name'];
 	
-			$ins_blog=mysqli_query($conn,"INSERT INTO `services`( `service_type`, `service_title`, `service_desc`, `service_img`) VALUES ('$_POST[service_type]','$_POST[service_title]','$_POST[service_desc]','$serv_img')");
+			$ins_blog=mysqli_query($conn,"INSERT INTO `services`(`service_title`, `service_desc`, `service_img`,`servicetype_id`) VALUES ('$_POST[service_title]','$_POST[service_desc]','$serv_img','$_POST[service_type]')");
 	
 	if($ins_blog)
 	{

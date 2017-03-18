@@ -43,7 +43,7 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-text"></i><span>Home Page</span><span class="menu-arrow"></span> </a>
                                 <ul class="list-unstyled">
-                                    <li class=""><a href="form-elements.html">Slider</a></li>
+                                    <li class=""><a href="slider.php">Slider</a></li>
                                     <li><a href="Testmonial.php">Testmonials</a></li>
                                     <li><a href="Quote.php">Quote Of The Day</a></li>
                                 </ul>
@@ -62,6 +62,10 @@
                                 <ul class="list-unstyled">
                                     <li><a href="Add-menu.php">Add Menu</a></li>
                                 </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="category.php" class="waves-effect"><i class="zmdi zmdi-invert-colors"></i> <span>Add Category</span> <!--<span class="menu-arrow"></span> --></a>
+                               
                             </li>
                              <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-layers"></i><span>Pages</span> <span class="menu-arrow"></span></a>
@@ -82,12 +86,12 @@
                                 </ul>
                             </li>
                             <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-item"></i><span>Inventors</span> <span class="menu-arrow"></span></a>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-collection-item"></i><span>Inventory</span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="Order.php">Orders</a></li>
                                     <li><a href="Products.php">Products</a></li>
                                     <li><a href="Cart.php">Cart</a></li>
-                                    <li><a href="#">Shipping</a></li>
+                                    <li><a href="shipping.php">Shipping</a></li>
                                 </ul>
                             </li>
                             

@@ -54,7 +54,45 @@ if($_GET['cart_id'])
 
 if(isset($_POST['place_order']))
 {
-	$ins_order=mysqli_query($conn,"INSERT INTO `orders`( `customer_id`, `no_items`, `bill_amount`,  `order_date`, `dispatch_date`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])");
+	$ins_order=mysqli_query($conn,"INSERT INTO `orders`( `customer_id`, `no_items`, `bill_amount`,  `order_date`, `dispatch_date`) VALUES ('$_POST[order_cust_id]','$_POST[order_prd_qty]','$_POST[order_amount]','$_POST[order_date]','$_POST[order_dispa_date]')");
+	$order_id=mysqli_insert_id($conn);
+	if($ins_order)
+	{
+		$_SESSION['order_id']=$order_id;
+		header("location:billing.php");
+	}
+}
+
+if(isset($_POST['payment']))
+{
+	if($_POST['payment_type']=='payumoney')
+	{
+		$up_order=mysqli_query($conn,"update `orders` set order_type='".$_POST['payment_type']."' where customer_id='$_SESSION[User_id]'");
+		if($up_order)
+		{
+			header("location:PayUMoney_form.php");
+		}
+	}else{
+		header("location:PayUMoney_form.php");
+	}
+}
+if($_POST['billing'])
+{
+	$ins_bill_address=mysqli_query($conn,"INSERT INTO `billing_address`( `name`, `email`, `phone`, `country`, `state`, `city`, `address1`, `address2`, `zipcode`) VALUES ('$_POST[name]','$_POST[email]','$_POST[phone]','$_POST[country]','$_POST[state]','$_POST[city]','$_POST[address1]','$_POST[address2]','$_POST[zipcode]')");
+	if($ins_bill_address)
+	{
+		$_SESSION['bill_adname']=$_POST['name'];
+		$_SESSION['bill_email']=$_POST['email'];
+		$_SESSION['bill_phone']=$_POST['phone'];
+		$_SESSION['bill_country']=$_POST['country'];
+		$_SESSION['bill_state']=$_POST['state'];
+		$_SESSION['bill_city']=$_POST['city'];
+		$_SESSION['bill_address1']=$_POST['address1'];
+		$_SESSION['bill_address2']=$_POST['address2'];
+		$_SESSION['bill_zipcode']=$_POST['zipcode'];
+		header("location:Payment.php");
+		
+	}
 }
 /*
 error_reporting (E_ALL ^ E_NOTICE);

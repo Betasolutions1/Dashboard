@@ -214,6 +214,7 @@ error_reporting(0);
                                <?php
                                $total_amt=mysqli_query($conn,"select SUM(product_price)as total_amt,SUM(product_qty)as total_qty from cart where customer_id='$_SESSION[User_id]' AND status='0'");
 							   $get_total=mysqli_fetch_array($total_amt);
+							   $_SESSION['total_amt']=$_get_total['total_amt'];
 							   ?>
                                <td align="right" colspan="5">Sub Total</td>
                                <td align="left" colspan="2"><i class="fa fa-inr"><?php echo $get_total['total_amt'];?></td>
@@ -246,7 +247,13 @@ error_reporting(0);
                                <input type="hidden" name="order_cust_id" value="<?php echo $_SESSION['User_id'];?>">
                                <input type="hidden" name="order_prd_qty" value="<?php echo $get_total['total_qty'];?>">
                                <input type="hidden" name="order_amount" value="<?php echo $get_total['total_amt'];?>">
-                               <button class="btn btn-default" name="place_order" type="submit">Place Order</button>
+                               <?php 
+							   $order_dat=date('d-m-Y');
+							   $dipat_date=date("d-m-Y", strtotime("+1 week"));
+							   ?>
+                               <input type="hidden" name="order_date" value="<?php echo $order_dat;?>">
+                               <input type="hidden" name="order_dispa_date" value="<?php echo $dipat_date;?>">
+                               <button class="btn btn-default" name="place_order" type="submit">CheckOut</button>
                                </form>
                                </td>
                                </tr>
@@ -593,7 +600,7 @@ error_reporting(0);
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-12"> 
-                                <p class="text-center"><a class="btn btn-default" href="contact.html">Contact us<i class="fa fa-arrow-right"></i></a></p> 
+                                <p class="text-center"><a class="btn btn-default" href="contact.php">Contact us<i class="fa fa-arrow-right"></i></a></p> 
                             </div>
                             <!-- col -->                             
                         </div>

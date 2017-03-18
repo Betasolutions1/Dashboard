@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Xenia - Documentation</title>
+    <meta content="" name="description">
+    <meta content="Documenter v2.0 http://rxa.li/documenter" name="generator">
+    <link href="assets/css/style.css" media="all" rel="stylesheet">
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery.scrollTo.js"></script>
+    <script src="assets/js/jquery.easing.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+      document.createElement('section');
+      var duration = '100',
+        easing = 'swing';
+    </script>
+    <style>
+      html {background-color: #fff;color: #555;}
+      #documenter_sidebar #documenter_logo {background-image: url("assets/images/logo.png");}
+      a {color: #00C0E1;}
+      hr {border-bottom: 1px solid #fff;border-top: 1px solid #eee;}
+      #documenter_sidebar,#documenter_sidebar ul a {background-color: #f9f9f9;color: #555;}
+      #documenter_sidebar ul a {border-bottom: 1px solid #ddd; color: #555; font-weight: 400;}
+      #documenter_sidebar ul li:first-child a {border-top: 1px solid #ddd; }
+      #documenter_sidebar ul a:hover {background: #eee;color: #00C0E1;}
+      #documenter_sidebar ul a.current {background: #eee;color: #00C0E1;}
+      #documenter_copyright {display: block !important;visibility: visible !important;}
+    </style>
+  </head>
+  <body>
+    <div id="documenter_sidebar">
+      <a href="#documenter_cover" id="documenter_logo"></a>
+      <ul id="documenter_nav">
+        <li><a class="current" href="#documenter_cover">Start</a></li>
+        <li><a href="#customization" title="Customization">Customization</a></li>
+        <li><a href="#source_and_credits" title="Source and Credits">Source and Credits</a></li>
+      </ul>
+      <div id="documenter_copyright">Copyright Dankov 2016<br>made with the <a href="http://rxa.li/documenter">Documenter v2.0</a></div>
+    </div>
+
+    <div id="documenter_content">
+      <section id="documenter_cover">
+        <h1>Xenia - Fully Responsive & Retina Ready Template</h1>
+        <div id="documenter_buttons"></div>
+        <hr>
+        <ul>
+          <li>Created: 15/02/2014</li>
+          <li>By: <a href="http://themeforest.net/user/Dankov" target="_blank">Dankov</a></li>
+          <li>E-mail: <a href="mailto:dankov.theme@gmail.com">dankov.theme@gmail.com</a></li>
+        </ul>
+      </section>
+
+      <section id="html_structure">
+        <div class="page-header"><h3>HTML Structure</h3><hr class="notop"></div>
+        <p>Xenia is Bootstrap 3.3.4 based responsive theme. You can use all of bootstrap features. More information <a href="http://getbootstrap.com/">Bootstrap 3.3.4</a>.</p>
+      </section>
+
+      <section id="customization">
+        <div class="page-header"><h3>Customization</h3><hr class="notop"></div>
+        <p>Xenia has easy customization features.</p>
+        <h2><strong>Color</strong></h2>
+        <p>Open style.css file and change this color #00C0E1 or connect in &lt;head&gt; ready CSS color scheme &lt;/head&gt;</p>
+        <p>Example: '&lt;link href="assets/css/layouts/blue.css" media="screen" rel="stylesheet" type="text/css"&gt;'</p>
+
+        <h2><strong>Background Images</strong></h2>
+        <p>Open style.css, find 15 line (body) and change path to the your BG</p>
+        <p>Example: body {background: #fff url(../img/YOUR_BG.png) fixed;}</p>
+
+        <h2><strong>Footer Dark Skin</strong></h2>
+        <p>Connect in &lt;head&gt; ready CSS dark-skin footer &lt;/head&gt;</p>
+        <p>Example: '&lt;link href="assets/css/layouts/dark-skin.css" media="screen" rel="stylesheet" type="text/css"&gt;'</p>
+        <h2><strong>Animation</strong></h2>
+        <p>Example for usage.</p>
+			&lt;div class=&quot;animated-area&quot;&gt;<br>
+
+			&nbsp; &nbsp;<span class="s1">&lt;</span><span class="s2">div class</span><span class="s1">=</span><span class="s3">&quot;animated&quot;</span> <span class="s2">data-animation</span><span class="s1">=</span><span class="s3">&quot;bounceIn&quot;</span> <span class="s2">data-animation-delay</span><span class="s1">=</span><span class="s3">&quot;0.3s&quot;</span><span class="s1">&gt;</span><span class="s4">&lt;</span><span class="s5">img src</span><span class="s4">=</span>&quot;1.jpg&quot;<span class="s4">/&gt;&lt;/</span><span class="s5">div</span><span class="s4">&gt;</span><br>
+
+			&nbsp; &nbsp;<span class="s1">&lt;</span><span class="s2">div class</span><span class="s1">=</span><span class="s3">&quot;animated&quot;</span> <span class="s2">data-animation</span><span class="s1">=</span><span class="s3">&quot;bounceIn&quot;</span> <span class="s2">data-animation-delay</span><span class="s1">=</span><span class="s3">&quot;0.6s&quot;</span><span class="s1">&gt;</span><span class="s4">&lt;</span><span class="s5">img src</span><span class="s4">=</span>&quot;2.jpg&quot;<span class="s4">/&gt;&lt;/</span><span class="s5">div</span><span class="s4">&gt;</span><br>
+
+			&lt;/div&gt;
+        <p>Classes:</p>
+        <p>- .animated-area: Wrapper div for animated area.</p>
+        <p>- .animated: Class for each animate item.</p>
+        <p>Data attributes:</p>
+        <p>- data-animation: You can use all of animate.css effects. More information&nbsp;<a href="http://daneden.me/animate/">http://daneden.me/animate/</a></p>
+        <p>- data-animation-delay: Delay time for your animations.</p>
+
+        <h2><strong>Flickr Widget</strong></h2>
+        <p>For account change, insert your ID after "user=YOUR ID". If you changed ID for other URL name, generate it on a service <a href="http://idgettr.com/" target="_blank">http://idgettr.com/</a></p>
+        <p>Example: '&lt;script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=6&display=latest&size=s&layout=x&source=user&user=<b>34328769@N02</b>"&gt;'</script></p>
+
+        <h2><strong>PHP Mail Form</strong></h2>
+        <p>Open assets/php/contact_me.php and change the mail address. Work only in FTP.</p>
+        <p>concats.php in root of folder must be only with php format for working contact form. For changes in this file, you can change php format to html in local.</p>
+      </section>
+
+      <section id="source_and_credits">
+        <div class="page-header"><h3>Source and Credits</h3><hr class="notop"></div>
+        <h4 id="source_and_credits_js,_css,_font_and_icons">Javascript, Css, Font & Icons</h4>
+        <ul>
+          <li><a href="https://github.com/IanLunn/jQuery-Parallax">Parallax</a></li>
+          <li><a href="http://www.woothemes.com/flexslider/">Flex Slider</a></li>
+          <li><a href="http://www.fontello.com/">Fontello</a></li>
+          <li><a href="http://daneden.me/animate/">Animate.css</a></li>
+          <li><a href="http://www.google.com/fonts/specimen/Roboto">Roboto Web Font</a></li>
+        </ul>
+      </section>
+      
+    </div>
+  </body>
+</html>
