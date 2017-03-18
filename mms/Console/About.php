@@ -20,7 +20,7 @@ if(!$_SESSION['username'])
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App title -->
-        <title>About-Us</title>
+        <title>Dashboard - About-Us</title>
 
         <!-- App CSS -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
