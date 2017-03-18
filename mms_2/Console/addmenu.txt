@@ -1,0 +1,258 @@
+<?php include('connection.php');
+ if(isset($_POST['submit'])){
+	 $title=$_POST['title'];
+	 $radio1=$_POST['optionsRadios'];
+	 if($radio1=="option1")
+	 {
+		 $var1=mysqli_query($connect,"create table ".$title."(
+		 
+p1_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+p1_title VARCHAR(30) NOT NULL UNIQUE,
+p1_description VARCHAR(3000) NOT NULL,
+p1_image VARCHAR(300) NOT NULL
+		 )");
+		 if($var1){
+			 $ins1=mysqli_query($connect,"insert into menu_name(`m_name`) values('$title')");
+			
+      if($file = fopen("../$title.php", "w")) {
+	 echo copy("../leftside.php","../$title.php");
+     $html = ""; 
+     if(fwrite($file, $html) === false) echo "Could not write to file $title.php"; 
+     else //echo "Write successful!"; 
+     fclose($file); 
+	  }
+	 if($file = fopen("$title.php", "w")) {
+	 echo copy("sidebar.php","$title.php");
+     $html = ""; 
+     if(fwrite($file, $html) === false) echo "Could not write to file $title.php"; 
+     else //echo "Write successful!"; 
+     fclose($file); 
+      }
+			 
+		 }
+	 }
+	 else if($radio1=="option2")
+	 {
+		$var2=mysqli_query($connect,"create table ".$title."(
+		 
+p1_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+p1_title VARCHAR(30) NOT NULL UNIQUE,
+p1_description VARCHAR(3000) NOT NULL
+		 )");
+		 if($var2){
+			 $ins2=mysqli_query($connect,"insert into menu_name(`m_name`) values('$title')");
+			 
+			  if($file = fopen("../$title.php", "w")) {
+	 echo copy("../middle.php","../$title.php");
+     $html = ""; 
+     if(fwrite($file, $html) === false) echo "Could not write to file $title.php"; 
+     else //echo "Write successful!"; 
+     fclose($file); 
+	  }
+	 if($file = fopen("$title.php", "w")) {
+	 echo copy("middle.php","$title.php");
+     $html = ""; 
+     if(fwrite($file, $html) === false) echo "Could not write to file $title.php"; 
+     else //echo "Write successful!"; 
+     fclose($file); 
+      }
+			 
+			 } 
+	 }
+	 else if($radio1=="option3")
+	 {
+		$var3=mysqli_query($connect,"create table ".$title."(
+		 
+p1_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+p1_title VARCHAR(30) NOT NULL UNIQUE,
+p1_description VARCHAR(3000) NOT NULL,
+p1_image VARCHAR(300) NOT NULL
+		 )");
+		  if($var3){
+			 $ins3=mysqli_query($connect,"insert into menu_name(`m_name`) values('$title')");
+			 
+			  if($file = fopen("../$title.php", "w")) {
+	 echo copy("../rightside.php","../$title.php");
+     $html = ""; 
+     if(fwrite($file, $html) === false) echo "Could not write to file $title.php"; 
+     else //echo "Write successful!"; 
+     fclose($file); 
+	  }
+	 if($file = fopen("$title.php", "w")) {
+	 echo copy("sidebar.php","$title.php");
+     $html = ""; 
+     if(fwrite($file, $html) === false) echo "Could not write to file $title.php"; 
+     else //echo "Write successful!"; 
+     fclose($file); 
+      }
+			 
+			 }
+	 }
+	 
+	 }
+?>
+<!DOCTYPE html> 
+<html> 
+    <head lang="en"> 
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+        <meta http-equiv="x-ua-compatible" content="ie=edge"> 
+        <title>HOME IMAGE</title>         
+        <link href="img/favicon.144x144.png" rel="apple-touch-icon" type="image/png" sizes="144x144"> 
+        <link href="img/favicon.114x114.png" rel="apple-touch-icon" type="image/png" sizes="114x114"> 
+        <link href="img/favicon.72x72.png" rel="apple-touch-icon" type="image/png" sizes="72x72"> 
+        <link href="img/favicon.57x57.png" rel="apple-touch-icon" type="image/png"> 
+        <link href="img/favicon.png" rel="icon" type="image/png"> 
+        <link rel="shortcut icon" href="favicon.ico"/>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->       
+        <link rel="stylesheet" href="css/lib/font-awesome/font-awesome.min.css"> 
+        <link rel="stylesheet" href="css/lib/bootstrap/bootstrap.min.css"> 
+        <link rel="stylesheet" href="css/main.css"> 
+        <link rel="stylesheet" href="css/lib/summernote/summernote.css" /> 
+        <link rel="stylesheet" href="css/separate/pages/editor.min.css">
+        <link rel="stylesheet" href="css/lib/ladda-button/ladda-themeless.min.css">
+<link rel="stylesheet" href="css/separate/vendor/context_menu.min.css"> 
+    </head>     
+    <body class="with-side-menu"> 
+        <?php include"header.php";?>
+        <!--.site-header-->         
+        <div class="mobile-menu-left-overlay"></div>         
+        <?php include"sidemenu.php";?>
+       
+        <!--.site-header-->         
+        <div class="mobile-menu-left-overlay"></div>         
+
+        <!--.side-menu-->         
+        <div class="page-content"> 
+            <div class="container-fluid"> 
+                <form method="post" action=""> 
+                    <div class="form-group row"> 
+                        <label class="col-sm-2 form-control-label">Title</label>                         
+                        <div class="col-sm-10"> 
+                            <p class="form-control-static"><input type="text" class="form-control" id="inputPassword" name="title" placeholder="Text"></p> 
+                        </div>                         
+                    </div>  <br><br><br>
+                    <div class="form-group row"> 
+                        <label class="col-sm-2 form-control-label">Select page</label>                          
+                          	<div class="radio col-sm-10" align="">
+								<input type="radio" name="optionsRadios" id="radio-1" value="option1" checked style="margin-top:10px">
+								<label for="radio-1"><img src="images/page1.png" alt="" style="max-height:150px;max-width:150px;min-height:150px;min-width:150px;margin-top: -64px;margin-right:30px"></label>
+                                <input type="radio" name="optionsRadios" id="radio-2" value="option2">
+								<label for="radio-2"><img src="images/page2.png" alt="" style="max-height:150px;max-width:150px;min-height:150px;min-width:150px;margin-top: -64px;margin-right:30px"></label>
+                                <input type="radio" name="optionsRadios" id="radio-3" value="option3">
+								<label for="radio-3"><img src="images/page1.png" alt="" style="max-height:150px;max-width:150px;min-height:150px;min-width:150px;margin-top: -64px;margin-right:30px"></label>
+							</div>
+                            </div>
+<div class="row" align="center">
+						<div class="col-md-12 progress-demo">
+							
+							<div class="form-group">
+								
+
+								<button class="btn btn-inline btn-danger ladda-button" data-style="expand-left" name="submit"><span class="ladda-label">SUBMIT</span></button>
+
+								
+							</div>
+						</div>
+					</div>
+        </form>
+ 
+    </div>
+    <!--.container-fluid-->     
+</div>
+
+
+<!--.page-content--> 
+<script src="js/lib/jquery/jquery.min.js"></script> 
+<script src="js/lib/tether/tether.min.js"></script> 
+<script src="js/lib/bootstrap/bootstrap.min.js"></script> 
+<script src="js/plugins.js"></script> 
+<script src="js/lib/summernote/summernote.min.js"></script> 
+<script>
+		$(document).ready(function() {
+			$('.summernote').summernote();
+		});
+	</script> 
+
+
+
+<script src="js/app.js"></script>
+
+
+
+
+	<script src="js/lib/ladda-button/spin.min.js"></script>
+	<script src="js/lib/ladda-button/ladda.min.js"></script>
+	<script src="js/lib/ladda-button/ladda-button-init.js"></script>
+	<script type="text/javascript" src="js/lib/jquery-contextmenu/jquery.contextMenu.min.js"></script>
+	<script type="text/javascript" src="js/lib/jquery-contextmenu/jquery.ui.position.min.js"></script>
+	<script>
+		$(function() {
+			$.contextMenu({
+				selector: '.context-menu-one',
+				callback: function(key, options) {
+					var m = "clicked: " + key;
+					window.console && console.log(m) || alert(m);
+				},
+				items: {
+					"edit": {name: "Edit", icon: "edit"},
+					"cut": {name: "Cut", icon: "cut", disabled: true},
+					copy: {name: "Copy", icon: "copy"},
+					"sep1": "---------",
+					"paste": {name: "Paste", icon: "paste"},
+					"delete": {name: "Delete", icon: "delete"},
+					"sep2": "---------",
+					"quit": {name: "Quit", icon: function(){
+						return 'context-menu-icon context-menu-icon-quit';
+					}}
+				}
+			});
+
+			$('.context-menu-one').on('click', function(e){
+				console.log('clicked', this);
+			});
+
+			$.contextMenu({
+				selector: '.context-menu-submenus',
+				callback: function(key, options) {
+					var m = "clicked: " + key;
+					window.console && console.log(m) || alert(m);
+				},
+				items: {
+					"edit": {"name": "Edit", "icon": "edit"},
+					"cut": {"name": "Cut", "icon": "cut"},
+					"sep1": "---------",
+					"quit": {"name": "Quit", "icon": "quit"},
+					"sep2": "---------",
+					"fold1": {
+						"name": "Sub group",
+						"items": {
+							"fold1-key1": {"name": "Foo bar"},
+							"fold2": {
+								"name": "Sub group 2",
+								"items": {
+									"fold2-key1": {"name": "alpha", disabled: true},
+									"fold2-key2": {"name": "bravo"},
+									"fold2-key3": {"name": "charlie"}
+								}
+							},
+							"fold1-key3": {"name": "delta"}
+						}
+					},
+					"fold1a": {
+						"name": "Other group",
+						"items": {
+							"fold1a-key1": {"name": "echo"},
+							"fold1a-key2": {"name": "foxtrot"},
+							"fold1a-key3": {"name": "golf"}
+						}
+					}
+				}
+			});
+		});
+	</script>
+
+
+
+</body>
+</html>
