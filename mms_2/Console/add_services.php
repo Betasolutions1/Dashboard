@@ -215,14 +215,17 @@ if(!$_SESSION['username'])
 												
 												// $service_res->bind_result($id,$type,$title,$data,$img);
                                               //  $service_res->store_result();
-												$qqry_exe=mysqli_query($conn,"SELECT service_id,service_title,service_desc,service_img,servicetype_id,stype_name FROM services inner join service_type on services.servicetype_id=service_type.stype_id");
+											//	$qqry_exe=mysqli_query($conn,"SELECT service_id,service_title,service_desc,service_img,servicetype_id,stype_name FROM services inner join service_type on services.servicetype_id=service_type.stype_id");
+											$qqry_exe=mysqli_query($conn,"select * from services");
 												 while($res=mysqli_fetch_array($qqry_exe))
 												  {
+													  $get_stype=mysqli_query($conn,"select * from service_type where stype_id='$res[service_type]'");
+													  $set_sname=mysqli_fetch_array($get_stype);
 													 ++$sno;
 												?>
                                                     <tr>
                                                         <th><?php echo $sno;?></span></th>
-                                                        <td><?php echo $res['stype_name'];?></td>
+                                                        <td><?php echo $set_sname['stype_name'];?></td>
                                                         <td><?php echo $res['service_title'];?></td>
                                                          <td><?php echo $res['service_desc'];?></td>
                                                         <td><img src="Services/<?php echo $res['service_img'];?>" width="50"></td>

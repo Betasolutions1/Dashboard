@@ -1,10 +1,10 @@
 <?php
 session_start();
 // Merchant key here as provided by Payu
-$MERCHANT_KEY = "JBZaLc";
+$MERCHANT_KEY = "rjQUPktU";
 
 // Merchant Salt as provided by Payu
-$SALT = "GQs7yium";
+$SALT = "e5iIg1jwi8";
 
 // End point - change to https://secure.payu.in for LIVE mode
 $PAYU_BASE_URL = "https://test.payu.in";
@@ -113,11 +113,11 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
         </tr>
         <tr>
          <!-- <td>Success URI: </td>-->
-          <td colspan="3"><input type="hidden" name="surl" value="http://localhost:8080/dashboard_1/mms/thanks-for-order.php" size="64" /></td>
+          <td colspan="3"><input type="hidden" name="surl" value="thanks-for-order.php" size="64" /></td>
         </tr>
         <tr>
          <!-- <td>Failure URI: </td>-->
-          <td colspan="3"><input type="hidden" name="furl" value="http://localhost:8080/dashboard_1/mms/index.php" size="64" /></td>
+          <td colspan="3"><input type="hidden" name="furl" value="dashboard_1/mms/index.php" size="64" /></td>
         </tr>
 
         <tr>
