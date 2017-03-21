@@ -2,6 +2,10 @@
 include 'Console/config.php';
 session_start();
 error_reporting(0);
+if(!$_SESSION['MMS_User'])
+{
+	header("location:login.php");
+}
 
 ?>
 <!doctype html> 
@@ -117,6 +121,9 @@ error_reporting(0);
                                             <li>
                                                 <a href="Myaccount.php">My Account</a>
                                             </li>
+                                             <li>
+                                                <a href="my-order.php">My Account</a>
+                                            </li>
                                             <li>
                                                 <a href="logout.php">Logout</a>
                                             </li> 
@@ -171,7 +178,7 @@ error_reporting(0);
                         <div class="col-sm-12"> 
                             <div class="headline style-3"> 
                                 <h5>Say hello</h5> 
-                                <h2>register your details</h2> 
+                                <h2>Order And Billing DetailsS</h2> 
                                 <p> Temporibus autem quibusdam et aut officiis debitis aut rerum.</p> 
                             </div>
                             <!-- headline -->                             
@@ -187,63 +194,154 @@ error_reporting(0);
                 <!-- container -->                 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-md-offset-2 col-md-8 col-sm-12"> 
-                        <!--assets/php/send.php id="contact-form" -->
-                            <form  name="billing-form" action="backend.php" method="post"> 
-                                <fieldset> 
-                                    <div id="alert-area"></div>                                     
-                                    
-                                    <input class="col-xs-12" id="name" type="text" name="name" placeholder="Name"><br><br/>
-
-                                    <input class="col-xs-12" id="email" type="text" name="email" placeholder="Email Id"><br><br/>
-                                    <input class="col-xs-12" id="phone" type="text" name="phone" placeholder="Phone No"><br><br/>
-                                     <div class="form-group">
-      <textarea class="form-control" rows="5" id="address1" placeholder="address1" name="address1"></textarea>
-    </div>
-    <div class="form-group">
-      <textarea class="form-control" rows="5" id="address2" placeholder="address2" name="address2"></textarea>
-    </div>
-    <div class="form-group">
-  
-  <select class="form-control" id="country" name="country">
-    <option>--select country--</option>
-    <?php $csel=mysqli_query($conn,"select * from country");
-    while($csel2=mysqli_fetch_array($csel)){
-    ?>
-    <option value="<?php echo $csel2['country_id'];?>"><?php echo $csel2['country_name'];?></option><?php } ?>
-  </select>
-</div>
-<div class="form-group">
-  
-    <select class="form-control" id="state" name="state">
-    <option>--select state--</option>
-    <?php $ssel=mysqli_query($conn,"select * from state");
-    while($ssel2=mysqli_fetch_array($ssel)){
-    ?>
-    <option value="<?php echo $ssel2['state_id'];?>"><?php echo $ssel2['state_name'];?></option><?php } ?>
-  </select>
-</div>
-<div class="form-group">
- 
-  <select class="form-control" id="city" name="city">
-    <option>--select city--</option>
-    <option>RTC complex</option>
-    <option>Gajuwaka</option>
-    <option>NAD</option>
-  </select>
-</div>
-                                   
-                                    <input class="col-xs-12" id="pincode" type="text" name="zipcode" placeholder="Enter Ur Pincode"> <br><br/>
-                                    <!--<textarea class="col-xs-12" id="message" name="message" rows="8" cols="25" placeholder="message"></textarea>-->                                     
-                                    <input class="btn btn-default" id="submit" type="submit" name="billing" value="Submit"> 
-                                </fieldset>                                 
-                            </form>                             
+                        <div class="col-md-offset-2 col-md-8 col-sm-12 "> 
+                      
+                        <div class="col-md-6 " style="border-color:solid 1px #ccc;"> 
+                            <div class="headline style-1"> 
+                                <h4>Order Details</h4> 
+                                <!--<h2>Our Work</h2>--> 
+                            </div>
+                            <?php 
+							$get_or_dets_exe=mysqli_query($conn,"select * from orders where customer_id='$_SESSION[User_id]' order by order_id desc limit 1");
+							$ger_ordet=mysqli_fetch_array($get_or_dets_exe);
+							?>
+                            <!-- headline -->                             
+                            <p>Order Id: <?php echo $ger_ordet['order_id'];?></p>
+                            <p>Order Date: <?php echo $ger_ordet['order_date'];?> </p>
+                            <p>Diapatch Date: <?php echo $ger_ordet['dispatch_date'];?></p>
+                            <p>Order Status:On The Way </p>
+                            <p>Order Type:<?php echo $ger_ordet['order_type'];?> </p>
+                            <p>Order Bill: <?php echo $ger_ordet['bill_amount'];?></p> 
+                            <p>No. of items: <?php echo $ger_ordet['no_items'];?></p>
+                        </div>
+                         <div class="col-md-6 "> 
+                            <div class="headline style-1"> 
+                                <h4>Billing Address</h4> 
+                                <!--<h2>Our Work</h2>--> 
+                            </div>
+                            <?php
+							 $get_biil_addexe=mysqli_query($conn,"select * from billing_address where customer_id='$_SESSION[User_id]' order by address_id desc limit 1");
+							$get_billadre=mysqli_fetch_array($get_biil_addexe);
+							$country_name_exe=mysqli_query($conn,"select * from country where country_id='$get_billadre[country]'");
+							$con_name=mysqli_fetch_array($country_name_exe);
+							$state_exe=mysqli_query($conn,"select * from state where state_id='$get_billadre[state]'");
+							$state_name=mysqli_fetch_array($state_exe);
+							?>
+                            <!-- headline -->                             
+                            <p>Name: <?php echo $get_billadre['name'];?></p>
+                            <p>Email: <?php echo $get_billadre['email'];?></p>
+                            <p>Phone: <?php echo $get_billadre['phone'];?></p>
+                            <p>Country: <?php echo $con_name['country_name'];?></p>
+                            <p>State: <?php echo $state_name['state_name'];?></p>
+                            <p>City: <?php echo $get_billadre['city'];?> </p>
+                            <p>Address 1: <?php echo $get_billadre['address1'];?> </p>
+                            <p>Address 2: <?php echo $get_billadre['address2'];?></p>
+                            <p>Zipcode: <?php echo $get_billadre['zipcode'];?></p> 
+                        </div>
+                                                   
                         </div>
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
                 </div>
-                <!-- container -->                 
+                <!-- container -->  
+                
+                
+                  <div class="container"> 
+                    <div class="row"> 
+                        <div class="col-sm-12"> 
+                            <div class="services-boxes style-2 wow fadeInDown"> 
+                               <table class="table">
+                               <tbody>
+                               <tr>
+                               <th>Ctegory Name</th><th>Product Name</th><th>Product Image</th><th>Quntity</th><th>Price</th><th>Total Price</th>
+                               <!--<th>Action</th>-->
+                               </tr>
+                                <?php
+                            $cart_dis_exe=mysqli_query($conn,"select * from cart where customer_id='$_SESSION[User_id]' AND status='1'");
+							while($csrt_pdts=mysqli_fetch_array($cart_dis_exe))
+							{
+								
+										$products_exe=mysqli_query($conn,"select * from product where product_id='$csrt_pdts[product_id]'");
+										$prd_name=mysqli_fetch_array($products_exe);
+										
+                                        $cate_name_exe=mysqli_query($conn,"select * from category where category_id='$prd_name[category_id]'");
+										$cate_name=mysqli_fetch_array($cate_name_exe);
+										
+							?>
+                               <tr>
+                               <td><?php echo $cate_name['category_name'];?></td>
+                               <td><?php echo $prd_name['product_name'];?></td>
+                               <td><img src="Console/product/<?php echo $prd_name['product_image'];?>" style="height:100px;width:100px;"></td>
+                               <td><?php echo $csrt_pdts['product_qty'];?></td>
+                               <td><?php echo $csrt_pdts['product_price'];?></td>
+                               <td><?php echo $csrt_pdts['product_price'];?></td>
+                              <?php /*?> <td><a href="backend.php?cart_id=<?php echo $csrt_pdts['cart_id'];?>"><i class="fa fa-close"></i></a></td><?php */?>
+                               </tr>
+                               <?php
+							}
+							   ?>
+                               <tr>
+                               <?php
+                               $total_amt=mysqli_query($conn,"select SUM(product_price)as total_amt,SUM(product_qty)as total_qty from cart where customer_id='$_SESSION[User_id]' AND status='1'");
+							   $get_total=mysqli_fetch_array($total_amt);
+							   $_SESSION['total_amt']=$_get_total['total_amt'];
+							   ?>
+                               <td align="right" colspan="5">Sub Total</td>
+                               <td align="left" colspan="2"><i class="fa fa-inr"><?php echo $get_total['total_amt'];?></td>
+                               </tr>
+                               <tr>
+                               <?php
+                              // $tax_total=$get_total*(2/100);
+							   ?>
+                               <td align="right" colspan="5">Tax(2%)</td>
+                               <td align="left" colspan="2"><i class="fa fa-inr"><?php echo $tax_total;?></td>
+                               </tr>
+                               <tr>
+                              
+                               <td align="right" colspan="5">Shipping Charges</td>
+                               <td align="left" colspan="2"><i class="fa fa-inr"></i>200</td>
+                               </tr>
+                               <tr>
+                               <?php
+                              // $grand_total=$get_total+$tax_total+200;
+							   ?>
+                               <td align="right" colspan="5">Grand Total</td>
+                               <td align="left" colspan="2"><i class="fa fa-inr"></i><?php echo $grand_total;?></td>
+                               </tr>
+                               <tr>
+                               <td align="right" colspan="7">
+                               <?php
+                               $order_cart_exe=mysqli_query($conn,"Select ")
+							   ?>
+                               <form method="post" action="backend.php">
+                               <input type="hidden" name="order_cust_id" value="<?php echo $_SESSION['User_id'];?>">
+                               <input type="hidden" name="order_prd_qty" value="<?php echo $get_total['total_qty'];?>">
+                               <input type="hidden" name="order_amount" value="<?php echo $get_total['total_amt'];?>">
+                               <?php 
+							   $order_dat=date('d-m-Y');
+							   $dipat_date=date("d-m-Y", strtotime("+1 week"));
+							   ?>
+                               <input type="hidden" name="order_date" value="<?php echo $order_dat;?>">
+                               <input type="hidden" name="order_dispa_date" value="<?php echo $dipat_date;?>">
+                               <button class="btn btn-default" name="place_order" type="submit">CheckOut</button>
+                               </form>
+                               </td>
+                               </tr>
+                               </tbody>
+                               </table> 
+                                                   
+                            </div>
+                            <!-- services-boxes -->                             
+                        </div>
+                        <!-- col -->                         
+                       
+                        <!-- col -->                         
+                     
+                        <!-- col -->                         
+                    </div>
+                    <!-- row -->                     
+                </div>               
                 <!-- <div class="map" style="margin-bottom:0;"></div>  -->                
             </div>
             <!-- CONTENT -->             

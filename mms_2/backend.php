@@ -55,6 +55,7 @@ if($_GET['cart_id'])
 if(isset($_POST['place_order']))
 {
 	$ins_order=mysqli_query($conn,"INSERT INTO `orders`( `customer_id`, `no_items`, `bill_amount`,  `order_date`, `dispatch_date`) VALUES ('$_POST[order_cust_id]','$_POST[order_prd_qty]','$_POST[order_amount]','$_POST[order_date]','$_POST[order_dispa_date]')");
+	//$upcert_date=mysqli_query($conn,"update `cart` set order_date='$_POST[order_date]' where ");
 	$order_id=mysqli_insert_id($conn);
 	if($ins_order)
 	{
@@ -79,7 +80,7 @@ if(isset($_POST['payment']))
 }
 if($_POST['billing'])
 {
-	$ins_bill_address=mysqli_query($conn,"INSERT INTO `billing_address`( `name`, `email`, `phone`, `country`, `state`, `city`, `address1`, `address2`, `zipcode`) VALUES ('$_POST[name]','$_POST[email]','$_POST[phone]','$_POST[country]','$_POST[state]','$_POST[city]','$_POST[address1]','$_POST[address2]','$_POST[zipcode]')");
+	$ins_bill_address=mysqli_query($conn,"INSERT INTO `billing_address`( `customer_id`,`name`, `email`, `phone`, `country`, `state`, `city`, `address1`, `address2`, `zipcode`) VALUES ('$_SESSION[User_id]','$_POST[name]','$_POST[email]','$_POST[phone]','$_POST[country]','$_POST[state]','$_POST[city]','$_POST[address1]','$_POST[address2]','$_POST[zipcode]')");
 	if($ins_bill_address)
 	{
 		$_SESSION['bill_adname']=$_POST['name'];

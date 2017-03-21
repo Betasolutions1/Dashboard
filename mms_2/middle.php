@@ -2,8 +2,8 @@
 include 'Console/config.php';
 session_start();
 error_reporting(0);
-
 ?>
+
 <!doctype html> 
 <html> 
     <head> 
@@ -72,13 +72,13 @@ error_reporting(0);
                                     <li> 
                                         <a href="index.php">Home</a> 
                                     </li>                                     
-                                    <li>
+                                    <li class="active">
                                         <a href="about-us.php">About</a>
                                     </li>                                     
                                     <li class="dropdown"> 
-                                        <a href="services1.php">Services</a> 
+                                        <a href="#">Services</a> 
                                         <ul> 
-                                            <?php 
+                                           <?php 
 										$get_service_type_exe=mysqli_query($conn,"select * from service_type");
 										while($get_styps=mysqli_fetch_array($get_service_type_exe))
 										{
@@ -90,6 +90,12 @@ error_reporting(0);
                                             <?php
 										}
 											?>                                                 
+                                            <!--<li>
+                                                <a href="services2.php">Mobile</a>
+                                            </li>                                             
+                                            <li>
+                                                <a href="services3.php">IT</a>
+                                            </li> -->                                          
                                         </ul>                                         
                                     </li>                                     
                                     <li class=""> 
@@ -97,8 +103,8 @@ error_reporting(0);
                                     </li>
                                     <li>
                                         <a href="shop.php">shop</a>
-                                    </li>
-                                     <li class="dropdown active"> 
+                                    </li> 
+                                     <li class="dropdown"> 
                                         <a href="">Pages</a> 
                                         <ul> 
                                         <?php
@@ -130,7 +136,7 @@ error_reporting(0);
                                     </li> 
                                     <li><a href="Cart.php" style="font-size:20px;"><i class="fa fa-shopping-cart"></i></a></li>                                    
                                 </ul>                                 
-                            </nav>                              
+                            </nav>                               
                         </div>
                         <!-- col -->                         
                     </div>
@@ -145,18 +151,15 @@ error_reporting(0);
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-6"> 
-                                <h4>Register</h4> 
+                                <h4>About us</h4> 
                             </div>
                             <!-- col -->                             
                             <div class="col-sm-6"> 
                                 <ol class="breadcrumb"> 
                                     <li>
                                         <a href="index.php">Home</a>
-                                    </li>
-                                    <li>
-                                        <a href="login.php">Login</a>
-                                    </li>
-                                    <li class="active">Register</li>                                     
+                                    </li>                                     
+                                    <li class="active">About Us</li>                                     
                                 </ol>                                 
                             </div>
                             <!-- col -->                             
@@ -170,8 +173,94 @@ error_reporting(0);
                     <div class="row"> 
                         <div class="col-sm-12"> 
                             <div class="headline style-3"> 
-                                <h5>Say hello</h5> 
-                                <h2>register your details</h2> 
+                                <h5>Mms</h5> 
+                                <h2>About our work</h2> 
+                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p> 
+                            </div>
+                            <!-- headline -->                             
+                        </div>
+                        <!-- col -->                         
+                    </div>
+                    <!-- row -->                     
+                </div>
+                <!-- ontainer -->                 
+                <div class="container"> 
+                    <div class="row"> 
+                        <div class="col-sm-12"> 
+                            <img class="wow pulse" src="service/.6.jpg" style="height:280px;width:1140px;" alt=""> 
+                        </div>
+                        <!-- col -->                         
+                    </div>
+                    <!-- row -->                     
+                </div>
+                <!-- ontainer -->                 
+                <br>
+                <br>
+                <br> 
+                <div class="container"> 
+                    <div class="row"> 
+                    <?php
+                    $ret_about=mysqli_query($conn,"select * from about_us order by id desc limit 1");
+					$res=mysqli_fetch_array($ret_about);
+					?>
+                        <div class="col-sm-12"> 
+                            <h3><?php echo $res['title']?></h3> 
+                            <br> 
+                            <p><?php echo $res['data'];?></p> 
+                        </div>
+                        <!-- col -->                         
+                        <?php /*?><div class="col-sm-6"> 
+                            <div class="vertical-tabs"> 
+                                <ul class="nav nav-tabs"> 
+                                    <li class="active">
+                                        <a href="#tab-1" data-toggle="tab">About</a>
+                                    </li>                                     
+                                    <li>
+                                        <a href="#tab-2" data-toggle="tab">Why choose</a>
+                                    </li>                                     
+                                    <li>
+                                        <a href="#tab-3" data-toggle="tab">Features</a>
+                                    </li>                                     
+                                </ul>                                 
+                                <div class="tab-content"> 
+                                    <div class="tab-pane fade in active" id="tab-1"> 
+                                        <p class="text-uppercase"><strong>Lorem ipsum dolor sit amet</strong></p> 
+                                        <p>Sed ut perspiciatis unde omnis iste natus sit ulavolu ptatem accusantium dolor laudantium, totam rem 
+                                    aperiam.</p> 
+                                        <img src="images/about/tabs/image-1.jpg" alt=""> 
+                                    </div>
+                                    <!-- tab-pane -->                                     
+                                    <div class="tab-pane fade" id="tab-2"> 
+                                        <p class="text-uppercase"><strong>Cras malesuada aliquet enim</strong></p> 
+                                        <p>Aliquam et diam in tellus euismod pulvinar. Donec non tellus pellentesque augue posuere gravida nec ornare ante.</p> 
+                                        <img src="images/about/tabs/image-2.jpg" alt=""> 
+                                    </div>
+                                    <!-- tab-pane -->                                     
+                                    <div class="tab-pane fade" id="tab-3"> 
+                                        <p class="text-uppercase"><strong>Nulla venenatis molestie sed</strong></p> 
+                                        <p>Etiam aliquet nisl tortor, ut sodales ante varius vitae. Nunc a sodales nisl. Ut tincidunt, nibh ut lacinia mattis.</p> 
+                                        <img src="images/about/tabs/image-3.jpg" alt=""> 
+                                    </div>
+                                    <!-- tab-pane -->                                     
+                                </div>
+                                <!-- tab-content -->                                 
+                            </div>
+                            <!-- vertical-tabs -->                             
+                        </div><?php */?>
+                        <!-- col -->                         
+                    </div>
+                    <!-- row -->                     
+                </div>
+                <!-- ontainer -->                 
+                <br>
+                <br>
+                <br> 
+                <div class="container"> 
+                    <div class="row"> 
+                        <div class="col-sm-12"> 
+                            <div class="headline style-3"> 
+                                <h5>Mms</h5> 
+                                <h2>Meet our team</h2> 
                                 <p> Temporibus autem quibusdam et aut officiis debitis aut rerum.</p> 
                             </div>
                             <!-- headline -->                             
@@ -180,103 +269,101 @@ error_reporting(0);
                     </div>
                     <!-- row -->                     
                 </div>
-                <!-- container -->                 
-                <div class="container"> 
-                    <!-- row -->                     
-                </div>
-                <!-- container -->                 
+                <!-- ontainer -->                 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-md-offset-2 col-md-8 col-sm-12"> 
-                        <!--assets/php/send.php id="contact-form" -->
-                            <form  name="billing-form" action="backend.php" method="post"> 
-                                <fieldset> 
-                                    <div id="alert-area"></div>                                     
-                                    
-                                    <input class="col-xs-12" id="name" type="text" name="name" placeholder="Name"><br><br/>
-
-                                    <input class="col-xs-12" id="email" type="text" name="email" placeholder="Email Id"><br><br/>
-                                    <input class="col-xs-12" id="phone" type="text" name="phone" placeholder="Phone No"><br><br/>
-                                     <div class="form-group">
-      <textarea class="form-control" rows="5" id="address1" placeholder="address1" name="address1"></textarea>
-    </div>
-    <div class="form-group">
-      <textarea class="form-control" rows="5" id="address2" placeholder="address2" name="address2"></textarea>
-    </div>
-    <div class="form-group">
-  
-  <select class="form-control" id="country" name="country">
-    <option>--select country--</option>
-    <?php $csel=mysqli_query($conn,"select * from country");
-    while($csel2=mysqli_fetch_array($csel)){
-    ?>
-    <option value="<?php echo $csel2['country_id'];?>"><?php echo $csel2['country_name'];?></option><?php } ?>
-  </select>
-</div>
-<div class="form-group">
-  
-    <select class="form-control" id="state" name="state">
-    <option>--select state--</option>
-    <?php $ssel=mysqli_query($conn,"select * from state");
-    while($ssel2=mysqli_fetch_array($ssel)){
-    ?>
-    <option value="<?php echo $ssel2['state_id'];?>"><?php echo $ssel2['state_name'];?></option><?php } ?>
-  </select>
-</div>
-<div class="form-group">
- 
-  <select class="form-control" id="city" name="city">
-    <option>--select city--</option>
-    <option>RTC complex</option>
-    <option>Gajuwaka</option>
-    <option>NAD</option>
-  </select>
-</div>
-                                   
-                                    <input class="col-xs-12" id="pincode" type="text" name="zipcode" placeholder="Enter Ur Pincode"> <br><br/>
-                                    <!--<textarea class="col-xs-12" id="message" name="message" rows="8" cols="25" placeholder="message"></textarea>-->                                     
-                                    <input class="btn btn-default" id="submit" type="submit" name="billing" value="Submit"> 
-                                </fieldset>                                 
-                            </form>                             
+                        <div class="col-sm-4"> 
+                            <div class="about-me wow fadeInLeft"> 
+                                <div class="about-me-thumbnail"> 
+                                    <img src="service/7.jpg" style="height:425px;width:360px;" alt=""> 
+                                    <div class="social-media"> 
+                                        <a class="facebook" href="#"><i class="fa fa-facebook"></i></a> 
+                                        <a class="twitter" href="#"><i class="fa fa-twitter"></i></a> 
+                                        <a class="google" href="#"><i class="fa fa-google-plus"></i></a> 
+                                        <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a> 
+                                    </div>
+                                    <!-- social-media -->                                     
+                                </div>
+                                <!-- about-me-thumbnail -->                                 
+                                <div class="about-me-details"> 
+                                    <h4>Member 1</h4> 
+                                    <h5>Project manager</h5> 
+                                </div>
+                                <!-- about-me-details -->                                 
+                            </div>
+                            <!-- about-me -->                             
+                        </div>
+                        <!-- col -->                         
+                        <div class="col-sm-4"> 
+                            <div class="about-me wow fadeInLeft" data-wow-delay="0.3s"> 
+                                <div class="about-me-thumbnail"> 
+                                    <img src="service/7.jpg" style="height:425px;width:360px;" alt=""> 
+                                    <div class="social-media"> 
+                                        <a class="facebook" href="#"><i class="fa fa-facebook"></i></a> 
+                                        <a class="twitter" href="#"><i class="fa fa-twitter"></i></a> 
+                                        <a class="google" href="#"><i class="fa fa-google-plus"></i></a> 
+                                        <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a> 
+                                    </div>
+                                    <!-- social-media -->                                     
+                                </div>
+                                <!-- about-me-thumbnail -->                                 
+                                <div class="about-me-details"> 
+                                    <h4>Member 2</h4> 
+                                    <h5>Art director</h5> 
+                                </div>
+                                <!-- about-me-details -->                                 
+                            </div>
+                            <!-- about-me -->                             
+                        </div>
+                        <!-- col -->                         
+                        <div class="col-sm-4"> 
+                            <div class="about-me wow fadeInLeft" data-wow-delay="0.6s"> 
+                                <div class="about-me-thumbnail"> 
+                                    <img src="service/7.jpg" style="height:425px;width:360px;" alt=""> 
+                                    <div class="social-media"> 
+                                        <a class="facebook" href="#"><i class="fa fa-facebook"></i></a> 
+                                        <a class="twitter" href="#"><i class="fa fa-twitter"></i></a> 
+                                        <a class="google" href="#"><i class="fa fa-google-plus"></i></a> 
+                                        <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a> 
+                                    </div>
+                                    <!-- social-media -->                                     
+                                </div>
+                                <!-- about-me-thumbnail -->                                 
+                                <div class="about-me-details"> 
+                                    <h4>member 3</h4> 
+                                    <h5>Web designer</h5> 
+                                </div>
+                                <!-- about-me-details -->                                 
+                            </div>
+                            <!-- about-me -->                             
                         </div>
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
                 </div>
-                <!-- container -->                 
-                <!-- <div class="map" style="margin-bottom:0;"></div>  -->                
-            </div>
-            <!-- CONTENT -->             
-            <!-- FOOTER -->             
-            <footer> 
-                <div id="footer-top"> 
+                <!-- ontainer -->                 
+                <!-- fullsection -->                 
+                <!-- ontainer -->                 
+                <!-- ontainer -->                 
+                <section class="full-section parallax" id="section-4"> 
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-12"> 
-                                <div class="widget widget-social"> 
-                                    <div class="social-media"> 
-                                        <a class="facebook" href="#"><i class="fa fa-facebook"></i></a> 
-                                        <a class="twitter" href="#"><i class="fa fa-twitter"></i></a> 
-                                        <a class="google" href="#"><i class="fa fa-google-plus"></i></a> 
-                                        <a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a> 
-                                        <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a> 
-                                        <a class="tumblr" href="#"><i class="fa fa-tumblr"></i></a> 
-                                        <a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a> 
-                                        <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a> 
-                                        <a class="skype" href="#"><i class="fa fa-skype"></i></a> 
-                                        <a class="vine" href="#"><i class="fa fa-vine"></i></a> 
-                                        <a class="behance" href="#"><i class="fa fa-behance"></i></a> 
-                                    </div>
-                                    <!-- social-media -->                                     
-                                </div>
-                                <!-- widget-social -->                                 
+                                <p class="text-center"><a class="btn btn-default" href="contact.php">Contact us<i class="fa fa-arrow-right"></i></a></p> 
                             </div>
                             <!-- col -->                             
                         </div>
                         <!-- row -->                         
                     </div>
-                    <!-- container -->                     
-                </div>
+                    <!-- ontainer -->                     
+                </section>
+                <!-- full-section -->                 
+            </div>
+            <!-- CONTENT -->             
+            <!-- FOOTER -->             
+            <footer> 
+                <div id="footer-top"> 
+</div>
                 <!-- footer-top -->                 
                 <div id="footer"> 
                     <div class="container"> 

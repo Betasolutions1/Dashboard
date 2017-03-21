@@ -81,7 +81,7 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
   </script>
   </head>
   <!--document.getElementById('payment-form').submit();-->
-  <body onload="submitPayuForm();">
+  <body onload="document.getElementById('payment-form').submit();">
    <!-- <h2>PayU Form</h2>-->
     <br/>
     <?php if($formError) { ?>
@@ -99,28 +99,28 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
           <!--<td><b>Mandatory Parameters</b></td>-->
         </tr>
         <tr>
-          <!--<td>Amount: </td>-->
-          <td><input type="hidden" name="amount" value="500" /></td>
-         <!-- <td>First Name: </td>-->
+         <!-- <td>Amount: </td>-->
+          <td><input type="hidden" name="amount" value="5" /></td>
+          <!--<td>First Name: type="hidden" </td>-->
           <td><input type="hidden" name="firstname" id="firstname" value="<?php echo $_SESSION['bill_adname'] ?>" /></td>
         </tr>
         <tr>
           <!--<td>Email: </td>-->
           <td><input type="hidden" name="email" id="email" value="<?php echo $_SESSION['bill_email']; ?>" /></td>
-         <!-- <td>Phone: </td>-->
+          <!--<td>Phone: </td>-->
           <td><input type="hidden" name="phone" value="<?php echo $_SESSION['bill_phone']; ?>" /></td>
         </tr>
         <tr>
           <!--<td>Product Info: </td>-->
-          <td colspan="3"><textarea style="display:none" name="productinfo"><?php echo (empty($posted['productinfo'])) ? '' : $posted['productinfo'] ?></textarea></td>
+          <td colspan="3"><textarea style="display:none" name="productinfo">MMS Products</textarea></td>
         </tr>
         <tr>
-         <!-- <td>Success URI: </td>-->
-          <td colspan="3"><input type="hidden" name="surl" value="infinityubs.com" size="64" /></td>
+          <!--<td>Success URI: </td>-->
+          <td colspan="3"><input type="hidden" name="surl" value="http://localhost:8080/dashboard_1/mms_2/index.php" size="64" /></td>
         </tr>
         <tr>
          <!-- <td>Failure URI: </td>-->
-          <td colspan="3"><input type="hidden" name="furl" value="dashboard_1/mms/index.php" size="64" /></td>
+          <td colspan="3"><input type="hidden" name="furl" value="http://localhost:8080/dashboard_1/mms_2/index.php" size="64" /></td>
         </tr>
 
         <tr>
@@ -128,34 +128,34 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
         </tr>
 
         <tr>
-          <!--<td><b>Optional Parameters</b></td>-->
+         <!-- <td><b>Optional Parameters</b></td>-->
         </tr>
         <tr>
-         <!-- <td>Last Name: </td>-->
+          <!--<td>Last Name: </td>-->
           <td><input type="hidden"  name="lastname" id="lastname" value="<?php echo (empty($posted['lastname'])) ? '' : $posted['lastname']; ?>" /></td>
-         <!-- <td>Cancel URI: </td>-->
-          <td><input type="hidden"  name="curl" value="" /></td>
+          <!--<td>Cancel URI: </td>-->
+          <td><input  type="hidden" name="curl" value="" /></td>
         </tr>
         <tr>
           <!--<td>Address1: </td>-->
-          <td><input type="hidden"  name="address1" value="<?php echo $_SESSION['bill_address1']; ?>" /></td>
+          <td><input  type="hidden"   name="address1" value="<?php echo $_SESSION['bill_address1']; ?>" /></td>
          <!-- <td>Address2: </td>-->
-          <td><input type="hidden"  name="address2" value="<?php echo $_SESSION['bill_address2']; ?>" /></td>
+          <td><input type="hidden" name="address2" value="<?php echo $_SESSION['bill_address2']; ?>" /></td>
         </tr>
         <tr>
-         <!-- <td>City: </td>-->
-          <td><input type="hidden"  name="city" value="<?php echo $_SESSION['bill_city']; ?>" /></td>
-          <!--<td>State: </td>-->
+        <!--  <td>City: </td>-->
+          <td><input type="hidden"   name="city" value="<?php echo $_SESSION['bill_city']; ?>" /></td>
+         <!-- <td>State: </td>-->
           <td><input type="hidden"  name="state" value="<?php echo $_SESSION['bill_state']; ?>" /></td>
         </tr>
         <tr>
-         <!-- <td>Country: </td>-->
+          <!--<td>Country: </td>-->
           <td><input type="hidden"  name="country" value="<?php echo $_SESSION['bill_country']; ?>" /></td>
-          <!--<td>Zipcode: </td>-->
-          <td><input type="hidden"  name="zipcode" value="<?php echo $_SESSION['bill_zipcode']; ?>" /></td>
+         <!-- <td>Zipcode: </td>-->
+          <td><input type="hidden" name="zipcode" value="<?php echo $_SESSION['bill_zipcode']; ?>" /></td>
         </tr>
         <tr>
-          <!--<td>UDF1: </td>-->
+        <!--  <td>UDF1: </td>-->
           <td><input type="hidden"  name="udf1" value="<?php echo (empty($posted['udf1'])) ? '' : $posted['udf1']; ?>" /></td>
          <!-- <td>UDF2: </td>-->
           <td><input type="hidden"  name="udf2" value="<?php echo (empty($posted['udf2'])) ? '' : $posted['udf2']; ?>" /></td>
@@ -163,16 +163,17 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
         <tr>
         <!--  <td>UDF3: </td>-->
           <td><input type="hidden"  name="udf3" value="<?php echo (empty($posted['udf3'])) ? '' : $posted['udf3']; ?>" /></td>
-         <!-- <td>UDF4: </td>-->
+        <!--  <td>UDF4: </td>-->
           <td><input type="hidden"  name="udf4" value="<?php echo (empty($posted['udf4'])) ? '' : $posted['udf4']; ?>" /></td>
         </tr>
         <tr>
-          <!--<td>UDF5: </td>-->
+        <!--  <td>UDF5: </td>-->
           <td><input type="hidden"  name="udf5" value="<?php echo (empty($posted['udf5'])) ? '' : $posted['udf5']; ?>" /></td>
          <!-- <td>PG: </td>-->
-          <td><input type="hidden" name="pg" value="<?php echo (empty($posted['pg'])) ? '' : $posted['pg']; ?>" /></td>
+          <td><input type="hidden"  name="pg" value="<?php echo (empty($posted['pg'])) ? '' : $posted['pg']; ?>" /></td>
         </tr>
         <tr>
+        <!---->
           <?php if(!$hash) { ?>
             <td colspan="4"><input type="submit" style="display:none;" value="Submit" /></td>
           <?php } ?>
