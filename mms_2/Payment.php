@@ -193,8 +193,7 @@ if(!$_SESSION['order_id'])
                                     <div id="collapse1" class="panel-collapse collapse in"> 
                                         <div class="panel-body"> 
                                         <form method="post" action="backend.php" >
-                                            
-                                            <input type="checkbox" class="radio-inline radio" name="payment_type" value="payumoney" style="height:15px;width:15px;"> <label>Pay U Money</label><br>
+                                            <input type="checkbox" class="checkbox-inline" name="payment_type" value="payumoney" style="height:15px;width:15px;-webkit-appearance: checkbox;margin-top:-2px"> <label>Pay U Money</label><br>
                                             <button type="submit" class="btn btn-default" name="payment" value="Pay" >Pay</button>
                                             </form>
                                         </div>

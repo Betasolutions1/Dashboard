@@ -3,6 +3,7 @@ session_start();
 if(!$_SESSION['id']){
     header("location:index.php");
 }
+
 include 'config.php';
 if(isset($_POST['submit'])){
      $title=$_POST['title'];
