@@ -2,6 +2,7 @@
  include("Console/config.php");
  session_start();
  error_reporting(0);
+ $file_name= basename(__FILE__, '.php');
 ?>
 <!doctype html> 
 <html> 
@@ -153,9 +154,9 @@
                                         <a href="index.php">Home</a>
                                     </li>                                     
                                     <li>
-                                        <a href="blog-columns.php">Blog</a>
+                                        <a href="<?php echo $file_name;?>.php"><?php echo $file_name;?></a>
                                     </li>                                     
-                                    <li class="active">Blog Description</li>                                     
+                                    <li class="active"><?php echo $file_name;?> Description</li>                                     
                                 </ol>                                 
                             </div>
                             <!-- col -->                             
@@ -166,37 +167,12 @@
                 </div>
                 <!-- page-header -->
                 <?php
-                $bsel=mysqli_query($conn,"select * from blogs where blog_id='$_GET[Blog_id]'");
+                $bsel=mysqli_query($conn,"select * from ".$file_name." order by id desc limit 1'");
                 $bsel2=mysqli_fetch_array($bsel);
                 ?>                 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-md-9"> 
-                            <div class="blog-article"> 
-                                <div class="blog-article-thumbnail"> 
-                                    <img src="Console/Blog/<?php echo $bsel2['blog_image'];?>" alt=""> 
-                                    <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="Console/Blog/<?php echo $bsel2['blog_image'];?>"><i class="fa fa-eye"></i></a> 
-                                    </div>
-                                    <!-- blog-article-hover -->                                     
-                                </div>
-                                <!-- blog-article-thumbnail -->                                 
-                                <div class="blog-article-details"> 
-                                    <h4><?php echo $bsel2['datetime'];?></h4> 
-                                    <h2><a href="blog-post.php"><?php echo $bsel2['blog_title'];?></a></h2> 
-                                    <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">2</a> </p> 
-                                </div>
-                                <!-- blog-article-details -->                                 
-                                <p><?php echo $bsel2['blog_desc'];  ?></p> 
-                                <a class="btn btn-default" href="blog-post.php">Continue reading</a> 
-                            </div>
-                                                        
-                            
-                                                        
-                                           
-                        </div>
-                        <!-- col -->                         
-                        <div class="col-md-3"> 
+                      <div class="col-md-3"> 
                           <div class="widget widget-search"> 
                                 <form name="search" method="get" action="#"> 
                                     <fieldset> 
@@ -332,6 +308,32 @@
                             </div>
                             <!-- widget-slider -->                             
                         </div>
+                    
+                        <div class="col-md-9"> 
+                            <div class="blog-article"> 
+                                <div class="blog-article-thumbnail"> 
+                                    <img src="Console/Blog/<?php echo $bsel2['blog_image'];?>" alt=""> 
+                                    <div class="blog-article-hover"> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="Console/Blog/<?php echo $bsel2['blog_image'];?>"><i class="fa fa-eye"></i></a> 
+                                    </div>
+                                    <!-- blog-article-hover -->                                     
+                                </div>
+                                <!-- blog-article-thumbnail -->                                 
+                                <div class="blog-article-details"> 
+                                    <h4><?php echo $bsel2['datetime'];?></h4> 
+                                    <h2><a href="blog-post.php"><?php echo $bsel2['blog_title'];?></a></h2> 
+                                    <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">2</a> </p> 
+                                </div>
+                                <!-- blog-article-details -->                                 
+                                <p><?php echo $bsel2['blog_desc'];  ?></p> 
+                                <a class="btn btn-default" href="blog-post.php">Continue reading</a> 
+                            </div>
+                            <!-- blog-article -->                             
+                            
+                                                   
+                        </div>
+                        <!-- col -->                         
+                      
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
