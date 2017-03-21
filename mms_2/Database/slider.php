@@ -115,29 +115,59 @@ function validate()
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <form class="form-horizontal" role="form" name="form" onsubmit="return validate()">
+                                        <?php if($_GET['edit_slider']){
+                                            $sel=mysqli_query($conn,"select * from sliders where slider_id='$_GET[edit_slider]'");
+                                            $sel2=mysqli_fetch_array($sel);
+                                            ?>
+                                            <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" name="form" onsubmit="return validate()" action="manual_mysqli.php">
                                                <div class="form-group">
-                                                    <label class="col-md-2 control-label">Text</label>
+                                                    <label class="col-md-2 control-label">Title</label>
                                                     <div class="col-md-10">
-                                                        <input type="text" class="form-control" name="text" >
+                                                        <input type="text" class="form-control" name="title1" value="<?php echo $sel2['slider_title'];?>">
                                                     </div>
+                                                    <input type="hidden" name="slider1" value="<?php echo $sel2['slider_id'];?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">Description</label>
                                                     <div class="col-md-10">
-                                                        <textarea id="elm1" name="area1"></textarea>
+                                                        <textarea id="elm1" name="desc1"><?php echo $sel2['slider_desc'];?></textarea>
                                                     </div>
                                                 </div>
                                                  <div class="form-group">
                                                     <label class="col-md-2 control-label">Image</label>
                                                     <div class="col-md-10">
-                                                        <input type="file" class="form-control" name="area2">
+                                                        <input type="file" class="form-control" name="image1" value="<?php echo $sel2['slider_image'];?>">
                                                     </div>
                                                 </div>
                                                 <div class="form-group" align="center">
-                                                <button type="submit" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Success</button>
+                                                <button type="submit" name="slider_update" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Update</button>
                                                 </div>
                                             </form>
+                                            <?php } else {?>
+                                            <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data" name="form" onsubmit="return validate()" action="manual_mysqli.php">
+                                               <div class="form-group">
+                                                    <label class="col-md-2 control-label">Title</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control" name="title" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Description</label>
+                                                    <div class="col-md-10">
+                                                        <textarea id="elm1" name="desc"></textarea>
+                                                    </div>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <label class="col-md-2 control-label">Image</label>
+                                                    <div class="col-md-10">
+                                                        <input type="file" class="form-control" name="image">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" align="center">
+                                                <button type="submit" name="slider_submit" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Submit</button>
+                                                </div>
+                                            </form>
+                                            <?php } ?>
                                         </div>
                                     </div><!-- end row -->
                                 </div>
@@ -160,52 +190,31 @@ function validate()
                                             <table id="tech-companies-1" class="table  table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>Company</th>
-                                                        <th data-priority="1">Last Trade</th>
-                                                        <th data-priority="3">Trade Time</th>
-                                                        <th data-priority="1">Change</th>
-                                                        <th data-priority="3">Prev Close</th>
-                                                        <th data-priority="3">Open</th>
-                                                        <th data-priority="6">Bid</th>
-                                                        <th data-priority="6">Ask</th>
-                                                        <th data-priority="6">1y Target Est</th>
+                                                        <th>S.No</th>
+                                                        <th data-priority="1">Slider Title</th>
+                                                        <th data-priority="3">Slider Desc</th>
+                                                        <th data-priority="1">Slider Image</th>
+                                                        <th data-priority="3">Manage</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <th>GOOG <span class="co-name">Google Inc.</span></th>
-                                                        <td>597.74</td>
-                                                        <td>12:12PM</td>
-                                                        <td>14.81 (2.54%)</td>
-                                                        <td>582.93</td>
-                                                        <td>597.95</td>
-                                                        <td>597.73 x 100</td>
-                                                        <td>597.91 x 300</td>
-                                                        <td>731.10</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
-                                                        <td>15.81</td>
-                                                        <td>12:25PM</td>
-                                                        <td>0.11 (0.67%)</td>
-                                                        <td>15.70</td>
-                                                        <td>15.94</td>
-                                                        <td>15.79 x 6100</td>
-                                                        <td>15.80 x 17000</td>
-                                                        <td>18.16</td>
-                                                    </tr>
-                                                    <!-- Repeat -->
-                                                    <tr>
-                                                        <th>GOOG <span class="co-name">Google Inc.</span></th>
-                                                        <td>597.74</td>
-                                                        <td>12:12PM</td>
-                                                        <td>14.81 (2.54%)</td>
-                                                        <td>582.93</td>
-                                                        <td>597.95</td>
-                                                        <td>597.73 x 100</td>
-                                                        <td>597.91 x 300</td>
-                                                        <td>731.10</td>
-                                                    </tr>
+                                                <?php
+                                                $count=0;
+                                                $slider_sel=mysqli_query($conn,"select * from sliders");
+                                                while($slider2=mysqli_fetch_array($slider_sel)){
+                                                    echo "<tr>";
+                                                    echo "<td>".++$count."</td>";
+                                                    echo "<td>".$slider2['slider_title']."</td>";
+                                                    echo "<td>".$slider2['slider_desc']."</td>";
+                                                    echo "<td>"?><img src="slider/<?php echo $slider2['slider_image'];?>" height=70px width=70px><?php "</td>"
+                                                    ?>
+                                                    <td><a href="slider.php?edit_slider=<?php echo $slider2['slider_id'];?>">edit</a>
+                                                    <a href="manual_mysqli.php?del_slider=<?php echo $slider2['slider_id'];?>">delete</a>
+                                                    </td>
+                                                    <?php 
+                                                    echo "</tr>";
+                                                }
+                                                ?>
                                                   </tbody>
                                             </table>
                                         </div>
