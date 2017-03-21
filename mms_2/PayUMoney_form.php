@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+//echo $_SESSION['MMS_User'];
 // Merchant key here as provided by Payu
 $MERCHANT_KEY = "rjQUPktU";
 
@@ -46,7 +48,7 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
   ) {
     $formError = 1;
   } else {
-    //$posted['productinfo'] = json_encode(json_decode('[{"name":"tutionfee","description":"","value":"500","isRequired":"false"},{"name":"developmentfee","description":"monthly tution fee","value":"1500","isRequired":"false"}]'));
+    $posted['productinfo'] = json_encode(json_decode('[{"name":"tutionfee","description":"","value":"500","isRequired":"false"},{"name":"developmentfee","description":"monthly tution fee","value":"1500","isRequired":"false"}]'));
 	$hashVarsSeq = explode('|', $hashSequence);
     $hash_string = '';	
 	foreach($hashVarsSeq as $hash_var) {
@@ -78,7 +80,8 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
     }
   </script>
   </head>
-  <body onload="document.getElementById('payment-form').submit();">
+  <!--document.getElementById('payment-form').submit();-->
+  <body onload="submitPayuForm();">
    <!-- <h2>PayU Form</h2>-->
     <br/>
     <?php if($formError) { ?>
@@ -97,7 +100,7 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
         </tr>
         <tr>
           <!--<td>Amount: </td>-->
-          <td><input type="hidden" name="amount" value="5" /></td>
+          <td><input type="hidden" name="amount" value="500" /></td>
          <!-- <td>First Name: </td>-->
           <td><input type="hidden" name="firstname" id="firstname" value="<?php echo $_SESSION['bill_adname'] ?>" /></td>
         </tr>
@@ -113,7 +116,7 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
         </tr>
         <tr>
          <!-- <td>Success URI: </td>-->
-          <td colspan="3"><input type="hidden" name="surl" value="thanks-for-order.php" size="64" /></td>
+          <td colspan="3"><input type="hidden" name="surl" value="infinityubs.com" size="64" /></td>
         </tr>
         <tr>
          <!-- <td>Failure URI: </td>-->

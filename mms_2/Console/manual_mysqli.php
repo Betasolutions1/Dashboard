@@ -617,9 +617,9 @@ if(isset($_POST['Service_sub']))
 
 if(isset($_POST['Service_update']))
 {
-	$serv_id1=mysqli_query($conn,"select * from services");
-	$servy1=mysqli_num_rows($serv_id1);
-	++$servy1;
+	
+	$servy1=mt_rand();
+	
 	$ser_img_name1=$_FILES['service_img1']['name'];
     	$serimg_tmp_name1=$_FILES['service_img1']['tmp_name'];
     	$serv_img_path1=$servy1.'_'.$ser_img_name1;

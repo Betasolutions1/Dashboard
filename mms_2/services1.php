@@ -194,8 +194,9 @@ error_reporting(0);
                         <div class="col-sm-4"> 
                             <div class="services-boxes style-2 wow fadeInDown"> 
                                 <div class="services-boxes-content"> 
+                                <img src="Console/services/<?php echo $edu_res['service_img']?>" style="width:250px;height:185px;">
                                     <h3> <a href="single-service.php?Service_id=<?php echo $edu_res['service_id'];?>"><?php echo $edu_res['service_title']?></a> <!--<small>Nice &amp; Clean</small>--> </h3> 
-                                    <p><?php echo $edu_res['SUBSTRING(service_desc ,1,150)']?>.</p> 
+                                    <p><?php echo strip_tags($edu_res['SUBSTRING(service_desc ,1,150)']);?>.</p> 
                                 </div>
                                 <?php
                                 if($_SESSION['MMS_User'])

@@ -68,12 +68,13 @@ if(isset($_POST['payment']))
 	if($_POST['payment_type']=='payumoney')
 	{
 		$up_order=mysqli_query($conn,"update `orders` set order_type='".$_POST['payment_type']."' where customer_id='$_SESSION[User_id]'");
-		if($up_order)
+		$up_cart=mysqli_query($conn,"update `cart` set status='1' where customer_id='$_SESSION[User_id]'");
+		if($up_order && $up_cart)
 		{
 			header("location:PayUMoney_form.php");
 		}
 	}else{
-		header("location:PayUMoney_form.php");
+		header("location:Payment.php");
 	}
 }
 if($_POST['billing'])

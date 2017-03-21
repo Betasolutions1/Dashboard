@@ -92,17 +92,19 @@ if(!$_SESSION['username'])
 										{
 											$ser_rety_exe=mysqli_query($conn,"select * from services where service_id='$_GET[service_edit_id]'");
 											$ser_ret=mysqli_fetch_array($ser_rety_exe);
+											$egt_ssrettyper=mysqli_query($conn,"select * from service_types where stype_id='$ser_ret[service_type]'");
+											$ssertt=mysqli_fetch_array($egt_ssrettyper);
 										?>
                         					<form class="form-horizontal" role="form" method="post" action="manual_mysqli.php" enctype="multipart/form-data">
                                              <div class="form-group">
 	                                                <label class="col-md-2 control-label">Service Type</label>
 	                                                <div class="col-md-10">
-                                                    <?php 
-													$ssel=mysqli_query($conn,"select * from service_type");
-													?>
+                                                    
 	                                                    <select name="service_type1" class="form-control">
-                                                        <option>--select service type--</option>
-                                                        <?php while($ssel2=mysqli_fetch_array($ssel)){?>
+                                                        <option value="<?php echo $ssertt['stype_id']?>"><?php echo $ssertt['stype_name'];?></option>
+                                                        <?php 
+														$ssel=mysqli_query($conn,"select * from service_type");
+														while($ssel2=mysqli_fetch_array($ssel)){?>
                                                         <option value="<?php echo $ssel2['stype_id'];?>"><?php echo $ssel2['stype_name'];?></option>
                                                         <?php } ?>
                                                         </select>
@@ -142,7 +144,7 @@ if(!$_SESSION['username'])
                                                     <?php 
 													$ssel=mysqli_query($conn,"select * from service_type");
 													?>
-	                                                    <select name="service_type" class="form-control">
+	                                                    <select name="service_type" class="form-control" required>
                                                         <option>--select service type--</option>
                                                         <?php while($ssel2=mysqli_fetch_array($ssel)){?>
                                                         <option value="<?php echo $ssel2['stype_id'];?>"><?php echo $ssel2['stype_name'];?></option>
