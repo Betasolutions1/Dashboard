@@ -1,3 +1,25 @@
+<?php 
+session_start();
+if(!$_SESSION['id']){
+    header("location:index.php");
+}
+
+
+    include 'config.php';
+    // insert 
+    if(isset($_POST['submit'])){
+        $title=$_POST['title'];
+        $desc=$_POST['desc'];
+        $image=$_FILES['image']['name'];
+$image_tmp=$_FILES['image']['tmp_name'];
+ move_uploaded_file($image_tmp,"images/".$image); 
+        $date=$_POST['date'];
+        $bsel=mysql_query("select blog_title from blogs where blog_title='$title'");
+        $brow=msql_num_rows($bsel);
+        if($brow)
+        $bins=mysql_query("insert into blogs(`blog_title`,`blog_desc`,`blog_image`,`datetime`) values('$title','$desc','$image','$date')");
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -94,36 +116,36 @@ function validate()
 
                         			<div class="row">
                         				<div class="col-md-12">
-                        					<form class="form-horizontal" role="form" name="form" onsubmit="return validate()">
+                        					<form class="form-horizontal" role="form" name="form" onsubmit="return validate()" method="post" enctype="multipart/form-data">
 	                                           <div class="form-group">
-                                                    <label class="col-md-2 control-label">Text</label>
+                                                    <label class="col-md-2 control-label">Title</label>
                                                     <div class="col-md-10">
-                                                        <input type="text" class="form-control" >
+                                                        <input type="text" class="form-control" name="title">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">Description</label>
                                                     <div class="col-md-10">
-                                                        <textarea id="elm1" name="area"></textarea>
+                                                        <textarea id="elm1" name="desc"></textarea>
                                                     </div>
                                                 </div>
                                                  <div class="form-group">
                                                     <label class="col-md-2 control-label">Image</label>
                                                     <div class="col-md-10">
-                                                        <input type="file" class="form-control" >
+                                                        <input type="file" class="form-control" name="image">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                        <label class="control-label col-md-2">Auto Close</label>
+                                                        <label class="control-label col-md-2">Date</label>
                                                         <div class="col-md-10">
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose">
+                                                                <input type="text" name="date" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose">
                                                                 <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
                                                             </div><!-- input-group -->
                                                         </div>
                                                     </div>
                                                 <div class="form-group" align="center">
-                                                <button type="button" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Success</button>
+                                                <button type="submit" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5" name="submit">Submit</button>
                                                 </div>
 	                                        </form>
                         				</div>
@@ -148,52 +170,31 @@ function validate()
                                             <table id="tech-companies-1" class="table  table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>Company</th>
-                                                        <th data-priority="1">Last Trade</th>
-                                                        <th data-priority="3">Trade Time</th>
-                                                        <th data-priority="1">Change</th>
-                                                        <th data-priority="3">Prev Close</th>
-                                                        <th data-priority="3">Open</th>
-                                                        <th data-priority="6">Bid</th>
-                                                        <th data-priority="6">Ask</th>
-                                                        <th data-priority="6">1y Target Est</th>
+                                                        <th>S.No</th>
+                                                        <th data-priority="1">Title</th>
+                                                        <th data-priority="3">Description</th>
+                                                        <th data-priority="1">Image</th>
+                                                        <th data-priority="3">date & time</th>
+                                                        <th data-priority="3">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <th>GOOG <span class="co-name">Google Inc.</span></th>
-                                                        <td>597.74</td>
-                                                        <td>12:12PM</td>
-                                                        <td>14.81 (2.54%)</td>
-                                                        <td>582.93</td>
-                                                        <td>597.95</td>
-                                                        <td>597.73 x 100</td>
-                                                        <td>597.91 x 300</td>
-                                                        <td>731.10</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
-                                                        <td>15.81</td>
-                                                        <td>12:25PM</td>
-                                                        <td>0.11 (0.67%)</td>
-                                                        <td>15.70</td>
-                                                        <td>15.94</td>
-                                                        <td>15.79 x 6100</td>
-                                                        <td>15.80 x 17000</td>
-                                                        <td>18.16</td>
-                                                    </tr>
-                                                    <!-- Repeat -->
-                                                    <tr>
-                                                        <th>GOOG <span class="co-name">Google Inc.</span></th>
-                                                        <td>597.74</td>
-                                                        <td>12:12PM</td>
-                                                        <td>14.81 (2.54%)</td>
-                                                        <td>582.93</td>
-                                                        <td>597.95</td>
-                                                        <td>597.73 x 100</td>
-                                                        <td>597.91 x 300</td>
-                                                        <td>731.10</td>
-                                                    </tr>
+                                                    <?php
+                                                    $count=0;
+                                                    $bdsp=mysql_query("select * from blogs order by blog_id");
+                                                    while($bdsp2=mysql_fetch_array($bdsp)){
+                                                        echo "<tr>";
+                                                        echo "<td>".++$count."</td>";
+                                                        echo "<td>".$bdsp2['blog_title']."</td>";
+                                                         echo "<td>".$bdsp2['blog_desc']."</td>";
+                                                          echo "<td>"?><img src="images/<?php echo $bdsp2['blog_image'];?>" style="height: 50px;width: 50px"><?php "</td>";
+                                                           echo "<td>".$bdsp2['datetime']."</td>";
+                                                           ?>
+                                                           <td><a href="Blog.php?edit_id=<?php echo $bdsp2['blog_id'];?>">edit</a><a href="Blog.php?del_id=<?php echo $bdsp2['blog_id'];?>">delete</a></td>
+                                                           <?php 
+                                                           echo "</tr>";
+                                                    }
+                                                    ?>
                                                   </tbody>
                                             </table>
                                         </div>

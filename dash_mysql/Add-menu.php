@@ -1,3 +1,97 @@
+<?php 
+session_start();
+if(!$_SESSION['id']){
+    header("location:index.php");
+}
+include 'config.php';
+if(isset($_POST['submit'])){
+$title=$_POST['title'];
+$radio=$_POST['radio'];
+if($radio=="option1"){
+    $crt1=mysql_query("create table".$title."(left_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        left_name VARCHAR(50) NOT NULL UNIQUE;
+        left_image VARCHAR(500) NOT NULL;
+        left_desc VARCHAR(3000) NOT NULL)");
+
+ if($crt1){
+             $ins1=mysql_query("insert into menus(`menu_name`) values('$title')");
+            
+      if($file = fopen("../$title.php", "w")) {
+     echo copy("../leftside.php","../$title.php");
+     $html = ""; 
+     if(fwrite($file, $html) === false) echo "Could not write to file $title.php"; 
+     else //echo "Write successful!"; 
+     fclose($file); 
+      }
+     if($file = fopen("$title.php", "w")) {
+     echo copy("sidebar.php","$title.php");
+     $html = ""; 
+     if(fwrite($file, $html) === false) echo "Could not write to file $title.php"; 
+     else //echo "Write successful!"; 
+     fclose($file); 
+      }
+             
+         }
+
+}
+else if($radio=="option2"){
+ $crt2=mysql_query("create table".$title."(middle_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        middle_name VARCHAR(50) NOT NULL UNIQUE;
+        middle_image VARCHAR(500) NOT NULL;
+        middle_desc VARCHAR(3000) NOT NULL)");  
+
+ if($crt2){
+             $ins2=mysql_query("insert into menus(`menu_name`) values('$title')");
+            
+      if($file = fopen("../$title.php", "w")) {
+     echo copy("../middle.php","../$title.php");
+     $html = ""; 
+     if(fwrite($file, $html) === false) echo "Could not write to file $title.php"; 
+     else //echo "Write successful!"; 
+     fclose($file); 
+      }
+     if($file = fopen("$title.php", "w")) {
+     echo copy("middle.php","$title.php");
+     $html = ""; 
+     if(fwrite($file, $html) === false) echo "Could not write to file $title.php"; 
+     else //echo "Write successful!"; 
+     fclose($file); 
+      }
+             
+         }
+
+}
+else if($radio=="option3"){
+ $crt3=mysql_query("create table".$title."(right_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        right_name VARCHAR(50) NOT NULL UNIQUE;
+        right_image VARCHAR(500) NOT NULL;
+        right_desc VARCHAR(3000) NOT NULL)"); 
+
+ if($crt3){
+             $ins3=mysql_query("insert into menus(`menu_name`) values('$title')");
+            
+      if($file = fopen("../$title.php", "w")) {
+     echo copy("../rightside.php","../$title.php");
+     $html = ""; 
+     if(fwrite($file, $html) === false) echo "Could not write to file $title.php"; 
+     else //echo "Write successful!"; 
+     fclose($file); 
+      }
+     if($file = fopen("$title.php", "w")) {
+     echo copy("rightside.php","$title.php");
+     $html = ""; 
+     if(fwrite($file, $html) === false) echo "Could not write to file $title.php"; 
+     else //echo "Write successful!"; 
+     fclose($file); 
+      }
+             
+         }
+
+
+
+}
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -79,34 +173,37 @@ function validate()
                                         <div class="col-md-12">
                                             <form class="form-horizontal" role="form" name="form" onsubmit="return validate()">
                                                 <div class="form-group">
-                                                    <label class="col-md-2 control-label">Text</label>
+                                                    <label class="col-md-2 control-label">Menu name</label>
                                                     <div class="col-md-10">
-                                                        <input type="text" class="form-control" name="text" >
+                                                        <input type="text" class="form-control" name="title" >
                                                     </div>
                                                 </div><div class="row" align="center">
                                                 <div class="col-md-4">
-                                            <div class="radio">
+                                            <div class="radio" style="margin-top: 60px">
                                                 <input type="radio" name="radio" id="radio1" value="option1" checked>
                                                 <label for="radio1">
-                                                    Left
+                                                   <img src="images/page1.png" style="height: 150px;width: 150px;margin-top: -70px">
                                                 </label>
-                                            </div></div>
+                                            </div>
+                                            </div>
                                               <div class="col-md-4">
-                                            <div class="radio">
-                                                <input type="radio" name="radio" id="radio1" value="option1" checked>
+                                            <div class="radio" style="margin-top: 60px">
+                                                <input type="radio" name="radio" id="radio2" value="option2" checked>
                                                 <label for="radio1">
-                                                    Middle
+                                                   <img src="images/page2.png" style="height: 150px;width: 150px;margin-top: -70px">
                                                 </label>
-                                            </div></div>
+                                            </div>
+                                            </div>
                                               <div class="col-md-4">
-                                            <div class="radio">
-                                                <input type="radio" name="radio" id="radio1" value="option1" checked>
+                                            <div class="radio" style="margin-top: 60px">
+                                                <input type="radio" name="radio" id="radio3" value="option3" checked>
                                                 <label for="radio1">
-                                                    Right
+                                                   <img src="images/right.png" style="height: 150px;width: 150px;margin-top: -70px">
                                                 </label>
-                                            </div></div></div><br>
+                                            </div>
+                                            </div></div><br>
                                                 <div class="form-group" align="center">
-                                                <button type="submit" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5">Success</button>
+                                                <button type="submit" class="btn btn-success btn-rounded w-md waves-effect waves-light m-b-5" name="submit">Submit</button>
                                                 </div>
                                             </form>
                                         </div>

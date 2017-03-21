@@ -1,5 +1,5 @@
    <div class="left side-menu">
-                <div class="sidebar-inner slimscrollleft">
+                <div class="sidebar-inner slimscrollleft" >
 
                     <!-- User -->
                     <div class="user-box">
@@ -105,11 +105,15 @@
                             </li>
 
                         </ul>
-                        <div class="clearfix"></div>
+                        <div class="clearfix">
+                            
+                        </div>
+
                     </div>
                     <!-- Sidebar -->
-                    <div class="clearfix"></div>
 
+                    <div class="clearfix"></div>
+<div class="slimScrollBar" style="background: rgb(220, 220, 220); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 44.1041px; visibility: visible;"></div>
                 </div>
 
             </div>
