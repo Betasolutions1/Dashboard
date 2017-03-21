@@ -76,17 +76,26 @@ error_reporting(0);
                                         <a href="about-us.php">About</a>
                                     </li>                                     
                                     <li class="dropdown active"> 
-                                        <a href="services1.php">Services</a> 
+                                        <a href="#">Services</a> 
                                         <ul> 
+                                            <?php 
+										$get_service_type_exe=mysqli_query($conn,"select * from service_type");
+										while($get_styps=mysqli_fetch_array($get_service_type_exe))
+										{
+										?>
                                             <li>
-                                                <a href="services1.php">Education</a>
-                                            </li>                                             
-                                            <li>
+                                                <a href="services1.php?Stype_Id=<?php echo $get_styps['stype_id'];?>"><?php echo $get_styps['stype_name'];?></a>
+                                            </li>  
+                                            
+                                            <?php
+										}
+											?>                                                 
+                                            <!--<li>
                                                 <a href="services2.php">Mobile</a>
                                             </li>                                             
                                             <li>
                                                 <a href="services3.php">IT</a>
-                                            </li>                                             
+                                            </li> -->                                            
                                         </ul>                                         
                                     </li>                                     
                                     <li class=""> 
@@ -124,7 +133,8 @@ error_reporting(0);
                                     </li>                                           
                                     <li class=""> 
                                         <a href="contact.php">Contact</a>
-                                    </li>                                     
+                                    </li>     
+                                    <li><a href="Cart.php" style="font-size:20px;"><i class="fa fa-shopping-cart"></i></a></li>                                
                                 </ul>                                 
                             </nav>                            
                         </div>
@@ -177,7 +187,7 @@ error_reporting(0);
                 <div class="container"> 
                     <div class="row"> 
                     <?php
-                    $edu_exe=mysqli_query($conn,"select *,SUBSTRING(service_desc ,1,150) from services where service_type='Education' order by service_id desc");
+                    $edu_exe=mysqli_query($conn,"select *,SUBSTRING(service_desc ,1,150) from services where service_type='$_GET[Stype_Id]' order by service_id desc");
 					while($edu_res=mysqli_fetch_array($edu_exe))
 					{
 					?>

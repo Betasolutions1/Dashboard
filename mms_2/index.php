@@ -76,17 +76,26 @@ error_reporting(0);
                                         <a href="about-us.php">About</a>
                                     </li>                                     
                                     <li class="dropdown"> 
-                                        <a href="services1.php">Services</a> 
+                                        <a href="#">Services</a> 
                                         <ul> 
+                                        <?php 
+										$get_service_type_exe=mysqli_query($conn,"select * from service_type");
+										while($get_styps=mysqli_fetch_array($get_service_type_exe))
+										{
+										?>
                                             <li>
-                                                <a href="services1.php">Education</a>
-                                            </li>                                             
-                                            <li>
+                                                <a href="services1.php?Stype_Id=<?php echo $get_styps['stype_id'];?>"><?php echo $get_styps['stype_name'];?></a>
+                                            </li>  
+                                            
+                                            <?php
+										}
+											?>                                           
+                                           <?php /*?> <li>
                                                 <a href="services2.php">Mobile</a>
                                             </li>                                             
                                             <li>
                                                 <a href="services3.php">IT</a>
-                                            </li>                                             
+                                            </li><?php */?>                                             
                                         </ul>                                         
                                     </li>                                     
                                     <li class=""> 
@@ -124,7 +133,8 @@ error_reporting(0);
                                     </li>                                           
                                     <li class=""> 
                                         <a href="contact.php">Contact</a>
-                                    </li>                                     
+                                    </li>    
+                                    <li><a href="Cart.php" style="font-size:20px;"><i class="fa fa-shopping-cart"></i></a></li>                                 
                                 </ul>                                 
                             </nav>                              
                         </div>
@@ -272,14 +282,16 @@ error_reporting(0);
                 <div class="container"> 
                     <div class="row"> 
                     <?php
-                    $ser_edu_exe=mysqli_query($conn,"select *,SUBSTRING(service_desc ,1,150) from services where service_type='Education' order by service_id desc limit 1");
-					$ser_edu_res=mysqli_fetch_array($ser_edu_exe);
+                    $ser_edu_exe=mysqli_query($conn,"select *,SUBSTRING(service_desc ,1,15) from services  order by Rand() limit 12");
+					while($ser_edu_res=mysqli_fetch_array($ser_edu_exe))
+					{
 					?>
-                        <div class="col-md-4"> 
+                        <div class="col-md-3"> 
                             <div class="services-boxes style-2 wow fadeInDown"> 
                                 <div class="services-boxes-content"> 
+                                <img src="Console/services/<?php echo $ser_edu_res['service_img'];?>" style="width:150px;height:100px;">
                                     <h3> <a href="single-service.php?Service_id=<?php echo $ser_edu_res['service_id'];?>"><?php echo $ser_edu_res['service_title'];?></a> <!--<small>Nice &amp; Clean</small>--> </h3> 
-                                    <p><?php echo $ser_edu_res['SUBSTRING(service_desc ,1,150)']?>&nbsp;<br></p>
+                                    <p><?php echo strip_tags($ser_edu_res['SUBSTRING(service_desc ,1,15)'])?>&nbsp;<br></p>
                                 </div>
                                 <!-- services-boxes-content --> 
                                 <?php
@@ -297,8 +309,11 @@ error_reporting(0);
                             </div>
                             <!-- services-boxes -->                             
                         </div>
+                        <?php
+					}
+						?>
                         <!-- col --> 
-                        <?php 
+                        <?php /*?><?php 
 						$ser_mobile_exe=mysqli_query($conn,"select *,SUBSTRING(service_desc ,1,150) from services where service_type='Mobile' order by service_id desc limit 1");
 						$ser_mob_res=mysqli_fetch_array($ser_mobile_exe);
 						?>
@@ -324,9 +339,9 @@ error_reporting(0);
 								?>                              
                             </div>
                             <!-- services-boxes -->                             
-                        </div>
+                        </div><?php */?>
                         <!-- col -->     
-                        <?php
+                       <?php /*?> <?php
                         $ser_it_exe=mysqli_query($conn,"select *,SUBSTRING(service_desc ,1,150) from services where service_type='It' order by service_id desc limit 1");
 						$ser_it_res=mysqli_fetch_array($ser_it_exe);
 						?>                    
@@ -351,7 +366,7 @@ error_reporting(0);
 								?>                                 
                             </div>
                             <!-- services-boxes -->                             
-                        </div>
+                        </div><?php */?>
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     

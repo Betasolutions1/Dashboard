@@ -83,17 +83,20 @@ error_reporting(0);
                                         <a href="about-us.php">About</a>
                                     </li>                                     
                                     <li class="dropdown"> 
-                                        <a href="services1.php">Services</a> 
+                                        <a href="#">Services</a> 
                                         <ul> 
+                                            <?php 
+										$get_service_type_exe=mysqli_query($conn,"select * from service_type");
+										while($get_styps=mysqli_fetch_array($get_service_type_exe))
+										{
+										?>
                                             <li>
-                                                <a href="services1.php">Education</a>
-                                            </li>                                             
-                                            <li>
-                                                <a href="services2.php">Mobile</a>
-                                            </li>                                             
-                                            <li>
-                                                <a href="services3.php">IT</a>
-                                            </li>                                             
+                                                <a href="services1.php?Stype_Id=<?php echo $get_styps['stype_id'];?>"><?php echo $get_styps['stype_name'];?></a>
+                                            </li>  
+                                            
+                                            <?php
+										}
+											?>                                              
                                         </ul>                                         
                                     </li>                                     
                                     <li class=""> 
@@ -131,7 +134,8 @@ error_reporting(0);
                                     </li>                                            
                                     <li class=""> 
                                         <a href="contact.php">Contact</a>
-                                    </li>                                     
+                                    </li>
+                                      <li><a href="Cart.php" style="font-size:20px;"><i class="fa fa-shopping-cart"></i></a></li>                                      
                                 </ul>                                 
                             </nav>                              
                         </div>
