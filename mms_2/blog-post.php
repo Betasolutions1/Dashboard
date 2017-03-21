@@ -380,15 +380,13 @@
                                 <h3 class="widget-title">Slider</h3> 
                                 <div class="images-slider"> 
                                     <ul> 
+                                      <?php $ssel=mysqli_query($conn,"select * from sliders order by rand() limit 3");
+                        while($ssel2=mysqli_fetch_array($ssel)){
+                        ?>
                                         <li>
-                                            <img src="images/blog/blog-post/image-1.jpg" alt="">
-                                        </li>                                         
-                                        <li>
-                                            <img src="images/blog/blog-post/image-2.jpg" alt="">
-                                        </li>                                         
-                                        <li>
-                                            <img src="images/blog/blog-post/image-3.jpg" alt="">
-                                        </li>                                         
+                                            <img src="Console/slider/<?php echo $ssel2['slider_image'];?>" alt="">
+                                        </li> 
+                                        <?php } ?>                                        
                                     </ul>                                     
                                 </div>
                                 <!-- images-slider -->                                 
