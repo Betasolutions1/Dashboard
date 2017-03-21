@@ -11,6 +11,104 @@ if(!$_SESSION['username'])
 
 
 
+
+
+
+//add slider data
+
+if(isset($_POST['slider_submit']))
+{
+	$slider_id=mysqli_query($conn,"select * from sliders");
+	$slider=mysqli_num_rows($slider_id);
+	++$slider;
+	$img_name=$_FILES['image']['name'];
+    	$img_tmp_name=$_FILES['image']['tmp_name'];
+    	$prod_img_path=$slider.'_'.$img_name;
+		$slider_path="slider/".$prod_img_path;
+    	move_uploaded_file($img_tmp_name,$slider_path);
+			
+			$img=$slider.'_'.$_FILES['image']['name'];
+	
+			$ins_slider=mysqli_query($conn,"INSERT INTO `sliders`( `slider_title`, `slider_desc`, `slider_image`) VALUES ('$_POST[title]','$_POST[desc]','$img')");
+		
+	if($ins_slider)
+	{
+		echo "<script>
+		alert('slider Inserted');
+		window.location.href='slider.php';
+		</script>";
+
+		
+	}
+	
+	else
+	{
+		echo "<script>
+		alert('slider Insertion Fail As May be Image size is more than 2 MB');
+		window.location.href='slider.php';
+		</script>";
+	}
+}
+//slider update
+if(isset($_POST['slider_update']))
+{
+	$Slider_rand=mt_rand();
+	if(is_uploaded_file($_FILES['image1']['tmp_name']))
+	{
+		$slupim=$_FILES['image1']['name'];
+		$setsim=$blog_rand.'_'.$slupim;
+		move_uploaded_file($_FILES['image1']['tmp_name'],"slider/$setsim");
+	}
+	if($slupim!='')
+	{
+		$up_slider=mysqli_query($conn,"UPDATE `sliders` SET `slider_title`='$_POST[title1]',`slider_desc`='$_POST[desc1]',`slider_image`='$setsim' WHERE `slider_id`='$_POST[slider1]'");
+	}
+	else
+	{
+		$up_slider=mysqli_query($conn,"UPDATE `sliders` SET `slider_title`='$_POST[title1]',`slider_desc`='$_POST[desc1]'
+		 WHERE `slider_id`='$_POST[slider1]'");
+	}
+	if($up_slider)
+	{
+		echo "<script>
+		alert('slider Updated');
+		window.location.href='slider.php';
+		</script>";
+
+		
+	}
+	
+	else
+	{
+		echo "<script>
+		alert('slider Updation Fail As May be Image size is more than 2 MB');
+		window.location.href='slider.php';
+		</script>";
+	}
+}
+//slider Delete
+if(isset($_GET['del_slider']))
+{
+	$del_slider=mysqli_query($conn,"delete from sliders where slider_id='$_GET[del_slider]'");
+	if($del_slider)
+	{
+		echo "<script>
+		alert('slider Deleted');
+		window.location.href='slider.php';
+		</script>";
+
+		
+	}
+	
+	else
+	{
+		echo "<script>
+		alert('slider Updation Fail');
+		window.location.href='slider.php';
+		</script>";
+	}
+}
+
 //service_type
 
 if(isset($_POST['sub_services']))
@@ -481,7 +579,40 @@ if(isset($_POST['sub_state']))
 		echo "<script>alert('insertion Fail')</script>";
 		header("location:state.php");
 	}
+
 }
+// state update
+if(isset($_POST['update_category']))
+{
+	$upcounty=$conn->prepare("UPDATE `category` SET `category_name`=? WHERE `category_id`=?");
+	$upcounty->bind_param('si',$_POST['category1'],$_POST['category_id']);
+	$exe=$upcounty->execute();
+	if($exe)
+	{
+		header("location:category.php");
+	}else
+	{
+		echo "<script>alert('Updation Fail')</script>";
+		header("location:category.php");
+	}
+}
+
+// state delete
+if(isset($_GET['delete_cid']))
+{
+	$del_con=$conn->prepare("DELETE from category where category_id=?");
+	$del_con->bind_param('i',$_GET['delete_cid']);
+	$exe=$del_con->execute();
+	if($exe)
+	{
+		header("location:category.php");
+	}else
+	{
+		echo "<script>alert('Deletion Fail')</script>";
+		header("location:category.php");
+	}
+}
+
 
 //add bolg data
 
