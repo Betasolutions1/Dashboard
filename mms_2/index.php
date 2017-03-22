@@ -40,9 +40,27 @@ error_reporting(0);
         <link rel="stylesheet" href="assets/js/animations/animate.min.css"> 
         <!-- CUSTOM & PAGES STYLE -->         
         <link rel="stylesheet" href="assets/css/custom1.css"> 
-        <link rel="stylesheet" href="assets/css/pages-style1.css"> 
+        <link rel="stylesheet" href="assets/css/pages-style1.css">
+        <style>
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('images/12416978.gif') 50% 50% no-repeat rgb(249,249,249);
+}
+</style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(window).load(function() {
+	$(".loader").fadeOut("slow");
+})
+</script> 
     </head>     
     <body id="fullscreen"> 
+    <div class="loader"></div>
         <div id="page-wrapper"> 
             <!-- HEADER -->             
             <header> 
