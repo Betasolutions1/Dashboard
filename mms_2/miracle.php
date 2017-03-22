@@ -145,7 +145,7 @@
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-md-6"> 
-                                <h4><?php echo $file_name;?></h4> 
+                                <h4>Blog</h4> 
                             </div>
                             <!-- col -->                             
                             <div class="col-md-6"> 

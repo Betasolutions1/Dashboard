@@ -145,7 +145,7 @@
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-md-6"> 
-                                <h4>Blog</h4> 
+                                <h4><?php echo $file_name;?></h4> 
                             </div>
                             <!-- col -->                             
                             <div class="col-md-6"> 
@@ -315,15 +315,15 @@
                             <!-- widget-slider -->                             
                         </div>
                      <?php
-                $bsel=mysqli_query($conn,"select * from ".$file_name." order by id desc limit 1'");
+                $bsel=mysqli_query($conn,"select * from ".$file_name." order by id desc limit 1");
                 $bsel2=mysqli_fetch_array($bsel);
                 ?>      
                         <div class="col-md-9"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
-                                    <img src="Console/pages/<?php echo $bsel2['image'];?>" alt=""> 
+                                    <img src="Console/copy/<?php echo $bsel2['image'];?>" alt=""> 
                                     <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="Console/pages/<?php echo $bsel2['image'];?>"><i class="fa fa-eye"></i></a> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="Console/copy/<?php echo $bsel2['image'];?>"><i class="fa fa-eye"></i></a> 
                                     </div>
                                     <!-- blog-article-hover -->                                     
                                 </div>

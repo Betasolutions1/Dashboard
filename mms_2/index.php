@@ -281,10 +281,16 @@ error_reporting(0);
 					?>
                         <div class="col-md-3"> 
                             <div class="services-boxes style-2 wow fadeInDown"> 
-                                <div class="services-boxes-content"> 
-                                <img src="Console/services/<?php echo $ser_edu_res['service_img'];?>" style="width:150px;height:100px;">
-                                    <h3> <a href="single-service.php?Service_id=<?php echo $ser_edu_res['service_id'];?>"><?php echo $ser_edu_res['service_title'];?></a> <!--<small>Nice &amp; Clean</small>--> </h3> 
-                                    <p><?php echo strip_tags($ser_edu_res['SUBSTRING(service_desc ,1,15)'])?>&nbsp;<br></p>
+                                <div class="services-boxes-content" style="
+    width: 250px;
+    height: 400px;
+    /* border: 1px solid #b1e6ff; */
+    background-color: #fbfbfb;
+    opacity: .8;
+"> 
+                                <img src="Console/services/<?php echo $ser_edu_res['service_img'];?>"  class="img img-responsive">
+                                    <h3 style="margin-left:10px;margin-top:10px;"> <a href="single-service.php?Service_id=<?php echo $ser_edu_res['service_id'];?>"><?php echo $ser_edu_res['service_title'];?></a> <!--<small>Nice &amp; Clean</small>--> </h3> 
+                                    <p style="margin-left:10px;"><?php echo strip_tags($ser_edu_res['SUBSTRING(service_desc ,1,15)'])?>&nbsp;<br></p>
                                 </div>
                                 <!-- services-boxes-content --> 
                                 <?php

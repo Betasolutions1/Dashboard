@@ -12,7 +12,7 @@ if(!$_SESSION['username'])
 
 
 
-//add Copy_page data
+/*//add Copy_page data
 
 // if(isset($_POST['copy_submit']))
 // {
@@ -106,7 +106,7 @@ if(!$_SESSION['username'])
 // 		</script>";
 // 	}
 // }
-
+*/
 
 
 
