@@ -12,6 +12,102 @@ if(!$_SESSION['username'])
 
 
 
+//add Copy_page data
+
+// if(isset($_POST['copy_submit']))
+// {
+// 	$copy_id=mysqli_query($conn,"select * from ".$fname."");
+// 	$copy=mysqli_num_rows($copy_id);
+// 	++$copy;
+// 	$img_name=$_FILES['copy_img']['name'];
+//     	$img_tmp_name=$_FILES['copy_img']['tmp_name'];
+//     	$prod_img_path=$copy.'_'.$img_name;
+// 		$copy_path="copy/".$prod_img_path;
+//     	move_uploaded_file($img_tmp_name,$copy_path);
+			
+// 			$img=$copy.'_'.$_FILES['copy_img']['name'];
+	
+// 			$ins_copy=mysqli_query($conn,"INSERT INTO ".$fname."(`title`,`description`,`image`) VALUES ('$_POST[copy_title]','$_POST[copy_desc]','$img')");
+		
+// 	// if($ins_copy)
+// 	// {
+// 	// 	echo "<script>
+// 	// 	alert('copy Inserted');
+// 	// 	window.location.href='$fnamephp';
+// 	// 	</script>";
+
+		
+// 	// }
+	
+// 	// else
+// 	// {
+// 	// 	echo "<script>
+// 	// 	alert('copy Insertion Fail As May be Image size is more than 2 MB');
+// 	// 	window.location.href='".$fname."php';
+// 	// 	</script>";
+// 	// }
+// }
+// //Copy_page update
+// if(isset($_POST['copy_update']))
+// {
+// 	$copy_rand=mt_rand();
+// 	if(is_uploaded_file($_FILES['copy_img1']['tmp_name']))
+// 	{
+// 		$cpupim=$_FILES['copy_img1']['name'];
+// 		$setcpim=$copy_rand.'_'.$cpupim;
+// 		move_uploaded_file($_FILES['copy_img1']['tmp_name'],"copy/$setcpim");
+// 	}
+// 	if($cpupim!='')
+// 	{
+// 		$up_copy=mysqli_query($conn,"UPDATE".$fname." SET `title`='$_POST[copy_title1]',`description`='$_POST[copy_desc1]',`image`='$setcpim' WHERE `id`='$_POST[copy_id]'");
+// 	}
+// 	else
+// 	{
+// 		$up_copy=mysqli_query($conn,"UPDATE".$fname." SET `title`='$_POST[copy_title1]',`description`='$_POST[copy_desc1]'
+// 		 WHERE `id`='$_POST[copy_id]'");
+// 	}
+// 	if($up_slider)
+// 	{
+// 		echo "<script>
+// 		alert('copy Updated');
+// 		window.location.href='copy_page.php';
+// 		</script>";
+
+		
+// 	}
+	
+// 	else
+// 	{
+// 		echo "<script>
+// 		alert('copy Updation Fail As May be Image size is more than 2 MB');
+// 		window.location.href='copy_page.php';
+// 		</script>";
+// 	}
+// }
+// //Copy_page Delete
+// if(isset($_GET['del_id']))
+// {
+// 	$del_copy=mysqli_query($conn,"delete from".$fname." where id='$_GET[del_id]'");
+// 	if($del_copy)
+// 	{
+// 		echo "<script>
+// 		alert('copy Deleted');
+// 		window.location.href='copy_page.php';
+// 		</script>";
+
+		
+// 	}
+	
+// 	else
+// 	{
+// 		echo "<script>
+// 		alert('copy Updation Fail');
+// 		window.location.href='copy_page.php';
+// 		</script>";
+// 	}
+// }
+
+
 
 
 //add slider data
@@ -453,7 +549,8 @@ if(isset($_POST['sub_menu']))
 	$create=mysqli_query($conn,"CREATE TABLE ".$page." (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(30) NOT NULL,
-data VARCHAR(5000) NOT NULL
+description VARCHAR(5000) NOT NULL,
+image VARCHAR(500) NOT NULL
 )");
  if($create)
   {
@@ -462,7 +559,7 @@ data VARCHAR(5000) NOT NULL
 	{
 		 if($file = fopen("../$page.php", "w")) 
 		 {
-	      echo copy("../left_side.php","../$page.php");
+	      echo copy("../left-side.php","../$page.php");
           fclose($file); 
 	     }
 		 if($file = fopen("$page.php", "w")) 
@@ -475,6 +572,19 @@ data VARCHAR(5000) NOT NULL
 		if($file = fopen("../$page.php", "w")) 
 		 {
 	      echo copy("../middle.php","../$page.php");
+          fclose($file); 
+	     }
+		 if($file = fopen("$page.php", "w")) 
+		 {
+	      echo copy("copy_page.php","$page.php");
+          fclose($file); 
+	     }
+	}
+	else if($pg_type=='right')
+	{
+		if($file = fopen("../$page.php", "w")) 
+		 {
+	      echo copy("../right-side.php","../$page.php");
           fclose($file); 
 	     }
 		 if($file = fopen("$page.php", "w")) 
