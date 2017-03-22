@@ -49,7 +49,7 @@ error_reporting(0);
                     <div class="row"> 
                         <div class="col-sm-1"> 
                             <!-- LOGO -->                             
-                            <a id="logo" href="index-slider.html"> 
+                            <a id="logo" href="index.php"> 
                                 <img src="images/backgrounds/logo.png" alt=""> 
                             </a>                             
                         </div>
