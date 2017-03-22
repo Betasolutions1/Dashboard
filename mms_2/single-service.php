@@ -178,7 +178,7 @@ error_reporting(0);
                             </div>
                             <!-- headline -->                             
                             <p><?php echo $ser_sin['service_desc'];?></p> 
-                            <a class="btn btn-default" href="register.php">Register now</a> 
+                            
                             <?php
                                 if($_SESSION['MMS_User'])
 								{
@@ -189,6 +189,11 @@ error_reporting(0);
                                 <input type="submit" name="add_service" value="Add Account">
                                 </form>
                                 <?php
+								}else
+								{
+									?>
+                                    <a class="btn btn-default" href="register.php">Register now</a> 
+                                    <?php
 								}
 								?>
                         </div>
@@ -372,7 +377,7 @@ error_reporting(0);
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-12"> 
-                                <p class="text-center"><a class="btn btn-default" href="contact.html">Contact us<i class="fa fa-arrow-right"></i></a></p> 
+                                <p class="text-center"><a class="btn btn-default" href="contact.php">Contact us<i class="fa fa-arrow-right"></i></a></p> 
                             </div>
                             <!-- col -->                             
                         </div>

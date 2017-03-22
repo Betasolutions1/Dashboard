@@ -145,7 +145,7 @@ error_reporting(0);
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-md-6"> 
-                                <h4>Blog</h4> 
+                                <h4>Search</h4> 
                             </div>
                             <!-- col -->                             
                             <div class="col-md-6"> 
@@ -231,11 +231,11 @@ error_reporting(0);
                                 <!-- blog-article-thumbnail -->                                 
                                 <div class="blog-article-details"> 
                                  
-                                    <h4><a href="single-service.php?Service_id=<?php echo $search_res['service_id'];?>"><?php echo $search_ser['service_title'];?></a></h4> 
+                                    <h4><a href="single-service.php?Service_id=<?php echo $search_ser['service_id'];?>"><?php echo $search_ser['service_title'];?></a></h4> 
                                 </div>
                                 <!-- blog-article-details -->                                 
                                 <p><?php echo $strcut12;?>&nbsp;<br></p> 
-                                <a class="btn btn-default" href="single-service.php?Service_id=<?php echo $search_res['service_id'];?>">Read more</a>
+                                <a class="btn btn-default" href="single-service.php?Service_id=<?php echo $search_ser['service_id'];?>">Read more</a>
                             </div>
                             <!-- blog-article -->                             
                         </div>

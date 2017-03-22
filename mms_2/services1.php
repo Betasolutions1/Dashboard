@@ -38,8 +38,8 @@ error_reporting(0);
         <!-- ANIMATIONS -->         
         <link rel="stylesheet" href="assets/js/animations/animate.min.css"> 
         <!-- CUSTOM & PAGES STYLE -->         
-        <link rel="stylesheet" href="assets/css/custom.css"> 
-        <link rel="stylesheet" href="assets/css/pages-style.css"> 
+        <link rel="stylesheet" href="assets/css/custom1.css"> 
+        <link rel="stylesheet" href="assets/css/pages-style1.css"> 
     </head>     
     <body> 
         <div id="page-wrapper"> 
@@ -47,14 +47,14 @@ error_reporting(0);
             <header> 
                 <div class="container"> 
                     <div class="row"> 
-                        <div class="col-sm-2"> 
+                        <div class="col-sm-1"> 
                             <!-- LOGO -->                             
                             <a id="logo" href="index-slider.html"> 
                                 <img src="images/backgrounds/logo.png" alt=""> 
                             </a>                             
                         </div>
                         <!-- col -->                         
-                        <div class="col-sm-10"> 
+                        <div class="col-sm-11"> 
                             <!-- SEARCH -->                             
                             <div id="search-container"> 
                                  <form id="search-form" name="search-form" method="get" action="search.php"> 
@@ -123,6 +123,9 @@ error_reporting(0);
                                             <li>
                                                 <a href="Myaccount.php">My Account</a>
                                             </li>
+                                             <li>
+                                                <a href="my-order.php">My Order</a>
+                                            </li>
                                             <li>
                                                 <a href="logout.php">Logout</a>
                                             </li> 
@@ -133,7 +136,24 @@ error_reporting(0);
                                     </li>                                           
                                     <li class=""> 
                                         <a href="contact.php">Contact</a>
-                                    </li>     
+                                    </li>   
+                                     <li class="dropdown"> 
+                                        <a href="#">Others</a> 
+                                        <ul> 
+                                        <?php
+                                        $new_pgs=mysqli_query($conn,"select * from pages");
+										while($res_pages=mysqli_fetch_array($new_pgs))
+										{
+										?>
+                                            <li>
+                                                <a href="<?php echo $res_pages['page_name']?>.php"><?php echo $res_pages['page_name']?></a>
+                                            </li>                                             
+                                            
+                                            <?php
+										}
+											?>                                            
+                                        </ul>                                         
+                                    </li>      
                                     <li><a href="Cart.php" style="font-size:20px;"><i class="fa fa-shopping-cart"></i></a></li>                                
                                 </ul>                                 
                             </nav>                            
@@ -192,7 +212,7 @@ error_reporting(0);
 					{
 					?>
                         <div class="col-sm-4"> 
-                            <div class="services-boxes style-2 wow fadeInDown"> 
+                            <div class="services-boxes style-2 wow fadeInDown" style=" width: 250px;height: 400px; background-color: #fbfbfb;opacity: .8;"> 
                                 <div class="services-boxes-content"> 
                                 <img src="Console/services/<?php echo $edu_res['service_img']?>" style="width:250px;height:185px;">
                                     <h3> <a href="single-service.php?Service_id=<?php echo $edu_res['service_id'];?>"><?php echo $edu_res['service_title']?></a> <!--<small>Nice &amp; Clean</small>--> </h3> 
@@ -202,11 +222,13 @@ error_reporting(0);
                                 if($_SESSION['MMS_User'])
 								{
 								?>
+                                <div align="center">
                                 <form method="post" action="backend.php">
                                 <input type="hidden" name="service_id" value="<?php echo $edu_res['service_id'];?>">
                                 <input type="hidden" name="user_reg_id" value="<?php echo $_SESSION['User_id'];?>">
-                                <input type="submit" name="add_service" value="Add Account">
+                                <input type="submit" class="btn btn-default" name="add_service" value="Add Account">
                                 </form>
+                                </div>
                                 <?php
 								}
 								?>
@@ -625,117 +647,7 @@ error_reporting(0);
             </div>
             <!-- CONTENT -->             
             <!-- FOOTER -->             
-            <footer> 
-                <div id="footer-top"> 
-</div>
-                <!-- footer-top -->                 
-                <div id="footer"> 
-                    <div class="container"> 
-                        <div class="row"> 
-                            <div class="col-sm-3"> 
-                                <div class="widget widget-text"> 
-                                    <h3 class="widget-title">About MMS</h3> 
-                                    <p>Lorem ipsum dolor sit amet unde ligula, sodales et quam non, omis finibus eros. Pharetra nulla lactus arcu non, 
-                                venenatis orci pharetra. Nunc sed odio a velit placerat sit eget hendrerit elit.</p> 
-                                </div>
-                                <!-- widget-text -->                                 
-                                <div class="widget widget-newsletter"> 
-                                    <form name="newsletter" method="post" action="#"> 
-                                        <fieldset> 
-                                            <input type="text" name="email" placeholder="Email address"> 
-                                            <input class="btn btn-default" type="submit" name="submit" value=""> 
-                                        </fieldset>                                         
-                                    </form>                                     
-                                    <p>Nemo enim ipsam voluptatem</p> 
-                                </div>
-                                <!-- widget-newsletter -->                                 
-                            </div>
-                            <!-- col -->                             
-                            <div class="col-sm-3"> 
-                                <div class="widget widget-latest-news"> 
-                                    <h3 class="widget-title">Latest news</h3> 
-                                    <ul> 
-                                        <li> 
-                                            <img src="images/blog/blog-post/news-1.jpg" alt=""> 
-                                            <p class="news-title"><a href="#">Lorem ipsum dolor amet...</a></p> 
-                                            <p class="news-date">March 05, 2015</p> 
-                                        </li>                                         
-                                        <li> 
-                                            <img src="images/blog/blog-post/news-2.jpg" alt=""> 
-                                            <p class="news-title"><a href="#">Omis unde tortor lactus...</a> <p class="news-date">March 04, 2015</p> 
-                                        </li>                                         
-                                        <li> 
-                                            <img src="images/blog/blog-post/news-3.jpg" alt=""> 
-                                            <p class="news-title"><a href="#">Mauris in orci id placerat...</a> <p class="news-date">March 03, 2015</p> 
-                                        </li>                                         
-                                    </ul>                                     
-                                </div>
-                                <!-- widget-recent-posts -->                                 
-                            </div>
-                            <!-- col -->                             
-                            <div class="col-sm-3"> 
-                                <div class="widget widget-flickr"> 
-                                    <h3 class="widget-title">Flickr</h3> 
-                                    <div class="flickr-photos"> 
-                                        <script src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08"></script>                                         
-                                    </div>
-                                    <!-- flickr-photos -->                                     
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                                deserunt</p> 
-                                </div>
-                                <!-- widget-flickr -->                                 
-                            </div>
-                            <!-- col -->                             
-                            <div class="col-sm-3"> 
-                                <div class="widget widget-contact"> 
-                                    <h3 class="widget-title">Contact Us</h3> 
-                                    <ul> 
-                                        <li> 
-                                            <span>Address</span> 
-                                            1713 Hide A Way Road
-
-                                            <br> 
-                                            San Jose, CA 95118
-                                        </li>                                         
-                                        <li> 
-                                            <span>Phone &amp; Fax</span> 
-                                            +408-267-8351
-
-                                            <br> 
-                                            +408-267-8344
-                                        </li>                                         
-                                        <li> 
-                                            <span>E-mail</span> 
-                                            <a href="mailto:support@milo.com">support@milo.com</a> 
-                                        </li>                                         
-                                    </ul>                                     
-                                </div>
-                                <!-- widget-contact -->                                 
-                            </div>
-                            <!-- col -->                             
-                        </div>
-                        <!-- row -->                         
-                    </div>
-                    <!-- container -->                     
-                </div>
-                <!-- footer -->                 
-                <div id="footer-bottom"> 
-                    <div class="container"> 
-                        <div class="row"> 
-                            <div class="col-sm-12"> 
-                                <div class="widget widget-text"> 
-                                    <p class="last text-center text-uppercase">&copy; All Rights Reserved <span class="text-primary">Mms</span> <span class="text-lowercase"> template.</span></p> 
-                                </div>
-                                <!-- widget-text -->                                 
-                            </div>
-                            <!-- col -->                             
-                        </div>
-                        <!-- row -->                         
-                    </div>
-                    <!-- container -->                     
-                </div>
-                <!-- footer-bottom -->                 
-            </footer>
+           <?php include 'footer.php';?>
             <!-- FOOTER -->             
         </div>
         <!-- PAGE-WRAPPER -->         
