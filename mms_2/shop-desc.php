@@ -285,47 +285,23 @@ error_reporting(0);
                             <!-- blog-article -->                             
                         </div>
                         <!-- col -->                         
-                        <div class="col-sm-3"> 
-                            <div class="widget widget-recent-posts"> 
-                                <h3 class="widget-title">Recent Posts</h3> 
-                                <ul> 
-                                    <li> 
-                                        <img src="images/blog/blog-post/post-1.jpg" alt=""> 
-                                        <a class="post-title" href="#">Best in photography</a> 
-                                        <p class="post-date">March 05, 2015</p> 
-                                    </li>                                     
-                                    <li> 
-                                        <img src="images/blog/blog-post/post-2.jpg" alt=""> 
-                                        <a class="post-title" href="#">Case study-design</a> 
-                                        <p class="post-date">March 04, 2015</p> 
-                                    </li>                                     
-                                    <li> 
-                                        <img src="images/blog/blog-post/post-3.jpg" alt=""> 
-                                        <a class="post-title" href="#">How to take a photo</a> 
-                                        <p class="post-date">March 03, 2015</p> 
-                                    </li>                                     
-                                    <li> 
-                                        <img src="images/blog/blog-post/post-4.jpg" alt=""> 
-                                        <a class="post-title" href="#">Work hard</a> 
-                                        <p class="post-date">March 02, 2015</p> 
-                                    </li>                                     
-                                </ul>                                 
-                            </div>
-                            <!-- widget-recent-posts -->                             
+                        <div class="col-sm-3">
+                         <!-- category -->
+
                             <div class="widget widget-categories"> 
                                 <h3 class="widget-title">Categories</h3> 
                                 <ul> 
                                      <?php 
-								$dis_cate_exe=mysqli_query($conn,"select * from category");
-								while($ceteis=mysqli_fetch_array($dis_cate_exe))
-								{
-								?>
+                                $dis_cate_exe=mysqli_query($conn,"select * from category");
+                                while($ceteis=mysqli_fetch_array($dis_cate_exe))
+                                {
+                                ?>
                                     <li>
                                         <a href="Category-product.php?Category=<?php echo $ceteis['category_id'];?>"><?php echo $ceteis['category_name'];?></a>
                                     </li>
                                     <?php
-								}
-									?>                                        
+                                }
+                                    ?>                                        
                                    <!-- <li>
                                         <a href="#">Business</a>
                                     </li>                                     
@@ -343,6 +319,40 @@ error_reporting(0);
                                     </li>           -->                          
                                 </ul>                                 
                             </div>
+
+                            <!-- cat end --> 
+                            <div class="widget widget-recent-posts"> 
+                                <h3 class="widget-title">Recent Products</h3> 
+                                <ul> 
+                                <?php $rpsel=mysqli_query($conn,"select * from product order by rand() limit 4");
+                                while($rpsel2=mysqli_fetch_array($rpsel)){
+                                ?>
+                                    <li> 
+                                        <img src="Console/product/<?php echo $rpsel2['product_image'];?>" alt="" height=70px width=70px> 
+                                        <a class="post-title" href="shop-desc.php?Products=<?php echo $rpsel2['product_id'];?>"><?php echo $rpsel2['product_name'];?></a> 
+                                        <p class="post-date"><?php echo $rpsel2['datetime'];?></p> 
+                                    </li> 
+                                    <?php } ?>
+                                    <!--                                     
+                                    <li> 
+                                        <img src="images/blog/blog-post/post-2.jpg" alt=""> 
+                                        <a class="post-title" href="#">Case study-design</a> 
+                                        <p class="post-date">March 04, 2015</p> 
+                                    </li>                                     
+                                    <li> 
+                                        <img src="images/blog/blog-post/post-3.jpg" alt=""> 
+                                        <a class="post-title" href="#">How to take a photo</a> 
+                                        <p class="post-date">March 03, 2015</p> 
+                                    </li>                                     
+                                    <li> 
+                                        <img src="images/blog/blog-post/post-4.jpg" alt=""> 
+                                        <a class="post-title" href="#">Work hard</a> 
+                                        <p class="post-date">March 02, 2015</p> 
+                                    </li>   -->                                   
+                                </ul>                                 
+                            </div>
+                            <!-- widget-recent-posts -->                             
+                            
                             <!-- widget-categories -->                             
                             <div class="widget widget-tab"> 
                                 <ul class="nav nav-tabs"> 
@@ -350,18 +360,23 @@ error_reporting(0);
                                         <a href="#tab-1" data-toggle="tab">Popular</a>
                                     </li>                                     
                                     <li>
-                                        <a href="#tab-2" data-toggle="tab">Comments</a>
+                                        <a href="#tab-2" data-toggle="tab">Futureproduct</a>
                                     </li>                                     
                                 </ul>                                 
                                 <div class="tab-content"> 
                                     <div class="tab-pane fade in active" id="tab-1"> 
                                         <div class="widget widget-recent-posts"> 
                                             <ul> 
+                                            <?php $psel=mysqli_query($conn,"select * from product order by rand() limit 3");
+                                            while($psel2=mysqli_fetch_array($psel)){
+                                            ?>
                                                 <li> 
-                                                    <img src="images/blog/blog-post/post-1.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Best in photography</a> 
-                                                    <p class="post-date">March 05, 2015</p> 
-                                                </li>                                                 
+                                                   <img src="Console/product/<?php echo $psel2['product_image'];?>" alt="" height=70px width=70px> 
+                                                    <a class="post-title" href="shop-desc.php?Products=<?php echo $psel2['product_id'];?>"><?php echo $psel2['product_name'];?></a> 
+                                                    <p class="post-date"><?php echo $psel2['datetime'];?></p> 
+                                                </li>
+                                                <?php } ?>
+                                                 <!--                                                 
                                                 <li> 
                                                     <img src="images/blog/blog-post/post-2.jpg" alt=""> 
                                                     <a class="post-title" href="#">Case study-design</a> 
@@ -371,7 +386,7 @@ error_reporting(0);
                                                     <img src="images/blog/blog-post/post-3.jpg" alt=""> 
                                                     <a class="post-title" href="#">How to take a photo</a> 
                                                     <p class="post-date">March 03, 2015</p> 
-                                                </li>                                                 
+                                                </li>    -->                                              
                                             </ul>                                             
                                         </div>
                                         <!-- widget-recent-posts -->                                         
@@ -379,23 +394,28 @@ error_reporting(0);
                                     <!-- tab-pane -->                                     
                                     <div class="tab-pane fade" id="tab-2"> 
                                         <div class="widget widget-recent-posts"> 
-                                            <ul> 
+                                             <ul> 
+                                            <?php $fsel=mysqli_query($conn,"select * from product order by rand() limit 3");
+                                            while($fsel2=mysqli_fetch_array($fsel)){
+                                            ?>
                                                 <li> 
-                                                    <img src="images/blog/blog-post/post-4.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Best in photography</a> 
-                                                    <p class="post-date">March 01, 2015</p> 
+                                                   <img src="Console/product/<?php echo $fsel2['product_image'];?>" alt="" height=70px width=70px> 
+                                                    <a class="post-title" href="shop-desc.php?Products=<?php echo $fsel2['product_id'];?>"><?php echo $fsel2['product_name'];?></a> 
+                                                    <p class="post-date"><?php echo $fsel2['datetime'];?></p> 
+                                                </li>
+                                                <?php } ?>
+                                                 <!--                                                 
+                                                <li> 
+                                                    <img src="images/blog/blog-post/post-2.jpg" alt=""> 
+                                                    <a class="post-title" href="#">Case study-design</a> 
+                                                    <p class="post-date">March 04, 2015</p> 
                                                 </li>                                                 
                                                 <li> 
-                                                    <img src="images/blog/blog-post/post-5.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Interior design</a> 
-                                                    <p class="post-date">February 28, 2015</p> 
-                                                </li>                                                 
-                                                <li> 
-                                                    <img src="images/blog/blog-post/post-6.jpg" alt=""> 
-                                                    <a class="post-title" href="#">Header hero</a> 
-                                                    <p class="post-date">February 27, 2015</p> 
-                                                </li>                                                 
-                                            </ul>                                             
+                                                    <img src="images/blog/blog-post/post-3.jpg" alt=""> 
+                                                    <a class="post-title" href="#">How to take a photo</a> 
+                                                    <p class="post-date">March 03, 2015</p> 
+                                                </li>    -->                                              
+                                            </ul>                                     
                                         </div>
                                         <!-- widget-recent-posts -->                                         
                                     </div>
@@ -433,15 +453,20 @@ error_reporting(0);
                                 <h3 class="widget-title">Slider</h3> 
                                 <div class="images-slider"> 
                                     <ul> 
+                                     <?php $ssel=mysqli_query($conn,"select * from sliders order by rand() limit 3");
+                        while($ssel2=mysqli_fetch_array($ssel)){
+                        ?>
                                         <li>
-                                            <img src="images/blog/blog-post/image-1.jpg" alt="">
-                                        </li>                                         
+                                            <img src="Console/slider/<?php echo $ssel2['slider_image'];?>" alt="">
+                                        </li> 
+                                        <?php } ?>
+                                        <!--                                         
                                         <li>
                                             <img src="images/blog/blog-post/image-2.jpg" alt="">
                                         </li>                                         
                                         <li>
                                             <img src="images/blog/blog-post/image-3.jpg" alt="">
-                                        </li>                                         
+                                        </li>   -->                                       
                                     </ul>                                     
                                 </div>
                                 <!-- images-slider -->                                 

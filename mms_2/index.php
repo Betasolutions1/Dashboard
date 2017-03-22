@@ -151,7 +151,7 @@ error_reporting(0);
                 <div class="bannercontainer">
                 <div class="banner">
                     <ul>
-                        <li data-transition="slotfade-horizontal">
+                      <!--   <li data-transition="slotfade-horizontal">
                             
                             <img src="images/index/revolution-slider/bg-slide-1.jpg" alt="">
                             
@@ -200,25 +200,18 @@ error_reporting(0);
                             <div class="tp-caption sfb"  data-x="830" data-y="360" data-speed="700" data-start="5400" data-easing="easeOutBack">
                                 <a class="btn btn-default" href="#">Follow the project <i class="fa fa-arrow-right"></i></a>
                             </div>
-                        </li>
+                        </li> -->
+                        <?php $ssel=mysqli_query($conn,"select * from sliders order by rand() limit 3");
+                        while($ssel2=mysqli_fetch_array($ssel)){
+                        ?>
                         <li data-transition="slotfade-horizontal">
-                            
-                            <img src="images/index/revolution-slider/bg-slide-2.jpg" alt="">
-                            
-                            <div class="tp-caption sft"  data-x="540" data-y="125" data-speed="700" data-start="1200" data-easing="easeOutBack">
-                                <img src="images/index/revolution-slider/slide-2-image-1.png" alt="">
-                            </div>
-                            
+                            <img src="Console/slider/<?php echo $ssel2['slider_image'];?>" alt="">
                             <div class="tp-caption title-white text-center sft"  data-x="245" data-y="285" data-speed="700" data-start="1700" data-easing="easeOutBack">
-                                A new way to build your <br>
-                                business online
-                            </div>
-                            
-                            <div class="tp-caption sfb"  data-x="450" data-y="450" data-speed="700" data-start="2200" data-easing="easeOutBack">
-                                <a class="btn btn-default" href="#">Buy it on themeforest <i class="fa fa-arrow-right"></i></a>
+                                <?php echo $ssel2['slider_desc'];?>
                             </div>
                         </li>
-                        <li data-transition="slotfade-horizontal">
+                        <?php } ?>
+                        <!-- <li data-transition="slotfade-horizontal">
                             
                             <img src="images/index/revolution-slider/bg-slide-3.jpg" alt="">
                             
@@ -241,7 +234,7 @@ error_reporting(0);
                             <div class="tp-caption sfb" data-x="830" data-y="390" data-speed="700" data-start="3200" data-easing="easeOutBack">
                                 <a class="btn btn-default" href="#">View portfolio pages <i class="fa fa-arrow-right"></i></a>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </div><!-- banner -->
             </div>
