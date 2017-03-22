@@ -57,11 +57,11 @@ error_reporting(0);
                         <div class="col-md-10"> 
                             <!-- SEARCH -->                             
                             <div id="search-container"> 
-                                <form id="search-form" name="search-form" method="get" action="#"> 
+                                 <form id="search-form" name="search-form" method="get" action="search.php"> 
                                     <fieldset> 
-                                        <input type="text" name="search" placeholder="Enter your keyword here and then press enter..."> 
+                                        <input type="text" name="search_name" placeholder="Enter your keyword here and then press enter..."> 
                                     </fieldset>                                     
-                                </form>                                 
+                                </form>                              
                             </div>
                             <!-- search-container -->                             
                             <a class="search-button" href="#"></a> 

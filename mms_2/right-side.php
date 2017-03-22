@@ -307,26 +307,35 @@
                             </div> -->
                             <!-- widget-flickr -->                             
                             <div class="widget widget-text"> 
-                                <h3 class="widget-title">Quote of the day</h3> 
+                                <h3 class="widget-title">Quote of the day</h3>
+                                <?php
+                                $quote_exe=mysqli_query($conn,"select * from qoutes order by quote_id desc limit 1");
+								$quotes=mysqli_fetch_array($quote_exe);
+								?> 
                                 <div> 
-                                    <p>Lorem ipsum dolor sit amet unde ligula, sodales et quam non, omis finibus eros. Pharetra nulla lactus arcu non, 
-                                venenatis orci pharetra. Nunc sed odio a velit placerat sit eget hendrerit elit.</p> 
-                                </div>                                 
+                                    <p><?php echo $quotes['quote']?></p> 
+                                </div>
+                                <div align="right">-<?php echo $quotes['auother'];?></div>                                 
                             </div>
                             <!-- widget-text -->                             
-                            <div class="widget widget-slider"> 
+                             <div class="widget widget-slider"> 
                                 <h3 class="widget-title">Slider</h3> 
                                 <div class="images-slider"> 
                                     <ul> 
+                                     <?php $ssel=mysqli_query($conn,"select * from sliders order by rand() limit 3");
+                                           while($ssel2=mysqli_fetch_array($ssel)){
+                                     ?>
                                         <li>
-                                            <img src="images/blog/blog-post/image-1.jpg" alt="">
-                                        </li>                                         
+                                            <img src="Console/slider/<?php echo $ssel2['slider_image'];?>" alt="">
+                                        </li> 
+                                        <?php } ?>
+                                        <!--                                         
                                         <li>
                                             <img src="images/blog/blog-post/image-2.jpg" alt="">
                                         </li>                                         
                                         <li>
                                             <img src="images/blog/blog-post/image-3.jpg" alt="">
-                                        </li>                                         
+                                        </li>   -->                                       
                                     </ul>                                     
                                 </div>
                                 <!-- images-slider -->                                 
@@ -380,12 +389,11 @@
                                 </div>
                                 <!-- widget-text -->                                 
                                 <div class="widget widget-newsletter"> 
-                                    <form name="newsletter" method="post" action="#"> 
-                                        <fieldset> 
-                                            <input type="text" name="email" placeholder="Email address"> 
-                                            <input class="btn btn-default" type="submit" name="submit" value=""> 
-                                        </fieldset>                                         
-                                    </form>                                     
+                                     <form id="search-form" name="search-form" method="get" action="search.php"> 
+                                    <fieldset> 
+                                        <input type="text" name="search_name" placeholder="Enter your keyword here and then press enter..."> 
+                                    </fieldset>                                     
+                                </form>                                   
                                     <p>Nemo enim ipsam voluptatem</p> 
                                 </div>
                                 <!-- widget-newsletter -->                                 

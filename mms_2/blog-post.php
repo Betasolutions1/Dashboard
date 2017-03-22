@@ -56,9 +56,9 @@
                         <div class="col-md-10"> 
                             <!-- SEARCH -->                             
                             <div id="search-container"> 
-                                <form id="search-form" name="search-form" method="get" action="#"> 
+                                 <form id="search-form" name="search-form" method="get" action="search.php"> 
                                     <fieldset> 
-                                        <input type="text" name="search" placeholder="Enter your keyword here and then press enter..."> 
+                                        <input type="text" name="search_name" placeholder="Enter your keyword here and then press enter..."> 
                                     </fieldset>                                     
                                 </form>                                 
                             </div>
@@ -184,7 +184,7 @@
                                 <div class="blog-article-details"> 
                                     <h4><?php echo $bsel2['datetime'];?></h4> 
                                     <h2><a href="blog-post.php"><?php echo $bsel2['blog_title'];?></a></h2> 
-                                    <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">2</a> </p> 
+                                   <!-- <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">2</a> </p> -->
                                 </div>
                                 <!-- blog-article-details -->                                 
                                 <p><?php echo $bsel2['blog_desc'];  ?></p> 
@@ -369,11 +369,15 @@
                             </div> -->
                             <!-- widget-flickr -->                             
                             <div class="widget widget-text"> 
-                                <h3 class="widget-title">Quote of the day</h3> 
+                                <h3 class="widget-title">Quote of the day</h3>
+                                <?php
+                                $quote_exe=mysqli_query($conn,"select * from qoutes order by quote_id desc limit 1");
+								$quotes=mysqli_fetch_array($quote_exe);
+								?> 
                                 <div> 
-                                    <p>Lorem ipsum dolor sit amet unde ligula, sodales et quam non, omis finibus eros. Pharetra nulla lactus arcu non, 
-                                venenatis orci pharetra. Nunc sed odio a velit placerat sit eget hendrerit elit.</p> 
-                                </div>                                 
+                                    <p><?php echo $quotes['quote']?></p> 
+                                </div>
+                                <div align="right">-<?php echo $quotes['auother'];?></div>                                 
                             </div>
                             <!-- widget-text -->                             
                             <div class="widget widget-slider"> 

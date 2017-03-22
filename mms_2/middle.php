@@ -58,9 +58,9 @@ $file_name= basename(__FILE__,'.php');
                         <div class="col-sm-10"> 
                             <!-- SEARCH -->                             
                             <div id="search-container"> 
-                                <form id="search-form" name="search-form" method="get" action="#"> 
+                                <form id="search-form" name="search-form" method="get" action="search.php"> 
                                     <fieldset> 
-                                        <input type="text" name="search" placeholder="Enter your keyword here and then press enter..."> 
+                                        <input type="text" name="search_name" placeholder="Enter your keyword here and then press enter..."> 
                                     </fieldset>                                     
                                 </form>                                 
                             </div>
@@ -175,7 +175,7 @@ $file_name= basename(__FILE__,'.php');
                         <div class="col-sm-12"> 
                             <div class="headline style-3"> 
                                 <h5>Mms</h5> 
-                                <h2>About our work</h2> 
+                                <h2>About <?php echo $file_name;?></h2> 
                                 <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p> 
                             </div>
                             <!-- headline -->                             
@@ -257,7 +257,7 @@ $file_name= basename(__FILE__,'.php');
                 <br>
                 <br>
                 <br> 
-              <?php /*?>  <div class="container"> 
+               <?php /*?> <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-12"> 
                             <div class="headline style-3"> 
@@ -272,7 +272,7 @@ $file_name= basename(__FILE__,'.php');
                     <!-- row -->                     
                 </div><?php */?>
                 <!-- ontainer -->                 
-                <div class="container"> 
+               <?php /*?> <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-4"> 
                             <div class="about-me wow fadeInLeft"> 
@@ -342,7 +342,7 @@ $file_name= basename(__FILE__,'.php');
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
-                </div>
+                </div><?php */?>
                 <!-- ontainer -->                 
                 <!-- fullsection -->                 
                 <!-- ontainer -->                 
