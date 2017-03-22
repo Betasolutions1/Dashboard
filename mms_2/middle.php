@@ -2,6 +2,7 @@
 include 'Console/config.php';
 session_start();
 error_reporting(0);
+$file_name= basename(__FILE__,'.php');
 ?>
 
 <!doctype html> 
@@ -159,7 +160,7 @@ error_reporting(0);
                                     <li>
                                         <a href="index.php">Home</a>
                                     </li>                                     
-                                    <li class="active">About Us</li>                                     
+                                    <li class="active"><?php echo $file_name;?></li>                                     
                                 </ol>                                 
                             </div>
                             <!-- col -->                             
@@ -183,11 +184,15 @@ error_reporting(0);
                     </div>
                     <!-- row -->                     
                 </div>
-                <!-- ontainer -->                 
+                <!-- ontainer -->  
+                 <?php
+                    $ret_mid=mysqli_query($conn,"select * from ".$file_name." order by id desc limit 1");
+					$res=mysqli_fetch_array($ret_mid);
+					?>               
                 <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-12"> 
-                            <img class="wow pulse" src="service/.6.jpg" style="height:280px;width:1140px;" alt=""> 
+                            <img class="wow pulse" src="Console/pages/<?php echo $res['image'];?>" style="height:280px;width:1140px;" alt=""> 
                         </div>
                         <!-- col -->                         
                     </div>
@@ -199,14 +204,11 @@ error_reporting(0);
                 <br> 
                 <div class="container"> 
                     <div class="row"> 
-                    <?php
-                    $ret_about=mysqli_query($conn,"select * from about_us order by id desc limit 1");
-					$res=mysqli_fetch_array($ret_about);
-					?>
+                   
                         <div class="col-sm-12"> 
                             <h3><?php echo $res['title']?></h3> 
                             <br> 
-                            <p><?php echo $res['data'];?></p> 
+                            <p><?php echo $res['description'];?></p> 
                         </div>
                         <!-- col -->                         
                         <?php /*?><div class="col-sm-6"> 

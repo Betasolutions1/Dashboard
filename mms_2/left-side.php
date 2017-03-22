@@ -314,19 +314,19 @@
                                 <div class="blog-article-thumbnail"> 
                                     <img src="Console/pages/<?php echo $bsel2['image'];?>" alt=""> 
                                     <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="Console/Blog/<?php echo $bsel2['blog_image'];?>"><i class="fa fa-eye"></i></a> 
+                                        <a class="fancybox-blog-gallery zoom-action" href="Console/pages/<?php echo $bsel2['image'];?>"><i class="fa fa-eye"></i></a> 
                                     </div>
                                     <!-- blog-article-hover -->                                     
                                 </div>
                                 <!-- blog-article-thumbnail -->                                 
                                 <div class="blog-article-details"> 
-                                    <h4><?php echo $bsel2['datetime'];?></h4> 
-                                    <h2><a href="blog-post.php"><?php echo $bsel2['blog_title'];?></a></h2> 
-                                    <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">2</a> </p> 
+                                   <?php /*?> <h4><?php echo $bsel2['datetime'];?></h4> <?php */?>
+                                    <h2><a href="#"><?php echo $bsel2['title'];?></a></h2> 
+                                   <!-- <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">2</a> </p> -->
                                 </div>
                                 <!-- blog-article-details -->                                 
-                                <p><?php echo $bsel2['blog_desc'];  ?></p> 
-                                <a class="btn btn-default" href="blog-post.php">Continue reading</a> 
+                                <p><?php echo $bsel2['description'];  ?></p> 
+                                <a class="btn btn-default" href="#">Continue reading</a> 
                             </div>
                             <!-- blog-article -->                             
                             
