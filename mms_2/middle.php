@@ -257,7 +257,7 @@ $file_name= basename(__FILE__,'.php');
                 <br>
                 <br>
                 <br> 
-                <div class="container"> 
+              <?php /*?>  <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-12"> 
                             <div class="headline style-3"> 
@@ -270,7 +270,7 @@ $file_name= basename(__FILE__,'.php');
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
-                </div>
+                </div><?php */?>
                 <!-- ontainer -->                 
                 <div class="container"> 
                     <div class="row"> 
