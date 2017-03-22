@@ -43,45 +43,12 @@ if(isset($_POST['copy_submit']))
         $up_copy=mysqli_query($conn,"UPDATE ".$fname." SET `title`='$_POST[copy_title1]',`description`='$_POST[copy_desc1]'
          WHERE `id`='$_POST[copy_id]'");
      }
-    // if($up_slider)
-    // {
-    //     echo "<script>
-    //     alert('copy Updated');
-    //     window.location.href='copy_page.php';
-    //     </script>";
-
-        
-    // }
-    
-    // else
-    // {
-    //     echo "<script>
-    //     alert('copy Updation Fail As May be Image size is more than 2 MB');
-    //     window.location.href='copy_page.php';
-    //     </script>";
-    // }
 }
 //Copy_page Delete
 if(isset($_GET['del_id']))
 {
     $del_copy=mysqli_query($conn,"delete from ".$fname." where id='$_GET[del_id]'");
-    // if($del_copy)
-    // {
-    //     echo "<script>
-    //     alert('copy Deleted');
-    //     window.location.href='copy_page.php';
-    //     </script>";
-
-        
-    // }
     
-    // else
-    // {
-    //     echo "<script>
-    //     alert('copy Updation Fail');
-    //     window.location.href='copy_page.php';
-    //     </script>";
-    // }
 }
 
 
@@ -116,15 +83,7 @@ if(isset($_GET['del_id']))
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 <!--for date-->
-<!-- 
- <link href="assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
-        <link href="assets/plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/select2/dist/css/select2.css" rel="stylesheet" type="text/css">
-        <link href="assets/plugins/select2/dist/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
-        <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
-        <link href="assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
-        <link href="assets/plugins/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">  -->
+
         <link href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
         <link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
@@ -147,9 +106,6 @@ if(isset($_GET['del_id']))
             <!-- ========== Left Sidebar Start ========== -->
          <?php include("sidemenu.php");?>
             <!-- Left Sidebar End -->
-
-
-
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -223,8 +179,6 @@ if(isset($_GET['del_id']))
                         		</div>
                         	</div><!-- end col -->
                         </div>
-                        
-
                     </div> <!-- container -->
 
                 </div> <!-- content -->
@@ -284,21 +238,15 @@ if(isset($_GET['del_id']))
                 </footer>
 
             </div>
-
-
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
-
-
             <!-- Right Sidebar -->
            
             <!-- /Right-bar -->
 
         </div>
         <!-- END wrapper -->
-
-
 
         <script>
             var resizefunc = [];

@@ -207,9 +207,6 @@ if(!$_SESSION['username'])
 
         </div>
         <!-- END wrapper -->
-
-
-
         <script>
             var resizefunc = [];
         </script>

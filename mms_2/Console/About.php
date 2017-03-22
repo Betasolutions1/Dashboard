@@ -41,8 +41,6 @@ if(!$_SESSION['username'])
         <script src="assets/js/modernizr.min.js"></script>
 
     </head>
-
-
     <body class="fixed-left">
 
         <!-- Begin page -->
@@ -51,14 +49,9 @@ if(!$_SESSION['username'])
             <!-- Top Bar Start -->
           <?php include("topbar.php");?>
             <!-- Top Bar End -->
-
-
             <!-- ========== Left Sidebar Start ========== -->
          <?php include("sidemenu.php");?>
             <!-- Left Sidebar End -->
-
-
-
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -128,10 +121,7 @@ if(!$_SESSION['username'])
                         		</div>
                         	</div><!-- end col -->
                         </div>
-                        
-
                     </div> <!-- container -->
-
                 </div> <!-- content -->
                 <div class="container">
 
@@ -148,12 +138,6 @@ if(!$_SESSION['username'])
                                                         <th>Title</th>
                                                         <th data-priority="1">Description</th>
                                                        <th colspan="2">Action</th>
-                                                         <!--<th data-priority="1">Change</th>
-                                                        <th data-priority="3">Prev Close</th>
-                                                        <th data-priority="3">Open</th>
-                                                        <th data-priority="6">Bid</th>
-                                                        <th data-priority="6">Ask</th>
-                                                        <th data-priority="6">1y Target Est</th>-->
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -166,9 +150,7 @@ if(!$_SESSION['username'])
                                                //if($rete_about->num_rows !=0)  
 												 while($rete_about->fetch()) {
 												?>
-                                                
                                                     <tr>
-                                                        
                                                         <td><?php echo $title;?></td>
                                                         <td><?php echo $data;?></td>
                                                         <td><a href="About.php?page=<?php echo $id;?>">Edit</a></td>
@@ -178,40 +160,20 @@ if(!$_SESSION['username'])
                                                     <?php
 												 }
 													?>
-                                                    <!-- Repeat -->
-                                                   <!-- <tr>
-                                                        <th>GOOG <span class="co-name">Google Inc.</span></th>
-                                                        <td>597.74</td>
-                                                        <td>12:12PM</td>
-                                                        <td>14.81 (2.54%)</td>
-                                                        <td>582.93</td>
-                                                        <td>597.95</td>
-                                                        <td>597.73 x 100</td>
-                                                        <td>597.91 x 300</td>
-                                                        <td>731.10</td>
-                                                    </tr>-->
                                                   </tbody>
                                             </table>
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                         <!-- End row -->
-
                     </div> <!-- container -->
-
                 </div> <!-- content -->
-
                 <footer class="footer">
                     2016 © Adminto.
                 </footer>
-
             </div>
-
-
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->

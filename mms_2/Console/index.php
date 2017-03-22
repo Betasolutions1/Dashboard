@@ -92,9 +92,6 @@ if(isset($_POST['login'])){
                                 <input class="form-control" type="password" required="" name="password" placeholder="Password">
                             </div>
                         </div>
-
-                        
-
                         <div class="form-group text-center m-t-30">
                             <div class="col-xs-12">
                                 <button class="btn btn-custom btn-bordred btn-block waves-effect waves-light" name="login" type="submit">Log In</button>
@@ -107,13 +104,8 @@ if(isset($_POST['login'])){
                 </div>
             </div>
             <!-- end card-box-->
-
-            
         </div>
         <!-- end wrapper page -->
-        
-
-        
     	<script>
             var resizefunc = [];
         </script>

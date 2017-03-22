@@ -114,18 +114,6 @@ if(!$_SESSION['username'])
 												}
 													?>
                                                     
-                                                   
-                                                    <!--<tr>
-                                                        <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
-                                                        <td>15.81</td>
-                                                        <td>12:25PM</td>
-                                                        <td>0.11 (0.67%)</td>
-                                                        <td>15.70</td>
-                                                        <td>15.94</td>
-                                                        <td>15.79 x 6100</td>
-                                                        <td>15.80 x 17000</td>
-                                                        <td>18.16</td>
-                                                    </tr>-->
                                                 </tbody>
                                             </table>
                                         </div>

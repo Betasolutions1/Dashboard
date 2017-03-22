@@ -7,9 +7,6 @@ if(!$_SESSION['username'])
 	header("location:index.php");
 }
 
-
-
-
 // about insert
 if(isset($_POST['about_submit']))
 {
