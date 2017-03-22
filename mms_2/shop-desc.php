@@ -122,6 +122,12 @@ error_reporting(0);
                                             <li>
                                                 <a href="Myaccount.php">My Account</a>
                                             </li>
+                                             <li>
+                                                <a href="Cart.php">My Cart</a>
+                                            </li>
+                                              <li>
+                                                <a href="my-order.php">My Order</a>
+                                            </li>
                                             <li>
                                                 <a href="logout.php">Logout</a>
                                             </li> 
@@ -441,13 +447,7 @@ error_reporting(0);
                                 <!-- tab-content -->                                 
                             </div>
                             <!-- widget-tab -->                             
-                            <div class="widget widget-search"> 
-                                <form id="search-form" name="search-form" method="get" action="search.php"> 
-                                    <fieldset> 
-                                        <input type="text" name="search_name" placeholder="Enter your keyword here and then press enter..."> 
-                                    </fieldset>                                     
-                                </form>                                 
-                            </div>
+                          
                             <!-- widget-search -->                             
                             <div class="widget widget-flickr"> 
                                 <h3 class="widget-title">Flickr</h3> 

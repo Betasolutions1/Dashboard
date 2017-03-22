@@ -117,6 +117,12 @@
                                             <li>
                                                 <a href="Myaccount.php">My Account</a>
                                             </li>
+                                             <li>
+                                                <a href="Cart.php">My Cart</a>
+                                            </li>
+                                              <li>
+                                                <a href="my-order.php">My Order</a>
+                                            </li>
                                             <li>
                                                 <a href="logout.php">Logout</a>
                                             </li> 
@@ -187,14 +193,7 @@
                 <div class="container"> 
                     <div class="row"> 
                       <div class="col-md-3"> 
-                          <div class="widget widget-search"> 
-                                <form name="search" method="get" action="#"> 
-                                    <fieldset> 
-                                        <input type="text" name="search" placeholder="Search"> 
-                                        <input class="btn btn-default" type="submit" name="submit" value=""> 
-                                    </fieldset>                                     
-                                </form>                                 
-                            </div>
+                        
                             <div class="widget widget-recent-posts"> 
                                 <h3 class="widget-title">Recent Blogs</h3> 
                                 <ul> 

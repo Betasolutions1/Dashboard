@@ -116,6 +116,9 @@ error_reporting(0);
                                             <li>
                                                 <a href="Myaccount.php">My Account</a>
                                             </li>
+                                              <li>
+                                                <a href="my-order.php">My Order</a>
+                                            </li>
                                             <li>
                                                 <a href="logout.php">Logout</a>
                                             </li> 

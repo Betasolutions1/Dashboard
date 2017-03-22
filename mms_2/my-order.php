@@ -121,8 +121,11 @@ if(!$_SESSION['MMS_User'])
                                             <li>
                                                 <a href="Myaccount.php">My Account</a>
                                             </li>
-                                             <li>
-                                                <a href="my-order.php">My Account</a>
+                                              <li>
+                                                <a href="Cart.php">My Cart</a>
+                                            </li>
+                                              <li>
+                                                <a href="my-order.php">My Order</a>
                                             </li>
                                             <li>
                                                 <a href="logout.php">Logout</a>
