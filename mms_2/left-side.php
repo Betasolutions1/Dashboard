@@ -2,7 +2,7 @@
  include("Console/config.php");
  session_start();
  error_reporting(0);
- $file_name= basename(__FILE__, '.php');
+ $file_name= basename(__FILE__,'.php');
 ?>
 <!doctype html> 
 <html> 
@@ -166,10 +166,7 @@
                     <!-- ontainer -->                     
                 </div>
                 <!-- page-header -->
-                <?php
-                $bsel=mysqli_query($conn,"select * from ".$file_name." order by id desc limit 1'");
-                $bsel2=mysqli_fetch_array($bsel);
-                ?>                 
+                          
                 <div class="container"> 
                     <div class="row"> 
                       <div class="col-md-3"> 
@@ -308,11 +305,14 @@
                             </div>
                             <!-- widget-slider -->                             
                         </div>
-                    
+                     <?php
+                $bsel=mysqli_query($conn,"select * from ".$file_name." order by id desc limit 1'");
+                $bsel2=mysqli_fetch_array($bsel);
+                ?>      
                         <div class="col-md-9"> 
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
-                                    <img src="Console/Blog/<?php echo $bsel2['blog_image'];?>" alt=""> 
+                                    <img src="Console/pages/<?php echo $bsel2['image'];?>" alt=""> 
                                     <div class="blog-article-hover"> 
                                         <a class="fancybox-blog-gallery zoom-action" href="Console/Blog/<?php echo $bsel2['blog_image'];?>"><i class="fa fa-eye"></i></a> 
                                     </div>
