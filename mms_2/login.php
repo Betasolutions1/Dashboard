@@ -204,8 +204,8 @@ if(isset($_POST['Login']))
                     <div class="row"> 
                         <div class="col-sm-12"> 
                             <div class="headline style-3"> 
-                                <h5>Say hello</h5> 
-                                <h2>register your details</h2> 
+                               <!-- <h5>Say hello</h5> -->
+                                <h2>Login</h2> 
                                 <p> Temporibus autem quibusdam et aut officiis debitis aut rerum.</p> 
                             </div>
                             <!-- headline -->                             
@@ -229,7 +229,7 @@ if(isset($_POST['Login']))
                                     
                                     <input class="col-xs-12" id="email" type="text" name="email" placeholder="Email Id"><br><br/>
                                    
-                                    <input class="col-xs-12" id="Password" type="text" name="Password" placeholder="Enter Ur Password"> <br><br/>
+                                    <input class="col-xs-12" id="Password" type="password" name="Password" placeholder="Enter Your Password"> <br><br/>
                                     <!--<textarea class="col-xs-12" id="message" name="message" rows="8" cols="25" placeholder="message"></textarea>-->                                     
                                     <input class="btn btn-default" id="submit" type="submit" name="Login" value="Login"> 
                                 </fieldset>                                 

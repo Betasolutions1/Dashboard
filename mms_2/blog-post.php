@@ -206,80 +206,16 @@
                                 <!-- blog-article-thumbnail -->                                 
                                 <div class="blog-article-details"> 
                                     <h4><?php echo $bsel2['datetime'];?></h4> 
-                                    <h2><a href="blog-post.php"><?php echo $bsel2['blog_title'];?></a></h2> 
+                                    <h2><a href="#"><?php echo $bsel2['blog_title'];?></a></h2> 
                                    <!-- <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">2</a> </p> -->
                                 </div>
                                 <!-- blog-article-details -->                                 
                                 <p><?php echo $bsel2['blog_desc'];  ?></p> 
-                                <a class="btn btn-default" href="blog-post.php">Continue reading</a> 
+                                <!--<a class="btn btn-default" href="blog-post.php">Continue reading</a> -->
                             </div>
                             <!-- blog-article -->                             
-                            <!-- <div class="blog-article"> 
-                                <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-2.jpg" alt=""> 
-                                    <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-2.jpg"><i class="fa fa-eye"></i></a> 
-                                    </div>
-                                    <!-- blog-article-hover ->                                     
-                                </div>
-                                <!-- blog-article-thumbnail ->                                 
-                                <div class="blog-article-details"> 
-                                    <h4>4 March 2015</h4> 
-                                    <h2><a href="blog-post.html">This years marketing</a></h2> 
-                                    <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">4</a> </p> 
-                                </div>
-                                <!-- blog-article-details ->                                 
-                                <p>Aliquam mollis iaculis blandit. Mauris pretium nisl et eleifend viverra. Morbi massa dui, porta vitae ipsum eget, 
-                            ullamcorper placerat erat. Integer maximus sapien eu risus eleifend vehicula. Maecenas commodo dignissim ipsum quis 
-                            consequat. Sed viverra, tellus molestie sagittis porttitor, felis est auctor nisl, ut pellentesque odio nulla sit amet 
-                            eros. Aliquam ullamcorper semper tincidunt. Proin id urna nisl. </p> 
-                                <a class="btn btn-default" href="blog-post.html">Continue reading</a> 
-                            </div> -->
-                            <!-- blog-article --                             
-                            <div class="blog-article"> 
-                                <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-3.jpg" alt=""> 
-                                    <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-3.jpg"><i class="fa fa-eye"></i></a> 
-                                    </div>
-                                    <!-- blog-article-hover ->                                     
-                                </div>
-                                <!-- blog-article-thumbnail ->                                 
-                                <div class="blog-article-details"> 
-                                    <h4>3 March 2015</h4> 
-                                    <h2><a href="blog-post.html">Interior design trends</a></h2> 
-                                    <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">7</a> </p> 
-                                </div>
-                                <!-- blog-article-details --                                 
-                                <p>Etiam sagittis dictum metus at tempor. Sed laoreet aliquam purus, vel laoreet purus viverra sit amet. Nullam venenatis 
-                            vulputate nisi id maximus. Cras ullamcorper mattis ante dapibus rhoncus. Sed a urna in arcu sagittis pretium eget sit amet 
-                            est. Vestibulum lectus quam, aliquet a libero sed, sollicitudin hendrerit leo. Donec nec aliquam mi. Nulla sagittis finibus 
-                            sodales. Nullam egestas iaculis felis id sagittis. </p> 
-                                <a class="btn btn-default" href="blog-post.html">Continue reading</a> 
-                            </div>
-                            <!-- blog-article ->                             
-                            <div class="blog-article"> 
-                                <div class="blog-article-thumbnail"> 
-                                    <img src="images/blog/image-4.jpg" alt=""> 
-                                    <div class="blog-article-hover"> 
-                                        <a class="fancybox-blog-gallery zoom-action" href="images/blog/image-4.jpg"><i class="fa fa-eye"></i></a> 
-                                    </div>
-                                    <!-- blog-article-hover ->                                     
-                                </div>
-                                <!-- blog-article-thumbnail ->                                 
-                                <div class="blog-article-details"> 
-                                    <h4>3 March 2015</h4> 
-                                    <h2><a href="blog-post.html">New trend in 2015. header hero</a></h2> 
-                                    <p> <i class="miu-icon-business_namecard_contact_info_outline_stroke"></i> <a href="#">Jane Smith</a><br class="visible-xs"> <i class="miu-icon-editor_folder_add_outline_stroke"></i> <a href="#">Design</a>, <a href="#">Web design</a><br class="visible-xs"> <i class="miu-icon-other_conversation_review_comment_bubble_talk_outline_stroke"></i> <a href="#">5</a> </p> 
-                                </div>
-                                <!-- blog-article-details ->                                 
-                                <p>Integer ut neque sapien. Nulla facilisi. Vestibulum maximus laoreet justo, ut elementum orci cursus in. Sed aliquet, 
-                            ex eget pulvinar vulputate, ex ligula dignissim eros, a vestibulum lacus purus quis lacus. Duis ut varius lectus. Suspendisse 
-                            eget est sed odio egestas pharetra eu ut nisi. Aenean non varius erat. Nunc dictum eros ac blandit cursus. Curabitur et eros 
-                            urna. Fusce non eros elementum, pharetra massa ac, finibus mi. </p> 
-                                <a class="btn btn-default" href="blog-post.html">Continue reading</a> 
-                            </div>
-                            <!-- blog-article -->                             
+                           
+                                                 
                         </div>
                         <!-- col -->                         
                         <div class="col-md-3"> 
