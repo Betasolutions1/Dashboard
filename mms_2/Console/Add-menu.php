@@ -7,8 +7,6 @@ if(!$_SESSION['username'])
 	header("location:index.php");
 }
 ?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,26 +41,16 @@ if(!$_SESSION['username'])
         <![endif]-->
 
         <script src="assets/js/modernizr.min.js"></script>
-
     </head>
-
-
     <body class="fixed-left">
-
         <!-- Begin page -->
         <div id="wrapper">
-
             <!-- Top Bar Start -->
            <?php include("topbar.php");?>
             <!-- Top Bar End -->
-
-
             <!-- ========== Left Sidebar Start ========== -->
             <?php include("sidemenu.php");?>
             <!-- Left Sidebar End -->
-
-
-
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -115,8 +103,6 @@ if(!$_SESSION['username'])
                             </div>
                             <div class="col-sm-12">
                                 <div class="card-box">
-
-
                                     <div class="table-rep-plugin">
                                         <div class="table-responsive" data-pattern="priority-columns">
                                             <table id="tech-companies-1" class="table  table-striped">
@@ -146,17 +132,6 @@ if(!$_SESSION['username'])
                                                   <?php
 												}
 												  ?>  
-                                                   <?php /*?> <tr>
-                                                        <th>YHOO <span class="co-name">Yahoo! Inc.</span></th>
-                                                        <td>15.81</td>
-                                                        <td>12:25PM</td>
-                                                        <td>0.11 (0.67%)</td>
-                                                        <td>15.70</td>
-                                                        <td>15.94</td>
-                                                        <td>15.79 x 6100</td>
-                                                        <td>15.80 x 17000</td>
-                                                        <td>18.16</td>
-                                                    </tr><?php */?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -167,7 +142,6 @@ if(!$_SESSION['username'])
                             </div>
                         </div>
                         <!-- End row -->
-
                     </div> <!-- container -->
 
                 </div> <!-- content -->
@@ -178,22 +152,14 @@ if(!$_SESSION['username'])
 
             </div>
             <!-- End content-page -->
-
-
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
-
-
             <!-- Right Sidebar -->
             
             <!-- /Right-bar -->
-
         </div>
         <!-- END wrapper -->
-
-
-
         <script>
             var resizefunc = [];
         </script>

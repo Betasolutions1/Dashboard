@@ -41,26 +41,17 @@ if(!$_SESSION['username'])
         <![endif]-->
 
         <script src="assets/js/modernizr.min.js"></script>
-
     </head>
-
-
     <body class="fixed-left">
-
         <!-- Begin page -->
         <div id="wrapper">
 
             <!-- Top Bar Start -->
            <?php include("topbar.php");?>
             <!-- Top Bar End -->
-
-
             <!-- ========== Left Sidebar Start ========== -->
             <?php include("sidemenu.php");?>
             <!-- Left Sidebar End -->
-
-
-
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -68,12 +59,9 @@ if(!$_SESSION['username'])
                 <!-- Start content -->
                 <div class="content">
                     <div class="container">
-
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box">
-
-
                                     <div class="table-rep-plugin">
                                         <div class="table-responsive" data-pattern="priority-columns">
                                             <table id="tech-companies-1" class="table  table-striped">
@@ -122,13 +110,9 @@ if(!$_SESSION['username'])
 
             </div>
             <!-- End content-page -->
-
-
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
-
-
             <!-- Right Sidebar -->
             <div class="side-bar right-bar">
                 <a href="javascript:void(0);" class="right-bar-toggle">
@@ -202,16 +186,11 @@ if(!$_SESSION['username'])
                 </div>
             </div>
             <!-- /Right-bar -->
-
         </div>
         <!-- END wrapper -->
-
-
-
         <script>
             var resizefunc = [];
         </script>
-
         <!-- jQuery  -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
@@ -222,10 +201,8 @@ if(!$_SESSION['username'])
         <script src="assets/js/waves.js"></script>
         <script src="assets/js/jquery.nicescroll.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
-
         <!-- responsive-table-->
         <script src="assets/plugins/RWD-Table-Patterns/dist/js/rwd-table.min.js" type="text/javascript"></script>
-
         <!-- App js -->
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>

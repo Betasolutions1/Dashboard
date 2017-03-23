@@ -38,15 +38,7 @@ if(!$_SESSION['username'])
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 <!--for date-->
-<!-- 
- <link href="assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
-        <link href="assets/plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/select2/dist/css/select2.css" rel="stylesheet" type="text/css">
-        <link href="assets/plugins/select2/dist/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
-        <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
-        <link href="assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
-        <link href="assets/plugins/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">  -->
+
         <link href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
         <link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
@@ -54,8 +46,6 @@ if(!$_SESSION['username'])
         <script src="assets/js/modernizr.min.js"></script>
 
     </head>
-
-
     <body class="fixed-left">
 
         <!-- Begin page -->
@@ -69,9 +59,6 @@ if(!$_SESSION['username'])
             <!-- ========== Left Sidebar Start ========== -->
          <?php include("sidemenu.php");?>
             <!-- Left Sidebar End -->
-
-
-
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -171,10 +158,7 @@ if(!$_SESSION['username'])
                         		</div>
                         	</div><!-- end col -->
                         </div>
-                        
-
                     </div> <!-- container -->
-
                 </div> <!-- content -->
                 <div class="container">
 
@@ -218,19 +202,6 @@ if(!$_SESSION['username'])
                                                     <?php
 												}
 													?>
-                                                    
-                                                    <!-- Repeat -->
-                                                   <!-- <tr>
-                                                        <th>GOOG <span class="co-name">Google Inc.</span></th>
-                                                        <td>597.74</td>
-                                                        <td>12:12PM</td>
-                                                        <td>14.81 (2.54%)</td>
-                                                        <td>582.93</td>
-                                                        <td>597.95</td>
-                                                        <td>597.73 x 100</td>
-                                                        <td>597.91 x 300</td>
-                                                        <td>731.10</td>
-                                                    </tr>-->
                                                   </tbody>
                                             </table>
                                         </div>
@@ -241,32 +212,20 @@ if(!$_SESSION['username'])
                             </div>
                         </div>
                         <!-- End row -->
-
                     </div> <!-- container -->
-
                 </div> <!-- content -->
-
                 <footer class="footer">
                     2016 © BetaSolutions.
                 </footer>
-
             </div>
-
-
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
-
-
             <!-- Right Sidebar -->
            
             <!-- /Right-bar -->
-
         </div>
         <!-- END wrapper -->
-
-
-
         <script>
             var resizefunc = [];
         </script>

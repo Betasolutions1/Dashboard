@@ -7,8 +7,6 @@ if(!$_SESSION['username'])
 	header("location:index.php");
 }
 ?>
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -71,9 +69,6 @@ function validate()
             <!-- ========== Left Sidebar Start ========== -->
             <?php include("sidemenu.php");?>
             <!-- Left Sidebar End -->
-
-
-
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -163,18 +158,6 @@ function validate()
                                                     <?php
 												}
 													?>
-                                                   <!-- <tr>
-                                                        <th>MSFT <span class="co-name">Microsoft Corporation</span></th>
-                                                        <td>25.50</td>
-                                                        <td>12:27PM</td>
-                                                        <td>0.66 (2.67%)</td>
-                                                        <td>24.84</td>
-                                                        <td>25.37</td>
-                                                        <td>25.50 x 71100</td>
-                                                        <td>25.51 x 17800</td>
-                                                        <td>31.50</td>
-                                                    </tr>-->
-                                                   
                                                 </tbody>
                                             </table>
                                         </div>
@@ -196,21 +179,15 @@ function validate()
 
             </div>
             <!-- End content-page -->
-
-
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
-
-
             <!-- Right Sidebar -->
             
             <!-- /Right-bar -->
 
         </div>
         <!-- END wrapper -->
-
-
 
         <script>
             var resizefunc = [];

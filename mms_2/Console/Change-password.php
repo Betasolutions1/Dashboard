@@ -62,10 +62,8 @@ if(isset($_POST['change_pwd']))
         <![endif]-->
 
         <script src="assets/js/modernizr.min.js"></script>
-        
     </head>
     <body>
-
         <div class="account-pages"></div>
         <div class="clearfix"></div>
         <div class="wrapper-page">
@@ -96,9 +94,6 @@ if(isset($_POST['change_pwd']))
                                 <input class="form-control" type="password" name="con_pwd" required="" placeholder="Re Enter Password">
                             </div>
                         </div>
-
-                        
-
                         <div class="form-group text-center m-t-30">
                             <div class="col-xs-12">
                                 <button name="change_pwd" class="btn btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">Update</button>
@@ -111,17 +106,11 @@ if(isset($_POST['change_pwd']))
                 </div>
             </div>
             <!-- end card-box-->
-
-            
         </div>
         <!-- end wrapper page -->
-        
-
-        
     	<script>
             var resizefunc = [];
         </script>
-
         <!-- jQuery  -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
@@ -133,7 +122,6 @@ if(isset($_POST['change_pwd']))
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/jquery.nicescroll.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
-
         <!-- App js -->
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>

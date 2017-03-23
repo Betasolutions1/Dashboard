@@ -7,8 +7,6 @@ if(!$_SESSION['username'])
 {
 	header("location:index.php");
 }
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +15,6 @@ if(!$_SESSION['username'])
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
         <meta name="author" content="Coderthemes">
-
         <!-- App Favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
@@ -40,40 +37,21 @@ if(!$_SESSION['username'])
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
 <!--for date-->
-<!-- 
- <link href="assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
-        <link href="assets/plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/select2/dist/css/select2.css" rel="stylesheet" type="text/css">
-        <link href="assets/plugins/select2/dist/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
-        <link href="assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
-        <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
-        <link href="assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
-        <link href="assets/plugins/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">  -->
+
         <link href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
         <link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
 <!-- end-->
         <script src="assets/js/modernizr.min.js"></script>
-
     </head>
-
-
     <body class="fixed-left">
-
         <!-- Begin page -->
         <div id="wrapper">
-
             <!-- Top Bar Start -->
           <?php include("topbar.php");?>
             <!-- Top Bar End -->
-
-
             <!-- ========== Left Sidebar Start ========== -->
          <?php include("sidemenu.php");?>
             <!-- Left Sidebar End -->
-
-
-
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -185,18 +163,12 @@ if(!$_SESSION['username'])
                         		</div>
                         	</div><!-- end col -->
                         </div>
-                        
-
                     </div> <!-- container -->
-
                 </div> <!-- content -->
                 <div class="container">
-
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box">
-
-
                                     <div class="table-rep-plugin">
                                         <div class="table-responsive" data-pattern="priority-columns">
                                             <table id="tech-companies-1" class="table  table-striped">
@@ -214,12 +186,6 @@ if(!$_SESSION['username'])
                                                 <tbody>
                                                 <?php
 												$sno=0;
-                                                // $service_res=$conn->prepare("SELECT `service_id`, `service_type`, `service_title`, `service_desc`, `service_img` FROM `services`");
-												//$service_res->execute();
-												
-												// $service_res->bind_result($id,$type,$title,$data,$img);
-                                              //  $service_res->store_result();
-											//	$qqry_exe=mysqli_query($conn,"SELECT service_id,service_title,service_desc,service_img,servicetype_id,stype_name FROM services inner join service_type on services.servicetype_id=service_type.stype_id");
 											$qqry_exe=mysqli_query($conn,"select * from services");
 												 while($res=mysqli_fetch_array($qqry_exe))
 												  {
@@ -240,19 +206,6 @@ if(!$_SESSION['username'])
                                                     <?php
 												 }
 													?>
-                                                   
-                                                    <!-- Repeat -->
-                                                    <!--<tr>
-                                                        <th>GOOG <span class="co-name">Google Inc.</span></th>
-                                                        <td>597.74</td>
-                                                        <td>12:12PM</td>
-                                                        <td>14.81 (2.54%)</td>
-                                                        <td>582.93</td>
-                                                        <td>597.95</td>
-                                                        <td>597.73 x 100</td>
-                                                        <td>597.91 x 300</td>
-                                                        <td>731.10</td>
-                                                    </tr>-->
                                                   </tbody>
                                             </table>
                                         </div>
@@ -273,22 +226,15 @@ if(!$_SESSION['username'])
                 </footer>
 
             </div>
-
-
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
-
-
             <!-- Right Sidebar -->
            
             <!-- /Right-bar -->
 
         </div>
         <!-- END wrapper -->
-
-
-
         <script>
             var resizefunc = [];
         </script>
