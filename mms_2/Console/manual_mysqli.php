@@ -815,5 +815,58 @@ if(isset($_GET['service_delte_id']))
 	}
 }
 
-//if()
+//uploading videos..
+if(isset($_POST['vedio_submit']))
+{
+	$ins_vedio=mysqli_query($conn,"INSERT INTO `vedios`( `vedio_title`, `vedio_path`, `vedio_desc`) VALUES ('$_POST[vedio_title]','$_POST[vedio_path]','$_POST[vedio_desc]')");
+	if($ins_vedio)
+	{
+		echo "<script>
+		alert('Video Inserted');
+		window.location.href='vedios.php';
+		</script>";
+	}else
+	{
+		echo "<script>
+		alert('video insertion Fail ');
+		window.location.href='vedios.php';
+		</script>";
+	}
+}
+
+if(isset($_POST['video_update']))
+{
+	$up_vido=mysqli_query($conn,"UPDATE `vedios` SET `vedio_title`='$_POST[video_title1]',`vedio_path`='$_POST[video_path1]',`vedio_desc`='$_POST[video_desc1]' WHERE `vedio_id`='$_POST[video_id]'");
+	if($up_vido)
+	{
+		echo "<script>
+		alert('Video Updated');
+		window.location.href='vedios.php';
+		</script>";
+	}else
+	{
+		echo "<script>
+		alert('video updation Fail ');
+		window.location.href='vedios.php';
+		</script>";
+	}
+}
+
+if(isset($_GET['vedio_del_id']))
+{
+	$del_vedio=mysqli_query($conn,"DELETE FROM `vedios` WHERE `vedio_id`='".$_GET['vedio_del_id']."' ");
+	if($del_vedio)
+	{
+		echo "<script>
+		alert('Video Deleted');
+		window.location.href='vedios.php';
+		</script>";
+	}else
+	{
+		echo "<script>
+		alert('video Deletion Fail ');
+		window.location.href='vedios.php';
+		</script>";
+	}
+}
 ?>
