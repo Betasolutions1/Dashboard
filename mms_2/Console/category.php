@@ -137,7 +137,7 @@ function validate()
                                                         <th><?php echo $sno;?></th>
                                                         <td><?php echo $cname;?></td>
                                                         <td><a href="category.php?upcid=<?php echo $cid;?>">Edit</a></td>
-                                                        <td><a href="manual_mysqli.php?delete_cid=<?php echo $cid;?>">Delete</a></td>
+                                                        <td><a href="manual_mysqli.php?delete_conid=<?php echo $cid;?>">Delete</a></td>
                                                         
                                                     </tr>
                                                     <?php

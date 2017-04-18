@@ -307,10 +307,10 @@ if(isset($_POST['update_category']))
 	}
 }
 
-if(isset($_GET['delete_cid']))
+if(isset($_GET['delete_conid']))
 {
 	$del_con=$conn->prepare("DELETE from category where category_id=?");
-	$del_con->bind_param('i',$_GET['delete_cid']);
+	$del_con->bind_param('i',$_GET['delete_conid']);
 	$exe=$del_con->execute();
 	if($exe)
 	{
@@ -818,7 +818,15 @@ if(isset($_GET['service_delte_id']))
 //uploading videos..
 if(isset($_POST['vedio_submit']))
 {
-	$ins_vedio=mysqli_query($conn,"INSERT INTO `vedios`( `vedio_title`, `vedio_path`, `vedio_desc`) VALUES ('$_POST[vedio_title]','$_POST[vedio_path]','$_POST[vedio_desc]')");
+	$ved=mt_rand();
+	$ved_img_name=$_FILES['vedio_image']['name'];
+    	$vedimg_tmp_name=$_FILES['vedio_image']['tmp_name'];
+    	$ved_img_path=$ved.'_'.$ved_img_name;
+		$vide_path="vedios/".$ved_img_path;
+    	move_uploaded_file($vedimg_tmp_name,$vide_path);
+			
+			$ved_img=$ved.'_'.$_FILES['vedio_image']['name'];
+	$ins_vedio=mysqli_query($conn,"INSERT INTO `vedios`( `service_id`,`vedio_title`, `vedio_path`,`video_image`, `vedio_desc`) VALUES ('$_POST[service_type]','$_POST[vedio_title]','$_POST[vedio_path]','$ved_img','$_POST[vedio_desc]')");
 	if($ins_vedio)
 	{
 		echo "<script>
@@ -836,7 +844,20 @@ if(isset($_POST['vedio_submit']))
 
 if(isset($_POST['video_update']))
 {
-	$up_vido=mysqli_query($conn,"UPDATE `vedios` SET `vedio_title`='$_POST[video_title1]',`vedio_path`='$_POST[video_path1]',`vedio_desc`='$_POST[video_desc1]' WHERE `vedio_id`='$_POST[video_id]'");
+	$ved1=mt_rand();
+	$ved_img_name1=$_FILES['vedio_image1']['name'];
+    	$vedimg_tmp_name1=$_FILES['vedio_image1']['tmp_name'];
+    	$ved_img_path1=$ved1.'_'.$ved_img_name1;
+		$vide_path1="vedios/".$ved_img_path1;
+    	move_uploaded_file($vedimg_tmp_name1,$vide_path1);
+		$ved_img1=$ved1.'_'.$_FILES['vedio_image1']['name'];
+		if($ved_img_name1!='')
+		{
+	$up_vido=mysqli_query($conn,"UPDATE `vedios` SET `service_id`='$_POST[service_type1]',`vedio_title`='$_POST[video_title1]',`vedio_path`='$_POST[video_path1]',`vedio_desc`='$_POST[video_desc1]',`video_image`='$ved_img1' WHERE `vedio_id`='$_POST[video_id]'");
+		}else
+		{
+			$up_vido=mysqli_query($conn,"UPDATE `vedios` SET `service_id`='$_POST[service_type1]',`vedio_title`='$_POST[video_title1]',`vedio_path`='$_POST[video_path1]',`vedio_desc`='$_POST[video_desc1]' WHERE `vedio_id`='$_POST[video_id]'");
+		}
 	if($up_vido)
 	{
 		echo "<script>

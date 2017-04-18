@@ -33,6 +33,7 @@
                                 <ul class="list-unstyled">
                                     <li><a href="About.php">About Us</a></li>
                                     <li><a href="Contact.php">Contact Us</a></li>
+                                     <li><a href="service_type.php">Add Services Types</a></li>
                                     <li><a href="add_services.php">Services</a></li>
                                      <li><a href="vedios.php">Vedios</a></li>
                                 </ul>

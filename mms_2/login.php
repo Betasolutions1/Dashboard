@@ -1,4 +1,4 @@
-s<?php
+<?php
 include 'Console/config.php';
 session_start();
 error_reporting(0);

@@ -217,7 +217,7 @@ error_reporting(0);
                         <div class="col-sm-4"> 
                             <div class="services-boxes style-2 wow fadeInDown" style=" width: 250px;height: 400px; background-color: #fbfbfb;opacity: .8;"> 
                                 <div class="services-boxes-content"> 
-                                <img src="Console/services/<?php echo $edu_res['service_img']?>" style="width:250px;height:185px;">
+                               <a href="videos.php?service_id=<?php echo $edu_res['service_id'];?>"> <img src="Console/services/<?php echo $edu_res['service_img']?>" style="width:250px;height:185px;"></a>
                                     <h3> <a href="single-service.php?Service_id=<?php echo $edu_res['service_id'];?>"><?php echo $edu_res['service_title']?></a> <!--<small>Nice &amp; Clean</small>--> </h3> 
                                     <p><?php echo strip_tags($edu_res['SUBSTRING(service_desc ,1,150)']);?>.</p> 
                                 </div>

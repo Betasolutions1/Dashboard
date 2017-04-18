@@ -72,8 +72,28 @@ if(!$_SESSION['username'])
 										{
 											$rety=mysqli_query($conn,"select * from vedios where vedio_id='$_GET[vlang]'");
 											$res=mysqli_fetch_array($rety);
+											$get_ser_exe=mysqli_query($conn,"select * from services where service_id='$res[service_id]'");
+											$get_ser_type=mysqli_fetch_array($get_ser_exe);
 										?>
-                        					<form class="form-horizontal" role="form" method="post" action="manual_mysqli.php">
+                        					<form class="form-horizontal" role="form" method="post" action="manual_mysqli.php" enctype="multipart/form-data">
+                                             <?php
+                                            $service_type_exe=mysqli_query($conn,"select * from service_type where stype_name='Education'");
+											$ser_type=mysqli_fetch_array($service_type_exe);
+											$ser_exe=mysqli_query($conn,"select * from services where service_type='$ser_type[stype_id]'");
+											?>
+                                             <div class="form-group">
+	                                                <label class="col-md-2 control-label">Service Type</label>
+	                                                <div class="col-md-10">
+	                                                    <select class="form-control" name="service_type1">
+                                                        <option value="<?php echo $get_ser_type['service_id'];?>"><?php echo $get_ser_type['service_title'];?></option>
+                                                        <?php while($services=mysqli_fetch_array($ser_exe))
+														{
+															?>
+                                                        <option value="<?php echo $services['service_id']?>"><?php echo $services['service_title'];?></option>
+                                                        <?php } ?>
+                                                        </select>
+	                                                </div>
+	                                            </div>
 	                                            <div class="form-group">
 	                                                <label class="col-md-2 control-label">Video Title</label>
 	                                                <div class="col-md-10">
@@ -85,7 +105,14 @@ if(!$_SESSION['username'])
 	                                                <div class="col-md-10">
 	                                                    <textarea  name="video_path1" class="form-control" ><?php echo $res['vedio_path'];?></textarea>
 	                                                </div>
+                                                     
 	                                            </div>
+                                                 <div class="form-group">
+                                                    <label class="col-md-2 control-label">Video Image</label>
+                                                    <div class="col-md-10">
+                                                        <input type="file" class="form-control" name="vedio_image1"/><?php echo $res['video_image'];?>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">Description</label>
                                                     <div class="col-md-10">
@@ -102,17 +129,40 @@ if(!$_SESSION['username'])
 										{
 										
 											?>
-                                            <form class="form-horizontal" role="form" method="post" action="manual_mysqli.php">
+                                            <form class="form-horizontal" role="form" method="post" action="manual_mysqli.php" enctype="multipart/form-data">
+                                            <?php
+                                            $service_type_exe=mysqli_query($conn,"select * from service_type where stype_name='Education'");
+											$ser_type=mysqli_fetch_array($service_type_exe);
+											$ser_exe=mysqli_query($conn,"select * from services where service_type='$ser_type[stype_id]'");
+											?>
+                                             <div class="form-group">
+	                                                <label class="col-md-2 control-label">Service Type</label>
+	                                                <div class="col-md-10">
+	                                                    <select class="form-control" name="service_type">
+                                                        <option >Select Service Type</option>
+                                                        <?php while($services=mysqli_fetch_array($ser_exe))
+														{?>
+                                                        <option value="<?php echo $services['service_id']?>"><?php echo $services['service_title'];?></option>
+                                                        <?php } ?>
+                                                        </select>
+	                                                </div>
+	                                            </div>
 	                                            <div class="form-group">
-	                                                <label class="col-md-2 control-label">Vedio Title</label>
+	                                                <label class="col-md-2 control-label">Video Title</label>
 	                                                <div class="col-md-10">
 	                                                    <input type="text" name="vedio_title" class="form-control" >
 	                                                </div>
 	                                            </div>
                                                  <div class="form-group">
-                                                    <label class="col-md-2 control-label">Vedio Path</label>
+                                                    <label class="col-md-2 control-label">Video Path</label>
                                                     <div class="col-md-10">
                                                         <textarea class="form-control" name="vedio_path"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Video Image</label>
+                                                    <div class="col-md-10">
+                                                        <input type="file" class="form-control" name="vedio_image"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -147,26 +197,33 @@ if(!$_SESSION['username'])
                                             <table id="tech-companies-1" class="table  table-striped">
                                                 <thead>
                                                     <tr>
+                                                    <th>Service Type</th>
                                                         <th>Title</th>
                                                         <th data-priority="1">Video Path</th>
                                                         <th data-priority="1">Description</th>
+                                                         <th data-priority="1">Image</th>
                                                        <th colspan="2">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                 <?php
-                                                $rete_video=$conn->prepare("SELECT vedio_id,vedio_title,vedio_path,vedio_desc FROM `vedios`");
+                                                $rete_video=$conn->prepare("SELECT vedio_id,service_id,vedio_title,vedio_path,video_image,vedio_desc FROM `vedios`");
 												$rete_video->execute();
 												
-												 $rete_video->bind_result($id,$title,$path,$data);
+												 $rete_video->bind_result($id,$stype,$title,$path,$img,$data);
                                                 $rete_video->store_result();
                                                //if($rete_about->num_rows !=0)  
 												 while($rete_video->fetch()) {
+												 $get_seres_exe=mysqli_query($conn,"select * from services where service_id='$stype'");
+												 $get_sert=mysqli_fetch_array($get_seres_exe);
+											
 												?>
                                                     <tr>
+                                                    <td><?php echo $get_sert['service_title'];?></td>
                                                         <td><?php echo $title;?></td>
                                                          <td><?php echo $path;?></td>
                                                         <td><?php echo $data;?></td>
+                                                        <td><img src="vedios/<?php echo $img;?>" height="50"></td>
                                                         <td><a href="vedios.php?vlang=<?php echo $id;?>">Edit</a></td>
                                                         <td><a href="manual_mysqli.php?vedio_del_id=<?php echo $id;?>">Delete</a></td>
                                                       

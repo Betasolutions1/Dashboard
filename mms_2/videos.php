@@ -80,7 +80,7 @@ error_reporting(0);
                                     <li>
                                         <a href="about-us.php">About</a>
                                     </li>                                     
-                                    <li class="dropdown"> 
+                                    <li class="dropdown" class="active"> 
                                         <a href="#">Services</a> 
                                         <ul> 
                                             <?php 
@@ -100,7 +100,7 @@ error_reporting(0);
                                     <li > 
                                         <a href="blog-columns.php">Blog</a> 
                                     </li>
-                                    <li class="active">
+                                    <li >
                                         <a href="shop.php">shop</a>
                                     </li>
                                      <li class="dropdown"> 
@@ -173,7 +173,7 @@ error_reporting(0);
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-6"> 
-                                <h4>Shop</h4> 
+                                <h4>Services</h4> 
                             </div>
                             <!-- col -->                             
                             <div class="col-sm-6"> 
@@ -182,7 +182,7 @@ error_reporting(0);
                                         <a href="index.php">Home</a>
                                     </li>                                     
                                     <li>
-                                        <a href="shop.php">Shop</a>
+                                        <a href="services1.php">Services</a>
                                     </li>                                     
                                     <li class="active">Shop Description</li>                                     
                                 </ol>                                 
@@ -197,7 +197,7 @@ error_reporting(0);
                 <div class="container"> 
                     <div class="row"> 
                     <?php
-                    $disng_produ=mysqli_query($conn,"select * from vedios");
+                    $disng_produ=mysqli_query($conn,"select * from vedios where Service_id='$_GET[service_id]'");
 					$ved_c=0;
 					?>
                         <div class="col-sm-9"> 
@@ -208,7 +208,19 @@ error_reporting(0);
 						?>
                             <div class="blog-article"> 
                                 <div class="blog-article-thumbnail"> 
+                                <?php
+                                if(!$_SESSION['MMS_User'])
+								{
+									?>
+                                    <img src="Console/vedios/<?php echo $sing_dis['video_image'];?>" height="350" width="600">
+                                    <?php
+								}else
+								{
+								?>
                                     <iframe src="<?php echo $sing_dis['vedio_path'];?>?autoplay=1&rel=0&amp;controls=0&amp;showinfo=0" alt="" height="350" width="600" onload='show_locker(<?php echo $ved_c;?>)' id="<?php echo $ved_c;?>"> </iframe>
+                                    <?php
+								}
+									?>
                                     <?php /*?><div class="blog-article-hover"> 
                                         <a class="fancybox-blog-gallery zoom-action" href="Console/product/<?php echo $sing_dis['product_image'];?>"><i class="fa fa-eye"></i></a> 
                                     </div><?php */?>
