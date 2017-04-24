@@ -116,6 +116,9 @@ error_reporting(0);
                                             <li>
                                                 <a href="Myaccount.php">My Account</a>
                                             </li>
+                                             <li>
+                                                <a href="Cart.php">Cart</a>
+                                            </li>
                                               <li>
                                                 <a href="my-order.php">My Order</a>
                                             </li>
@@ -186,7 +189,7 @@ error_reporting(0);
                     <div class="row"> 
                         <div class="col-sm-12"> 
                             <div class="headline style-3"> 
-                                <h5>All in one</h5> 
+                               <!-- <h5>All in one</h5> -->
                                 <h2>Cart</h2> 
                                 <p>Temporibus autem quibusdam et aut officiis debitis aut rerum</p> 
                             </div>
@@ -489,7 +492,7 @@ error_reporting(0);
                 <!-- container -->                 
               
                 <!-- container -->                 
-                <section class="full-section" id="section-6"> 
+            <?php /*?>    <section class="full-section" id="section-6"> 
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-12"> 
@@ -516,9 +519,9 @@ error_reporting(0);
                         <!-- row -->                         
                     </div>
                     <!-- ontainer -->                     
-                </section>
+                </section><?php */?>
                 <!-- full-section -->                 
-                <div class="container"> 
+              <?php /*?>  <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-6"> 
                             <div class="headline style-2"> 
@@ -617,7 +620,7 @@ error_reporting(0);
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
-                </div>
+                </div><?php */?>
                 <!-- ontainer -->                 
                 <section class="full-section parallax" id="section-4"> 
                     <div class="container"> 

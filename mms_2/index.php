@@ -1,4 +1,4 @@
-<?php include("console/config.php");
+<?php include("Console/config.php");
 session_start();
 //$rand_value=mt_rand();
 //$_SESSION['Rand_session_id']=$rand_valuel;
@@ -141,6 +141,9 @@ $(window).load(function() {
 											?>                                            
                                             <li>
                                                 <a href="Myaccount.php">My Account</a>
+                                            </li>
+                                               <li>
+                                                <a href="Cart.php">Cart</a>
                                             </li>
                                              <li>
                                                 <a href="my-order.php">My Order</a>
@@ -327,7 +330,7 @@ $(window).load(function() {
    
     
 "> 
-                                <img src="Console/services/<?php echo $ser_edu_res['service_img'];?>"  class="img img-responsive">
+                                <img src="Console/Services/<?php echo $ser_edu_res['service_img'];?>"  class="img img-responsive" style=" width: 250px;height: 225px;">
                                     <h3 style="margin-left:10px;margin-top:10px;"> <a href="single-service.php?Service_id=<?php echo $ser_edu_res['service_id'];?>"><?php echo $ser_edu_res['service_title'];?></a> <!--<small>Nice &amp; Clean</small>--> </h3> 
                                     <p style="margin-left:10px;"><?php echo strip_tags($ser_edu_res['SUBSTRING(service_desc ,1,15)'])?>&nbsp;<br></p>
                                 </div>

@@ -230,7 +230,7 @@ error_reporting(0);
                 </div>
                 <!-- ontainer -->                 
                 <!-- full-section -->                 
-                <div class="container"> 
+              <?php /*?>  <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-12"> 
                             <div class="headline style-1"> 
@@ -242,9 +242,9 @@ error_reporting(0);
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
-                </div>
+                </div><?php */?>
                 <!-- container -->                 
-                <div class="container"> 
+              <?php /*?>  <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-6"> 
                             <ul class="circle-list"> 
@@ -295,12 +295,12 @@ error_reporting(0);
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
-                </div>
+                </div><?php */?>
                 <!-- container -->                 
                 <br>
                 <br>
                 <br> 
-                <div class="container"> 
+             <?php /*?>   <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-12"> 
                             <div class="embed-responsive embed-responsive-16by9"> 
@@ -311,7 +311,7 @@ error_reporting(0);
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
-                </div>
+                </div><?php */?>
                 <!-- container -->                 
                 <br>
                 <br>

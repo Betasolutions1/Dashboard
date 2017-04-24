@@ -449,13 +449,13 @@ error_reporting(0);
                             <!-- widget-tab -->                             
                           
                             <!-- widget-search -->                             
-                            <div class="widget widget-flickr"> 
+                        <?php /*?>    <div class="widget widget-flickr"> 
                                 <h3 class="widget-title">Flickr</h3> 
                                 <div class="flickr-photos"> 
                                     <script src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08"></script>                                     
                                 </div>
                                 <!-- flickr-photos -->                                 
-                            </div>
+                            </div><?php */?>
                             <!-- widget-flickr -->                             
                              <div class="widget widget-text"> 
                                 <h3 class="widget-title">Quote of the day</h3>
@@ -499,7 +499,7 @@ error_reporting(0);
                 </div>
                 <!-- ontainer -->                 
                 <!-- ontainer -->                 
-                <section class="full-section" id="section-8"> 
+               <?php /*?> <section class="full-section" id="section-8"> 
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-11"> 
@@ -520,7 +520,7 @@ error_reporting(0);
                         <!-- row -->                         
                     </div>
                     <!-- ontainer -->                     
-                </section>
+                </section><?php */?>
                 <!-- full-section -->                 
             </div>
             <!-- CONTENT -->             

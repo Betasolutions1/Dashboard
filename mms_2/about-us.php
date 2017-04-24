@@ -277,7 +277,7 @@ error_reporting(0);
                 <br>
                 <br>
                 <br> 
-                <div class="container"> 
+               <?php /*?> <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-12"> 
                             <div class="headline style-3"> 
@@ -290,9 +290,9 @@ error_reporting(0);
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
-                </div>
+                </div><?php */?>
                 <!-- ontainer -->                 
-                <div class="container"> 
+              <?php /*?>  <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-4"> 
                             <div class="about-me wow fadeInLeft"> 
@@ -362,12 +362,12 @@ error_reporting(0);
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
-                </div>
+                </div><?php */?>
                 <!-- ontainer -->                 
                 <!-- fullsection -->                 
                 <!-- ontainer -->                 
                 <!-- ontainer -->                 
-                <section class="full-section parallax" id="section-4"> 
+              <?php /*?>  <section class="full-section parallax" id="section-4"> 
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-12"> 
@@ -378,7 +378,7 @@ error_reporting(0);
                         <!-- row -->                         
                     </div>
                     <!-- ontainer -->                     
-                </section>
+                </section><?php */?>
                 <!-- full-section -->                 
             </div>
             <!-- CONTENT -->             

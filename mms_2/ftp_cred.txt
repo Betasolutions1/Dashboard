@@ -1,0 +1,5 @@
+mms..
+
+username: u387619361.mms
+pwd : mms@123
+hostName : ftp.mymultisolutions.in

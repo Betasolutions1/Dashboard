@@ -452,7 +452,7 @@ error_reporting(0);
                 </div>
                 <!-- ontainer -->                 
                 <!-- ontainer -->                 
-                <section class="full-section" id="section-8"> 
+              <?php /*?>  <section class="full-section" id="section-8"> 
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-md-11"> 
@@ -473,7 +473,7 @@ error_reporting(0);
                         <!-- row -->                         
                     </div>
                     <!-- ontainer -->                     
-                </section>
+                </section><?php */?>
                 <!-- full-section -->                 
             </div>
             <!-- CONTENT -->             

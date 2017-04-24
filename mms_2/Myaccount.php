@@ -230,7 +230,7 @@ if(!$_SESSION['MMS_User'])
                 </div>
                 <!-- ontainer -->                 
                 <!-- ontainer -->                 
-                <section class="full-section" id="section-8"> 
+              <?php /*?>  <section class="full-section" id="section-8"> 
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-md-11"> 
@@ -251,7 +251,7 @@ if(!$_SESSION['MMS_User'])
                         <!-- row -->                         
                     </div>
                     <!-- ontainer -->                     
-                </section>
+                </section><?php */?>
                 <!-- full-section -->                 
             </div>
             <!-- CONTENT -->             

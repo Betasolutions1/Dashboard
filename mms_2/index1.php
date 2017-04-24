@@ -1,4 +1,4 @@
-<?php include("console/config.php");?>
+<?php include("Console/config.php");?>
 <!doctype html> 
 <html> 
     <head> 

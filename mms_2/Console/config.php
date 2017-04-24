@@ -22,10 +22,17 @@ catch(PDOException $e)
 
 
 <?php
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "mms";
+
+
+/*$servername = "mysql.hostinger.in";
+$username = "u387619361_multi";
+$password = "multi@123";
+$dbname = "u387619361_multi";*/
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);

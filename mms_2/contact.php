@@ -222,9 +222,9 @@ error_reporting(0);
                                 <ul> 
                                     <li> 
                                         <span>Address</span> 
-                                        1713 Hide A Way Road
+                                        Sankarmatam road, Near Diamond Park
                                         <br> 
-                                        San Jose, CA 95118
+                                       Visakhapatnam
                                     </li>                                     
                                     <li> 
                                         <span>Phone &amp; Fax</span> 

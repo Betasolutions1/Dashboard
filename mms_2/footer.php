@@ -5,7 +5,7 @@
                 <div id="footer"> 
                     <div class="container"> 
                         <div class="row"> 
-                            <div class="col-md-3"> 
+                            <div class="col-md-4"> 
                                 <div class="widget widget-text"> 
                                     <h3 class="widget-title">About MMS</h3> 
                                     <p>Lorem ipsum dolor sit amet unde ligula, sodales et quam non, omis finibus eros. Pharetra nulla lactus arcu non, 
@@ -24,7 +24,7 @@
                                 <!-- widget-newsletter -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-md-3"> 
+                            <div class="col-md-4"> 
                                 <div class="widget widget-latest-news"> 
                                     <h3 class="widget-title">Latest news</h3> 
                                     <ul> 
@@ -46,7 +46,7 @@
                                 <!-- widget-recent-posts -->                                 
                             </div>
                             <!-- col -->                             
-                            <div class="col-md-3"> 
+                          <?php /*?>  <div class="col-md-4"> 
                                 <div class="widget widget-flickr"> 
                                     <h3 class="widget-title">Flickr</h3> 
                                     <div class="flickr-photos"> 
@@ -57,9 +57,9 @@
                                 deserunt</p> 
                                 </div>
                                 <!-- widget-flickr -->                                 
-                            </div>
+                            </div><?php */?>
                             <!-- col -->                             
-                            <div class="col-md-3"> 
+                            <div class="col-md-4"> 
                                 <div class="widget widget-contact"> 
                                     <h3 class="widget-title">Contact Us</h3> 
                                     <ul> 

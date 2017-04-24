@@ -217,7 +217,7 @@ error_reporting(0);
                         <div class="col-sm-4"> 
                             <div class="services-boxes style-2 wow fadeInDown" style=" width: 250px;height: 400px; background-color: #fbfbfb;opacity: .8;"> 
                                 <div class="services-boxes-content"> 
-                               <a href="videos.php?service_id=<?php echo $edu_res['service_id'];?>"> <img src="Console/services/<?php echo $edu_res['service_img']?>" style="width:250px;height:185px;"></a>
+                               <a href="videos.php?service_id=<?php echo $edu_res['service_id'];?>"> <img src="Console/Services/<?php echo $edu_res['service_img']?>" style="width:250px;height:185px;"></a>
                                     <h3> <a href="single-service.php?Service_id=<?php echo $edu_res['service_id'];?>"><?php echo $edu_res['service_title']?></a> <!--<small>Nice &amp; Clean</small>--> </h3> 
                                     <p><?php echo strip_tags($edu_res['SUBSTRING(service_desc ,1,150)']);?>.</p> 
                                 </div>
@@ -313,7 +313,7 @@ error_reporting(0);
                     <!-- row -->                     
                 </div><?php */?>
                 <!-- ontainer -->                 
-                <section class="full-section parallax" id="section-5"> 
+                <?php /*?><section class="full-section parallax" id="section-5"> 
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-12"> 
@@ -374,137 +374,17 @@ error_reporting(0);
                         <!-- row -->                         
                     </div>
                     <!-- ontainer -->                     
-                </section>
+                </section><?php */?>
                 <!-- full-section -->                 
-                <div class="container"> 
-                    <div class="row"> 
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-right wow fadeInLeft"> 
-                                <i class="miu-icon-circle_gear_setting_configure_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">Many features</a></h3> 
-                                    <p>Natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore 
-								veritatis.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-left wow fadeInRight"> 
-                                <i class="miu-icon-editor_crop_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">Modern Design</a></h3> 
-                                    <p>Maecenas lectus tortor, tincidunt ac ipsum ac, aliquet tempus tortor. In quis augue nulla. Vivamus dolor dui, auctor 
-								eget nulla non porttitor. </p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                    </div>
-                    <!-- row -->                     
-                </div>
+              
                 <!-- ontainer -->                 
-                <div class="container"> 
-                    <div class="row"> 
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-right wow fadeInLeft"> 
-                                <i class="miu-icon-business_coins_money_stack_salary_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">Revolution slider</a></h3> 
-                                    <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo 
-								inventore.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-left wow fadeInRight"> 
-                                <i class="miu-icon-device_board_presentation_content_text_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">Video background</a></h3> 
-                                    <p>Pellentesque faucibus urna nec quam placerat tincidunt. Praesent mauris lacus, tincidunt non arcu in, sodales congue 
-								enim felis nec viverra.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                    </div>
-                    <!-- row -->                     
-                </div>
+             
                 <!-- ontainer -->                 
-                <div class="container"> 
-                    <div class="row"> 
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-right wow fadeInLeft"> 
-                                <i class="miu-icon-common_star_favorite_bookmark_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">Retina ready</a></h3> 
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, 
-								eaque ipsa.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-left wow fadeInRight"> 
-                                <i class="miu-icon-device_tablets_ipads_horizontal_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">Ultra responsive</a></h3> 
-                                    <p>Maecenas sit amet gravida velit, in ultrices felis. Pellentesque habitant morbi tristique senectus et netus et 
-								malesuada fames ac turpis egestas.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                    </div>
-                    <!-- row -->                     
-                </div>
+              
                 <!-- container -->                 
-                <div class="container"> 
-                    <div class="row"> 
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-right wow fadeInLeft"> 
-                                <i class="miu-icon-editor_document_file_2_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">All elements included</a></h3> 
-                                    <p>Nulla mollis eu neque eu ornare. Proin eget placerat massa, ac maximus massa. Nullam bibendum et velit sed volutpat 
-									rutrum nibh.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                        <div class="col-sm-6"> 
-                            <div class="services-boxes style-3 icon-left wow fadeInRight"> 
-                                <i class="miu-icon-other_review_comment_outline_stroke"></i> 
-                                <div class="services-boxes-content"> 
-                                    <h3><a href="single-service.php">24H Support</a></h3> 
-                                    <p>Aenean malesuada condimentum nisl, eu posuere leo porta sodales. Quisque semper faucibus nisl in maximus. Morbi blandit
-									eget risus ut aliquam.</p> 
-                                </div>
-                                <!-- services-boxes-content -->                                 
-                            </div>
-                            <!-- services-boxes -->                             
-                        </div>
-                        <!-- col -->                         
-                    </div>
-                    <!-- row -->                     
-                </div>
+              
                 <!-- container -->                 
-                <section class="full-section" id="section-6"> 
+              <?php /*?>  <section class="full-section" id="section-6"> 
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-12"> 
@@ -531,9 +411,9 @@ error_reporting(0);
                         <!-- row -->                         
                     </div>
                     <!-- ontainer -->                     
-                </section>
+                </section><?php */?>
                 <!-- full-section -->                 
-                <div class="container"> 
+              <?php /*?>  <div class="container"> 
                     <div class="row"> 
                         <div class="col-sm-6"> 
                             <div class="headline style-2"> 
@@ -632,9 +512,9 @@ error_reporting(0);
                         <!-- col -->                         
                     </div>
                     <!-- row -->                     
-                </div>
+                </div><?php */?>
                 <!-- ontainer -->                 
-                <section class="full-section parallax" id="section-4"> 
+              <?php /*?>  <section class="full-section parallax" id="section-4"> 
                     <div class="container"> 
                         <div class="row"> 
                             <div class="col-sm-12"> 
@@ -645,7 +525,7 @@ error_reporting(0);
                         <!-- row -->                         
                     </div>
                     <!-- ontainer -->                     
-                </section>
+                </section><?php */?>
                 <!-- full-section -->                 
             </div>
             <!-- CONTENT -->             

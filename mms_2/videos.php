@@ -235,7 +235,7 @@ error_reporting(0);
                                 <!-- blog-article-details -->                                 
                                 <p> <?php echo $sing_dis['vedio_desc'];?></p> 
                                 <!--<a class="btn btn-default" href="blog-post.php">Continue reading</a>--> 
-                                <?php 
+                               <?php /*?> <?php 
 								if($_SESSION['User_id'])
 								{
 								?>
@@ -254,7 +254,7 @@ error_reporting(0);
                                 <p id="cart_log" style="display:none;color:#D91A1D;">Please Be Login</p>
                                 <?php
 								}
-								?>
+								?><?php */?>
                             </div>
                             <?php
 						}
@@ -469,13 +469,13 @@ error_reporting(0);
                             <!-- widget-tab -->                             
                           
                             <!-- widget-search -->                             
-                            <div class="widget widget-flickr"> 
+                           <?php /*?> <div class="widget widget-flickr"> 
                                 <h3 class="widget-title">Flickr</h3> 
                                 <div class="flickr-photos"> 
                                     <script src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08"></script>                                     
                                 </div>
                                 <!-- flickr-photos -->                                 
-                            </div>
+                            </div><?php */?>
                             <!-- widget-flickr -->                             
                              <div class="widget widget-text"> 
                                 <h3 class="widget-title">Quote of the day</h3>
